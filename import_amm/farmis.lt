@@ -1,0 +1,28 @@
+
+Liste de tous les produits :
+https://catalog.farmis.lt/v1.1/france/product
+
+Un produit en particulier
+https://catalog.farmis.lt/v1.1/france/product/previcur-energy
+
+Liste de tous les fabricants :
+https://catalog.farmis.lt/api/manufacturer
+
+Liste de toutes les cultures :
+https://catalog.farmis.lt/api/culture
+
+Liste de toutes les mauvaises herbes :
+https://catalog.farmis.lt/v1.1/france/weed
+https://catalog.farmis.lt/v1.1/france/weed/coquelicot-1
+
+Tous les insectes :
+https://catalog.farmis.lt/v1.1/france/pest
+https://catalog.farmis.lt/v1.1/france/pest/pucerons
+
+Toutes les maladies
+https://catalog.farmis.lt/v1.1/france/disease
+
+Categories
+https://catalog.farmis.lt/api/category
+
+https://catalog.farmis.lt/api/active-material

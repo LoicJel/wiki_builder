@@ -1,4 +1,5 @@
 <?php
+$GLOBALS['debug'] = false;
 
 include_once(__DIR__ . '/../includes/wikibuilder.php');
 
@@ -14,7 +15,6 @@ if (file_exists($filename))
     unlink($filename);
 
 $GLOBALS['wikiBuilder'] = new wikiImportFile($filename);
-
 
 $GLOBALS['links'] = array();
 
@@ -35,9 +35,11 @@ foreach ($linknodes as $link)
 }
 
 importGecoToWiki();
-
+$GLOBALS['unmanaged_tags'] = array();
 $GLOBALS['wikiBuilder']->close();
-print_r($GLOBALS['unmanaged_tags']);
+
+if (!empty($GLOBALS['unmanaged_tags']))
+	print_r($GLOBALS['unmanaged_tags']);
 
 //------
 
@@ -52,6 +54,12 @@ function importGecoToWiki()
 		// Download each link in the temp directory as cache
 		if (!file_exists($filename))
 			copy($url, $filename);
+
+		if ($GLOBALS['debug'])
+		{
+			if (strpos($filename, "carpocapse") === false && strpos($filename, "implanter_un_couvert") === false)
+				continue;
+		}
 
 		// Now detect the list of concepts, etc...
 		// <div class="type-concept-title"> <i class="typeConcept-culture-20"></i> CULTURE </div>
@@ -94,22 +102,41 @@ function importGecoToWiki()
 			$conceptType == 'exempleMiseEnOeuvre' ||
 			$conceptType == 'outilDAide' ||
 			$conceptType == 'materiel')
-			addPage($conceptName, $xpath, $conceptType);
+			addPage($conceptName, $xpath, $conceptType, false);
 		else
-			addPage('Category:' . $conceptName, $xpath, $conceptType);
+			addPage($conceptName, $xpath, $conceptType, true);
 
 		// echo  $conceptType . "\t" . $conceptName . "\t" . $date . "\t" . $url  . "\n";
 	}
 }
 
-function addPage($pageName, $xpath, $conceptType)
+function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage)
 {
 	echo "Extracting page: $pageName\n";
+
+	echo "$conceptType $pageName\n";
+
+	if ($bIsCategoryPage)
+		addCategoryPage($pageName);
+
+	$matchs = array();
+	$name = $pageName;
+	$latinName = '';
+	if (preg_match('@^(.*) \(([^)]+)\)$@', $pageName, $matchs))
+	{
+		$name = $matchs[1];
+		$latinName = $matchs[2];
+		addLatinRedirects($pageName, $name, $latinName);
+	}
 
 	$page = $GLOBALS['wikiBuilder']->addPage($pageName);
 
 	// Add the content
 	$elements = $xpath->query("//div[starts-with(@class, 'contenu-concept')]");
+	$wikiText = '';
+	$imageName = '';
+	$imageCaption = '';
+
 	foreach ($elements as $contentDiv)
 	{
 		foreach ($contentDiv->childNodes as $node)
@@ -128,17 +155,46 @@ function addPage($pageName, $xpath, $conceptType)
 			switch ($class)
 			{
 				case 'depiction-concept-structure': // image node
-					break;
-				case 'sommaire-concept-structure': // sommaire
+					$images = getImages($node);
+					$imageName = reset($images);
 					break;
 
+				case 'sommaire-concept-structure': // sommaire
+					break;
+				case 'cache': // Element caché
+					break;
 				default:
-					$page->addContent(getWikiText($node)); break;
+					$wikiText .= getWikiText($node) . "\n";
 					break;
 			}
 		}
 
 		break;
+	}
+
+	// Try to find the caption:
+	$lines = explode("\n", $wikiText);
+	$wikiText = '';
+
+	foreach ($lines as $line)
+	{
+		$matches = array();
+		if (preg_match('@.*:([^©]+©[^[]*)@', $line, $matches))
+			$imageCaption = ucfirst(trim($matches[1]));
+		else if (trim($line) != 'A compléter...')
+			$wikiText .= $line . "\n";
+	}
+
+	if (!empty($imageName))
+		resizeImage($imageName);
+
+	$page->addContent(getTemplate($conceptType, array('Nom' => $name, 'Latin' => $latinName, 'Image' => $imageName, 'ImageCaption' => $imageCaption)));
+
+	$page->addContent($wikiText);
+
+	if ($bIsCategoryPage)
+	{
+		$page->addContent("{{#dpl: category=$pageName }}");
 	}
 
 	$page->addCategory($conceptType);
@@ -372,7 +428,6 @@ function getWikiText($node, $context = '', $bNewParagraph = true)
 			return getWikiText($node->childNodes);
 	}
 
-
 	return '';
 }
 
@@ -389,4 +444,175 @@ function getFullUrl($url)
 		return 'http://geco.ecophytopic.fr' . $url;
 
 	return $url;
+}
+
+/**
+ * Creates a category page that just redirects to the main page
+ */
+function addCategoryPage($pageName)
+{
+	$page = $GLOBALS['wikiBuilder']->addPage('Category:' . $pageName);
+	$page->addContent('#Redirect: [['. $pageName . ']]');
+	$page->close();
+}
+
+/**
+ * When a pagename has a form of "Carpocapse des prunes (Cydia funebrana)", creates two redirects to it,
+ * for "Carpocapse des prunes" and "Cydia funebrana"
+ */
+function addLatinRedirects($pageName, $name, $latinName)
+{
+	$page = $GLOBALS['wikiBuilder']->addPage($name);
+	$page->addContent('#Redirect: [['. $pageName . ']]');
+	$page->close();
+
+	$page = $GLOBALS['wikiBuilder']->addPage($latinName);
+	$page->addContent('#Redirect: [['. $pageName . ']]');
+	$page->close();
+}
+
+/**
+ * Gets the wikitext for a template for the page
+ */
+function getTemplate($conceptType, $fields)
+{
+	/*
+	{{bioagresseur
+	|Nom=Carpocapse des pommes et des poires
+	|Latin=Cydia pomonella
+	|Image=image_carpocapse_des_pommes_et_des_poires__Cydia_pomonella_.jpg
+	|ImageCaption=Adulte du carpocapse des pommes et des poires - © INRA}}
+	*/
+
+	$lines = array();
+	foreach ($fields as $k => $v)
+	{
+		if (!empty($v))
+			$lines[] = "|$k=$v";
+	}
+
+	return '{{' . $conceptType . "\n" . implode("\n", $lines) . '}}';
+}
+
+/**
+ * Returns an array of filenames for all the img tags found within the node
+ */
+function getImages($node)
+{
+	if (is_a($node, 'DOMNodeList'))
+	{
+		$ret = array();
+		foreach ($node as $childnode)
+			$ret = array_merge($ret, getImages($childnode));
+
+		return $ret;
+	}
+
+	switch ($node->nodeName)
+	{
+		case '#text':
+		case '#cdata-section':
+			return array();
+
+		case 'img':
+			$imageName = basename($node->getAttribute('src'));
+
+			// Remove the part after the '?'
+			$imageName = mb_substr($imageName, 0, strpos($imageName, '?'), 'UTF-8');
+
+			return array($imageName);
+
+		default:
+			return getImages($node->childNodes);
+	}
+
+	return array();
+}
+
+function resizeImage(&$imageName)
+{
+	$srcImageFilePath = __DIR__ . '/geco_index_files/'. $imageName;
+
+	$path_parts = pathinfo($srcImageFilePath);
+
+	$srcExt = $path_parts['extension'];
+
+	$imageName = str_replace('.' . $srcExt, '.jpg', $imageName);
+
+	$destImageFilePath = __DIR__ . '/../out/images/'. $imageName;
+
+	if (file_exists($destImageFilePath))
+		return;
+
+	switch (strtolower($srcExt))
+	{
+		case 'bmp':
+			$srcimage = imagecreatefrombmp($srcImageFilePath);
+			break;
+
+		case 'gif':
+			$srcimage = imagecreatefromgif($srcImageFilePath);
+			break;
+
+		case 'jpeg':
+		case 'jpg':
+			$srcimage = imagecreatefromjpeg($srcImageFilePath);
+			break;
+
+		case 'png':
+			$srcimage = imagecreatefrompng($srcImageFilePath);
+			break;
+
+		case 'wbmp':
+			$srcimage = imagecreatefromwbmp($srcImageFilePath);
+			break;
+
+		case 'webp':
+			$srcimage = imagecreatefromwebp($srcImageFilePath);
+			break;
+
+		case 'xbm':
+			$srcimage = imagecreatefromxbm($srcImageFilePath);
+			break;
+
+		case 'xpm':
+			$srcimage = imagecreatefromxpm($srcImageFilePath);
+			break;
+
+		default:
+			// Ignore this image!
+			$imageName = '';
+			return;
+	}
+
+	// Calcul des nouvelles dimensions
+    list($orig_width, $orig_height) = getimagesize($srcImageFilePath);
+
+    $width = $orig_width;
+    $height = $orig_height;
+
+	$max_height = $max_width = 800;
+
+    # taller
+    if ($height > $max_height) {
+        $width = ($max_height / $height) * $width;
+        $height = $max_height;
+    }
+
+    # wider
+    if ($width > $max_width) {
+        $height = ($max_width / $width) * $height;
+        $width = $max_width;
+    }
+
+	// Chargement
+	$destImage = imagecreatetruecolor($width, $height);
+
+	// Redimensionnement
+	imagecopyresized($destImage, $srcimage, 0, 0, 0, 0, $width, $height, $orig_width, $orig_height);
+	imagejpeg($destImage, $destImageFilePath);
+
+	// Libération de la mémoire
+	imagedestroy($destImage);
+	imagedestroy($srcimage);
 }

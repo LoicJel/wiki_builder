@@ -3,3 +3,5 @@ import_geco/geco_index_files
 import_geco/geco_index.html
 temp/
 out/
+import_contratsolutions/fiches/*.html
+import_amm/out.txt
