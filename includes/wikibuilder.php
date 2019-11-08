@@ -8,6 +8,11 @@ class wikiImportFile
     private $pages = array();
     private $bOpen = false;
 
+    private $rootfilename = '';
+    private $filecount = 1;
+
+    const max_file_size = 800000;
+
     function __construct(string $filename)
     {
         if (file_exists($filename))
@@ -18,6 +23,19 @@ class wikiImportFile
         $this->pages = array();
         $this->bOpen = true;
 
+        $path_parts = pathinfo($filename);
+        $this->rootfilename = $path_parts['dirname'] . '/' . $path_parts['filename'] . '_';
+
+        $this->initWiki();
+    }
+
+    function __destruct()
+    {
+        $this->close();
+    }
+
+    private function initWiki()
+    {
         $wikiXML = <<<EOT
 <mediawiki xmlns="http://www.mediawiki.org/xml/export-0.10/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.10/ http://www.mediawiki.org/xml/export-0.10.xsd" version="0.10" xml:lang="en">
       <siteinfo>
@@ -30,11 +48,6 @@ class wikiImportFile
 EOT;
 
         file_put_contents($this->filename, $wikiXML);
-    }
-
-    function __destruct()
-    {
-        $this->close();
     }
 
     public function close()
@@ -60,6 +73,18 @@ EOT;
     public function addData($data)
     {
         file_put_contents($this->filename, $data, FILE_APPEND);
+        clearstatcache();
+
+        if (filesize($this->filename) > wikiImportFile::max_file_size)
+        {
+            // we've reached the max file size we allow ourself, let's create another output file:
+            file_put_contents($this->filename, '</mediawiki>', FILE_APPEND);
+
+            $this->filename = $this->rootfilename . $this->filecount . ".xml";
+            $this->filecount++;
+
+            $this->initWiki();
+        }
     }
 
     public function addCategory($catName) : wikiPage
@@ -103,7 +128,7 @@ class wikiPage
 
         $this->bOpen = false;
 
-        $this->content = trim($this->content);
+        $this->content = $this->cleanUpContent();
         $this->wikiPageName = trim($this->wikiPageName);
 
         if (empty($this->wikiPageName) || empty($this->content))
@@ -172,5 +197,32 @@ EOT;
         $this->addContentAtEnd("[[Category:$catName]]");
 
         return $this->wiki->addCategory($catName);
+     }
+
+     /**
+      * Returns the wikitext of the page after a gentle cleanup:
+      * * Remove unnecessary triple cariage returns
+      * * Trim all lines (we don't allow spaces in front of lines)
+      */
+     private function cleanUpContent()
+     {
+        $lines = explode("\n", $this->content);
+        $wikiText = '';
+        $emptylinesCount=0;
+
+        foreach ($lines as $line)
+        {
+            $line = trim($line);
+
+            if (empty($line))
+                $emptylinesCount++;
+            else
+                $emptylinesCount = 0;
+
+            if ($emptylinesCount < 2)
+                $wikiText .= $line . "\n";
+        }
+
+         return $wikiText;
      }
 }

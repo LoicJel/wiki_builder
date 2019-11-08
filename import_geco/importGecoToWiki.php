@@ -57,7 +57,11 @@ function importGecoToWiki()
 
 		if ($GLOBALS['debug'])
 		{
-			if (strpos($filename, "carpocapse") === false && strpos($filename, "implanter_un_couvert") === false)
+			if (strpos($filename, "carpocapse") === false &&
+				strpos($filename, "implanter_un_couvert") === false &&
+				strpos($filename, "raisonner") === false &&
+				strpos($filename, "lampourde") === false &&
+				strpos($filename, "realiser_des_bandes") === false)
 				continue;
 		}
 
@@ -116,6 +120,8 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage)
 
 	echo "$conceptType $pageName\n";
 
+	$pageName = mb_ucfirst($pageName);
+
 	if ($bIsCategoryPage)
 		addCategoryPage($pageName);
 
@@ -126,7 +132,13 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage)
 	{
 		$name = $matchs[1];
 		$latinName = $matchs[2];
-		addLatinRedirects($pageName, $name, $latinName);
+
+		if ($latinName != "maïs" &&
+			!is_numeric($latinName))
+		{
+			addRedirect($name, $pageName);
+			addRedirect($latinName, $pageName);
+		}
 	}
 
 	$page = $GLOBALS['wikiBuilder']->addPage($pageName);
@@ -144,7 +156,12 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage)
 			$nodeName = strtolower($node->nodeName);
 
 			if ($nodeName == '#text')
+			{
+				$text = trim($node->textContent);
+				if (!empty($text))
+					$wikiText .= $node->textContent . "\n\n";
 				continue;
+			}
 
 			$class = $node->getAttribute('class');
 			$id = $node->getAttribute('id');
@@ -181,8 +198,10 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage)
 		$matches = array();
 		if (preg_match('@.*:([^©]+©[^[]*)@', $line, $matches))
 			$imageCaption = ucfirst(trim($matches[1]));
+		else if (empty($imageCaption) && preg_match('@[^:]*[pP]hoto[^:]*:(.+)@', $line, $matches))
+			$imageCaption = ucfirst($line);
 		else if (trim($line) != 'A compléter...')
-			$wikiText .= $line . "\n";
+			$wikiText .= trim($line) . "\n";
 	}
 
 	if (!empty($imageName))
@@ -203,6 +222,20 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage)
 	addCategoriesForPage($page, $xpath);
 
 	$page->close();
+
+	// Add some redirects:
+	$elements = $xpath->query("//div[starts-with(@class, 'labels-alternatifs')]");
+	foreach ($elements as $element)
+	{
+		$altNamesText = trim($element->textContent);
+		$matches = array();
+		if (preg_match('@.*:(.+)@', $altNamesText, $matches))
+		{
+			$altNames = explode(',', $matches[1]);
+			foreach ($altNames as $altName)
+				addRedirect(trim($altName), $pageName);
+		}
+	}
 }
 
 function addCategoriesForPage($page, $xpath)
@@ -378,23 +411,31 @@ function getWikiText($node, $context = '', $bNewParagraph = true)
 		case '#text':
 		case '#cdata-section':
 			if ($bNewParagraph)
-				return ltrim($node->textContent);
+			{
+				$cariageReturn = "\n";
+				$paragraph = $node->textContent;
+
+				if (preg_match("@^·[ ]+@", $paragraph))
+					$cariageReturn = "";
+				$paragraph = preg_replace("@^·[ ]+@", "* ", $paragraph);
+				return $paragraph . $cariageReturn;
+			}
 			else
 				return $node->textContent;
 
 		case 'li':
 			if ($context == 'ol')
-				return "# " .trim(getWikiText($node->childNodes)). "\n";
+				return "# " .trim(getWikiText($node->childNodes, '', false)). "\n";
 			else
-				return "* " .trim(getWikiText($node->childNodes)) . "\n";
+				return "* " .trim(getWikiText($node->childNodes, '', false)) . "\n";
 
-		case 'h1': return "\n=" .getWikiText($node->childNodes) . "=\n";
-		case 'h2': return "\n==" .getWikiText($node->childNodes) . "==\n";
-		case 'h3': return "\n===" .getWikiText($node->childNodes) . "===\n";
+		case 'h1': return "\n=" .getWikiText($node->childNodes, '', false) . "=\n";
+		case 'h2': return "\n==" .getWikiText($node->childNodes, '', false) . "==\n";
+		case 'h3': return "\n===" .getWikiText($node->childNodes, '', false) . "===\n";
 
 		case 'b':
 		case 'strong':
-			return "'''" .getWikiText($node->childNodes) . "'''";
+			return "'''" .getWikiText($node->childNodes, '', false) . "'''";
 
 		case 'br':
 			return "\n\n";
@@ -405,19 +446,19 @@ function getWikiText($node, $context = '', $bNewParagraph = true)
 
 		case 'ol':
 		case 'ul':
-			return "\n" . getWikiText($node->childNodes, $node->nodeName, 'always');
+			return getWikiText($node->childNodes, $node->nodeName, 'always');
 
 		case 'p':
 		case 'div':
-			return "\n\n" . getWikiText($node->childNodes);
+			return getWikiText($node->childNodes);
 
 		case 'a':
 			$url = getFullUrl($node->getAttribute('href'));
 
 			if (isset($GLOBALS['links'][$url]))
-				return "[[".$GLOBALS['links'][$url]."|". getWikiText($node->childNodes)."]]";
+				return "[[".$GLOBALS['links'][$url]."|". getWikiText($node->childNodes, '', false)."]]";
 			else
-				return "[$url ". getWikiText($node->childNodes)."]";
+				return "[$url ". getWikiText($node->childNodes, '', false)."]";
 
 		default:
 			if (!isset($GLOBALS['unmanaged_tags'][$node->nodeName]))
@@ -425,10 +466,10 @@ function getWikiText($node, $context = '', $bNewParagraph = true)
 			else
 				$GLOBALS['unmanaged_tags'][$node->nodeName] ++;
 
-			return getWikiText($node->childNodes);
+			return getWikiText($node->childNodes, '', false);
 	}
 
-	return '';
+	return '------';
 }
 
 function getFullUrl($url)
@@ -460,15 +501,18 @@ function addCategoryPage($pageName)
  * When a pagename has a form of "Carpocapse des prunes (Cydia funebrana)", creates two redirects to it,
  * for "Carpocapse des prunes" and "Cydia funebrana"
  */
-function addLatinRedirects($pageName, $name, $latinName)
+function addRedirect($fromPage, $toPage)
 {
-	$page = $GLOBALS['wikiBuilder']->addPage($name);
-	$page->addContent('#Redirect: [['. $pageName . ']]');
+	$page = $GLOBALS['wikiBuilder']->addPage(mb_ucfirst($fromPage));
+	$page->addContent('#Redirect: [['. $toPage . ']]');
 	$page->close();
+	echo "Adding redirect: $toPage <-- $fromPage\n";
+}
 
-	$page = $GLOBALS['wikiBuilder']->addPage($latinName);
-	$page->addContent('#Redirect: [['. $pageName . ']]');
-	$page->close();
+function mb_ucfirst($str)
+{
+    $fc = mb_strtoupper(mb_substr($str, 0, 1));
+    return $fc.mb_substr($str, 1);
 }
 
 /**
@@ -544,75 +588,90 @@ function resizeImage(&$imageName)
 	if (file_exists($destImageFilePath))
 		return;
 
-	switch (strtolower($srcExt))
+	try
 	{
-		case 'bmp':
-			$srcimage = imagecreatefrombmp($srcImageFilePath);
-			break;
+		switch (strtolower($srcExt))
+		{
+			case 'bmp':
+				$srcimage = imagecreatefrombmp($srcImageFilePath);
+				break;
 
-		case 'gif':
-			$srcimage = imagecreatefromgif($srcImageFilePath);
-			break;
+			case 'gif':
+				$srcimage = imagecreatefromgif($srcImageFilePath);
+				break;
 
-		case 'jpeg':
-		case 'jpg':
-			$srcimage = imagecreatefromjpeg($srcImageFilePath);
-			break;
+			case 'jpeg':
+			case 'jpg':
+				$srcimage = imagecreatefromjpeg($srcImageFilePath);
+				break;
 
-		case 'png':
-			$srcimage = imagecreatefrompng($srcImageFilePath);
-			break;
+			case 'png':
+				$srcimage = imagecreatefrompng($srcImageFilePath);
+				break;
 
-		case 'wbmp':
-			$srcimage = imagecreatefromwbmp($srcImageFilePath);
-			break;
+			case 'wbmp':
+				$srcimage = imagecreatefromwbmp($srcImageFilePath);
+				break;
 
-		case 'webp':
-			$srcimage = imagecreatefromwebp($srcImageFilePath);
-			break;
+			case 'webp':
+				$srcimage = imagecreatefromwebp($srcImageFilePath);
+				break;
 
-		case 'xbm':
-			$srcimage = imagecreatefromxbm($srcImageFilePath);
-			break;
+			case 'xbm':
+				$srcimage = imagecreatefromxbm($srcImageFilePath);
+				break;
 
-		case 'xpm':
-			$srcimage = imagecreatefromxpm($srcImageFilePath);
-			break;
+			case 'xpm':
+				$srcimage = imagecreatefromxpm($srcImageFilePath);
+				break;
 
-		default:
-			// Ignore this image!
+			default:
+				// Ignore this image!
+				$imageName = '';
+				return;
+		}
+
+		if (empty($srcimage))
+		{
 			$imageName = '';
 			return;
+		}
+
+		// Calcul des nouvelles dimensions
+		list($orig_width, $orig_height) = getimagesize($srcImageFilePath);
+
+		$width = $orig_width;
+		$height = $orig_height;
+
+		$max_height = $max_width = 800;
+
+		# taller
+		if ($height > $max_height) {
+			$width = ($max_height / $height) * $width;
+			$height = $max_height;
+		}
+
+		# wider
+		if ($width > $max_width) {
+			$height = ($max_width / $width) * $height;
+			$width = $max_width;
+		}
+
+		// Chargement
+		$destImage = imagecreatetruecolor($width, $height);
+
+		// Redimensionnement
+		imagecopyresized($destImage, $srcimage, 0, 0, 0, 0, $width, $height, $orig_width, $orig_height);
+		imagejpeg($destImage, $destImageFilePath);
+
+		// Libération de la mémoire
+		imagedestroy($destImage);
+		imagedestroy($srcimage);
 	}
-
-	// Calcul des nouvelles dimensions
-    list($orig_width, $orig_height) = getimagesize($srcImageFilePath);
-
-    $width = $orig_width;
-    $height = $orig_height;
-
-	$max_height = $max_width = 800;
-
-    # taller
-    if ($height > $max_height) {
-        $width = ($max_height / $height) * $width;
-        $height = $max_height;
-    }
-
-    # wider
-    if ($width > $max_width) {
-        $height = ($max_width / $width) * $height;
-        $width = $max_width;
-    }
-
-	// Chargement
-	$destImage = imagecreatetruecolor($width, $height);
-
-	// Redimensionnement
-	imagecopyresized($destImage, $srcimage, 0, 0, 0, 0, $width, $height, $orig_width, $orig_height);
-	imagejpeg($destImage, $destImageFilePath);
-
-	// Libération de la mémoire
-	imagedestroy($destImage);
-	imagedestroy($srcimage);
+	catch (\Throwable $th)
+	{
+		echo "Failed to save image: $srcImageFilePath \n";
+		echo $th->getMessage() . "\n";
+		$imageName = '';
+	}
 }
