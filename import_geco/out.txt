@@ -1,0 +1,1993 @@
+Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-implanter_un_couvert_de_legumineuses_en_association_avec_le_colza.html
+Extracting page: Associer le colza à des plantes de service gélives
+technique Associer le colza à des plantes de service gélives
+
+
+=1. Présentation=
+
+
+
+
+
+==Caractérisation de la technique==
+
+
+===Description de la technique :===
+
+Cette technique vise à implanter des plantes de services gélives destinées à accompagner le colza d’hiver durant l’automne, pendant la première partie de son cycle végétatif, afin de rendre des services à la culture de colza d’hiver. Le couvert est détruit pendant l’hiver par le gel et le colza poursuit son cycle seul au printemps.
+
+Les services recherchés sont :
+
+*  Une meilleure couverture du sol et lutte contre les adventices  (compétition ou allélopathie)
+*  Une structuration du sol et amélioration de l’enracinement du colza par complémentarité des systèmes racinaires  (colza / plantes de services)
+*  La fixation d’azote pendant l’automne par la plante de service et restitution au colza après la destruction du couvert  (restitution au printemps)
+*  La réduction des dégâts causés par les insectes à l’automne  (altises, charançons du bourgeon terminal, noctuelles)  par effet de camouflage/perturbation visuelle et/ou olfactive
+*  Un moindre investissement financier pour l’agriculteur en début de cycle du colza d’hiver (diminution herbicides, insecticides) et des possibilités accrues d’alternatives en cas de destruction de la culture de colza ou de non développement
+Les différents effets des plantes de services sur le colza permettent d’économiser des intrants (azote, herbicide, insecticide) et de maintenir (voir augmenter) le rendement du colza.
+
+Il apparait préférable d’associer au colza une ou des espèces « plantes de services » gélives et exerçant une concurrence limitée sur le colza.
+
+Afin de remplir le service « fourniture d’azote », les légumineuses sont privilégiées, de par leur capacité à utiliser l’azote de l’air pour leur croissance (fixation symbiotique).
+
+Les plantes de services peuvent être implantées (1) simultanément au colza sur la même ligne de semis, (2) simultanément au colza en alternant les lignes de semis (semoir à trémies séparées) ou (3) en deux passages, le semis du colza étant réalisé après le semis à la volée du couvert. Un roulage permet ensuite d'assurer un bon contact terre-graine. Un semis précoce est à privilégier pour maximiser la somme des températures et la croissance des plantes de services (entre le 5 et 20 août). Le choix variétal pour le colza est à adapter, en particulier sur le caractère de faible sensibilité à l’élongation automnale.
+
+
+
+
+'''Exemple de mise en oeuvre : '''
+Exemples d’espèce ou mélanges intéressants pour l’association avec le colza d’hiver
+
+*  Lentille (30 kg/ha)
+*  Féverole de printemps (80-100 kg/ha)
+*  Trèfle d’Alexandrie (6 kg/ha, ex. variété Tabor de Jouffray-Drillaud)
+*  Mélange de féverole de printemps (50 kg/ha) et de lentille (15 kg/ha)
+*  Mélange de féverole de printemps, vesce pourpre et trèfle d’Alexandrie
+*  Mélanges commerciaux de vesce commune, vesce pourpre et trèfle d’Alexandrie ou de gesse, fenugrec et lentille semés à 20-25 kg/ha
+*  Trèfle blanc pérenne, non détruit pendant l’hiver (choix variétal important, privilégier les trèfles blanc nains ex. variété Huia)
+
+===Précision sur la technique :===
+
+Technique simple à mettre en œuvre, facilement acceptée par les agriculteurs car ne nécessitant pas une ré-organisation importante du système de culture  (démarche de substitution des phytos/azote, pas de reconception)
+
+
+
+
+
+
+
+'''Période de mise en œuvre '''
+Sur culture implantée
+
+
+
+
+
+
+
+'''Echelle spatiale de mise en œuvre '''
+Parcelle
+
+
+
+
+
+
+
+
+==Application de la technique à...==
+
+
+'''Toutes les cultures : '''
+Généralisation parfois délicate
+
+
+
+Seules les espèces gélives et peu concurrentielles du colza sont adaptées à ce type d’association. Des associations de plantes de services à d’autres cultures sont en expérimentation (association avec le blé, lupin, maïs, tournesol, etc).
+
+
+
+
+
+
+
+
+'''Tous les types de sols : '''
+Facilement généralisable
+
+
+
+L'implantation d'un couvert de légumineuses en accompagnement du colza peut s'appliquer à tous types de sols. Cette technique trouve plus particulièrement son intérêt dans les sols superficiels, où les problèmes de maîtrise de l'enherbement peuvent difficilement être résolus par une diversification de la rotation.
+Les services attendus sont probablement plus difficiles à atteindre dans les situations présentant moins de facteurs limitants, dans des sols profonds à fort potentiel et les régions où les insectes d’automne ne sont pas problématiques.
+F technique plutôt adaptée à des sols moyennement à pauvre en azote disponible à l’automne car dans le cas de forte disponibilité en azote
+
+
+
+
+
+
+
+
+'''Tous les contextes climatiques : '''
+Généralisation parfois délicate
+
+
+
+Continental
+
+Océanique
+
+
+
+
+Dans le nord et l’est de la France, le climat peut être défavorable à la croissance des plantes de service à l’automne, avec le risque que les services attendus ne soient pas effectivement rendus.
+Dans les régions à faible occurence de gel (climat océanique par exemple), la plante de service peut ne pas être détruite pendant l'hiver par le gel. Une destruction chimique doit alors être envisagée.
+
+
+
+
+
+
+
+
+==Réglementation==
+
+La mise en place d'une association de légumineuses gélives ou d'un couvert de légumineuses gélives et non gélives fait l'objet de fiches CEPP :
+
+
+* [http://www.ecophytopic.fr/tr/cepp/cepp-colza-vari%C3%A9t%C3%A9s Action n°10 :] Remplacer les traitements herbicide et insecticide d'automne en associant des légumineuses gélives avec du colza d'hiver
+
+* [http://www.ecophytopic.fr/tr/cepp/cepp-colza-couvert Action n°50 :] Réduire l'utilisation des produits phytopharmaceutiques en associant un couvert de légumineuses gélives et non gélives entre rangs de colza
+
+
+
+
+
+
+
+
+
+
+=2. Services rendus par la technique=
+
+
+
+
+
+
+=3. Effets sur la durabilité du système de culture=
+
+
+
+
+
+==Critères "environnementaux"==
+
+
+'''Effet sur la qualité de l'air : '''
+En augmentation
+
+
+
+émission phytosanitaires : DIMINUTION
+
+émission GES : DIMINUTION
+
+
+
+
+
+
+
+'''Effet sur la qualité de l'eau : '''
+En augmentation
+
+
+
+N.P. : DIMINUTION
+
+pesticides : DIMINUTION
+
+
+
+
+
+
+
+'''Effet sur la consommation de ressources fossiles : '''
+En diminution
+
+
+
+consommation d'énergie fossile : DIMINUTION
+
+
+
+
+
+
+
+'''Autre : '''
+Pas d'effet (neutre)
+
+
+
+'''Air''' : L’association de plantes compagnes avec le colza permet de réduire les traitements phytosanitaires, et donc de limiter les transferts vers l'air par vaporisation de matières actives. Cette technique permet aussi de limiter le nombre de passages de pulvérisateur, donc une limitation de dégagement de CO2.
+'''Eau''' : L’association de plantes de services avec le colza d’hiver permet de réduire la quantité de traitements phytosanitaires (herbicides, insecticides), et donc de réduire les risques de transferts vers l'eau de façon variable selon les molécules. L’association permet également d'augmenter l'exploration racinaire du sol et le prélèvement des nitrates à l’automne, donc de limiter les risques de lixiviation. En cas d’utilisation de plantes de service « légumineuse », une diminution des apports d’azote minéral pourra être envisagé sur le colza.
+'''Energie fossile''' : L’association de plantes compagnes avec le colza permet de réduire la quantité d'azote apportée et le nombre de passages pour les traitements phytosanitaires, et donc une baisse de la consommation d'énergie fossile liée à la fabrication d'engrais minéraux et à la consommation du tracteur. En revanche, l'implantation du couvert peut impliquer un passage supplémentaire.
+'''Gaz à effet de serre (GES)''' : L’association de plantes compagnes avec le colza permet de réduire la quantité d'azote apportée et le nombre de passages pour les traitements phytosanitaires, et donc une baisse des émissions de gaz à effet de serre liée à la fabrication et à l'épandage d'engrais minéraux et à la consommation du tracteur.
+
+
+
+
+
+
+
+
+
+
+
+==Critères "agronomiques"==
+
+
+'''Productivité : '''
+Pas d'effet (neutre)
+
+
+
+Cas n°1.
+- Association avec des plantes gélives légumineuses, peu concurrentielles (pas d’espèces non légumineuses semées seules avec le colza par exemple, destruction complète de la plante de services à la sortie de l’hiver)
+- Réduction de la dose d’azote apportée de 30 à 40 unités d’azote/ha par rapport à la dose recommandée en colza pur
+-> pas d’impact sur le rendement (rendement équivalent à un colza seul), malgré une diminution d’intrants
+-> la diminution d’intrants compense le coût du couvert (plantes de services) et engendre souvent une marge semi-nette > au colza pur
+ 
+Cas n°2.
+- Association avec des plantes gélives légumineuses, peu concurrentielles (pas d’espèces non légumineuses semées seules avec le colza par exemple, destruction complète de la plante de services à la sortie de l’hiver)
+- maintien de la dose d’azote recommandée en colza pur
+-> déplafonnement du rendement possible de 1 à 3 qx/ha selon les contextes si les plantes compagnes réduisent les effets des facteurs limitants (meilleure implantation, limitation de la concurrence des adventices, moins de dégâts d’insectes, élimination des carences en azote).
+-> Production accrue avec autant d’intrants, mais marge semi-nette pas obligatoirement « gagnante »
+
+
+
+
+
+
+
+
+'''Qualité de la production : '''
+Pas de connaissance sur impact
+
+
+
+
+
+
+
+
+
+
+
+'''Fertilité du sol : '''
+En augmentation
+
+
+
+L'implantation d'un couvert de légumineuses conduit à améliorer la disponibilité en azote pour le colza (fixation symbiotique, meilleure exploration racinaire du sol et restitution de l’azote contenu dans les résidus des plantes de services suite à leur dégradation au sol).
+Peu d’effets sont attendus sur les cultures suivantes. De rares expérimentations rapportent une mise à disposition d’azote pour la culture suivante après un colza associé à de la féverole de printemps, ou avec un trèfle blanc maintenu tout le long du cycle du colza et détruit avant le blé suivant.
+
+
+
+
+
+
+
+
+'''Stress hydrique : '''
+Variable
+
+
+
+En cas d'automne faiblement pluvieux et de couvert très compétitif, les risques de stress hydrique de début de cycle pour le colza peuvent être accrus.
+
+
+
+
+
+
+
+
+'''Biodiversité fonctionnelle : '''
+En augmentation
+
+
+
+Certaines espèces de plantes de services peuvent attirer des insectes auxiliaires volants par la mise à disposition de ressources (floraison précoce du sarrasin, sécrétion de nectar extra-floral par la féverole).
+La couverture du sol accrue permettrait de favoriser les prédateurs au sol en leur fournissant un habitat favorable.
+
+
+
+
+
+
+
+
+'''Autres critères agronomiques : '''
+Variable
+
+
+
+'''Aphanomycès : '''Dans le cas de rotation incluant du pois en tant que culture de vente, l'implantation de pois ou de lentille en accompagnement du colza peut accentuer le risque aphanomyces.
+De manière générale, ne pas utiliser, comme plantes de services, des espèces déjà cultivées en culture de rente dans la rotation.
+'''Sclérotinia :  '''Pour les situations ou la pression sclérotinia sur colza est moyenne à importante, il est préférable de choisir des espèces « plantes de services » non hôte du sclérotinia.
+
+
+
+
+
+
+
+
+
+
+
+==Critères "économiques"==
+
+
+
+
+
+'''Charges opérationnelles : '''
+Variable
+
+
+
+L’association de plantes compagnes avec le colza implique des charges supplémentaires de 30 à 80€/ha pour les semences. Cependant, cette technique doit conduire à réduire les traitements phytosanitaires et engrais, avec des charges opérationnelles peu différente d'un colza conduit en culture pure.
+
+
+
+
+
+
+
+
+'''Charges de mécanisation : '''
+Variable
+
+
+
+L’association de plantes compagnes avec le colza peut impliquer un passage supplémentaire au semis mais peut permettre d'éviter d’autres passages liés à la réduction d’usage des pesticides et de l’azote, avec des charges de mécanisation peu différente d'un colza conduit en culture pure.
+
+
+
+
+
+
+
+
+'''Marge : '''
+En augmentation
+
+
+
+Dans un réseau de 10 essais (projet Casdar Alliance 2014-2017), augmentation moyenne de la marge semi-nette de +32€/ha dans le cas de réductions franches de l’usage des intrants. Le surcoût de l’implantation du couvert (semences + semis) est compensée par la réduction des charges d’intrants et passages associés. L'impact sur la marge dépend donc de la réduction effective de l’usage des intrants, ainsi que de l'effet du couvert sur le rendement.
+
+
+
+
+
+
+
+
+'''Autres critères économiques : '''
+Variable
+
+
+
+'''Consommation de carburant''' : variable. L’association de plantes compagnes avec le colza peut impliquer un passage supplémentaire au semis, mais peut permettre d'éviter un passage pour l'application d'herbicides. Ces deux postes sont généralement compensés, sans effet global sur la consommation de carburant à l’échelle de la culture.
+
+
+
+
+
+
+
+
+
+
+
+==Critères "sociaux"==
+
+
+
+
+
+'''Temps de travail : '''
+Variable
+
+
+
+L’association de plantes compagnes avec le colza peut impliquer un passage supplémentaire au semis, mais peut permettre d'éviter un passage pour l'application d'herbicides et d’insecticides à des périodes de forte charge de travail (préparation de sol et semis des cultures d’hiver).
+
+
+
+
+
+
+
+
+'''Période de pointe : '''
+En diminution
+
+
+
+La technique permet d'éviter un passage pour l'application d'herbicides et d’insecticides à des périodes de forte charge de travail (préparation de sol et semis des cultures d’hiver).
+
+
+
+
+
+
+
+'''Effet sur la santé de l'agriculteur : '''
+En augmentation
+
+
+
+Si réduction de l'exposition aux produits phyto.
+
+
+
+
+
+
+
+'''Temps d'observation : '''
+En augmentation
+
+
+
+L’association de plantes compagnes avec le colza constitue une pratique innovante nécessitant apprentissage et observations.
+
+
+
+
+
+
+
+
+
+
+
+
+=4. Organismes favorisés ou défavorisés=
+
+
+
+
+
+
+== Bioagresseurs favorisés==
+
+Organisme Impact de la technique Type Précisions
+
+
+
+
+== Bioagresseurs défavorisés==
+
+Organisme Impact de la technique Type Précisions   [[Brome stérile|Brome stérile]]   MOYENNE    adventices     [[Folle avoine|Folle avoine]]   MOYENNE    adventices     [[achillée millefeuille|achillée millefeuille]]   MOYENNE    adventices     [[agrostis stolonifère|agrostis stolonifère]]   MOYENNE    adventices     [[alchémille des champs|alchémille des champs]]   MOYENNE    adventices     [[altise du colza|altise du colza]]   MOYENNE    ravageur, prédateur ou parasite     [[ammi élevé|ammi élevé]]   MOYENNE    adventices     [[anthrisque commun|anthrisque commun]]   MOYENNE    adventices     [[anthémis cotule|anthémis cotule]]   MOYENNE    adventices     [[anthémis des champs|anthémis des champs]]   MOYENNE    adventices     [[anthémis élevée|anthémis élevée]]   MOYENNE    adventices     [[arabette de Thalius|arabette de Thalius]]   MOYENNE    adventices     [[avoine stérile ludovicienne|avoine stérile ludovicienne]]   MOYENNE    adventices     [[avoine à chapelets|avoine à chapelets]]   MOYENNE    adventices     [[barbarée intermédiaire|barbarée intermédiaire]]   MOYENNE    adventices     [[bleuet|bleuet]]   MOYENNE    adventices     [[calépine irrégulière|calépine irrégulière]]   MOYENNE    adventices     [[capselle bourse à pasteur|capselle bourse à pasteur]]   MOYENNE    adventices     [[cardamine hérissée|cardamine hérissée]]   MOYENNE    adventices     [[carotte sauvage|carotte sauvage]]   MOYENNE    adventices     [[charançon du bourgeon terminal|charançon du bourgeon terminal]]   MOYENNE    ravageur, prédateur ou parasite     [[chiendent rampant|chiendent rampant]]   MOYENNE    adventices     [[crépis de Nîmes|crépis de Nîmes]]   MOYENNE    adventices     [[céraiste aggloméré|céraiste aggloméré]]   MOYENNE    adventices     [[diplotaxis fausse-roquette|diplotaxis fausse-roquette]]   MOYENNE    adventices     [[erodium à feuilles de ciguë|erodium à feuilles de ciguë]]   MOYENNE    adventices     [[euphorbe réveil-matin|euphorbe réveil-matin]]   MOYENNE    adventices     [[fenouil commun|fenouil commun]]   MOYENNE    adventices     [[fumeterre officinale|fumeterre officinale]]   MOYENNE    adventices     [[fumeterre à petites fleurs|fumeterre à petites fleurs]]   MOYENNE    adventices     [[gaillet gratteron|gaillet gratteron]]   MOYENNE    adventices     [[grémil des champs|grémil des champs]]   MOYENNE    adventices     [[géranium colombin|géranium colombin]]   MOYENNE    adventices     [[géranium disséqué|géranium disséqué]]   MOYENNE    adventices     [[géranium mou|géranium mou]]   MOYENNE    adventices     [[géranium à feuilles rondes|géranium à feuilles rondes]]   MOYENNE    adventices     [[géranium à tiges grêles|géranium à tiges grêles]]   MOYENNE    adventices     [[helminthie fausse vipérine|helminthie fausse vipérine]]   MOYENNE    adventices     [[houlque molle|houlque molle]]   MOYENNE    adventices     [[ivraie raide|ivraie raide]]   MOYENNE    adventices     [[jonc des crapauds|jonc des crapauds]]   MOYENNE    adventices     [[laiteron rude|laiteron rude]]   MOYENNE    adventices     [[laitue scarole|laitue scarole]]   MOYENNE    adventices     [[lamier amplexicaule|lamier amplexicaule]]   MOYENNE    adventices     [[lamier pourpre|lamier pourpre]]   MOYENNE    adventices     [[lampsane commune|lampsane commune]]   MOYENNE    adventices     [[lychnis dioïque|lychnis dioïque]]   MOYENNE    adventices     [[matricaire camomille|matricaire camomille]]   MOYENNE    adventices     [[matricaire inodore|matricaire inodore]]   MOYENNE    adventices     [[mauve sylvestre|mauve sylvestre]]   MOYENNE    adventices     [[menthe à feuilles rondes|menthe à feuilles rondes]]   MOYENNE    adventices     [[moutarde des champs|moutarde des champs]]   MOYENNE    adventices     [[moutarde noire|moutarde noire]]   MOYENNE    adventices     [[myosotis des champs|myosotis des champs]]   MOYENNE    adventices     [[passerage des champs|passerage des champs]]   MOYENNE    adventices     [[passerage drave|passerage drave]]   MOYENNE    adventices     [[pavot argémone|pavot argémone]]   MOYENNE    adventices     [[pavot coquelicot|pavot coquelicot]]   MOYENNE    adventices     [[peigne de Vénus|peigne de Vénus]]   MOYENNE    adventices     [[pensée des champs|pensée des champs]]   MOYENNE    adventices     [[persil des moissons|persil des moissons]]   MOYENNE    adventices     [[petite altise|petite altise]]   MOYENNE    ravageur, prédateur ou parasite     [[phalaris paradoxal|phalaris paradoxal]]   MOYENNE    adventices     [[plantain lancéolé|plantain lancéolé]]   MOYENNE    adventices     [[potentille rampante|potentille rampante]]   MOYENNE    adventices     [[prêle géante|prêle géante]]   MOYENNE    adventices     [[prêles|prêles]]   MOYENNE    adventices     [[pâturin annuel|pâturin annuel]]   MOYENNE    adventices     [[pâturin commun|pâturin commun]]   MOYENNE    adventices     [[rapistre rugeux|rapistre rugeux]]   MOYENNE    adventices     [[ravenelle|ravenelle]]   MOYENNE    adventices     [[ray-grass anglais|ray-grass anglais]]   MOYENNE    adventices     [[ray-grass d'italie|ray-grass d'italie]]   MOYENNE    adventices     [[renoncule des marais|renoncule des marais]]   MOYENNE    adventices     [[renoncule rampante|renoncule rampante]]   MOYENNE    adventices     [[rumex crépu|rumex crépu]]   MOYENNE    adventices     [[rumex petite oseille|rumex petite oseille]]   MOYENNE    adventices     [[rumex à feuilles obtuses|rumex à feuilles obtuses]]   MOYENNE    adventices     [[shérardie des champs|shérardie des champs]]   MOYENNE    adventices     [[sisymbre officinal|sisymbre officinal]]   MOYENNE    adventices     [[spergule des champs|spergule des champs]]   MOYENNE    adventices     [[spéculaire miroir de Vénus|spéculaire miroir de Vénus]]   MOYENNE    adventices     [[stellaire intermédiaire|stellaire intermédiaire]]   MOYENNE    adventices     [[séneçon vulgaire|séneçon vulgaire]]   MOYENNE    adventices     [[tabouret des champs|tabouret des champs]]   MOYENNE    adventices     [[tordyle élevé|tordyle élevé]]   MOYENNE    adventices     [[torilis des champs|torilis des champs]]   MOYENNE    adventices     [[torilis noueux|torilis noueux]]   MOYENNE    adventices     [[tussilage|tussilage]]   MOYENNE    adventices     [[vergerette de Sumatra|vergerette de Sumatra]]   MOYENNE    adventices     [[verveine officinale|verveine officinale]]   MOYENNE    adventices     [[vulpie queue de rat|vulpie queue de rat]]   MOYENNE    adventices     [[vulpin des champs|vulpin des champs]]   MOYENNE    adventices     [[véronique de Perse|véronique de Perse]]   MOYENNE    adventices     [[véronique des champs|véronique des champs]]   MOYENNE    adventices     [[véronique luisante|véronique luisante]]   MOYENNE    adventices     [[véronique à feuilles de lierre|véronique à feuilles de lierre]]   MOYENNE    adventices     [[épilobe à quatre angles|épilobe à quatre angles]]   MOYENNE    adventices     [[éthuse ciguë|éthuse ciguë]]   MOYENNE    adventices
+
+
+
+
+== Auxiliaires favorisés==
+
+Organisme Impact de la technique Type Précisions
+
+
+
+
+== Auxiliaires défavorisés==
+
+Organisme Impact de la technique Type Précisions
+
+
+
+
+== Accidents climatiques et physiologiques favorisés==
+
+Organisme Impact de la technique Précisions
+
+
+
+
+== Accidents climatiques et physiologiques défavorisés==
+
+Organisme Impact de la technique Précisions
+
+
+
+
+
+
+=5. Pour en savoir plus=
+
+Association colza - légumineuses
+
+
+CA 21
+
+Them'avert, Brochure technique, 2010
+
+[http://geco.ecophytopic.fr/documents/20182/21720/pdf_Associer_le_colza___des_plantes_de_services__principalement_des_l_gumineuses_g_lives__6.pdf Lien vers la brochure]
+
+Association d'une culture de rente et espèces compagnes permettant la fourniture de services écosystémiques
+
+
+Muriel Valantin-Morison (INRA), Christophe David (ISARA), Stéphane Cadoux (Terres Innovia), Mathieu Lorin (INRA), Florian Celette (ISARA), Camille Amossé (ISARA), Annick Basset (Jouffray-Drillaud)
+
+Agronomiques 40 (2014), 93-112 (Carrefours de l’innovation agronomique, novembre 2014, ESA d’Angers), Article de revue sans comité, 2014
+
+Liens vers
+[http://www.inra.fr/Entreprises-Monde-agricole/CIAg/Tous-les-magazines/Ciag-Associations-vegetales l'article],
+[http://www.inra.fr/Entreprises-Monde-agricole/CIAg/Tous-les-magazines/Ciag-Associations-vegetales la présentation] et vers
+[http://www.inra.fr/Entreprises-Monde-agricole/CIAg/Tous-les-magazines/Ciag-Associations-vegetales la vidéo]
+
+Colza - Le Cetiom confirme l'orientation SD et l'association avec légumineuses
+
+
+Archambaud M. (TCS), Sauzet G. (Cetiom)
+
+TCS n°53, p11-14, Article de presse, 2009
+
+[http://agriculture-de-conservation.com/Colza-le-CETIOM-confirme-l.html lien vers l'article]
+
+Colza associé à un couvert de légumineuses gélives
+
+
+S. Cadoux et G. Sauzet Terres Inovia
+
+Les points techniques de Terres Inovia, Brochure technique, 2016
+
+[http://geco.ecophytopic.fr/documents/20182/21720/pdf_Associer_le_colza___des_plantes_de_services__principalement_des_l_gumineuses_g_lives__3.pdf Lien vers la brochure]
+
+Colza sans désherbage chez Frédéric Thomas
+
+
+Frédéric Thomas
+
+Honorine Perino, Production Rés’OGM Info/ADDOCS, Extrait vidéo du film « SECRETS DES CHAMPS ou le potentiel du végétal », Interview, 2012
+
+[https://youtu.be/8PEU9FNNK84 lien vers la vidéo]
+
+Couverts associés au colza - Premiers résultats
+
+
+Charbonnaud J., Lande N., Quartier V., Sauzet G. (Cetiom)
+
+Cetiom, Brochure technique, 2010
+
+[http://geco.ecophytopic.fr/documents/20182/21720/pdf_Associer_le_colza___des_plantes_de_services__principalement_des_l_gumineuses_g_lives__4.pdf Lien vers la brochure]
+
+Cultiver son colza d’hiver en association avec des plantes de services
+
+
+S. Minette, V. Trotin et Y. Ginestière
+
+Chambre Régionale d'Agriculture Nouvelle-Aquitaine, Chambre départementale d'agriculture de Charente-Maritime, Brochure technique, 2012
+
+[http://geco.ecophytopic.fr/documents/20182/21720/pdf_Associer_le_colza___des_plantes_de_services__principalement_des_l_gumineuses_g_lives__5.pdf Lien vers la brochure]
+
+Mise au point d'un itinéraire technique du colza innovant avec plante de couverture associée
+
+
+Trotin V. (ENITAB)
+
+Travaux universitaires, 2011
+
+[https://babordplus.u-bordeaux.fr/notice.php?q=id:1401025 Lien du mémoire d'ingénieur]
+
+Guide technique Jouffray-drillaud - Plante compagne Colza
+
+
+Jouffray-drillaud, Brochure technique, 2014
+
+[http://www.ecophytopic.fr/sites/default/files/486_Colza-associe-Jouffray-drillaud.pdf Lien vers la brochure technique]
+
+
+
+=6. Mots clés=
+
+
+
+
+'''Méthode de contrôle des bioagresseurs : '''
+Contrôle cultural
+
+
+
+'''Mode d'action : '''
+Atténuation
+Barrière
+
+
+
+'''Type de stratégie vis-à-vis de l'utilisation de pesticides : '''
+Substitution
+Reconception
+
+Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-lampourde_commune.html
+Extracting page: Lampourde commune
+bioagresseur Lampourde commune
+
+La lampourde glouteron ou lampourde commune est une adventice dicotylédone annuelle de haute taille, à tige dressée et ramifiée et à grandes feuilles triangulaires.
+
+
+La tige, pubescente, rugueuse et marquée de taches violacées, mesure jusqu'à 1,5 m de hauteur. Les feuilles, également pubescentes et rudes, sont alternes sur la tige et ont un pourtour denté ou lobé.
+
+
+Le fruit est une capsule ovale, brune et ligneuse, qui est recouverte d'épines et terminée par deux becs forts et recourbés. Chaque capsule renferme normalement deux graines.
+
+
+
+Adding redirect: Lampourde commune <-- Xanthium strumarium
+Adding redirect: Lampourde commune <-- Lampourde glouteron
+Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-lampourde_a_gros_fruits.html
+Extracting page: lampourde à gros fruits
+bioagresseur lampourde à gros fruits
+
+Il s'agit d'une sous-espèce de la lampourde commune.
+
+
+
+Adding redirect: Lampourde à gros fruits <-- Xanthium strumarium susp. Italicum
+Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-realiser_des_bandes_tassees_double-semis.html
+Extracting page: Réaliser des bandes tassées double-semis
+technique Réaliser des bandes tassées double-semis
+
+
+=1. Présentation=
+
+
+
+
+
+==Caractérisation de la technique==
+
+
+===Description de la technique :===
+
+
+ 
+
+Rémy Ballot INRA remy.ballot(at)grignon.inra.fr Grignon (78)
+ 
+
+Dans les petits fonds de vallon (bassins versants de moins de 100 ha en culture où la pente des versants ne dépasse pas 3% et la pente du fond de vallon est inférieure ou égale à 2%), tasser la zone d'écoulement des eaux. Le tassement de la zone d'écoulement peut être complété par un doublement de la densité de semis. Le non travail du sol donne les même résultats ; dans le cas d'une parcelle binée, éviter de biner la zone d'écoulement des eaux, et dans le cas d'une parcelle déchaumée pendant l'interculture, ne pas travailler cette zone.
+
+
+
+
+'''Exemple de mise en oeuvre : '''
+Lors de l'implantation d'un blé, réaliser un second passage de semoir sur la zone d'écoulement de l'eau pour aboutir à une densité de semis doublée. Un troisième passage du tracteur outil relevé permet de tasser cette zone.
+
+
+
+
+
+
+
+'''Période de mise en œuvre '''
+Sur culture implantée
+
+
+
+
+
+
+
+'''Echelle spatiale de mise en œuvre '''
+Parcelle
+
+
+
+
+
+
+
+
+==Application de la technique à...==
+
+
+'''Toutes les cultures : '''
+Facilement généralisable
+
+
+
+Cette technique peut s'appliquer à toutes les cultures, mais elle est particulièrement justifiée pour les cultures d'automne, qui laissent le sol peu couvert pendant les périodes de fortes pluviométrie.
+
+
+
+
+
+
+
+
+'''Tous les types de sols : '''
+Facilement généralisable
+
+
+
+
+'''Tous les contextes climatiques : '''
+Facilement généralisable
+
+
+
+
+
+
+
+
+
+
+==Réglementation==
+
+
+
+
+
+
+=2. Services rendus par la technique=
+
+
+
+
+
+
+=3. Effets sur la durabilité du système de culture=
+
+
+
+
+
+==Critères "environnementaux"==
+
+
+'''Autre : '''
+Pas d'effet (neutre)
+
+
+
+'''Consommation d'énergie fossile''' : pas d'effet (neutre)
+La consommation de carburant liée au double-semis ou au passage supplémentaire outil relevé sur une zone localisée de la parcelle peut être considérée comme négligeable.
+'''Dégagement de GES ''': pas d'effet (neutre)
+La consommation de carburant liée au double-semis ou au passage supplémentaire outil relevé sur une zone localisée de la parcelle peut être considérée comme négligeable.
+
+
+
+
+
+
+
+
+
+
+
+==Critères "agronomiques"==
+
+
+'''Productivité : '''
+Pas d'effet (neutre)
+
+
+
+
+
+
+
+
+
+
+
+'''Fertilité du sol : '''
+Pas d'effet (neutre)
+
+
+
+
+
+
+
+
+
+
+
+'''Stress hydrique : '''
+Pas d'effet (neutre)
+
+
+
+
+
+
+
+
+
+
+
+'''Biodiversité fonctionnelle : '''
+Pas d'effet (neutre)
+
+
+
+
+
+
+
+
+
+
+
+'''Autres critères agronomiques : '''
+Variable
+
+
+
+'''Pression maladies : '''Augmentation Le doublement de la densité de semis peut favoriser le développement de maladies (maladies foliaires des céréales à paille…) '''Risque verse :'''
+Augmentation Le doublement de la densité de semis peut entrainer une augmentation du risque de verse pour les cultures qui y sont sensibles.
+
+
+
+
+
+
+
+
+
+
+==Critères "économiques"==
+
+
+
+
+
+'''Charges opérationnelles : '''
+En augmentation
+
+
+
+Le doublement de la densité de semis entraine une augmentation des charges liées à l'achat de semences dans des proportions variables en fonction de la surface concernée.
+
+
+
+
+
+
+
+
+'''Charges de mécanisation : '''
+Pas d'effet (neutre)
+
+
+
+La consommation de carburant liée au double-semis ou au passage supplémentaire outil relevé sur une zone localisée de la parcelle peut être considérée comme négligeable.
+
+
+
+
+
+
+
+
+'''Marge : '''
+En diminution
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+==Critères "sociaux"==
+
+
+
+
+
+'''Temps de travail : '''
+Pas d'effet (neutre)
+
+
+
+Le temps nécessaire à la réalisation du double-semis et au passage supplémentaire outil relevésur une zone localisée de la parcelle peut être considéré comme négligeable.
+
+
+
+
+
+
+
+
+'''Temps d'observation : '''
+Pas d'effet (neutre)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=4. Organismes favorisés ou défavorisés=
+
+
+
+
+
+
+== Bioagresseurs favorisés==
+
+Organisme Impact de la technique Type Précisions
+
+
+
+
+== Bioagresseurs défavorisés==
+
+Organisme Impact de la technique Type Précisions
+
+
+
+
+== Auxiliaires favorisés==
+
+Organisme Impact de la technique Type Précisions
+
+
+
+
+== Auxiliaires défavorisés==
+
+Organisme Impact de la technique Type Précisions
+
+
+
+
+== Accidents climatiques et physiologiques favorisés==
+
+Organisme Impact de la technique Précisions
+
+
+
+
+== Accidents climatiques et physiologiques défavorisés==
+
+Organisme Impact de la technique Précisions
+
+
+
+
+
+
+=5. Pour en savoir plus=
+
+Fiche n°11 : Bande tassée
+
+
+Coufourier N., Lecomte V., Le Goff A. (CA76), Pivain Y. (CA27), Lheriteau M., Ouvry J.F. (AREAS)
+
+AREAS, Brochure technique
+
+[http://geco.ecophytopic.fr/documents/20182/21720/pdf_R_aliser_des_bandes_tass_es_double_semis_1.pdf lien vers la brochure]
+
+
+
+=6. Mots clés=
+
+
+
+
+'''Méthode de contrôle des bioagresseurs : '''
+
+
+
+'''Mode d'action : '''
+
+
+
+'''Type de stratégie vis-à-vis de l'utilisation de pesticides : '''
+
+Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-raisonner_l_opportunite_des_interventions.html
+Extracting page: Raisonner l'opportunité des interventions
+technique Raisonner l'opportunité des interventions
+
+
+=1. Présentation=
+
+
+
+
+
+==Caractérisation de la technique==
+
+
+===Description de la technique :===
+
+Date de dernière modification: 16/12/2011
+
+Contributeurs initiaux :
+Jacques Girard Chambre d'Agriculture du Calvados j.girard(at)calvados.chambagri.fr Caen (14)   Julien Halska INRA julien.halska(at)grignon.inra.fr Dijon (21)
+Lutte contre les courriers indésirables : Pour utiliser ces adresses, remplacer (at) par @
+
+
+= =
+
+La connaissance du risque lié aux pathogènes et bio-agresseurs au fur et à mesure de la campagne peut aider à évaluer les opportunités de traitements (ainsi que les doses, choix des produits, programmes). Il est nécessaire de préciser le type de risque considéré (risque de perte de rendement, risque économique). Ce risque est hautement multifactoriel et lié aux contextes locaux (météo de l'année, pratiques, historique de la parcelle, biologie du bio-agresseur considéré, etc.). L'évaluation du risque peut reposer sur des observations au champ et/ou sur des modèles épidémiologiques. Le raisonnement des interventions peut reposer sur des supports variés tels que des grilles de risque, des seuils, des logiciels, etc. Une attention toute particulière doit être portée au domaine de validité de l'outil utilisé (par exemple, les seuils sont fréquemment diffusés sans domaine de validité, ce qui peut les rendre inappropriés).
+
+
+
+
+'''Exemple de mise en oeuvre : '''
+ Evaluation du risque piétin-verse sur blé tendre d'hiver en Picardie (SRPV Picardie, cf. bibliographie) : la grille de risque prend en compte le potentiel infectieux du sol (fréquence de retour du blé et du labour), type de sol, la date de semis, la variété, ainsi que les sorties du modèle épidémiologique TOP. Il est possible de ne pas traiter lorsque le risque est suffisamment faible.
+
+
+
+
+
+
+
+'''Période de mise en œuvre '''
+Sur culture implantée
+
+
+
+
+
+
+
+'''Echelle spatiale de mise en œuvre '''
+Parcelle
+
+Exploitation
+
+Territoire
+
+
+
+
+
+
+
+
+==Application de la technique à...==
+
+
+'''Toutes les cultures : '''
+Généralisation parfois délicate
+
+
+
+Toutes les cultures sont potentiellement concernées, à voir selon la disponibilté en outils.
+'''Avoine hiver, Engrain (Petit épeautre), Epeautre, Seigle hiver, Triticale hiver''' : contre les pucerons d'automne, Virus de la jaunisse nanisante des céréales.
+'''Betterave''' : Seuils préconisés par l'ITB pour la cercosporiose, la ramulariose, l'oïdium et la rouille. Outils contre les tipules, les noctuelles terricoles et défoliatrices, les pégomyies, le rhizopus, les petites altises, les acariens.
+'''Blé dur''' : Contre les maladies (fusarioses, virus de la JNO, etc.).
+'''Blé tendre hiver''' : Nombreux outils pour les maladies, les cicadelles et les pucerons d'automne.
+'''Colza hiver, Colza printemps ''': Pour traitements insecticides (méligèthes, petites altises, le charançon des siliques, le puceron des crucifères, etc.), le sclérotinia, le phoma.
+'''Féverole hiver, Féverole printemps''' : Contre la bruche, les sitones, les pucerons, l'anthracnose, le botrytis, la rouille.
+'''Lin fibre hiver, Lin fibre printemps, Lin graine hiver, Lin graine printemps''' : Contre les altises, le trhips.
+'''Oignon ''': Contre le mildiou, le botrytis, les taupins, les thrips.
+'''Orge hiver''' : Pucerons d'automne, Virus de la jaunisse nanisante des céréales, rhyncosporiose, helminthosporiose, rouille naine.
+'''Pois hiver, Pois printemps ''': Contre la bruche, les sitones, les pucerons, les tordeuses, l'anthracnose, le botrytis, la rouille, l'oïdium.
+'''Pomme de terre''' : Contre le mildiou, les pucerons, les doryphores, les taupins.
+'''Tabac''' : Contre les thrips.
+
+
+
+
+
+
+
+
+'''Tous les types de sols : '''
+Facilement généralisable
+
+
+
+Attention au domaine de validité des outils.
+
+
+
+
+
+
+
+
+'''Tous les contextes climatiques : '''
+Facilement généralisable
+
+
+
+
+
+
+Attention au domaine de validité des outils.
+
+
+
+
+
+
+
+
+==Réglementation==
+
+
+
+
+
+
+=2. Services rendus par la technique=
+
+
+
+
+
+
+=3. Effets sur la durabilité du système de culture=
+
+
+
+
+
+==Critères "environnementaux"==
+
+
+'''Effet sur la qualité de l'air : '''
+Variable
+
+
+
+émission phytosanitaires : DIMINUTION
+
+émission GES : VARIABLE
+
+
+
+
+
+
+
+'''Effet sur la qualité de l'eau : '''
+En augmentation
+
+
+
+pesticides : DIMINUTION
+
+
+
+
+
+
+
+'''Effet sur la consommation de ressources fossiles : '''
+Variable
+
+
+
+consommation d'énergie fossile : VARIABLE
+
+
+
+
+
+
+
+'''Autre : '''
+Pas d'effet (neutre)
+
+
+
+'''Transfert polluant vers eaux (N, P, phyto ...)''' : Diminution
+Diminution si le risque est suffisamment faible et que des impasses ou réductions de doses sont possibles. Si les pratiques engendrent un risque élevé, l'évaluation conduira à des interventions. L'effet sur le transfert de polluants est aussi fonction des caractéristiques des molécules (propention à passer dans l'eau) et du contexte de la parcelle (risque de dérive ou de lessivage).
+'''Transfert polluant vers air (N, P, phyto ...) ''': Diminution
+Diminution si le risque est suffisamment faible et que des impasses ou réductions de doses sont possibles. Si les pratiques engendrent un risque élevé, l'évaluation conduira à des interventions.  L'effet sur le transfert de polluants est aussi fonction des caractéristiques des molécules propention à passer dans l'air) et du contexte de la parcelle (risque de dérive).
+'''Consommation d'énergie fossile''' : variable
+Réduction possible si des passages sont évités.
+'''Dégagement de GES''' : variable
+Réduction possible si des passages sont évités.
+
+
+
+
+
+
+
+
+
+
+
+==Critères "agronomiques"==
+
+
+'''Productivité : '''
+Pas d'effet (neutre)
+
+
+
+
+
+
+
+
+
+
+
+'''Fertilité du sol : '''
+Variable
+
+
+
+Amélioration possible via une réduction de la pression sur les organismes du sol (macrofaune, microorganismes).
+
+
+
+
+
+
+
+
+'''Stress hydrique : '''
+Pas d'effet (neutre)
+
+
+
+
+
+
+
+
+
+
+
+'''Biodiversité fonctionnelle : '''
+Variable
+
+
+
+Amélioration possible via une réduction de la pression sur les organismes vivants de la parcelles en cas de réduction des traitements.
+
+
+
+
+
+
+
+
+
+
+
+==Critères "économiques"==
+
+
+
+
+
+'''Charges opérationnelles : '''
+En diminution
+
+
+
+Diminution possible si réduction du coût des pesticides.
+
+
+
+
+
+
+
+
+'''Charges de mécanisation : '''
+Variable
+
+
+
+Diminution possible si moins de passages. Certains outils d'aide à la décision sont payants.
+
+
+
+
+
+
+
+
+'''Marge : '''
+En augmentation
+
+
+
+L'effet sur les marges est variable en fonction des économies éventuelles de pesticides et du coût éventuel de l'outil. Comparé à des traitements systématiques les marges doivent être supérieures ou égales.
+
+
+
+
+
+
+
+
+
+
+
+==Critères "sociaux"==
+
+
+
+
+
+'''Temps de travail : '''
+Variable
+
+
+
+Diminution possible si moins de passages.
+
+
+
+
+
+
+
+
+'''Temps d'observation : '''
+Variable
+
+
+
+Cela dépend fortement de l'outil considéré. Certains demandent des observations de terrain, d'autres sont beaucoup plus simples à mettre en œuvre.
+
+
+
+
+
+
+
+
+
+
+
+
+=4. Organismes favorisés ou défavorisés=
+
+
+
+
+
+
+== Bioagresseurs favorisés==
+
+Organisme Impact de la technique Type Précisions
+
+
+
+
+== Bioagresseurs défavorisés==
+
+Organisme Impact de la technique Type Précisions   [[acarien|acarien]]    ravageur, prédateur ou parasite     [[altise du colza|altise du colza]]    ravageur, prédateur ou parasite     [[altise du lin|altise du lin]]    ravageur, prédateur ou parasite     [[anthracnose du pois|anthracnose du pois]]    agent pathogène (bioagresseur)     [[anthracnose féverole|anthracnose féverole]]    agent pathogène (bioagresseur)     [[botrytis cinerea|botrytis cinerea]]    agent pathogène (bioagresseur)     [[botrytis fabae|botrytis fabae]]    agent pathogène (bioagresseur)     [[bruche|bruche]]    ravageur, prédateur ou parasite     [[bruche de la fève|bruche de la fève]]    ravageur, prédateur ou parasite     [[cercopsoriose|cercopsoriose]]    agent pathogène (bioagresseur)     [[charançon de la tige|charançon de la tige]]    ravageur, prédateur ou parasite     [[charançon des siliques|charançon des siliques]]    ravageur, prédateur ou parasite     [[charançon du bourgeon terminal|charançon du bourgeon terminal]]    ravageur, prédateur ou parasite     [[cicadelle du blé|cicadelle du blé]]    ravageur, prédateur ou parasite     [[doryphore|doryphore]]    ravageur, prédateur ou parasite     [[fusariose|fusariose]]    agent pathogène (bioagresseur)     [[fusarioses trichothécènes A orge|fusarioses trichothécènes A orge]]    agent pathogène (bioagresseur)     [[fusarioses trichothécènes B zearalenone céréales à paille|fusarioses trichothécènes B zearalenone céréales à paille]]    agent pathogène (bioagresseur)     [[helminthosporiose de l'orge|helminthosporiose de l'orge]]    agent pathogène (bioagresseur)     [[limace|limace]]    ravageur, prédateur ou parasite     [[microdochium sur feuilles|microdochium sur feuilles]]    agent pathogène (bioagresseur)     [[mildiou de l'oignon|mildiou de l'oignon]]    agent pathogène (bioagresseur)     [[mildiou de la pomme de terre|mildiou de la pomme de terre]]    agent pathogène (bioagresseur)     [[méligèthe|méligèthe]]    ravageur, prédateur ou parasite     [[noctuelle gamma|noctuelle gamma]]    ravageur, prédateur ou parasite     [[noctuelle terricole|noctuelle terricole]]    ravageur, prédateur ou parasite     [[oïdium de la betterave|oïdium de la betterave]]    agent pathogène (bioagresseur)     [[oïdium des céréales|oïdium des céréales]]    agent pathogène (bioagresseur)     [[oïdium du pois|oïdium du pois]]    agent pathogène (bioagresseur)     [[petite altise|petite altise]]    ravageur, prédateur ou parasite     [[phoma des crucifères|phoma des crucifères]]    agent pathogène (bioagresseur)     [[piétin-verse|piétin-verse]]    agent pathogène (bioagresseur)     [[piétin-échaudage|piétin-échaudage]]    agent pathogène (bioagresseur)     [[puceron de l'épi|puceron de l'épi]]    ravageur, prédateur ou parasite     [[puceron d’automne|puceron d’automne]]    ravageur, prédateur ou parasite     [[puceron noir de la fève|puceron noir de la fève]]    ravageur, prédateur ou parasite     [[puceron vert du pois|puceron vert du pois]]    ravageur, prédateur ou parasite     [[puceron vert du pêcher|puceron vert du pêcher]]    ravageur, prédateur ou parasite     [[puceron vert et rose de la pomme de terre|puceron vert et rose de la pomme de terre]]    ravageur, prédateur ou parasite     [[pucerons de la pomme de terre|pucerons de la pomme de terre]]    ravageur, prédateur ou parasite     [[pucerons des crucifères|pucerons des crucifères]]    ravageur, prédateur ou parasite     [[pégomyie|pégomyie]]    ravageur, prédateur ou parasite     [[ramulariose de la betterave|ramulariose de la betterave]]    agent pathogène (bioagresseur)     [[rhizopus|rhizopus]]    agent pathogène (bioagresseur)     [[rhynchosporiose|rhynchosporiose]]    agent pathogène (bioagresseur)     [[rouille brune|rouille brune]]    agent pathogène (bioagresseur)     [[rouille de la betterave|rouille de la betterave]]    agent pathogène (bioagresseur)     [[rouille de la féverole|rouille de la féverole]]    agent pathogène (bioagresseur)     [[rouille du pois|rouille du pois]]    agent pathogène (bioagresseur)     [[rouille jaune|rouille jaune]]    agent pathogène (bioagresseur)     [[rouille naine de l'orge|rouille naine de l'orge]]    agent pathogène (bioagresseur)     [[sclérotinia|sclérotinia]]    agent pathogène (bioagresseur)     [[septoriose des feuilles|septoriose des feuilles]]    agent pathogène (bioagresseur)     [[sitone du pois|sitone du pois]]    ravageur, prédateur ou parasite     [[taupin|taupin]]    ravageur, prédateur ou parasite     [[thrips du lin|thrips du lin]]    ravageur, prédateur ou parasite     [[thrips du tabac et de l'oignon|thrips du tabac et de l'oignon]]    ravageur, prédateur ou parasite     [[tipule|tipule]]    ravageur, prédateur ou parasite     [[tordeuse du pois|tordeuse du pois]]    ravageur, prédateur ou parasite     [[virus de la jaunisse nanisante des céréales|virus de la jaunisse nanisante des céréales]]    agent pathogène (bioagresseur)
+
+
+
+
+== Auxiliaires favorisés==
+
+Organisme Impact de la technique Type Précisions
+
+
+
+
+== Auxiliaires défavorisés==
+
+Organisme Impact de la technique Type Précisions
+
+
+
+
+== Accidents climatiques et physiologiques favorisés==
+
+Organisme Impact de la technique Précisions
+
+
+
+
+== Accidents climatiques et physiologiques défavorisés==
+
+Organisme Impact de la technique Précisions
+
+
+
+
+
+
+=5. Pour en savoir plus=
+
+Ecophyto R&D. Vers des systèmes de culture économes en produits phytosanitaires. Tome II : Analyse comparative de différents systèmes en grandes cultures
+
+
+Brunet N. (INRA) ; Debaeke P. (INRA) ; Delos M. (DRAAF-SRAl) ; Guérin O. (CA 17) ; Guichard L. (INRA) ; Guindé L. (INRA) ; Mischler P. (Agro-transfert RT) ; Munier-Jolain N. (INRA) ; Omon B. (CA Eure) ; Rolland B. (INRA) ; Viaux P. (Arvalis) ; Villard A. (CA 71)
+
+INRA éditeur (France) page 108, Ouvrage, 2009
+
+[http://geco.ecophytopic.fr/documents/20182/21720/pdf_Raisonner_l_opportunit__des_interventions_1.pdf Lien vers le rapport] Le niveau de rupture 1 (raisonnement des interventions) permet de réduire l'IFT.
+
+
+Modèle TOP : estimation du risque Piétin-Verse
+
+
+Chambre d'Agriculture de région du Nord-Pas de Calais
+
+Brochure technique, 2015
+
+[http://geco.ecophytopic.fr/documents/20182/21720/pdf_Raisonner_l_opportunit__des_interventions_2.pdf lien vers la brochure]
+
+
+
+=6. Mots clés=
+
+
+
+
+'''Méthode de contrôle des bioagresseurs : '''
+Lutte chimique
+
+
+
+'''Mode d'action : '''
+Rattrapage
+
+
+
+'''Type de stratégie vis-à-vis de l'utilisation de pesticides : '''
+Efficience
+
+Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-raisonner_la_taille_et_la_forme_des_parcelles.html
+Extracting page: Raisonner la taille et la forme des parcelles
+technique Raisonner la taille et la forme des parcelles
+
+
+=1. Présentation=
+
+
+
+
+
+==Caractérisation de la technique==
+
+
+===Description de la technique :===
+
+(image en en-tête : vue aérienne de vignobles ; auteur :Taxiarchos228 ; licence :
+[https://creativecommons.org/licenses/by/3.0/deed.en (CC BY 3.0)])
+
+Date de dernière modification: 22/02/2012
+
+Contributeurs initiaux :
+Régis Wartelle CRA Picardie regis.wartelle(at)picardie.chambagri.fr Amiens (80)   Jean-Robert Moronval LEGTA de Chambray jean-robert.moronval(at)educagri.fr Gouville (27)   Julien Halska INRA julien.halska(at)grignon.inra.fr Grignon (78)
+Lutte contre les courriers indésirables : Pour utiliser ces adresses, remplacer (at) par @
+
+ 
+
+Limiter la taille des parcelles ou blocs d'une même culture à une surface de 4 en zone de bocage à 15 ha en plaine céréalière. Il est conseillé de constituer des parcelles étroites, de largeur inférieure à 150 à 200 m selon les auteurs et le contexte local. La taille réduite des parcelles doit se traduire par une augmentation des zones d'interfaces entre cultures éventuellement constituées de haies et de bandes enherbées.
+
+
+
+
+
+
+
+'''Période de mise en œuvre '''
+Sur culture implantée
+
+
+
+
+
+
+
+'''Echelle spatiale de mise en œuvre '''
+Exploitation
+
+Territoire
+
+
+
+
+
+
+
+
+==Application de la technique à...==
+
+
+'''Toutes les cultures : '''
+Facilement généralisable
+
+
+
+
+'''Tous les types de sols : '''
+Facilement généralisable
+
+
+
+
+'''Tous les contextes climatiques : '''
+Facilement généralisable
+
+
+
+
+
+
+
+
+
+
+==Réglementation==
+
+Influence
+
+POSITIVE
+
+
+
+
+Ces dispositifs incitent surtout à la préservation et à la création d'éléments fixes dans le paysage (haies, talus, etc.) qui peuvent découper de grandes parcelles en surfaces plus faibles. Mesures Agro-Environnementales  territorialisées, Plan Végétal Environnement
+
+
+
+
+
+
+
+
+
+=2. Services rendus par la technique=
+
+
+
+
+
+
+=3. Effets sur la durabilité du système de culture=
+
+
+
+
+
+==Critères "environnementaux"==
+
+
+'''Effet sur la qualité de l'air : '''
+Variable
+
+
+
+acidification : DIMINUTION
+
+émission phytosanitaires : DIMINUTION
+
+émission GES : VARIABLE
+
+émission de particules : VARIABLE
+
+
+
+
+
+
+
+'''Effet sur la qualité de l'eau : '''
+En augmentation
+
+
+
+N.P. : DIMINUTION
+
+pesticides : DIMINUTION
+
+turbidite : DIMINUTION
+
+
+
+
+
+
+
+'''Effet sur la consommation de ressources fossiles : '''
+Variable
+
+
+
+consommation d'énergie fossile : VARIABLE
+
+
+
+
+
+
+
+'''Autre : '''
+Pas d'effet (neutre)
+
+
+
+Par la limitation d'utilisation d'insecticides (selon la propention des molécules à passer dans l'eau et dans l'air) et via l'augmentation des surfaces qui font barrière au ruissellement (haies et bandes enherbées).
+Pas d'effet sur le N2O, effet pour le CO2 variable : moins de passages de pulvérisateur, plus de manœuvres et de trajets.
+
+
+
+
+
+
+
+
+
+
+
+==Critères "agronomiques"==
+
+
+'''Productivité : '''
+Pas d'effet (neutre)
+
+
+
+Une perte de surface productive est possible si les parcelles sont séparées par des haies et/ou bandes enherbées nouvelles.
+
+
+
+
+
+
+
+'''Fertilité du sol : '''
+En augmentation
+
+
+
+Dans la mesure où les insecticides et molluscicides ont un impact sur la macrofaune du sol, voire sur les microorganismes utiles à la fertilité du sol.
+
+
+
+
+
+
+
+'''Stress hydrique : '''
+Pas d'effet (neutre)
+
+
+
+
+
+
+
+
+
+
+
+'''Biodiversité fonctionnelle : '''
+En augmentation
+
+
+
+Via la diminution d'utilisation des insecticides et molluscicides, qui ont un impact sur la biodiversité fonctionnelle et l'augmentation des zones d'interface (bords de champs de diverses natures) qui sont des refuges et fournissent des ressources à la biodiversité fonctionnelle.
+
+
+
+
+
+
+
+'''Autres critères agronomiques : '''
+En augmentation
+
+
+
+Population de certains bioagresseurs : Augmentation
+Il peut arriver que l'augmentation de l'hétérogénéité du paysage favorise certains bio-agresseurs. Ces cas sont cependant rares.
+
+
+
+
+
+
+
+
+
+
+
+==Critères "économiques"==
+
+
+
+
+
+'''Charges opérationnelles : '''
+Variable
+
+
+
+Réduction des dépenses en pesticides (légère, surtout si la technique n'est pas combinée à d'autres), mais hausse éventuelle de la consommation de carburant.
+
+
+
+
+
+
+
+'''Charges de mécanisation : '''
+En diminution
+
+
+
+Si moins de passages de pulvérisateur.
+
+
+
+
+
+
+
+'''Marge : '''
+Variable
+
+
+
+Effet fonction de l'équilibre entre réduction des dépenses en pesticides et évolution de la consommation de carburant. A noter l'éventuelle perte de surface productive.
+
+
+
+
+
+
+
+'''Autres critères économiques : '''
+Variable
+
+
+
+Consommation de carburant : variable
+Hausse possible en lien avec une hausse des manœuvres et des trajets. Cet effet est cependant fonction de la configuration de chaque exploitation et peut être compensé par la réduction des charges phytosanitaires.
+
+
+
+
+
+
+
+
+
+
+
+==Critères "sociaux"==
+
+
+
+
+
+'''Temps de travail : '''
+Variable
+
+
+
+Fonction de l'équilibre entre réduction éventuelle des pulvérisations et hausse possible des trajets.
+
+
+
+
+
+
+
+'''Période de pointe : '''
+Variable
+
+
+
+Fonction de l'équilibre entre réduction éventuelle des pulvérisations et hausse possible des trajets.
+
+
+
+
+
+
+
+'''Temps d'observation : '''
+Pas d'effet (neutre)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=4. Organismes favorisés ou défavorisés=
+
+
+
+
+
+
+== Bioagresseurs favorisés==
+
+Organisme Impact de la technique Type Précisions
+
+
+
+
+== Bioagresseurs défavorisés==
+
+Organisme Impact de la technique Type Précisions
+
+
+
+
+== Auxiliaires favorisés==
+
+Organisme Impact de la technique Type Précisions
+
+
+
+
+== Auxiliaires défavorisés==
+
+Organisme Impact de la technique Type Précisions
+
+
+
+
+== Accidents climatiques et physiologiques favorisés==
+
+Organisme Impact de la technique Précisions
+
+
+
+
+== Accidents climatiques et physiologiques défavorisés==
+
+Organisme Impact de la technique Précisions
+
+
+
+
+
+
+=5. Pour en savoir plus=
+
+Agriculture et biodiversité. Valoriser les synergies. Expertise scientifique collective, synthèse du rapport
+
+
+X. Le Roux, R. Barbault, J. Baudry, F. Burel, I. Doussan, E. Garnier, F. Herzog, S. Lavorel, R. Lifran, J. Roger-Estrade, J.P. Sarthou, M. Trommetter
+
+INRA, Travaux universitaires, 2008
+
+
+La biodiversité facteur de production
+
+
+Morgantini J. Y. (FNCIVAM) ; Joliet V. (FNCIVAM)
+
+FNCIVAM, (page 39), 2005
+
+
+Les grandes cultures
+
+
+Ducrot V. ; Forestier G.
+
+LPO, FARRE, CIVAM, FNAB, Brochure technique, 2009
+
+
+
+
+=6. Mots clés=
+
+
+
+
+'''Méthode de contrôle des bioagresseurs : '''
+
+
+
+'''Mode d'action : '''
+Action sur le stock initial
+
+
+
+'''Type de stratégie vis-à-vis de l'utilisation de pesticides : '''
+Reconception
+
+Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-lampourde.html
+Extracting page: Lampourdes
+bioagresseur Lampourdes
+
+
+=Bioagresseur=
+
+
+
+
+Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-lampourde_epineuse.html
+Extracting page: Lampourde épineuse
+bioagresseur Lampourde épineuse
+
+
+=Bioagresseur=
+
+
+
+
+Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-carpocapse_des_pommes_et_des_poires.html
+Extracting page: Carpocapse des pommes et des poires (Cydia pomonella)
+bioagresseur Carpocapse des pommes et des poires (Cydia pomonella)
+Adding redirect: Carpocapse des pommes et des poires (Cydia pomonella) <-- Carpocapse des pommes et des poires
+Adding redirect: Carpocapse des pommes et des poires (Cydia pomonella) <-- Cydia pomonella
+
+[https://www7.inra.fr/hyppz/IMAGES/7030041.jpg disponible sur]
+
+
+Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-carpocapse_des_prunes_-28cydia_funebrana-29.html
+Extracting page: Carpocapse des prunes (Cydia funebrana)
+bioagresseur Carpocapse des prunes (Cydia funebrana)
+Adding redirect: Carpocapse des prunes (Cydia funebrana) <-- Carpocapse des prunes
+Adding redirect: Carpocapse des prunes (Cydia funebrana) <-- Cydia funebrana
+
+
+=Bioagresseur=
+
+[https://www7.inra.fr/hyppz/IMAGES/7030280.jpg lien vers la photo]
+
+
+Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-carpocapse_de_la_chataigne_-28cydia_splendana-29.html
+Extracting page: carpocapse de la châtaigne (Cydia splendana)
+bioagresseur carpocapse de la châtaigne (Cydia splendana)
+Adding redirect: Carpocapse de la châtaigne (Cydia splendana) <-- Carpocapse de la châtaigne
+Adding redirect: Carpocapse de la châtaigne (Cydia splendana) <-- Cydia splendana
+
+
+=Bioagresseur=
+
+
+
+
+Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-carpocapse.html
+Extracting page: Carpocapse
+bioagresseur Carpocapse
+
+
+=Bioagresseur=
+
+
+
+

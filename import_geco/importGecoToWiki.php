@@ -1,5 +1,5 @@
 <?php
-$GLOBALS['debug'] = false;
+$GLOBALS['debug'] = true;
 
 include_once(__DIR__ . '/../includes/wikibuilder.php');
 
@@ -28,8 +28,11 @@ $linknodes = $doc->getElementsByTagName('a');
 foreach ($linknodes as $link)
 {
 	$url = $link->getAttribute('href');
+
 	if (strpos($url, '/web/guest/concept/-/concept/') !== false)
 	{
+		// Debug for parsing content. It is necssary to pass to https protocol to http protocol before the construction of the array
+		$url = str_replace("https","http",$url);
 		$GLOBALS['links'][$url] = $link->nodeValue;
 	}
 }
@@ -49,6 +52,11 @@ function importGecoToWiki()
 
 	foreach ($GLOBALS['links'] as $url => $conceptName)
 	{
+		// Stock the url with https protocol for redirection to Geco
+		//$url_https = substr($url,0,4)."s".substr($url,4);
+		$trueUrl = preg_replace('@^http:@', 'https:', $url);
+		$trueUrl = getCanonicalURL($trueUrl);
+
 		$filename = __DIR__ . '/../temp/' . sanitizeFilename(str_replace('http://www.geco.ecophytopic.fr/geco/Concept/', '', getCanonicalURL($url))) . '.html';
 
 		// Download each link in the temp directory as cache
@@ -61,14 +69,21 @@ function importGecoToWiki()
 				strpos($filename, "implanter_un_couvert") === false &&
 				strpos($filename, "raisonner") === false &&
 				strpos($filename, "lampourde") === false &&
+				strpos($filename, "Combiner_un_maximum_de_leviers") === false &&
 				strpos($filename, "realiser_des_bandes") === false)
 				continue;
 		}
-
+		
 		// Now detect the list of concepts, etc...
 		// <div class="type-concept-title"> <i class="typeConcept-culture-20"></i> CULTURE </div>
 		$doc = new DOMDocument();
-		$doc->loadHTMLFile($filename);
+		$html = file_get_contents($filename);
+
+		// Inject a <meta charset="UTF-8"> node so that the parser doesn't fail at finding the right encoding:
+		$html = str_replace('<head>', '<head><meta charset="UTF-8">', $html);
+		$doc->loadHTML($html);
+
+		echo "Loading page: $filename\n";
 
 		$date = "";
 		$title = "";
@@ -106,15 +121,15 @@ function importGecoToWiki()
 			$conceptType == 'exempleMiseEnOeuvre' ||
 			$conceptType == 'outilDAide' ||
 			$conceptType == 'materiel')
-			addPage($conceptName, $xpath, $conceptType, false);
+			addPage($conceptName, $xpath, $conceptType, false, $trueUrl);
 		else
-			addPage($conceptName, $xpath, $conceptType, true);
+			addPage($conceptName, $xpath, $conceptType, true, $trueUrl);
 
 		// echo  $conceptType . "\t" . $conceptName . "\t" . $date . "\t" . $url  . "\n";
 	}
 }
 
-function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage)
+function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl)
 {
 	echo "Extracting page: $pageName\n";
 
@@ -207,9 +222,13 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage)
 	if (!empty($imageName))
 		resizeImage($imageName);
 
-	$page->addContent(getTemplate($conceptType, array('Nom' => $name, 'Latin' => $latinName, 'Image' => $imageName, 'ImageCaption' => $imageCaption)));
+	// Add a model for redirection to the originial Geco webpage.
+	$page->addContent("{{ThanksGeco|url=$trueUrl}}" . "\n");
+
+	$page->addContent(getTemplate($conceptType, array('Nom' => $name, 'Latin' => $latinName, 'Image' => $imageName, 'ImageCaption' => $imageCaption)). "\n");
 
 	$page->addContent($wikiText);
+	echo $wikiText;
 
 	if ($bIsCategoryPage)
 	{
@@ -265,7 +284,7 @@ function addCategoriesForPage($page, $xpath)
 			$revrel = $GLOBALS['reverse_labels'][$rel];
 		else
 		{
-			echo "relation not found\n";
+			echo "relation not found: $rel \n";
 			continue;
 		}
 
@@ -340,8 +359,11 @@ function getCanonicalURL($url)
 	// Start from http://geco.ecophytopic.fr/web/guest/concept/-/concept/voir/http%253A%252F%252Fwww%252Egeco%252Eecophytopic%252Efr%252Fgeco%252FConcept%252FPratiquer_L_Enherbement_Total_En_Vigne
 
 	// First remove the http://geco.ecophytopic.fr/web/guest/concept/-/concept/voir/ part
-	$url = str_replace('http://geco.ecophytopic.fr/web/guest/concept/-/concept/voir/', '', $url);
+	$url = preg_replace('@http[s]*://geco.ecophytopic.fr/web/guest/concept/-/concept/voir/@', '', $url);
 	$url = urldecode(urldecode($url));
+
+	$url = str_replace('http:', 'https:', $url);
+	$url = str_replace('www.geco', 'geco', $url);
 
 	return $url;
 }
@@ -572,13 +594,12 @@ function getImages($node)
 
 	return array();
 }
-
+// This function reseize the images from Geco and saves them into the "out" folder. We used the importImages script from mediawiki to add them on the website. 
 function resizeImage(&$imageName)
 {
 	$srcImageFilePath = __DIR__ . '/geco_index_files/'. $imageName;
 
 	$path_parts = pathinfo($srcImageFilePath);
-
 	$srcExt = $path_parts['extension'];
 
 	$imageName = str_replace('.' . $srcExt, '.jpg', $imageName);
@@ -588,9 +609,12 @@ function resizeImage(&$imageName)
 	if (file_exists($destImageFilePath))
 		return;
 
+	$finfo = new finfo(FILEINFO_EXTENSION);
+	$realSrcExt = $finfo->file($srcImageFilePath);
+	
 	try
 	{
-		switch (strtolower($srcExt))
+		switch ($realSrcExt)
 		{
 			case 'bmp':
 				$srcimage = imagecreatefrombmp($srcImageFilePath);
@@ -600,6 +624,7 @@ function resizeImage(&$imageName)
 				$srcimage = imagecreatefromgif($srcImageFilePath);
 				break;
 
+			case 'jpeg/jpg/jpe/jfif':
 			case 'jpeg':
 			case 'jpg':
 				$srcimage = imagecreatefromjpeg($srcImageFilePath);
