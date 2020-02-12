@@ -213,6 +213,9 @@ EOT;
         foreach ($lines as $line)
         {
             $line = trim($line);
+            // if the line begins by "*", it's a listing in mediaWiki. The carriage return is automatic.
+            if (preg_match("@^\*@",$line))
+                $emptylinesCount++;
 
             if (empty($line))
                 $emptylinesCount++;

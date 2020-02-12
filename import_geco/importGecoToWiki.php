@@ -1,5 +1,5 @@
 <?php
-$GLOBALS['debug'] = true;
+$GLOBALS['debug'] = false;
 
 include_once(__DIR__ . '/../includes/wikibuilder.php');
 
@@ -46,6 +46,26 @@ if (!empty($GLOBALS['unmanaged_tags']))
 
 //------
 
+// This function took an xml file in entry, and return a boolean. Return true if the page is considered empty
+function emptyPage($xml_loaded)
+{
+	$xpath = new DOMXpath($xml_loaded);
+	$elements = $xpath->query("//div[@class='contenu-concept-non-structure-content']/*");
+	foreach($elements as $element)
+	{
+		switch ($element->nodeName)
+		{
+			case 'h1':
+				if (stristr($element->textContent, "en cours de rédaction"))
+					return true;
+			case 'p': 
+				if (stristr($element->textContent, "en cours de rédaction") || (stristr($element->textContent, "a completer")))
+					return true;
+		}
+	}
+	return false;
+}
+
 function importGecoToWiki()
 {
 	$nbMaxTechniques = 50;
@@ -65,13 +85,9 @@ function importGecoToWiki()
 
 		if ($GLOBALS['debug'])
 		{
-			if (strpos($filename, "carpocapse") === false &&
-				strpos($filename, "implanter_un_couvert") === false &&
-				strpos($filename, "raisonner") === false &&
-				strpos($filename, "lampourde") === false &&
-				strpos($filename, "Combiner_un_maximum_de_leviers") === false &&
-				strpos($filename, "realiser_des_bandes") === false)
+			if (strpos($filename, "Combiner_un_maximum_de_leviers") === false) {
 				continue;
+			}
 		}
 		
 		// Now detect the list of concepts, etc...
@@ -83,12 +99,15 @@ function importGecoToWiki()
 		$html = str_replace('<head>', '<head><meta charset="UTF-8">', $html);
 		$doc->loadHTML($html);
 
+		// Call emptyPage to check if the page's content is empty.
+		if (emptyPage($doc))
+			continue;
+		
 		echo "Loading page: $filename\n";
 
 		$date = "";
 		$title = "";
 		$conceptType = '';
-
 		$xpath = new DOMXpath($doc);
 		$elements = $xpath->query("//div[@class='type-concept-title']/i");
 		foreach ($elements as $i)
@@ -222,13 +241,13 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl)
 	if (!empty($imageName))
 		resizeImage($imageName);
 
-	// Add a model for redirection to the originial Geco webpage.
-	$page->addContent("{{ThanksGeco|url=$trueUrl}}" . "\n");
+	// Add a model for redirect to the originial Geco webpage.
+	$page->addContent("{{ThanksGeco|url=$trueUrl}}" . "</br>");
 
 	$page->addContent(getTemplate($conceptType, array('Nom' => $name, 'Latin' => $latinName, 'Image' => $imageName, 'ImageCaption' => $imageCaption)). "\n");
 
 	$page->addContent($wikiText);
-	echo $wikiText;
+	
 
 	if ($bIsCategoryPage)
 	{
@@ -461,6 +480,18 @@ function getWikiText($node, $context = '', $bNewParagraph = true)
 
 		case 'br':
 			return "\n\n";
+		
+		// This case manages the particular case where the text is considered as paragraph title, but without the h4 tag. It's identified by the color style. 
+		case 'span'	:
+			// Select the attribute's node
+			$style = $node->getAttribute("style");
+			// Test if it corresponds to the title's color: 
+			if (strpos($style, "#1AA0E0") !== false){
+				return "\n====" .getwikiText($node->childNodes,'',false) . "====\n";
+			}
+			//if it's false, just deal with the text as usual. 
+			else 
+				return getWikiText($node->childNodes,'',false);
 
 		case 'script':
 		case 'style':
