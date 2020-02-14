@@ -49,20 +49,24 @@ if (!empty($GLOBALS['unmanaged_tags']))
 // This function took an xml file in entry, and return a boolean. Return true if the page is considered empty
 function emptyPage($xml_loaded)
 {
-	$xpath = new DOMXpath($xml_loaded);
+	$xpath = new DOMXpath($xml_loaded);	
 	$elements = $xpath->query("//div[@class='contenu-concept-non-structure-content']/*");
 	foreach($elements as $element)
 	{
 		switch ($element->nodeName)
 		{
+			// Only one case observed with h1 tag.
 			case 'h1':
 				if (stristr($element->textContent, "en cours de rédaction"))
 					return true;
+			// Two cases observed with p tag.
 			case 'p': 
-				if (stristr($element->textContent, "en cours de rédaction") || (stristr($element->textContent, "a completer")))
+				if (stristr($element->textContent, "en cours de rédaction"))
+					return true;
+				elseif (stristr($element->textContent, "A compléter"))
 					return true;
 		}
-	}
+	}	
 	return false;
 }
 
@@ -247,7 +251,10 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl)
 	$page->addContent(getTemplate($conceptType, array('Nom' => $name, 'Latin' => $latinName, 'Image' => $imageName, 'ImageCaption' => $imageCaption)). "\n");
 
 	$page->addContent($wikiText);
-	
+
+	$page->addContent("[[Category:Informations importé de GECO]]");
+
+	$page->addContent("\n= Annexes =\n");	
 
 	if ($bIsCategoryPage)
 	{
@@ -292,6 +299,23 @@ function addCategoriesForPage($page, $xpath)
 
 	$elements = $xpath->query("//div[@class='span2 liens-cell']");
 
+	// Create an array to contain several redirection link to pages linked. 
+	$annexes = array(
+		'aPourFils'=>array("\n=== Pour plus de précision, consulter les pages suivantes : ===\n"),
+		'aideAAppliquer'=>array("\n=== Cette pages s\'appuit sur : ===\n"),
+		'estComplementaire'=>array("\n=== Ces pages présentent des techniques complémentaires à celle présentée précédement : ===\n"),
+		'estDefavorisePar'=>array("\n=== La prolifération du ravgeur est défavorisée par les pratiques suivantes : ===\n"),
+		'estEvoqueDans'=>array("\n=== Voici des témoignages ou la technique a été mise en oeuvre : ===\n"),
+		'evoque'=>array("\n=== Cet exemple évoque les pages suivantes : ===\n"),
+		'caracterise'=>array("\n=== Voici des témoignages dans les mêmes conditions géographiques : ===\n"),
+		'sAppuieSur'=>array("\n=== Cette technique s\'appuie sur les outils suivants : ===\n"),
+		'estImpactePar'=>array("\n=== Voici des témoignage dans les mêmes conditions géographique : ===\n"),
+		'estIncompatible'=>array("\n=== Voici des témoignage dans les mêmes conditions géographique : ===\n"),
+		'estInfluencePar'=>array("\n=== Voici des témoignage dans les mêmes conditions géographique : ===\n"),
+		'utilisePour'=>array("\n=== Voici des témoignage dans les mêmes conditions géographique : ===\n"),
+		'estUtilisePour'=>array("\n=== Voici des témoignage dans les mêmes conditions géographique : ===\n")
+	);
+
 	foreach ($elements as $div)
 	{
 		$rel = trim($div->textContent);
@@ -312,63 +336,64 @@ function addCategoriesForPage($page, $xpath)
 		$relationLinks = $xpath->query("div/div/div/div/div[contains(@class, 'lien-model-semantique')]/a", $containerDiv );
 		// <div class="lien-model-semantique">
 		//   <a href="/web/guest/concept/-/concept/voir/http%253A%252F%252Fwww%252Egeco%252Eecophytopic%252Efr%252Fgeco%252FConcept%252FGerer_Les_Populations_Des_Bioagresseurs_Grace_Aux_Mesures_Prophylactiques">Gérer les populations des bioagresseurs grâce aux mesures prophylactiques</a>
-		// </div>
-		//
+		// </div>		
+		print_r($GLOBALS['rel_labels']);
 		foreach ($relationLinks as $l)
 		{
 			$relurl = getFullUrl($l->getAttribute('href'));
-
 			if (isset($GLOBALS['links'][$relurl]))
 			{
-				switch ($rel)
-				{
-					// Voir aussi
-					case 'aPourFils':
-					case 'aideAAppliquer':
-					case 'estComplementaire':
-					case 'estDefavorisePar':
-					case 'estEvoqueDans':
-					case 'estFavorisePar':
-					case 'estImpactePar':
-					case 'estIncompatible':
-					case 'estInfluencePar':
-					case 'evoque':
-					case 'caracterise':
-					case 'sAppuieSur':
-					case 'utilisePour':
-					case 'estUtilisePour':
-						$page->addContent("Voir aussi : [[".$GLOBALS['links'][$relurl]."]]\n\n"); break;
+				if($revrel=='')
+					$annexes[$rel][] = "*". "[[" . $GLOBALS['links'][$relurl] . "]] \n" ;
+			print_r($annexes);
 
-					// Categories
-					case 'aPourParent':
-					case 'contribueA':
-					case 'defavorise':
-					case 'estAppliqueA':
-					case 'estAssurePar':
-					case 'estAttaquePar':
-					case 'estMobiliseDans':
-					case 'estRegulePar':
-					case 'estRenseignePar':
-					case 'estUtiliseDans':
-					case 'favorise':
-					case 'impacte':
-					case 'influence':
-					case 'informeSur':
-					case 'regule':
-					case 'sAppliqueA':
-					case 'sAttaque':
-					case 'utiliseDans':
-						$page->addCategory($GLOBALS['links'][$relurl]);
-						break;
 
-					default:
-						break;
-				}
+				// Add a link to the right category dependending on the case
+				//$annexes[$rel][] = "*". "[[" . $GLOBALS['links'][$relurl] . "]] \n" ;
+	
+				// switch ($rel)
+				// {						
+				// 		// Categories
+				// 	case 'aPourParent':
+				// 	case 'contribueA':
+				// 	case 'defavorise':
+				// 	case 'estAppliqueA':
+				// 	case 'estAssurePar':
+				// 	case 'estAttaquePar':
+				// 	case 'estMobiliseDans':
+				// 	case 'estRegulePar':
+				// 	case 'estRenseignePar':
+				// 	case 'estUtiliseDans':
+				// 	case 'favorise':
+				// 	case 'impacte':
+				// 	case 'influence':
+				// 	case 'informeSur':
+				// 	case 'regule':
+				// 	case 'sAppliqueA':
+				// 	case 'sAttaque':
+				// 	case 'utiliseDans':
+				// 		$page->addCategory($GLOBALS['links'][$relurl]);
+				// 		break;
+
+				// 	default:
+				// 		break;
+				// }
 			}
 			else
 				echo "URL not found : $relurl \t" . $l->getAttribute('href') . "\t" . getCanonicalURL($relurl) . "\n";
 
 		}
+	}
+	foreach($annexes as $cat_annexes)
+	{
+		if(count($cat_annexes)!=1)
+		{
+			foreach($cat_annexes as $redirect)
+			{
+				$page->addContent($redirect);	
+			}
+		}
+		// elseif(isset($annexes["a pour parent"]))
 
 	}
 }
