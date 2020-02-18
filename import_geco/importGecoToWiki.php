@@ -254,7 +254,7 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl)
 
 	$page->addContent("[[Category:Informations importé de GECO]]");
 
-	$page->addContent("\n= Annexes =\n");	
+	$page->addContent("\n= Annexes =\n");
 
 	if ($bIsCategoryPage)
 	{
@@ -301,21 +301,40 @@ function addCategoriesForPage($page, $xpath)
 
 	// Create an array to contain several redirection link to pages linked. 
 	$annexes = array(
+		// "aPourfils_rev not needed because in this case, a new category is created
 		'aPourFils'=>array("\n=== Pour plus de précision, consulter les pages suivantes : ===\n"),
-		'aideAAppliquer'=>array("\n=== Cette pages s\'appuit sur : ===\n"),
-		'estComplementaire'=>array("\n=== Ces pages présentent des techniques complémentaires à celle présentée précédement : ===\n"),
-		'estDefavorisePar'=>array("\n=== La prolifération du ravgeur est défavorisée par les pratiques suivantes : ===\n"),
-		'estEvoqueDans'=>array("\n=== Voici des témoignages ou la technique a été mise en oeuvre : ===\n"),
-		'evoque'=>array("\n=== Cet exemple évoque les pages suivantes : ===\n"),
-		'caracterise'=>array("\n=== Voici des témoignages dans les mêmes conditions géographiques : ===\n"),
+		'defavorise'=>array("\n=== Cette pratique défavorise : ===\n"),
+		'defavorise_rev'=>array("\n=== La prolifération du ravageur est défavorisée par les pratiques suivantes : ===\n"),
+		'favorise'=>array("\n=== Cette pratique favorise : ===\n"),
+		'favorise_rev'=>array("\n=== La prolifération du ravageur est favorisé par les pratiques suivantes : ===\n"),
+		'evoque' =>array("\n=== Cet exemple de mise en oeuvre évoque les techniques suivantes : ===\n"),
+		'evoque_rev'=>array("\n=== Ce sujet est évoqué dans les exemples de mise en oeuvre suivant : ===\n"),
+		'evoque_model'=>array(),
+		'caracterise'=>array("\n=== Ce facteur de contexte caractérise les mise en oeuvre suivante : ===\n"),
+		'caracterise_rev'=>array("\n=== Contexte pédo-climatique et géographique du retour d'expérience : ===\n"),
 		'sAppuieSur'=>array("\n=== Cette technique s\'appuie sur les outils suivants : ===\n"),
-		'estImpactePar'=>array("\n=== Voici des témoignage dans les mêmes conditions géographique : ===\n"),
-		'estIncompatible'=>array("\n=== Voici des témoignage dans les mêmes conditions géographique : ===\n"),
-		'estInfluencePar'=>array("\n=== Voici des témoignage dans les mêmes conditions géographique : ===\n"),
-		'utilisePour'=>array("\n=== Voici des témoignage dans les mêmes conditions géographique : ===\n"),
-		'estUtilisePour'=>array("\n=== Voici des témoignage dans les mêmes conditions géographique : ===\n")
+		'sAppuieSur_rev'=>array("\n=== Cette pages s'appuit sur : ===\n"),
+		'sAttaque' =>array("\n=== Ce ravageur s'attaque à : ===\n"),
+		'sAttaque_rev'=>array("\n=== Ce type de culture est attaqué par : ===\n"),
+		'estAppliqueA' =>array("\n=== Cette technique est appliquée aux cultures suivantes : ===\n"),
+		'estAppliqueA_rev'=>array("\n=== Ce type de culture permet l'utilisation des techniques suivantes : ===\n"),
+		'utiliseDans' =>array("\n=== Cette technique utilise les matériaux suivants :  ===\n"),
+		'utiliseDans_rev'=>array("\n=== Ce matériel est utilisé dans les techniques suivantes : ===\n"),
+		'estComplementaire'=>array("\n=== Ces pages présentent des techniques complémentaires à celle présentée précédement : ===\n"),
+		'estIncompatible'=>array("\n=== Les techniques suivantes sont incompatible avec la technique décrite précédement : ===\n"),
+		'contribueA'=>array("\n=== Cette technique contribue a la réussite des objectif suivants : ===\n"),
+		'contribueA_rev'=>array("\n=== Cette objectif est assuré par les techniques suivantes : ===\n"),
+		'informeSur'=>array("\n=== Ce guide renseigne les sujets suivants : ===\n"),
+		'informeSur_rev'=>array("\n=== Ce sujet est renseigné dans les guides suivants : ===\n"),
+		'influence' =>array("\n===  ===\n"),
+		'influence_rev'=>array("\n===  ===\n"),
+		'impacte'=>array("\n===  ===\n"),
+		'impacte_rev'=>array("\n===  ===\n"),
+		'regule'=>array("\n===  ===\n"),
+		'regule_rev'=>array("\n===  ===\n"),
+		'estUtilisePour'=>array("\n===  ===\n")
 	);
-
+	
 	foreach ($elements as $div)
 	{
 		$rel = trim($div->textContent);
@@ -330,71 +349,106 @@ function addCategoriesForPage($page, $xpath)
 			echo "relation not found: $rel \n";
 			continue;
 		}
-
 		// Now go up one level, and find all relationships
 		$containerDiv = $div->parentNode;
-		$relationLinks = $xpath->query("div/div/div/div/div[contains(@class, 'lien-model-semantique')]/a", $containerDiv );
-		// <div class="lien-model-semantique">
-		//   <a href="/web/guest/concept/-/concept/voir/http%253A%252F%252Fwww%252Egeco%252Eecophytopic%252Efr%252Fgeco%252FConcept%252FGerer_Les_Populations_Des_Bioagresseurs_Grace_Aux_Mesures_Prophylactiques">Gérer les populations des bioagresseurs grâce aux mesures prophylactiques</a>
-		// </div>		
-		print_r($GLOBALS['rel_labels']);
-		foreach ($relationLinks as $l)
-		{
-			$relurl = getFullUrl($l->getAttribute('href'));
-			if (isset($GLOBALS['links'][$relurl]))
+
+		// Access to the relation's categories type
+		$relation = $xpath->query("div/div/div[contains(@class, 'row-fluid')]", $containerDiv );
+
+		foreach($relation as $categ)
+		{ 
+			// Select all the nodes that contain pages link
+			$relationLinks = $xpath->query("div/div[contains(@class, 'lien-model-semantique')]/a",$categ);
+		
+			// Each link will be associate with its relation in the $annexes array.
+			foreach ($relationLinks as $l)
 			{
-				if($revrel=='')
-					$annexes[$rel][] = "*". "[[" . $GLOBALS['links'][$relurl] . "]] \n" ;
-			print_r($annexes);
+				$relurl = getFullUrl($l->getAttribute('href'));
+				if (isset($GLOBALS['links'][$relurl]))
+				{
+					if($revrel=='')
+					{
+						// "evoque" categorie is a particular case because it's a special MediaWiki model.
+						if($rel=='evoque')
+						{
+							// Select the page's type (technique, culture...)
+							$catName = $xpath->query("div[contains(@class, 'span4')]",$categ);
+							$name = $catName[0]->textContent;
+							$name = trim($name);
 
+							if($name =='Technique')
+								$annexes[$rel][] = "*". "[[" . $GLOBALS['links'][$relurl] . "]] \n" ;
+							//add the link to evoque tag, under the right page's type.
+							else
+								$annexes['evoque_model'][$name][] ="[[" . $GLOBALS['links'][$relurl] . "]]";
+						}
+						else
+							$annexes[$rel][] = "*". "[[" . $GLOBALS['links'][$relurl] . "]] \n" ;
+					}
+					
+					else
+					{
+						if($revrel=='aPourFils')
+							//Corresponds to the parent page, so add a categorie.
+							$page->addCategory($GLOBALS['links'][$relurl]);
+						
+						else 
+							$annexes[$revrel."_rev"][] = "*". "[[" . $GLOBALS['links'][$relurl] . "]] \n" ;
+					}
 
-				// Add a link to the right category dependending on the case
-				//$annexes[$rel][] = "*". "[[" . $GLOBALS['links'][$relurl] . "]] \n" ;
-	
-				// switch ($rel)
-				// {						
-				// 		// Categories
-				// 	case 'aPourParent':
-				// 	case 'contribueA':
-				// 	case 'defavorise':
-				// 	case 'estAppliqueA':
-				// 	case 'estAssurePar':
-				// 	case 'estAttaquePar':
-				// 	case 'estMobiliseDans':
-				// 	case 'estRegulePar':
-				// 	case 'estRenseignePar':
-				// 	case 'estUtiliseDans':
-				// 	case 'favorise':
-				// 	case 'impacte':
-				// 	case 'influence':
-				// 	case 'informeSur':
-				// 	case 'regule':
-				// 	case 'sAppliqueA':
-				// 	case 'sAttaque':
-				// 	case 'utiliseDans':
-				// 		$page->addCategory($GLOBALS['links'][$relurl]);
-				// 		break;
-
-				// 	default:
-				// 		break;
-				// }
+				}
+				else
+					echo "URL not found : $relurl \t" . $l->getAttribute('href') . "\t" . getCanonicalURL($relurl) . "\n";
 			}
-			else
-				echo "URL not found : $relurl \t" . $l->getAttribute('href') . "\t" . getCanonicalURL($relurl) . "\n";
-
 		}
 	}
-	foreach($annexes as $cat_annexes)
+	// Once the $annexes array filled, write it on the wiki page
+	foreach($annexes as $relation => $linkList)
 	{
-		if(count($cat_annexes)!=1)
+		print_r($linkList);
+		print_r(count($linkList));
+		//if the relation is "evoque_model", construct the wiki model
+		if ($relation == 'evoque_model' && $linkList!=0)
 		{
-			foreach($cat_annexes as $redirect)
+			$modele = "{{ConceptsEvoqués|";
+			foreach($linkList as $type => $links)
+			{
+				switch ($type)
+				{
+					case "Culture":
+						$modele = $modele . "culture=" . $type . "|cultureListe="; break;
+					case "Bioagresseur":
+						$modele = $modele . "bioagresseur=" . $type . "|listeBioagresseur="; break;
+					case "Auxiliaire" :
+						$modele = $modele . "auxiliaire=" . $type . "|listeAuxiliaire="; break;
+					case "Matériel":
+						$modele = $modele . "materiel=" . $type . "|listeMateriel="; break;
+					case "Outil d'aide":
+						$modele = $modele . "outilAide=" . $type . "|listeOutilAide="; break;
+				}
+				foreach($links as $link)
+				{
+					$modele = $modele . $link . ", ";
+				}
+				$modele = trim($modele,", ");
+				$modele = $modele . "|";
+			}
+			$modele = trim($modele,"|");
+			$modele = $modele . "}}";
+			$page->addContent($modele);
+		}
+
+		// This test if there's links in the array for the other index.
+
+		elseif(count($linkList)>1)
+		{
+			//Write links in paragraph on the page
+			foreach($linkList as $redirect)
 			{
 				$page->addContent($redirect);	
 			}
-		}
-		// elseif(isset($annexes["a pour parent"]))
 
+		}
 	}
 }
 
@@ -454,7 +508,7 @@ function initRelations()
 	{
 		$GLOBALS['reverse_labels'][$v['reverse_label']] = $k;
 		$GLOBALS['rel_labels'][$v['label']] = $k;
-	}
+	}	
 }
 
 function getWikiText($node, $context = '', $bNewParagraph = true)
