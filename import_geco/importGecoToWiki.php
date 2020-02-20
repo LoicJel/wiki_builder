@@ -57,11 +57,12 @@ function emptyPage($xml_loaded)
 	if(count($elements)==0)
 		$elements = $xpath->query("//div[@class='contenu-concept-structure']");
 	else 
-		{
-			// This means the page's content is empty or has only one image or on little sentence saying the page isn't complete.
-			if (count($elements[0]->childNodes)<3)
-				return true;
-		}
+	{
+		// This means the page's content is empty or has only one image or on little sentence saying the page isn't complete.
+		if (count($elements[0]->childNodes)<3)
+			return true;
+	}
+
 	// In the case where there is more than 3 childNodes or the other tag is choosen, we search in the textContent if there is the sentence "fiche en cours de rédaction" or "A compléter".
 	$pageContent = $elements[0]->textContent;
 	if(stristr($pageContent,"fiche en cours de rédaction") or stristr($pageContent,"A compléter"))
@@ -105,15 +106,8 @@ function importGecoToWiki()
 
 		echo "Loading page: $filename\n";
 		// Call emptyPage to check if the page's content is empty.
-		if (emptyPage($doc))
-		{
-			echo "The page is empty \n";
-			continue;
-		}
+		$emptyPage = emptyPage($doc);
 			
-		
-		
-
 		$date = "";
 		$title = "";
 		$conceptType = '';
@@ -149,15 +143,15 @@ function importGecoToWiki()
 			$conceptType == 'exempleMiseEnOeuvre' ||
 			$conceptType == 'outilDAide' ||
 			$conceptType == 'materiel')
-			addPage($conceptName, $xpath, $conceptType, false, $trueUrl);
+			addPage($conceptName, $xpath, $conceptType, false, $trueUrl,$emptyPage);
 		else
-			addPage($conceptName, $xpath, $conceptType, true, $trueUrl);
+			addPage($conceptName, $xpath, $conceptType, true, $trueUrl,$emptyPage);
 
 		// echo  $conceptType . "\t" . $conceptName . "\t" . $date . "\t" . $url  . "\n";
 	}
 }
 
-function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl)
+function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl,$emptyPage)
 {
 	echo "Extracting page: $pageName\n";
 
@@ -255,9 +249,11 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl)
 
 	$page->addContent(getTemplate($conceptType, array('Nom' => $name, 'Latin' => $latinName, 'Image' => $imageName, 'ImageCaption' => $imageCaption)). "\n");
 
-	$page->addContent($wikiText);
-
-	$page->addContent("[[Category:Informations importé de GECO]]");
+	// If the page is considered as empty, the content will not be parsed, only the relations and categories will be added to the wiki page.
+	if($emptyPage==false)
+		$page->addContent($wikiText);
+	else 
+		echo "not interesting content";
 
 	$page->addContent("\n= Annexes =\n");
 
@@ -266,9 +262,11 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl)
 		$page->addContent("{{#dpl: category=$pageName }}");
 	}
 
-	$page->addCategory($conceptType);
+
 
 	// Add the categories
+	$page->addCategory($conceptType);
+	$page->addContent("[[Category:Informations importé de GECO]]");
 	addCategoriesForPage($page, $xpath);
 
 	$page->close();
@@ -298,48 +296,12 @@ function addCategoriesForPage($page, $xpath)
 		$conceptType = str_replace('-20', '', $conceptType);
 		break;
 	}
-
 	if (empty($conceptType))
 		return;
 
 	$elements = $xpath->query("//div[@class='span2 liens-cell']");
 
 	// Create an array to contain several redirection link to pages linked. 
-	$annexesName = array(
-		// "aPourfils_rev not needed because in this case, a new category is created
-		'aPourFils'=>"\n=== Pour plus de précision, consulter les pages suivantes : ===\n",
-		'defavorise'=>"\n=== Cette pratique défavorise : ===\n",
-		'defavorise_rev'=>"\n=== La prolifération du ravageur est défavorisée par les pratiques suivantes : ===\n",
-		'favorise'=>"\n=== Cette pratique favorise : ===\n",
-		'favorise_rev'=>"\n=== La prolifération du ravageur est favorisé par les pratiques suivantes : ===\n",
-		'evoque' =>"\n=== Cet exemple de mise en oeuvre évoque les techniques suivantes : ===\n",
-		'evoque_rev'=>"\n=== Ce sujet est évoqué dans les exemples de mise en oeuvre suivant : ===\n",
-		'caracterise'=>"\n=== Ce facteur de contexte caractérise les mise en oeuvre suivante : ===\n",
-		'caracterise_rev'=>"\n=== Contexte pédo-climatique et géographique du retour d'expérience : ===\n",
-		'sAppuieSur'=>"\n=== Cette technique s'appuie sur les outils suivants : ===\n",
-		'sAppuieSur_rev'=>"\n=== Cette pages s'appuit sur : ===\n",
-		'sAttaque' =>"\n=== Ce ravageur s'attaque à : ===\n",
-		'sAttaque_rev'=>"\n=== Ce type de culture est attaqué par : ===\n",
-		'estAppliqueA' =>"\n=== Cette technique est appliquée aux cultures suivantes : ===\n",
-		'estAppliqueA_rev'=>"\n=== Ce type de culture permet l'utilisation des techniques suivantes : ===\n",
-		'utilise' =>"\n=== Cette technique utilise le matériel suivant :  ===\n",
-		'utilise_rev'=>"\n=== Ce matériel est utilisé dans les techniques suivantes  ===\n",	
-		'estComplementaire'=>"\n=== Ces pages présentent des techniques complémentaires à celle présentée précédement : ===\n",
-		'estIncompatible'=>"\n=== Les techniques suivantes sont incompatible avec la technique décrite précédement : ===\n",
-		'contribueA'=>"\n=== Cette technique contribue a la réussite des objectif suivants : ===\n",
-		'contribueA_rev'=>"\n=== Cette objectif est assuré par les techniques suivantes : ===\n",
-		'informeSur'=>"\n=== Ce guide renseigne les sujets suivants : ===\n",
-		'informeSur_rev'=>"\n=== Ce sujet est renseigné dans les guides suivants : ===\n",
-		'regule'=>"\n=== Cet auxilaire régule la prolifération des bioagresseurs suivants : ===\n",
-		'regule_rev'=>"\n=== La prolifération des bioagresseurs suivants est régulé par les auxilaires suivants : : ===\n"
-
-		// // relation not found by the script
-		// 'influence' =>array("\n=== inluence_test ===\n"),
-		// 'influence_rev'=>array("\n=== est_inluence_test ===\n"),
-		// 'impacte'=>array("\n=== impacte_test ===\n"),
-		// 'impacte_rev'=>array("\n=== est_impacte_test ===\n"),
-		// 'utiliseDans_rev'=>array("\n=== est_utilise_dans ===\n"),
-	);
 	$annexes=array();
 	foreach ($elements as $div)
 	{
@@ -374,7 +336,7 @@ function addCategoriesForPage($page, $xpath)
 				{
 					if($revrel=='')
 					{
-						// "evoque" categorie is a particular case because it's a special MediaWiki model.
+						// "evoque" categorie is a particular case because it's a special MediaWiki template.
 						if($rel=='evoque')
 						{
 							// Select the page's type (technique, culture...)
@@ -383,24 +345,21 @@ function addCategoriesForPage($page, $xpath)
 							$name = trim($name);
 
 							if($name =='Technique')
-								$annexes[$rel][] = "*". "[[" . $GLOBALS['links'][$relurl] . "]] \n" ;
+								$annexes['rel'][$rel][] = "*". "[[" . $GLOBALS['links'][$relurl] . "]] \n" ;
 							//add the link to evoque tag, under the right page's type.
 							else
 								$annexes['evoque_model'][$name][] ="[[" . $GLOBALS['links'][$relurl] . "]]";
 						}
 						else
-							$annexes[$rel][] = "*". "[[" . $GLOBALS['links'][$relurl] . "]] \n" ;
+							$annexes['rel'][$rel][] = "*". "[[" . $GLOBALS['links'][$relurl] . "]] \n" ;
 					}
 					
-					else
-					{
-						if($revrel=='aPourFils')
+					elseif($revrel=='aPourFils')
 							//Corresponds to the parent page, so add a categorie.
 							$page->addCategory($GLOBALS['links'][$relurl]);
 						
-						else 
-							$annexes[$revrel."_rev"][] = "*". "[[" . $GLOBALS['links'][$relurl] . "]] \n" ;
-					}
+					else 
+							$annexes['revrel'][$revrel][] = "*". "[[" . $GLOBALS['links'][$relurl] . "]] \n" ;
 
 				}
 				else
@@ -409,26 +368,41 @@ function addCategoriesForPage($page, $xpath)
 		}
 	}
 
-	print_r($annexes);
 	// Once the $annexes array filled, write it on the wiki page
-	foreach($annexes as $relation => $linkList)
+	if(isset($annexes['rel']))
 	{
-		// This test if there's links in the array for the other index.
-		if($relation!= 'evoque_model' && count($linkList)>1)
+		foreach($annexes['rel'] as $relation => $linkList)
 		{
-			echo $annexesName[$relation];
-			$page->addContent($annexesName[$relation]);
-			$page->addContent("<div style='column-count:4;-moz-column-count:4;-webkit-column-count:4'> \n");
+			$page->addContent($GLOBALS['relations'][$relation]['paragraphSentence']);
+			if(count($linkList)>15)
+				$page->addContent("<div style='column-count:4;-moz-column-count:4;-webkit-column-count:4'> \n");
 			//Write links in paragraph on the page
 			foreach($linkList as $redirect)
-			{
-				$page->addContent($redirect);	
-			}
-			$page->addContent("</div>\n");
+				{
+					$page->addContent($redirect);	
+				}
+			if(count($linkList)>15)
+				$page->addContent("</div>\n");
 		}
 	}
-	//And write the "evoque" model at the page's end.
+	if(isset($annexes['revrel']))
+	{
+		foreach($annexes['revrel'] as $relation => $linkList)
+		{
+			$page->addContent($GLOBALS['relations'][$relation]['reverse_paragraphSentence']);
+			if(count($linkList)>15)
+				$page->addContent("<div style='column-count:3;-moz-column-count:3;-webkit-column-count:3'> \n");
+			//Write links in paragraph on the page
+			foreach($linkList as $redirect)
+				{
+					$page->addContent($redirect);	
+				}
+			if(count($linkList)>15)
+				$page->addContent("</div>\n");
+		}
+	}
 	
+	//And write the "evoque" template at the page's end.
 	if (isset($annexes['evoque_model']))
 	{
 		$modele = "{{ConceptsEvoqués|";
@@ -494,22 +468,22 @@ function sanitizeFilename($str = '')
 function initRelations()
 {
 	$GLOBALS['relations'] = array();
-	$GLOBALS['relations']['defavorise'] = array('rel' => 'defavorise', 'label' => 'défavorise', 'reverse' => 'estDefavorisePar', 'reverse_label' => 'est défavorisé par');
-	$GLOBALS['relations']['estAppliqueA'] = array('rel' => 'estAppliqueA', 'label' => 'est appliqué à', 'reverse' => 'estMobiliseDans', 'reverse_label' => 'est mobilisé dans');
-	$GLOBALS['relations']['estComplementaire'] = array('rel' => 'estComplementaire', 'label' => 'est complémentaire', 'reverse' => 'estComplementaire', 'reverse_label' => '');
-	$GLOBALS['relations']['estIncompatible'] = array('rel' => 'estIncompatible', 'label' => 'est incompatible', 'reverse' => 'estIncompatible', 'reverse_label' => '');
-	$GLOBALS['relations']['favorise'] = array('rel' => 'favorise', 'label' => 'favorise', 'reverse' => 'estFavorisePar', 'reverse_label' => 'est favorisé par');
-	$GLOBALS['relations']['impacte'] = array('rel' => 'impacte', 'label' => 'impacte', 'reverse' => 'estImpactePar', 'reverse_label' => 'est impacté par');
-	$GLOBALS['relations']['influence'] = array('rel' => 'influence', 'label' => 'influence', 'reverse' => 'estInfluencePar', 'reverse_label' => 'est influencé par');
-	$GLOBALS['relations']['informeSur'] = array('rel' => 'informeSur', 'label' => 'informe sur', 'reverse' => 'estRenseignePar', 'reverse_label' => 'est renseigné par');
-	$GLOBALS['relations']['regule'] = array('rel' => 'regule', 'label' => 'régule', 'reverse' => 'estRegulePar', 'reverse_label' => 'est régulé par');
-	$GLOBALS['relations']['sAttaque'] = array('rel' => 'sAttaque', 'label' => "s'attaque à", 'reverse' => 'estAttaquePar', 'reverse_label' => 'est attaqué par');
-	$GLOBALS['relations']['utilise'] = array('rel' => 'utilise', 'label' => 'utilise', 'reverse' => 'estUtilisePour', 'reverse_label' => 'est utilisé pour');
-	$GLOBALS['relations']['aPourFils'] = array('rel' => 'aPourFils', 'label' => 'a pour fils', 'reverse' => 'aPourParent', 'reverse_label' => 'a pour parent');
-	$GLOBALS['relations']['caracterise'] = array('rel' => 'caracterise', 'label' => 'caractérise', 'reverse' => 'sAppliqueA', 'reverse_label' => "s'applique à");
-	$GLOBALS['relations']['contribueA'] = array('rel' => 'contribueA', 'label' => 'contribue à', 'reverse' => 'estAssurePar', 'reverse_label' => 'est assuré par');
-	$GLOBALS['relations']['evoque'] = array('rel' => 'evoque', 'label' => 'évoque', 'reverse' => 'estEvoqueDans', 'reverse_label' => 'est évoqué dans');
-	$GLOBALS['relations']['sAppuieSur'] = array('rel' => 'sAppuieSur', 'label' => "s'appuie sur", 'reverse' => 'aideAAppliquer', 'reverse_label' => 'aide à appliquer');
+	$GLOBALS['relations']['defavorise'] = array('rel' => 'defavorise', 'label' => 'défavorise','paragraphSentence'=>"\n=== Cette pratique défavorise : ===\n", 'reverse' => 'estDefavorisePar', 'reverse_label' => 'est défavorisé par','reverse_paragraphSentence'=>"\n=== La prolifération du ravageur est défavorisée par les pratiques suivantes : ===\n");
+	$GLOBALS['relations']['estAppliqueA'] = array('rel' => 'estAppliqueA', 'label' => 'est appliqué à', 'paragraphSentence' =>"\n=== Cette technique est appliquée aux cultures suivantes : ===\n", 'reverse' => 'estMobiliseDans', 'reverse_label' => 'est mobilisé dans', 'reverse_paragraphSentence'=>"\n=== Ce type de culture permet l'utilisation des techniques suivantes : ===\n");
+	$GLOBALS['relations']['estComplementaire'] = array('rel' => 'estComplementaire', 'label' => 'est complémentaire', 'paragraphSentence'=>"\n=== Ces pages présentent des techniques complémentaires à celle présentée précédement : ===\n", 'reverse' => 'estComplementaire', 'reverse_label' => '');
+	$GLOBALS['relations']['estIncompatible'] = array('rel' => 'estIncompatible', 'label' => 'est incompatible', 'paragraphSentence'=>"\n=== Les techniques suivantes sont incompatible avec la technique décrite précédement : ===\n", 'reverse' => 'estIncompatible', 'reverse_label' => '');
+	$GLOBALS['relations']['favorise'] = array('rel' => 'favorise', 'label' => 'favorise', 'paragraphSentence'=>"\n=== Cette pratique favorise : ===\n", 'reverse' => 'estFavorisePar', 'reverse_label' => 'est favorisé par', 'reverse_paragraphSentence'=>"\n=== La prolifération du ravageur est favorisé par les pratiques suivantes : ===\n",);
+	$GLOBALS['relations']['impacte'] = array('rel' => 'impacte', 'label' => 'impacte', 'paragraphSentence'=>"\n=== impacte_test ===\n", 'reverse' => 'estImpactePar', 'reverse_label' => 'est impacté par', 'reverse_paragraphSentence'=> "\n=== est_impacte_test ===\n");
+	$GLOBALS['relations']['influence'] = array('rel' => 'influence', 'label' => 'influence', 'paragraphSentence' =>"\n=== inluence_test ===\n", 'reverse' => 'estInfluencePar', 'reverse_label' => 'est influencé par', 'reverse_paragraphSentence'=>"\n=== est_inluence_test ===\n");
+	$GLOBALS['relations']['informeSur'] = array('rel' => 'informeSur', 'label' => 'informe sur', 'paragraphSentence'=>"\n=== Ce guide renseigne les sujets suivants : ===\n", 'reverse' => 'estRenseignePar', 'reverse_label' => 'est renseigné par', 'reverse_paragraphSentence'=>"\n=== Ce sujet est renseigné dans les guides suivants : ===\n");
+	$GLOBALS['relations']['regule'] = array('rel' => 'regule', 'label' => 'régule', 'paragraphSentence'=>"\n=== Cet auxilaire régule la prolifération des bioagresseurs suivants : ===\n", 'reverse' => 'estRegulePar', 'reverse_label' => 'est régulé par', 'reverse_paragraphSentence'=>"\n=== La prolifération de ce bioagresseur est régulé par les auxilaires suivants : : ===\n");
+	$GLOBALS['relations']['sAttaque'] = array('rel' => 'sAttaque', 'label' => "s'attaque à", 'paragraphSentence' =>"\n=== Ce ravageur s'attaque à : ===\n", 'reverse' => 'estAttaquePar', 'reverse_label' => 'est attaqué par', 'reverse_paragraphSentence'=>"\n=== Ce type de culture est attaqué par : ===\n");
+	$GLOBALS['relations']['utilise'] = array('rel' => 'utilise', 'label' => 'utilise', 'paragraphSentence' =>"\n=== Cette technique utilise le matériel suivant :  ===\n", 'reverse' => 'estUtilisePour', 'reverse_label' => 'est utilisé pour', 'reverse_paragraphSentence'=>"\n=== Ce matériel est utilisé dans les techniques suivantes  ===\n");
+	$GLOBALS['relations']['aPourFils'] = array('rel' => 'aPourFils', 'label' => 'a pour fils', 'paragraphSentence'=>"\n=== Pour plus de précision, consulter les pages suivantes : ===\n", 'reverse' => 'aPourParent', 'reverse_label' => 'a pour parent');
+	$GLOBALS['relations']['caracterise'] = array('rel' => 'caracterise', 'label' => 'caractérise', 'paragraphSentence'=>"\n=== Ce facteur de contexte caractérise les mise en oeuvre suivante : ===\n", 'reverse' => 'sAppliqueA', 'reverse_label' => "s'applique à", 'reverse_paragraphSentence'=>"\n=== Contexte pédo-climatique et géographique du retour d'expérience : ===\n");
+	$GLOBALS['relations']['contribueA'] = array('rel' => 'contribueA', 'label' => 'contribue à', 'paragraphSentence'=>"\n=== Cette technique contribue a la réussite des objectif suivants : ===\n", 'reverse' => 'estAssurePar', 'reverse_label' => 'est assuré par', 'reverse_paragraphSentence'=>"\n=== Cette objectif est assuré par les techniques suivantes : ===\n");
+	$GLOBALS['relations']['evoque'] = array('rel' => 'evoque', 'label' => 'évoque', 'paragraphSentence' =>"\n=== Cet exemple de mise en oeuvre évoque les techniques suivantes : ===\n", 'reverse' => 'estEvoqueDans', 'reverse_label' => 'est évoqué dans', 'reverse_paragraphSentence'=>"\n=== Ce sujet est évoqué dans les exemples de mise en oeuvre suivant : ===\n",);
+	$GLOBALS['relations']['sAppuieSur'] = array('rel' => 'sAppuieSur', 'label' => "s'appuie sur", 'paragraphSentence'=>"\n=== Cette technique s'appuie sur les outils suivants : ===\n", 'reverse' => 'aideAAppliquer', 'reverse_label' => 'aide à appliquer', 'reverse_paragraphSentence'=>"\n=== Cette pages s'appuit sur : ===\n",);
 
 	$GLOBALS['rel_labels'] = array();
 	$GLOBALS['reverse_labels'] = array();
