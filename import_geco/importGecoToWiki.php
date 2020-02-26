@@ -64,7 +64,7 @@ function emptyPage($xml_loaded)
 	}
 
 	// In the case where there is more than 3 childNodes or the other tag is choosen, we search in the textContent if there is the sentence "fiche en cours de rédaction" or "A compléter".
-	$pageContent = $elements[0]->textContent;
+ 	$pageContent = $elements[0]->textContent;
 	if(stristr($pageContent,"fiche en cours de rédaction") or stristr($pageContent,"A compléter"))
 		return true;
 	else 
@@ -108,8 +108,6 @@ function importGecoToWiki()
 		// Call emptyPage to check if the page's content is empty.
 		$emptyPage = emptyPage($doc);
 			
-		$date = "";
-		$title = "";
 		$conceptType = '';
 		$xpath = new DOMXpath($doc);
 		$elements = $xpath->query("//div[@class='type-concept-title']/i");
@@ -178,6 +176,20 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl, $e
 		}
 	}
 
+
+	// Get the last date update :
+	$boldElements = $xpath->query("//b");
+	foreach ($boldElements as $aPotentialDate)
+	{
+		$matches = array();
+		if (preg_match('@([0-9]{2})/([0-9]{2})/([0-9]{4})@', $aPotentialDate->textContent, $matches))
+		{
+			$date = date_create_from_format('d/m/Y',$matches[0]);
+			$date = $date->format('Y-m-d');
+			echo $date . "\n"; 
+		}
+	}
+
 	$page = $GLOBALS['wikiBuilder']->addPage($pageName);
 
 	// Add the content
@@ -212,10 +224,9 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl, $e
 					$images = getImages($node);
 					$imageName = reset($images);
 					break;
-
-				case 'sommaire-concept-structure': // sommaire
-					break;
 				case 'cache': // Element caché
+					break;
+				case 'sommaire-concept-structure': // sommaire
 					break;
 				default:
 					$wikiText .= getWikiText($node) . "\n";
@@ -253,22 +264,14 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl, $e
 	if($emptyPage==false)
 		$page->addContent($wikiText);
 	else 
-		echo "not interesting content";
+		echo "Empty content";
 
 	$page->addContent("\n= Annexes =\n");
 
-	if ($bIsCategoryPage)
-	{
-		$page->addContent("{{#dpl: category=$pageName }}");
-	}
-
-
-
 	// Add the categories
 	$page->addCategory($conceptType);
-	$page->addContent("[[Category:Informations importé de GECO]]");
 	addCategoriesForPage($page, $xpath,$pageName);
-
+	$page->addContent("[[Category:Informations importé de GECO]]");
 	$page->close();
 
 	// Add some redirects:
@@ -355,6 +358,10 @@ function addCategoriesForPage($page, $xpath,$pageName)
 								addCategoryPage($pageName);
 								$annexes['rel'][$rel]=1;
 								break;
+							case 'defavorise':
+							case 'favorise' : 
+								$annexes['rel']['impact']=1;
+								break;
 							default :
 								$annexes['rel'][$rel]=1;
 								break;
@@ -368,10 +375,9 @@ function addCategoriesForPage($page, $xpath,$pageName)
 							//Corresponds to the parent page, so add a categorie.
 							$page->addCategory($GLOBALS['links'][$relurl]);
 							break;
-							
 							default : 
 								$annexes['revrel'][$revrel][] = "*". "[[" . $GLOBALS['links'][$relurl] . "]] \n" ;
-							break;
+								break;
 						}
 					}
 				}
@@ -386,10 +392,10 @@ function addCategoriesForPage($page, $xpath,$pageName)
 		$model=("{{ListingAnnexes|");
 		foreach(array_keys($annexes['rel']) as $relation)
 		{
-			$model = $model . $relation . "=1|";
+			$model .= $relation . "=1|";
 		}
 		$model = trim($model,"|");
-		$model = $model . "}}";
+		$model .= "}}";
 		$page->addContent($model);
 	}
 	if(isset($annexes['revrel']))
@@ -405,7 +411,7 @@ function addCategoriesForPage($page, $xpath,$pageName)
 					$page->addContent($redirect);	
 				}
 			if(count($linkList)>15)
-				$page->addContent("</div>\n");
+				$page->addContent("</div>\n\n");
 		}
 	}
 	
@@ -418,19 +424,19 @@ function addCategoriesForPage($page, $xpath,$pageName)
 			switch ($type)
 			{
 				case "Culture":
-					$modele = $modele . "culture=" . $type . "|"; break;
+					$modele .= "culture=" . $type . "|"; break;
 				case "Bioagresseur":
-					$modele = $modele . "bioagresseur=" . $type . "|"; break;
+					$modele .= "bioagresseur=" . $type . "|"; break;
 				case "Auxiliaire" :
-					$modele = $modele . "auxiliaire=" . $type . "|"; break;
+					$modele .= "auxiliaire=" . $type . "|"; break;
 				case "Matériel":
-					$modele = $modele . "materiel=" . $type . "|"; break;
+					$modele .= "materiel=" . $type . "|"; break;
 				case "Outil d'aide":
-					$modele = $modele . "outilAide=" . $type . "|"; break;
+					$modele .= "outilAide=" . $type . "|"; break;
 			}
 		}
 		$modele = trim($modele,"|");
-		$modele = $modele . "}}";
+		$modele .= "}}";
 		$page->addContent("\n" . $modele);
 	}
 }
@@ -469,11 +475,11 @@ function sanitizeFilename($str = '')
 function initRelations()
 {
 	$GLOBALS['relations'] = array();
-	$GLOBALS['relations']['defavorise'] = array('rel' => 'defavorise', 'label' => 'défavorise', 'reverse' => 'estDefavorisePar', 'reverse_label' => 'est défavorisé par','reverse_paragraphSentence'=>"\n=== La prolifération du ravageur est défavorisée par les pratiques suivantes : ===\n");
+	$GLOBALS['relations']['defavorise'] = array('rel' => 'defavorise', 'label' => 'défavorise', 'reverse' => 'estDefavorisePar', 'reverse_label' => 'est défavorisé par','reverse_paragraphSentence'=>"\n=== La prolifération de l'organisme est défavorisée par les pratiques suivantes : ===\n");
 	$GLOBALS['relations']['estAppliqueA'] = array('rel' => 'estAppliqueA', 'label' => 'est appliqué à', 'reverse' => 'estMobiliseDans', 'reverse_label' => 'est mobilisé dans', 'reverse_paragraphSentence'=>"\n=== Ce type de culture permet l'utilisation des techniques suivantes : ===\n");
 	$GLOBALS['relations']['estComplementaire'] = array('rel' => 'estComplementaire', 'label' => 'est complémentaire', 'reverse' => 'estComplementaire', 'reverse_label' => '');
 	$GLOBALS['relations']['estIncompatible'] = array('rel' => 'estIncompatible', 'label' => 'est incompatible', 'reverse' => 'estIncompatible', 'reverse_label' => '');
-	$GLOBALS['relations']['favorise'] = array('rel' => 'favorise', 'label' => 'favorise', 'reverse' => 'estFavorisePar', 'reverse_label' => 'est favorisé par', 'reverse_paragraphSentence'=>"\n=== La prolifération du ravageur est favorisé par les pratiques suivantes : ===\n",);
+	$GLOBALS['relations']['favorise'] = array('rel' => 'favorise', 'label' => 'favorise', 'reverse' => 'estFavorisePar', 'reverse_label' => 'est favorisé par', 'reverse_paragraphSentence'=>"\n=== La prolifération de l'organisme est favorisé par les pratiques suivantes : ===\n",);
 	$GLOBALS['relations']['informeSur'] = array('rel' => 'informeSur', 'label' => 'informe sur', 'reverse' => 'estRenseignePar', 'reverse_label' => 'est renseigné par', 'reverse_paragraphSentence'=>"\n=== Ce sujet est renseigné dans les guides suivants : ===\n");
 	$GLOBALS['relations']['regule'] = array('rel' => 'regule', 'label' => 'régule', 'reverse' => 'estRegulePar', 'reverse_label' => 'est régulé par', 'reverse_paragraphSentence'=>"\n=== La prolifération de ce bioagresseur est régulé par les auxilaires suivants : ===\n");
 	$GLOBALS['relations']['sAttaque'] = array('rel' => 'sAttaque', 'label' => "s'attaque à", 'reverse' => 'estAttaquePar', 'reverse_label' => 'est attaqué par', 'reverse_paragraphSentence'=>"\n=== Ce type de culture est attaqué par : ===\n");
@@ -509,6 +515,26 @@ utilise / est utilisé pour
 		$GLOBALS['reverse_labels'][$v['reverse_label']] = $k;
 		$GLOBALS['rel_labels'][$v['label']] = $k;
 	}	
+}
+
+function getWikiTextParsoid($node)
+{
+	$data = array("html" => '<html><body>' . $node->C14N() . '</body></html>');
+	$data_string = json_encode($data);                                                                                   
+																														 
+	$ch = curl_init('http://localhost:8080/localhost/v3/transform/html/to/wikitext/');                                                                      
+	
+	curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+	curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);                                                                  
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch, CURLOPT_HTTPHEADER, array(                                                                          
+		'Content-Type: application/json',                                                                                
+		'Content-Length: ' . strlen($data_string))                                                                       
+	);                                                                                                                   
+																														 
+	$result = curl_exec($ch);	
+
+	echo $result;
 }
 
 function getWikiText($node, $context = '', $bNewParagraph = true)
