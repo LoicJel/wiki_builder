@@ -62,11 +62,10 @@ EOT;
         file_put_contents($this->filename, '</mediawiki>', FILE_APPEND);
     }
 
-    public function addPage(string $pageName) : wikiPage
+    public function addPage(string $pageName, DateTime $datePage = null) : wikiPage
     {
-        $thePage = new wikiPage($this, $pageName);
+        $thePage = new wikiPage($this, $pageName,$datePage);
         $this->pages[] = $thePage;
-
         return $thePage;
     }
 
@@ -103,16 +102,16 @@ class wikiPage
     private $endContent = '';
     private $wiki = null;
     private $wikiPageName = '';
+    private $lastUpdate = '';
     private $bOpen = false;
     private $categories = array();
 
-    function __construct($wiki, $wikiPageName)
+    function __construct($wiki, $wikiPageName, DateTime $datePage = null)
     {
         $this->wiki = $wiki;
         $this->wikiPageName = $wikiPageName;
-
+        $this->lastUpdate = $datePage;
         $this->categories = array();
-
         $this->bOpen = true;
     }
 
@@ -120,6 +119,7 @@ class wikiPage
     {
         $this->close();
     }
+
 
     public function close()
     {
@@ -130,6 +130,7 @@ class wikiPage
 
         $this->content = $this->cleanUpContent();
         $this->wikiPageName = trim($this->wikiPageName);
+        $this->wikiPageName = $this->replaceForbidenPagenameCharacters($this->wikiPageName);
 
         if (empty($this->wikiPageName) || empty($this->content))
             return; // if the page is empty, don't bother adding it.
@@ -137,6 +138,16 @@ class wikiPage
         $this->wikiPageName = htmlspecialchars($this->wikiPageName, ENT_COMPAT, 'UTF-8');
         $this->content = htmlspecialchars($this->content, ENT_COMPAT, 'UTF-8');
 
+        /* Not possible for the moment, the date is always overwritten by the importation revision
+        if (!empty($this->lastUpdate))
+        {
+            $date = $this->lastUpdate->format(DateTimeInterface::RFC3339);
+            echo "Set the last update date to $date \n";
+            $timestamp = "<timestamp>$date</timestamp>";
+        }
+        else
+            $timestamp = '';
+        */
         $wikiPage = <<<EOT
 
   <page>
@@ -146,6 +157,7 @@ class wikiPage
     <revision>
       <model>wikitext</model>
       <format>text/x-wiki</format>
+
       <text xml:space="preserve" >
 EOT;
 
@@ -204,8 +216,8 @@ EOT;
       * * Remove unnecessary triple cariage returns
       * * Trim all lines (we don't allow spaces in front of lines)
       */
-     private function cleanUpContent()
-     {
+    private function cleanUpContent()
+    {
         $lines = explode("\n", $this->content);
         $wikiText = '';
         $emptylinesCount=0;
@@ -227,5 +239,54 @@ EOT;
         }
 
          return $wikiText;
-     }
-}
+    }
+
+    /**
+     * Makes sure that the pagename respects MediaWiki rules:
+     * @see https://en.wikipedia.org/wiki/Wikipedia:Page_name
+     */
+    public function replaceForbidenPagenameCharacters($pageName)
+    {
+        $origPageName = $pageName;
+
+        // A pagename cannot be . or ..; or begin with ./ or ../; or contain /./ or /../; or end with /. or /...
+        // A pagename cannot begin with a colon :.
+        $pageName = mb_eregi_replace('^\.+/', '', $pageName);
+        $pageName = mb_eregi_replace('^:+', '', $pageName);
+        $pageName = mb_eregi_replace('/\.+/', '', $pageName);
+        $pageName = mb_eregi_replace('/\.+$', '', $pageName);
+
+        /* A pagename cannot contain any of the following characters: # < > [ ] | { } _ (which all have special meanings in wiki syntax); 
+        the non-printable ASCII characters (coded 0–31 decimal); the delete character (coded 127 decimal); the Unicode replacement 
+        character U+FFFD �; or any HTML character codes, such as &amp;.[6] A pagename also cannot contain 3 or more continuous tildes ~~~, 
+        as these are used for marking signatures on Wikipedia. */
+        $pageName = mb_eregi_replace('>', 'supérieur à', $pageName);
+        $pageName = mb_eregi_replace('<', 'inférieur à', $pageName);
+        $pageName = mb_eregi_replace('_', ' ', $pageName);
+        $pageName = mb_eregi_replace('\[|{', '(', $pageName);
+        $pageName = mb_eregi_replace(']|}', ')', $pageName);
+        $pageName = mb_eregi_replace('\||#', '-', $pageName);
+        
+        // A pagename cannot exceed 255 bytes in length. Be aware that non-ASCII characters may take up to four bytes in UTF-8 encoding, so the total number of characters 
+        //that can fit into a title may be less than 255.
+        // ==> There's few chances that case happen.
+        $bytesLength = mb_strlen($pageName);
+        if ($bytesLength > 255)
+            echo "Title lenght to hight,: it's $bytesLength and must be lower than 255";
+        
+        // A pagename cannot begin with a lowercase letter in any alphabet except for the German letter ß.[5]
+        $ucase = mb_strtoupper($origPageName); 
+        if ($ucase == $origPageName)
+            $pageName = mb_ucfirst($pageName);
+
+        if ($origPageName != $pageName)
+            echo "Replaced page title special characters : $origPageName --> $pageName\n";
+        
+        return $pageName;
+    }
+    public function mb_ucfirst($str)
+    {
+        $fc = mb_strtoupper(mb_substr($str, 0, 1));
+        return $fc.mb_substr($str, 1);
+    }
+};

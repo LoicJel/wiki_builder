@@ -185,12 +185,12 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl, $e
 		if (preg_match('@([0-9]{2})/([0-9]{2})/([0-9]{4})@', $aPotentialDate->textContent, $matches))
 		{
 			$date = date_create_from_format('d/m/Y',$matches[0]);
-			$date = $date->format('Y-m-d');
-			echo $date . "\n"; 
+
 		}
 	}
 
-	$page = $GLOBALS['wikiBuilder']->addPage($pageName);
+	$page = $GLOBALS['wikiBuilder']->addPage($pageName,$date);
+
 
 	// Add the content
 	$elements = $xpath->query("//div[starts-with(@class, 'contenu-concept')]");
@@ -269,7 +269,7 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl, $e
 	$page->addContent("\n= Annexes =\n");
 
 	// Add the categories
-	$page->addCategory($conceptType);
+	$page->addCategory($conceptType,$date);
 	addCategoriesForPage($page, $xpath,$pageName);
 	$page->addContent("[[Category:Informations importé de GECO]]");
 	$page->close();
