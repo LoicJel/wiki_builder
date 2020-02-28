@@ -59,10 +59,22 @@ function emptyPage($xml_loaded)
 	else 
 	{
 		// This means the page's content is empty or has only one image or on little sentence saying the page isn't complete.
-		if (count($elements[0]->childNodes)<3)
-			return true;
+        if (count($elements[0]->childNodes)<3)
+        {
+           $test = getWikiTextParsoid($elements[0]);
+		   if(mb_stristr($test, 'crédit') or mb_stristr($test, 'photo'))
+		   	{
+ 			   	$test = strip_tags($test);
+			   	$test = trim($test);
+			   	$test = mb_ereg_replace('\(\[', '[', $test);
+				$test = mb_ereg_replace(']\)', ']', $test);
+				echo $test;
+				return $test . "\n";
+		  	}
+			else 
+				return true;
+        }
 	}
-
 	// In the case where there is more than 3 childNodes or the other tag is choosen, we search in the textContent if there is the sentence "fiche en cours de rédaction" or "A compléter".
  	$pageContent = $elements[0]->textContent;
 	if(stristr($pageContent,"fiche en cours de rédaction") or stristr($pageContent,"A compléter"))
@@ -105,6 +117,10 @@ function importGecoToWiki()
 		$doc->loadHTML($html);
 
 		echo "Loading page: $filename\n";
+
+		// if ($filename == 'C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-tamarixia_upis.html')
+		// 	echo 'oui';
+
 		// Call emptyPage to check if the page's content is empty.
 		$emptyPage = emptyPage($doc);
 			
@@ -176,24 +192,12 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl, $e
 		}
 	}
 
-
-	// Get the last date update :
-	$boldElements = $xpath->query("//b");
-	foreach ($boldElements as $aPotentialDate)
-	{
-		$matches = array();
-		if (preg_match('@([0-9]{2})/([0-9]{2})/([0-9]{4})@', $aPotentialDate->textContent, $matches))
-		{
-			$date = date_create_from_format('d/m/Y',$matches[0]);
-
-		}
-	}
-
+	$date = getDateLastUpdate($xpath);
 	$page = $GLOBALS['wikiBuilder']->addPage($pageName,$date);
-
 
 	// Add the content
 	$elements = $xpath->query("//div[starts-with(@class, 'contenu-concept')]");
+	$wikiTextParsoid = '';
 	$wikiText = '';
 	$imageName = '';
 	$imageCaption = '';
@@ -229,7 +233,7 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl, $e
 				case 'sommaire-concept-structure': // sommaire
 					break;
 				default:
-					$wikiText .= getWikiText($node) . "\n";
+					$wikiTextParsoid .= getWikiTextParsoid($node) . "\n";
 					break;
 			}
 		}
@@ -237,20 +241,11 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl, $e
 		break;
 	}
 
-	// Try to find the caption:
-	$lines = explode("\n", $wikiText);
-	$wikiText = '';
-
-	foreach ($lines as $line)
-	{
-		$matches = array();
-		if (preg_match('@.*:([^©]+©[^[]*)@', $line, $matches))
-			$imageCaption = ucfirst(trim($matches[1]));
-		else if (empty($imageCaption) && preg_match('@[^:]*[pP]hoto[^:]*:(.+)@', $line, $matches))
-			$imageCaption = ucfirst($line);
-		else if (trim($line) != 'A compléter...')
-			$wikiText .= trim($line) . "\n";
-	}
+	$wikiTextParsoidClean = cleanWikiTextParsoid($wikiTextParsoid);
+	if (isset($wikiTextParsoidClean['imageCaption']))
+		$imageCaption = $wikiTextParsoidClean['imageCaption'];
+	if (isset($wikiTextParsoidClean['wikiText']))
+		$wikiText = $wikiTextParsoidClean['wikiText'];
 
 	if (!empty($imageName))
 		resizeImage($imageName);
@@ -261,10 +256,9 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl, $e
 	$page->addContent(getTemplate($conceptType, array('Nom' => $name, 'Latin' => $latinName, 'Image' => $imageName, 'ImageCaption' => $imageCaption)). "\n");
 
 	// If the page is considered as empty, the content will not be parsed, only the relations and categories will be added to the wiki page.
-	if($emptyPage==false)
-		$page->addContent($wikiText);
-	else 
-		echo "Empty content";
+
+		
+
 
 	$page->addContent("\n= Annexes =\n");
 
@@ -533,102 +527,9 @@ function getWikiTextParsoid($node)
 	);                                                                                                                   
 																														 
 	$result = curl_exec($ch);	
-
-	echo $result;
+	return $result;
 }
 
-function getWikiText($node, $context = '', $bNewParagraph = true)
-{
-	if (is_a($node, 'DOMNodeList'))
-	{
-		$text = '';
-		foreach ($node as $childnode)
-		{
-			$text .= getWikiText($childnode, $context, $bNewParagraph);
-			if ($bNewParagraph != 'always')
-				$bNewParagraph = false;
-		}
-
-		return $text;
-	}
-
-	switch ($node->nodeName)
-	{
-		case '#text':
-		case '#cdata-section':
-			if ($bNewParagraph)
-			{
-				$cariageReturn = "\n";
-				$paragraph = $node->textContent;
-
-				if (preg_match("@^·[ ]+@", $paragraph))
-					$cariageReturn = "";
-				$paragraph = preg_replace("@^·[ ]+@", "* ", $paragraph);
-				return $paragraph . $cariageReturn;
-			}
-			else
-				return $node->textContent;
-
-		case 'li':
-			if ($context == 'ol')
-				return "# " .trim(getWikiText($node->childNodes, '', false)). "\n";
-			else
-				return "* " .trim(getWikiText($node->childNodes, '', false)) . "\n";
-
-		case 'h1': return "\n=" .getWikiText($node->childNodes, '', false) . "=\n";
-		case 'h2': return "\n==" .getWikiText($node->childNodes, '', false) . "==\n";
-		case 'h3': return "\n===" .getWikiText($node->childNodes, '', false) . "===\n";
-
-		case 'b':
-		case 'strong':
-			return "'''" .getWikiText($node->childNodes, '', false) . "'''";
-
-		case 'br':
-			return "\n\n";
-		
-		// This case manages the particular case where the text is considered as paragraph title, but without the h4 tag. It's identified by the color style. 
-		case 'span'	:
-			// Select the attribute's node
-			$style = $node->getAttribute("style");
-			// Test if it corresponds to the title's color: 
-			if (strpos($style, "#1AA0E0") !== false){
-				return "\n====" .getwikiText($node->childNodes,'',false) . "====\n";
-			}
-			//if it's false, just deal with the text as usual. 
-			else 
-				return getWikiText($node->childNodes,'',false);
-
-		case 'script':
-		case 'style':
-			return "";
-
-		case 'ol':
-		case 'ul':
-			return getWikiText($node->childNodes, $node->nodeName, 'always');
-
-		case 'p':
-		case 'div':
-			return getWikiText($node->childNodes);
-
-		case 'a':
-			$url = getFullUrl($node->getAttribute('href'));
-
-			if (isset($GLOBALS['links'][$url]))
-				return "[[".$GLOBALS['links'][$url]."|". getWikiText($node->childNodes, '', false)."]]";
-			else
-				return "[$url ". getWikiText($node->childNodes, '', false)."]";
-
-		default:
-			if (!isset($GLOBALS['unmanaged_tags'][$node->nodeName]))
-				$GLOBALS['unmanaged_tags'][$node->nodeName] = 1;
-			else
-				$GLOBALS['unmanaged_tags'][$node->nodeName] ++;
-
-			return getWikiText($node->childNodes, '', false);
-	}
-
-	return '------';
-}
 
 function getFullUrl($url)
 {
@@ -730,6 +631,50 @@ function getImages($node)
 
 	return array();
 }
+
+function findCaption($lines)
+{
+	$wikiText='';
+	$results = array();
+	foreach ($lines as $line)
+	{
+		//echo $line . "\n";
+		$matches = array();
+		if (preg_match('@.*:([^©]+©[^[]*)@', $line, $matches))
+			$results['imageCaption'] = ucfirst(trim($matches[1]));
+		else if (empty($imageCaption) && preg_match('@[^:]*[pP]hoto[^:]*:(.+)@', $line, $matches))
+		$results['imageCaption'] = ucfirst($line);
+		else if (trim($line) != 'A compléter...')
+		{
+			$line = trim($line);
+			if (preg_match("@^'''@",$line) && preg_match("@'''$@", $line))
+			{
+				$line = preg_replace("@^'+@", '====', $line);
+				$line = preg_replace("@'+$@", '====', $line);
+			}
+			if (preg_match("@^=+ ''''@",$line))
+			{
+				$line = preg_replace("@^=+ ''''@", '==', $line);
+			}
+			$wikiText .= $line . "\n";
+		}
+	}
+	$results['wikiText'] = $wikiText;
+	return $results;
+}
+function getDateLastUpdate($xpath)
+{
+	// Get the last date update :
+	$boldElements = $xpath->query("//b");
+	foreach ($boldElements as $aPotentialDate)
+	{
+		$matches = array();
+		if (preg_match('@([0-9]{2})/([0-9]{2})/([0-9]{4})@', $aPotentialDate->textContent, $matches))
+			$date = date_create_from_format('d/m/Y',$matches[0]);
+	}
+	return $date;
+}
+
 // This function reseize the images from Geco and saves them into the "out" folder. We used the importImages script from mediawiki to add them on the website. 
 function resizeImage(&$imageName)
 {
@@ -836,3 +781,29 @@ function resizeImage(&$imageName)
 		$imageName = '';
 	}
 }
+
+function cleanWikiTextParsoid($text)
+{
+	
+	$text = preg_replace('@<span style="color:#1AA0E0;"><strong>@',"===", $text);
+	$text = preg_replace('@</strong></span>@',"===", $text);
+	$text = preg_replace('@<strong>@',"'''", $text);
+	$text = preg_replace('@</strong>@',"'''", $text);
+	$text = strip_tags($text);
+	$text = preg_replace('@function proposerEnrichissement.*;$@','', $text);
+	$text = preg_replace('@[fF]iche en cours de rédaction[,\s\.]*@','', $text);
+	$text = preg_replace('@pour plus d\'information@',"\n Pour plus d\'information", $text);
+	$text = preg_replace('@-*@', '', $text);
+	$text = trim($text);
+	$lines = explode("\n",$text);
+	//echo $text;
+	$caption = findCaption($lines);
+	$results = array();
+
+	if (isset($caption['imageCaption']))
+		$results['imageCaption'] = $caption['imageCaption'];
+	if (isset($caption['wikiText']))
+		$results['wikiText'] = $caption['wikiText'];
+	return $results;
+
+}	
