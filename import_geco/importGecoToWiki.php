@@ -903,8 +903,10 @@ function imageInText($imagesIntegrated, $pageName)
 		if ($img !== false)
 		{
 			$pageName = str_replace(' ', '_', $pageName);
+			//Create an unique name for save the image
+			$md5Name = md5("$pageName-$i");
 			// Save the image
-			imagepng($img, "C:\Neayi\wiki_builder\out\images_integrees/$pageName-$i.png");
+			imagepng($img, "C:\Neayi\wiki_builder\out\images_integrees\\$md5Name.png");
 			// Release image memory 
 			imagedestroy($img);
 			// Set the new img attribute
