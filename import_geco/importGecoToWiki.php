@@ -910,7 +910,7 @@ function imageInText($imagesIntegrated, $pageName)
 			// Release image memory 
 			imagedestroy($img);
 			// Set the new img attribute
-			$image->setAttribute('src', "$pageName$i.png");
+			$image->setAttribute('src', "$md5Name.png");
 		}
 		else 
 			echo 'An error occured';
