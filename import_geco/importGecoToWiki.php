@@ -1,4 +1,6 @@
 <?php
+
+########################### Main ###########################
 $GLOBALS['debug'] = false;
 
 include_once(__DIR__ . '/../includes/wikibuilder.php');
@@ -45,6 +47,7 @@ if (!empty($GLOBALS['unmanaged_tags']))
 	print_r($GLOBALS['unmanaged_tags']);
 
 
+########################### Functions ###########################
 function importGecoToWiki()
 {
 	$nbMaxTechniques = 50;
@@ -81,9 +84,9 @@ function importGecoToWiki()
 		echo "Loading page: $filename\n";
 
 		//Debuging
-		// if ($filename == 'C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-labourer_-28et_repartir_les_labours_dans_la_rotation-29.html')
-		// 	echo 'oui';
-			
+		if ($filename != 'C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-realiser_des_faux-semis_pendant_l_interculture.html')
+			continue;
+
 		$conceptType = '';
 		$xpath = new DOMXpath($doc);
 		$elements = $xpath->query("//div[@class='type-concept-title']/i");
@@ -164,6 +167,7 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl)
 
 	foreach ($elements as $contentDiv)
 	{
+		preprocessing($xpath, $contentDiv,$pageName);
 		foreach ($contentDiv->childNodes as $node)
 		{
 			$nodeName = strtolower($node->nodeName);
@@ -178,7 +182,6 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl)
 
 			$class = $node->getAttribute('class');
 			$id = $node->getAttribute('id');
-
 			if ($id == 'titreContributeurs')
 				break;
 
@@ -188,30 +191,18 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl)
 					$images = getImages($node);
 					$imageName = reset($images);
 					break;
+
 				case 'cache': // Element caché
 					break;
+
 				case 'sommaire-concept-structure': // sommaire
 					break;
+				
 				default:
-					// Remove smiley tags
-					$smileys = $xpath->query("i[starts-with(@class, 'smiley')]",$node);
-					foreach ($smileys as $smiley)
-					{
-						replaceSmiley($smiley);
-					}
-					// Remove tables tags
-					$tables = $node->getElementsByTagName('table');
-					$nb = $tables->length;
-					for ($i = $nb - 1; $i >= 0; $i--)
-					{
-						$table = $tables->item($i);
-						removeTable($table);
-					}
 					$wikiTextParsoidBrut .= getWikiTextParsoid($node) . "\n";
 					break;
 			}
 		}
-
 		break;
 	}
 	$wikiTextParsoidClean = cleanWikiTextParsoid($wikiTextParsoidBrut);
@@ -219,7 +210,6 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl)
 		$imageCaption = $wikiTextParsoidClean['imageCaption'];
 	if (isset($wikiTextParsoidClean['wikiText']))
 		$wikiText = $wikiTextParsoidClean['wikiText'];
-	echo $imageCaption;
 	if (!empty($imageName))
 		resizeImage($imageName);
 
@@ -228,10 +218,10 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl)
 
 	$page->addContent(getTemplate($conceptType, array('Nom' => $name, 'Latin' => $latinName, 'Image' => $imageName, 'ImageCaption' => $imageCaption)). "\n");
 
-	// If the page is considered as empty, the content will not be parsed, only the relations and categories will be added to the wiki page.
+	// Add the table of content at a specific place
+	$page->addContent("__TOC__ \n");
 
 	$page->addContent($wikiText);
-
 
 	$page->addContent("\n= Annexes =\n");
 
@@ -256,6 +246,9 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl)
 	}
 }
 
+/**
+ * This function create all the category and annexes for pages 
+ */
 function addCategoriesForPage($page, $xpath,$pageName)
 {
 	$elements = $xpath->query("//div[@class='type-concept-title']/i");
@@ -304,6 +297,12 @@ function addCategoriesForPage($page, $xpath,$pageName)
 				$relurl = getFullUrl($l->getAttribute('href'));
 				if (isset($GLOBALS['links'][$relurl]))
 				{
+					// Replca < and > chars in links
+					if(preg_match('@.*(.*[<>].*)$@',$GLOBALS['links'][$relurl]))
+					{
+						$GLOBALS['links'][$relurl] = str_ireplace('<', 'inférieur à', $GLOBALS['links'][$relurl]);
+						$GLOBALS['links'][$relurl] = str_ireplace('>', 'supérieur à', $GLOBALS['links'][$relurl]);
+					}
 					if($revrel=='')
 					{
 						switch ($rel)
@@ -408,37 +407,9 @@ function addCategoriesForPage($page, $xpath,$pageName)
 	}
 }
 
-
-
-function getCanonicalURL($url)
-{
-	// Start from http://geco.ecophytopic.fr/web/guest/concept/-/concept/voir/http%253A%252F%252Fwww%252Egeco%252Eecophytopic%252Efr%252Fgeco%252FConcept%252FPratiquer_L_Enherbement_Total_En_Vigne
-
-	// First remove the http://geco.ecophytopic.fr/web/guest/concept/-/concept/voir/ part
-	$url = preg_replace('@http[s]*://geco.ecophytopic.fr/web/guest/concept/-/concept/voir/@', '', $url);
-	$url = urldecode(urldecode($url));
-
-	$url = str_replace('http:', 'https:', $url);
-	$url = str_replace('www.geco', 'geco', $url);
-
-	return $url;
-}
-
-function sanitizeFilename($str = '')
-{
-    $str = strip_tags($str);
-    $str = preg_replace('/[\r\n\t ]+/', ' ', $str);
-    $str = preg_replace('/[\"\*\/\:\<\>\?\'\|]+/', ' ', $str);
-    $str = strtolower($str);
-    $str = html_entity_decode( $str, ENT_QUOTES, "utf-8" );
-    $str = htmlentities($str, ENT_QUOTES, "utf-8");
-    $str = preg_replace("/(&)([a-z])([a-z]+;)/i", '$2', $str);
-    $str = str_replace(' ', '-', $str);
-    $str = rawurlencode($str);
-    $str = str_replace('%', '-', $str);
-    return $str;
-}
-
+/**
+ * Set all the relations found in Geco
+ */
 function initRelations()
 {
 	$GLOBALS['relations'] = array();
@@ -471,7 +442,6 @@ contribue à / est assuré par
 régule / est régulé par
 informe sur / est renseigné par
 s'attaque à / est attaqué par
-
 utilise / est utilisé pour
 */
 
@@ -482,22 +452,6 @@ utilise / est utilisé pour
 		$GLOBALS['reverse_labels'][$v['reverse_label']] = $k;
 		$GLOBALS['rel_labels'][$v['label']] = $k;
 	}	
-}
-
-
-function getFullUrl($url)
-{
-	$url = str_replace('http://geco.ecophytopic.fr/web/guest', '', $url);
-	$url = str_replace('http://geco.ecophytopic.fr', '', $url);
-
-	if (strpos($url, '/concept/-/concept') === 0)
-		return 'http://geco.ecophytopic.fr/web/guest' . $url;
-	else if (strpos($url, '/web/guest') === 0)
-		return 'http://geco.ecophytopic.fr' . $url;
-	else if (strpos($url, '/') === 0)
-		return 'http://geco.ecophytopic.fr' . $url;
-
-	return $url;
 }
 
 /**
@@ -522,6 +476,9 @@ function addRedirect($fromPage, $toPage)
 	echo "Adding redirect: $toPage <-- $fromPage\n";
 }
 
+/**
+ * Uppercase on the first letter of a string
+ */
 function mb_ucfirst($str)
 {
     $fc = mb_strtoupper(mb_substr($str, 0, 1));
@@ -540,7 +497,6 @@ function getTemplate($conceptType, $fields)
 	|Image=image_carpocapse_des_pommes_et_des_poires__Cydia_pomonella_.jpg
 	|ImageCaption=Adulte du carpocapse des pommes et des poires - © INRA}}
 	*/
-
 	$lines = array();
 	foreach ($fields as $k => $v)
 	{
@@ -551,6 +507,70 @@ function getTemplate($conceptType, $fields)
 	return '{{' . $conceptType . "\n" . implode("\n", $lines) . '}}';
 }
 
+/**
+ * This function parse the date's last update article in Geco
+ */
+function getDateLastUpdate($xpath)
+{
+	// Get the last date update :
+	$boldElements = $xpath->query("//b");
+	foreach ($boldElements as $aPotentialDate)
+	{
+		$matches = array();
+		if (preg_match('@([0-9]{2})/([0-9]{2})/([0-9]{4})@', $aPotentialDate->textContent, $matches))
+			$date = date_create_from_format('d/m/Y',$matches[0]);
+	}
+	return $date;
+}
+
+
+#### Url processing functions ####
+function getFullUrl($url)
+{
+	$url = str_replace('http://geco.ecophytopic.fr/web/guest', '', $url);
+	$url = str_replace('http://geco.ecophytopic.fr', '', $url);
+
+	if (strpos($url, '/concept/-/concept') === 0)
+		return 'http://geco.ecophytopic.fr/web/guest' . $url;
+	else if (strpos($url, '/web/guest') === 0)
+		return 'http://geco.ecophytopic.fr' . $url;
+	else if (strpos($url, '/') === 0)
+		return 'http://geco.ecophytopic.fr' . $url;
+
+	return $url;
+}
+
+function getCanonicalURL($url)
+{
+	// Start from http://geco.ecophytopic.fr/web/guest/concept/-/concept/voir/http%253A%252F%252Fwww%252Egeco%252Eecophytopic%252Efr%252Fgeco%252FConcept%252FPratiquer_L_Enherbement_Total_En_Vigne
+
+	// First remove the http://geco.ecophytopic.fr/web/guest/concept/-/concept/voir/ part
+	$url = preg_replace('@http[s]*://geco.ecophytopic.fr/web/guest/concept/-/concept/voir/@', '', $url);
+	$url = urldecode(urldecode($url));
+
+	$url = str_replace('http:', 'https:', $url);
+	$url = str_replace('www.geco', 'geco', $url);
+
+	return $url;
+}
+
+function sanitizeFilename($str = '')
+{
+    $str = strip_tags($str);
+    $str = preg_replace('/[\r\n\t ]+/', ' ', $str);
+    $str = preg_replace('/[\"\*\/\:\<\>\?\'\|]+/', ' ', $str);
+    $str = strtolower($str);
+    $str = html_entity_decode( $str, ENT_QUOTES, "utf-8" );
+    $str = htmlentities($str, ENT_QUOTES, "utf-8");
+    $str = preg_replace("/(&)([a-z])([a-z]+;)/i", '$2', $str);
+    $str = str_replace(' ', '-', $str);
+    $str = rawurlencode($str);
+    $str = str_replace('%', '-', $str);
+    return $str;
+}
+
+
+#### Images processing functions ####
 /**
  * Returns an array of filenames for all the img tags found within the node
  */
@@ -586,21 +606,9 @@ function getImages($node)
 	return array();
 }
 
-
-function getDateLastUpdate($xpath)
-{
-	// Get the last date update :
-	$boldElements = $xpath->query("//b");
-	foreach ($boldElements as $aPotentialDate)
-	{
-		$matches = array();
-		if (preg_match('@([0-9]{2})/([0-9]{2})/([0-9]{4})@', $aPotentialDate->textContent, $matches))
-			$date = date_create_from_format('d/m/Y',$matches[0]);
-	}
-	return $date;
-}
-
-// This function reseize the images from Geco and saves them into the "out" folder. We used the importImages script from mediawiki to add them on the website. 
+/**
+ * This function reseize the images from Geco and saves them into the "out" folder. We used the importImages script from mediawiki to add them on the website. 
+*/ 
 function resizeImage(&$imageName)
 {
 	$srcImageFilePath = __DIR__ . '/geco_index_files/'. $imageName;
@@ -707,6 +715,123 @@ function resizeImage(&$imageName)
 	}
 }
 
+
+#### Parsoid processing functions ####
+/**
+ * Pre-trasnform the page's content into wikitext. 
+ */
+function getWikiTextParsoid($node)
+{
+	$data = array("html" => '<html><body>' . $node->C14N() . '</body></html>');
+	$data_string = json_encode($data);                                                                                   
+																														 
+	$ch = curl_init('http://localhost:8080/localhost/v3/transform/html/to/wikitext/');                                                                      
+	
+	curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+	curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);                                                                  
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch, CURLOPT_HTTPHEADER, array(                                                                          
+		'Content-Type: application/json',                                                                                
+		'Content-Length: ' . strlen($data_string))                                                                       
+	);                                                                                                                   																										 
+	$result = curl_exec($ch);
+	return $result;
+}
+
+/**
+ * Clean the text from parsoid parsing.
+ * Remove tags, 
+ */
+function cleanWikiTextParsoid($text)
+{
+	$text = preg_replace('@<span style="color:#1AA0E0;"><strong>@', "===", $text);
+	$text = preg_replace('@</strong></span>@', "===", $text);
+	$text = preg_replace('@<strong>@', "'''", $text);
+	$text = preg_replace('@</strong>@', "'''", $text);
+	$text = strip_tags($text, '<br>');
+	$text = preg_replace('@^.*@', '', $text);
+	$text = preg_replace('@function proposerEnrichissement.*;$@', '', $text);
+	$text = preg_replace('@[fF]iche en cours de rédaction[,\s\.]*@', '', $text);
+	$text = preg_replace('@pour plus d\'information@', "\n Pour plus d\'information", $text);
+	$text = preg_replace('@-*@', '', $text);
+	$text = preg_replace('@•@', '*', $text);
+	$text = preg_replace("@== ''''@", '==', $text);
+	$text = preg_replace('@[nN]ull@', '', $text);
+	$text = preg_replace('@[dD]ate.*:.*[0-9]@', '', $text);
+	$text = str_replace('Contributeurs initiaux :', '', $text);
+	$text = trim($text);
+	$lines = explode("\n",$text);
+	$caption = findCaption($lines);
+	return $caption;	
+}
+
+/**
+ * Try to find if there's caption for images in the wikitext
+ */
+function findCaption($lines)
+{
+	$wikiText='';
+	$results = array();
+	foreach ($lines as $line)
+	{
+		//echo $line . "\n";
+		$matches = array();
+		if (preg_match('@.*:([^©]+©[^[]*)@', $line, $matches))
+			$results['imageCaption'] = ucfirst(trim($matches[1]));
+		else if (empty($imageCaption) && preg_match('@[^:]*[pP]hoto[^:]*:(.+)@', $line, $matches))
+			$results['imageCaption'] = ucfirst(trim($matches[1]));
+		else if (empty($imageCaption) && preg_match('@[iI]mage en en-?tête@',  $line))
+		{
+			preg_replace('@[iI]mage en en-?tête;@', '',  $line);
+			$results['imageCaption'] = ucfirst(trim($line,'()'));
+		}
+		else if (trim($line) != 'A compléter...')
+		{
+			$line = trim($line, "\t\n\r\0\x0B\xC2\xA0");
+			if (preg_match("@^'''@",$line) && preg_match("@'''$@", $line))
+			{
+				$line = preg_replace("@^'+@", '====', $line);
+				$line = preg_replace("@'+$@", '====', $line);
+			}
+			if (preg_match("@^=+ ''''@",$line))
+			{
+				$line = preg_replace("@^=+ ''''@", '==', $line);
+			}
+			$wikiText .= trim($line, "\t\n\r\0\x0B\xC2\xA0") . "\n";
+		}
+	}
+	$results['wikiText'] = $wikiText;
+	return $results;
+}
+
+
+#### XML preprocessing functions ####
+/**
+ * Call several functions to replace or delete problematics nodes in the xml.
+ */
+function preprocessing($xpath, $contentDiv, $pageName)
+{
+	// Remove smiley tags
+	$smileys = $xpath->query("i[starts-with(@class, 'smiley')]",$contentDiv);
+	foreach ($smileys as $smiley)
+	{
+		replaceSmiley($smiley);
+	}
+
+	// Remove tables tags
+	$tables = $contentDiv->getElementsByTagName('table');
+	$nb = $tables->length;
+	for ($i = $nb - 1; $i >= 0; $i--)
+	{
+		$table = $tables->item($i);
+		removeTable($table);
+	}
+
+	// Change the image url which are integrated as string in the wikitext.
+	$imagesIntegrated = $xpath->query("//img[starts-with(@src, 'data')]", $contentDiv);
+	imageIntext($imagesIntegrated, $pageName);
+}
+
 /**
  * Remove tables from the xml document
  */
@@ -724,7 +849,6 @@ function replaceSmiley($smiley)
 	$parent = $smiley->parentNode;
 	$smileyType = $smiley->getAttribute('class');
 	$smileyImage = "";
-
 	switch ($smileyType)
 	{
 		// Smiley with down face
@@ -752,6 +876,7 @@ function replaceSmiley($smiley)
 		$parent->removeChild($smiley);
 	else
 	{
+		// Replace the <i> node by and <img> node
 		$newNode = new DOMElement('img');
 		$parent->replaceChild($newNode,$smiley);
 		$newNode->setAttribute('src', $smileyImage);
@@ -759,88 +884,36 @@ function replaceSmiley($smiley)
 }
 
 /**
- * Pre-trasnform the page's content into wikitext. 
+ * Change all the <img> node in the xml, because of parsoid interpretation. 
+ * This function make the nodes clearer.
  */
-function getWikiTextParsoid($node)
+function imageInText($imagesIntegrated, $pageName)
 {
-	$data = array("html" => '<html><body>' . $node->C14N() . '</body></html>');
-	$data_string = json_encode($data);                                                                                   
-																														 
-	$ch = curl_init('http://localhost:8080/localhost/v3/transform/html/to/wikitext/');                                                                      
-	
-	curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
-	curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);                                                                  
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                                                                      
-	curl_setopt($ch, CURLOPT_HTTPHEADER, array(                                                                          
-		'Content-Type: application/json',                                                                                
-		'Content-Length: ' . strlen($data_string))                                                                       
-	);                                                                                                                   
-																														 
-	$result = curl_exec($ch);	
-	return $result;
-}
-
-/**
- * Clean the text from parsoid parsing.
- * Remove tags, 
- */
-function cleanWikiTextParsoid($text)
-{
-
-	$text = preg_replace('@<span style="color:#1AA0E0;"><strong>@', "===", $text);
-	$text = preg_replace('@</strong></span>@', "===", $text);
-	$text = preg_replace('@<strong>@', "'''", $text);
-	$text = preg_replace('@</strong>@', "'''", $text);
-	$text = strip_tags($text, '<br>');
-	$text = preg_replace('@^.*@', '', $text);
-	$text = preg_replace('@function proposerEnrichissement.*;$@', '', $text);
-	$text = preg_replace('@[fF]iche en cours de rédaction[,\s\.]*@', '', $text);
-	$text = preg_replace('@pour plus d\'information@', "\n Pour plus d\'information", $text);
-	$text = preg_replace('@-*@', '', $text);
-	$text = preg_replace('@•@', '*', $text);
-	$text = preg_replace("@== ''''@", '==', $text);
-	$text = preg_replace('@[nN]ull@', '', $text);
-	$text = preg_replace('@[dD]ate.*:.*[0-9]@', '', $text);
-	$text = str_replace('Contributeurs initiaux :', '', $text);
-	$text = trim($text);
-	$lines = explode("\n",$text);
-	$caption = findCaption($lines);
-	return $caption;	
-
-}
-
-/**
- * Try to find if there's caption for images in the wikitext
- */
-function findCaption($lines)
-{
-	$wikiText='';
-	$results = array();
-	foreach ($lines as $line)
+	// Images doesn't have alternative display or title, i choosen to give then a number associted with the pageName to save it.
+	$i = 0;
+	foreach($imagesIntegrated as $image)
 	{
-		//echo $line . "\n";
-		$matches = array();
-		if (preg_match('@.*:([^©]+©[^[]*)@', $line, $matches))
-			$results['imageCaption'] = ucfirst(trim($matches[1]));
-		else if (empty($imageCaption) && preg_match('@[^:]*[pP]hoto[^:]*:(.+)@', $line, $matches))
-			$results['imageCaption'] = ucfirst(trim($matches[1]));
-		else if (empty($imageCaption) && preg_match('@image en en-?tête@',  $line))
-			$results['imageCaption'] = ucfirst(trim($line,'()'));
-		else if (trim($line) != 'A compléter...')
+		// Get the base64 code
+		$image_string = $image->getAttribute('src');
+		// Clean the begining
+		$image_string = str_replace("data:image/png;base64,", '', $image_string);
+		$image_string = base64_decode($image_string);
+		$img = imagecreatefromstring($image_string);
+		
+		if ($img !== false)
 		{
-			$line = trim($line, "\t\n\r\0\x0B\xC2\xA0");
-			if (preg_match("@^'''@",$line) && preg_match("@'''$@", $line))
-			{
-				$line = preg_replace("@^'+@", '====', $line);
-				$line = preg_replace("@'+$@", '====', $line);
-			}
-			if (preg_match("@^=+ ''''@",$line))
-			{
-				$line = preg_replace("@^=+ ''''@", '==', $line);
-			}
-			$wikiText .= trim($line, "\t\n\r\0\x0B\xC2\xA0") . "\n";
+			$pageName = str_replace(' ', '_', $pageName);
+			// Save the image
+			imagepng($img, "C:\Neayi\wiki_builder\out\images_integrees/$pageName-$i.png");
+			// Release image memory 
+			imagedestroy($img);
+			// Set the new img attribute
+			$image->setAttribute('src', "$pageName$i.png");
 		}
+		else 
+			echo 'An error occured';
+		$i++;
 	}
-	$results['wikiText'] = $wikiText;
-	return $results;
 }
+
+?>
