@@ -84,8 +84,8 @@ function importGecoToWiki()
 		echo "Loading page: $filename\n";
 
 		//Debuging
-		if ($filename != 'C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-realiser_des_faux-semis_pendant_l_interculture.html')
-			continue;
+		// if ($filename != 'C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-realiser_des_faux-semis_pendant_l_interculture.html')
+		// 	continue;
 
 		$conceptType = '';
 		$xpath = new DOMXpath($doc);
@@ -390,15 +390,24 @@ function addCategoriesForPage($page, $xpath,$pageName)
 			switch ($type)
 			{
 				case "Culture":
-					$modele .= "culture=" . $type . "|"; break;
+					$modele .= "culture=" . $type . "|"; 
+					break;
+
 				case "Bioagresseur":
-					$modele .= "bioagresseur=" . $type . "|"; break;
+					$modele .= "bioagresseur=" . $type . "|"; 
+					break;
+
 				case "Auxiliaire" :
-					$modele .= "auxiliaire=" . $type . "|"; break;
+					$modele .= "auxiliaire=" . $type . "|"; 
+					break;
+
 				case "Matériel":
-					$modele .= "materiel=" . $type . "|"; break;
+					$modele .= "materiel=" . $type . "|"; 
+					break;
+
 				case "Outil d'aide":
-					$modele .= "outilAide=" . $type . "|"; break;
+					$modele .= "outilAide=" . $type . "|"; 
+					break;	
 			}
 		}
 		$modele = trim($modele,"|");
@@ -615,6 +624,7 @@ function resizeImage(&$imageName)
 
 	$path_parts = pathinfo($srcImageFilePath);
 	$srcExt = $path_parts['extension'];
+ 
 
 	$imageName = str_replace('.' . $srcExt, '.jpg', $imageName);
 
@@ -740,7 +750,6 @@ function getWikiTextParsoid($node)
 
 /**
  * Clean the text from parsoid parsing.
- * Remove tags, 
  */
 function cleanWikiTextParsoid($text)
 {
@@ -761,8 +770,7 @@ function cleanWikiTextParsoid($text)
 	$text = str_replace('Contributeurs initiaux :', '', $text);
 	$text = trim($text);
 	$lines = explode("\n",$text);
-	$caption = findCaption($lines);
-	return $caption;	
+	return findCaption($lines);
 }
 
 /**
@@ -899,21 +907,23 @@ function imageInText($imagesIntegrated, $pageName)
 		$image_string = str_replace("data:image/png;base64,", '', $image_string);
 		$image_string = base64_decode($image_string);
 		$img = imagecreatefromstring($image_string);
-		
+
 		if ($img !== false)
 		{
 			$pageName = str_replace(' ', '_', $pageName);
 			//Create an unique name for save the image
-			$md5Name = md5("$pageName-$i");
+			$md5Name = md5("$pageName-$i").".png";
 			// Save the image
-			imagepng($img, "C:\Neayi\wiki_builder\out\images_integrees\\$md5Name.png");
+			imagepng($img, "C:\Neayi\wiki_builder\import_geco\geco_index_files\\$md5Name");
 			// Release image memory 
 			imagedestroy($img);
+			// Resize the image
+			resizeImage($md5Name);
 			// Set the new img attribute
-			$image->setAttribute('src', "$md5Name.png");
+			$image->setAttribute('src', "$md5Name");
 		}
 		else 
-			echo 'An error occured';
+			echo 'An error occured \n';
 		$i++;
 	}
 }
