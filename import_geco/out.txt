@@ -28,16 +28,54 @@ exempleMiseEnOeuvre Couvert de plantes de services entre deux cycles de canne à
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-verger_de_clementines_conduits_en_bas_intrants.html
 Extracting page: Verger de clémentines conduit en bas intrants
 exempleMiseEnOeuvre Verger de clémentines conduit en bas intrants
+internal link not found : http://geco.ecophytopic.fr/concept/-/concept/voir/http%253A%252F%252Fwww%252Egeco%252Eecophytopic%252Efr%252Fgeco%252FConcept%252FAmenager_Des_Habitats_Pour_Favoriser_Les_Auxiliaires_En_Verger 
+internal link not found : http://geco.ecophytopic.fr/concept/-/concept/voir/http%253A%252F%252Fwww%252Egeco%252Eecophytopic%252Efr%252Fgeco%252FConcept%252FLacher_D_Auxiliaires_En_Verger 
+internal link not found : http://geco.ecophytopic.fr/concept/-/concept/voir/http%253A%252F%252Fwww%252Egeco%252Eecophytopic%252Efr%252Fgeco%252FConcept%252FPratiquer_Le_Piegeage_Massif_Pour_Limiter_Les_Populations_De_Ravageurs 
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-production_de_tomate_hors_sol_en_serre_verre_chauffee_conduite_en_pbi_chez_un_producteur_breton.html
 Extracting page: Production de tomate hors sol conduite en PBI chez un producteur Breton
 exempleMiseEnOeuvre Production de tomate hors sol conduite en PBI chez un producteur Breton
+internal link not found : http://geco.ecophytopic.fr/web/guest/concept?p_auth=rqmpBhJ8&p_p_id=concept_WAR_gecofrontportlet&p_p_lifecycle=1&p_p_state=normal&p_p_mode=edit&p_p_col_id=column-1&p_p_col_pos=2&p_p_col_count=6&_concept_WAR_gecofrontportlet_javax.portlet.action=enregistrerStructure 
+internal link not found : http://geco.ecophytopic.fr/web/guest/concept?p_auth=49ApPVDG&p_p_id=concept_WAR_gecofrontportlet&p_p_lifecycle=1&p_p_state=normal&p_p_mode=edit&p_p_col_id=column-1&p_p_col_pos=2&p_p_col_count=6&_concept_WAR_gecofrontportlet_javax.portlet.action=enregistrerStructure 
+Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-puceron_vert_du_fraisier.html
+Extracting page: Puceron vert du fraisier
+bioagresseur Puceron vert du fraisier
+Adding redirect: Puceron vert du fraisier <-- Aphis forbesi
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-systeme_faibles_intrant_-_sefra_-ecopeche.html
 Extracting page: Expérimentation d'un verger de nectarines économes en pesticides
 exempleMiseEnOeuvre Expérimentation d'un verger de nectarines économes en pesticides
+Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-thrips_californien.html
+Extracting page: Thrips californien
+bioagresseur Thrips californien
+Adding redirect: Thrips californien <-- thrips des petits fruits
+Adding redirect: Thrips californien <-- Frankliniella occidentalis
+Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-tamarixia_upis.html
+Extracting page: Tamarixia upis
+auxiliaire Tamarixia upis
+Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-psylle_de_l_eleagnus.html
+Extracting page: Psylle de l'eleagnus
+bioagresseur Psylle de l'eleagnus
+Adding redirect: Psylle de l'eleagnus <-- Cacopsylla fulguralis
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-elaeagnus.html
+Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-laurier_tin.html
+Extracting page: Laurier tin
+culture Laurier tin
+Adding redirect: Laurier tin <-- viorne tin
+Adding redirect: Laurier tin <-- laurentin
+Adding redirect: Laurier tin <-- Viburnum tinus
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-verger_de_pommiers_conventionnel_avec_fongicides_et_insecticides_biologiques_combines_a_du_desherbage_mecanique.html
 Extracting page: Verger de pommiers conventionnel avec fongicides et insecticides biologiques combinés à du désherbage mécanique
 exempleMiseEnOeuvre Verger de pommiers conventionnel avec fongicides et insecticides biologiques combinés à du désherbage mécanique
+Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-phytophthora.html
+Extracting page: Phytophthora
+bioagresseur Phytophthora
+Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-entomosporiose.html
+Extracting page: Entomosporiose
+bioagresseur Entomosporiose
+Adding redirect: Entomosporiose <-- Entomosporiose maculatum
+Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-photinia.html
+Extracting page: Photinia
+culture Photinia
+Adding redirect: Photinia <-- Photinia x fraseri
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-conception_d_un_verger_de_pommier_durable_a_bas_niveau_drintrants_en_combinant_de_nombreux_leviers.html
 Extracting page: Combinaison de leviers permettant une conduite de verger de pommiers durable à très bas niveaux d’intrants.
 exempleMiseEnOeuvre Combinaison de leviers permettant une conduite de verger de pommiers durable à très bas niveaux d’intrants.
@@ -86,72 +124,109 @@ exempleMiseEnOeuvre Succession typique de légumes d’hiver en plein champ (car
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-systeme_concombre_hors_sol_substituant_la_lutte_chimique_par_du_biocontrole.html
 Extracting page: Système concombre hors sol substituant la lutte chimique par du biocontrôle
 exempleMiseEnOeuvre Système concombre hors sol substituant la lutte chimique par du biocontrôle
+internal link not found : http://geco.ecophytopic.fr/web/guest/concept?p_auth=49ApPVDG&p_p_id=concept_WAR_gecofrontportlet&p_p_lifecycle=1&p_p_state=normal&p_p_mode=edit&p_p_col_id=column-1&p_p_col_pos=2&p_p_col_count=6&_concept_WAR_gecofrontportlet_javax.portlet.action=enregistrerStructure 
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-systeme_tomate_hors_sol_substituant_la_lutte_chimique_par_du_biocontrole.html
 Extracting page: Système tomate hors sol substituant la lutte chimique par du biocontrôle
 exempleMiseEnOeuvre Système tomate hors sol substituant la lutte chimique par du biocontrôle
+internal link not found : http://geco.ecophytopic.fr/web/guest/concept?p_auth=rqmpBhJ8&p_p_id=concept_WAR_gecofrontportlet&p_p_lifecycle=1&p_p_state=normal&p_p_mode=edit&p_p_col_id=column-1&p_p_col_pos=2&p_p_col_count=6&_concept_WAR_gecofrontportlet_javax.portlet.action=enregistrerStructure 
+internal link not found : http://geco.ecophytopic.fr/web/guest/concept?p_auth=49ApPVDG&p_p_id=concept_WAR_gecofrontportlet&p_p_lifecycle=1&p_p_state=normal&p_p_mode=edit&p_p_col_id=column-1&p_p_col_pos=2&p_p_col_count=6&_concept_WAR_gecofrontportlet_javax.portlet.action=enregistrerStructure 
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-production_de_tomates_sans_residus_en_hors_sol_sous_abri.html
 Extracting page: Production de tomates sans résidus hors sol sous abri en PBI
 exempleMiseEnOeuvre Production de tomates sans résidus hors sol sous abri en PBI
+internal link not found : http://geco.ecophytopic.fr/web/guest/concept?p_auth=rqmpBhJ8&p_p_id=concept_WAR_gecofrontportlet&p_p_lifecycle=1&p_p_state=normal&p_p_mode=edit&p_p_col_id=column-1&p_p_col_pos=2&p_p_col_count=6&_concept_WAR_gecofrontportlet_javax.portlet.action=enregistrerStructure 
+internal link not found : http://geco.ecophytopic.fr/web/guest/concept?p_auth=49ApPVDG&p_p_id=concept_WAR_gecofrontportlet&p_p_lifecycle=1&p_p_state=normal&p_p_mode=edit&p_p_col_id=column-1&p_p_col_pos=2&p_p_col_count=6&_concept_WAR_gecofrontportlet_javax.portlet.action=enregistrerStructure 
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-apporter_du_pollen_et_des_complements_pour_entretenir_les_auxiliaires.html
 Extracting page: Apporter du pollen ou des compléments pour entretenir les auxiliaires
 technique Apporter du pollen ou des compléments pour entretenir les auxiliaires
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-culture_de_concombre_hors-sol_en_serre_chauffee_conduite_en_protection_biologique_integree.html
 Extracting page: Culture de concombre hors-sol en serre chauffée conduite en Protection Biologique Intégrée
 exempleMiseEnOeuvre Culture de concombre hors-sol en serre chauffée conduite en Protection Biologique Intégrée
+internal link not found : http://geco.ecophytopic.fr/web/guest/concept?p_auth=49ApPVDG&p_p_id=concept_WAR_gecofrontportlet&p_p_lifecycle=1&p_p_state=normal&p_p_mode=edit&p_p_col_id=column-1&p_p_col_pos=2&p_p_col_count=6&_concept_WAR_gecofrontportlet_javax.portlet.action=enregistrerStructure 
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-production_de_fraise_remontante_hors_sol_en_protection_biologique_integree-2C_centre-val_de_loire.html
 Extracting page: Production de fraise remontante hors sol en protection biologique intégrée, Centre-Val de Loire
 exempleMiseEnOeuvre Production de fraise remontante hors sol en protection biologique intégrée, Centre-Val de Loire
+internal link not found : http://geco.ecophytopic.fr/web/guest/concept?p_auth=49ApPVDG&p_p_id=concept_WAR_gecofrontportlet&p_p_lifecycle=1&p_p_state=normal&p_p_mode=edit&p_p_col_id=column-1&p_p_col_pos=2&p_p_col_count=6&_concept_WAR_gecofrontportlet_javax.portlet.action=enregistrerStructure 
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-production_de_fraise_gariguette_hors_sol_en_protection_biologique_integree-2C_nouvelle-aquitaine.html
 Extracting page: Production de Fraise remontante hors sol en protection biologique intégrée, Nouvelle-Aquitaine
 exempleMiseEnOeuvre Production de Fraise remontante hors sol en protection biologique intégrée, Nouvelle-Aquitaine
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-ameliorer_la_pbi_en_production_de_gariguette_hors_sol_sous_serre-2C_region_paca.html
 Extracting page: Améliorer la PBI en production de Gariguette hors sol sous serre, région PACA
 exempleMiseEnOeuvre Améliorer la PBI en production de Gariguette hors sol sous serre, région PACA
+internal link not found : http://geco.ecophytopic.fr/web/guest/concept?p_auth=49ApPVDG&p_p_id=concept_WAR_gecofrontportlet&p_p_lifecycle=1&p_p_state=normal&p_p_mode=edit&p_p_col_id=column-1&p_p_col_pos=2&p_p_col_count=6&_concept_WAR_gecofrontportlet_javax.portlet.action=enregistrerStructure 
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-production_de_gariguette_en_hors_sol_chauffe_conduit_en_protection_biologique_integree-2C_nouvelle-aquitaine.html
 Extracting page: Production de gariguette en hors sol chauffé conduit en Protection Biologique Intégrée, Nouvelle-Aquitaine
 exempleMiseEnOeuvre Production de gariguette en hors sol chauffé conduit en Protection Biologique Intégrée, Nouvelle-Aquitaine
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-implantation_d_un_verger_eco-innovant_econome_en_intrants.html
 Extracting page: Implantation d'un verger ECO-innovant économe en intrants
 exempleMiseEnOeuvre Implantation d'un verger ECO-innovant économe en intrants
+internal link not found : http://geco.ecophytopic.fr/concept/-/concept/voir/http%253A%252F%252Fwww%252Egeco%252Eecophytopic%252Efr%252Fgeco%252FConcept%252FUtiliser_Des_Paillages_Ou_Mulchs_Sur_Le_Rang_En_Verger 
+internal link not found : http://geco.ecophytopic.fr/concept/-/concept/voir/http%253A%252F%252Fwww%252Egeco%252Eecophytopic%252Efr%252Fgeco%252FConcept%252FEnherbement_De_L_Inter-rang_En_Verger 
+internal link not found : http://geco.ecophytopic.fr/concept/-/concept/voir/http%253A%252F%252Fwww%252Egeco%252Eecophytopic%252Efr%252Fgeco%252FConcept%252FUtiliser_La_Confusion_Sexuelle 
+internal link not found : http://geco.ecophytopic.fr/concept/-/concept/voir/http%253A%252F%252Fwww%252Egeco%252Eecophytopic%252Efr%252Fgeco%252FConcept%252FPoser_De_La_Glu_Autour_Des_Troncs_D_Arbres_Fruitiers 
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-des_arbres_fruitiers_et_des_cultures_associes_en_systemes_agroforestiers.html
 Extracting page: Des arbres fruitiers et des cultures associés en systèmes agroforestiers
 exempleMiseEnOeuvre Des arbres fruitiers et des cultures associés en systèmes agroforestiers
+internal link not found : http://geco.ecophytopic.fr/concept/-/concept/voir/http%253A%252F%252Fwww%252Egeco%252Eecophytopic%252Efr%252Fgeco%252FConcept%252FAmenager_Des_Habitats_Pour_Favoriser_Les_Auxiliaires_En_Verger 
+internal link not found : http://geco.ecophytopic.fr/concept/-/concept/voir/http%253A%252F%252Fwww%252Egeco%252Eecophytopic%252Efr%252Fgeco%252FConcept%252FPratiquer_Le_Desherbage_Mecanique_En_Verger 
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-conduite_d_un_verger_existant_de_mirabelliers_pour_baisser_les_intrants.html
 Extracting page: Conduite d'un verger existant de mirabelliers pour baisser les intrants
 exempleMiseEnOeuvre Conduite d'un verger existant de mirabelliers pour baisser les intrants
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-production_maraichere_integree_peu_diversifiee_concue_pour_un_debouche_circuit_long.html
 Extracting page: Production maraîchère intégrée peu diversifiée conçue pour un débouché circuit long
 exempleMiseEnOeuvre Production maraîchère intégrée peu diversifiée conçue pour un débouché circuit long
+internal link not found : http://geco.ecophytopic.fr/web/guest/concept?p_auth=49ApPVDG&p_p_id=concept_WAR_gecofrontportlet&p_p_lifecycle=1&p_p_state=normal&p_p_mode=edit&p_p_col_id=column-1&p_p_col_pos=2&p_p_col_count=6&_concept_WAR_gecofrontportlet_javax.portlet.action=enregistrerStructure 
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-production_maraichere_integree_et_diversifiee_concue_pour_la_vente_directe.html
 Extracting page: Production maraîchère intégrée diversifiée conçue pour la vente directe
 exempleMiseEnOeuvre Production maraîchère intégrée diversifiée conçue pour la vente directe
+internal link not found : http://geco.ecophytopic.fr/web/guest/concept?p_auth=49ApPVDG&p_p_id=concept_WAR_gecofrontportlet&p_p_lifecycle=1&p_p_state=normal&p_p_mode=edit&p_p_col_id=column-1&p_p_col_pos=2&p_p_col_count=6&_concept_WAR_gecofrontportlet_javax.portlet.action=enregistrerStructure 
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-conduite_de_prunier_d_ente_a_bas_intrants_eau-fertilisation-produits_de_protection_intrants.html
 Extracting page: Conduite de prunier d'Ente à bas intrants eau-fertilisation-produits de protection intrants
 exempleMiseEnOeuvre Conduite de prunier d'Ente à bas intrants eau-fertilisation-produits de protection intrants
+internal link not found : http://geco.ecophytopic.fr/concept/-/concept/voir/http%253A%252F%252Fwww%252Egeco%252Eecophytopic%252Efr%252Fgeco%252FConcept%252FUtiliser_Des_Mulchs_De_Bois_Rameal_Fragmente 
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-conception_d_un_verger_de_prunes_economes_en_intrants.html
 Extracting page: Conception d'un verger de Prunes économes en intrants
 exempleMiseEnOeuvre Conception d'un verger de Prunes économes en intrants
+internal link not found : http://geco.ecophytopic.fr/concept/-/concept/voir/http%253A%252F%252Fwww%252Egeco%252Eecophytopic%252Efr%252Fgeco%252FConcept%252FMettre_En_Place_Des_Dispositifs_Physiques_Anti-insectes 
+internal link not found : http://geco.ecophytopic.fr/concept/-/concept/voir/http%253A%252F%252Fwww%252Egeco%252Eecophytopic%252Efr%252Fgeco%252FConcept%252FMettre_En_Place_De_Baches_Anti-pluie 
+internal link not found : http://geco.ecophytopic.fr/concept/-/concept/voir/http%253A%252F%252Fwww%252Egeco%252Eecophytopic%252Efr%252Fgeco%252FConcept%252FReduire_Le_Volume_De_Traitement 
+internal link not found : http://geco.ecophytopic.fr/concept/-/concept/voir/http%253A%252F%252Fwww%252Egeco%252Eecophytopic%252Efr%252Fgeco%252FConcept%252FUtiliser_Des_Paillages_Ou_Mulchs_Sur_Le_Rang_En_Verger 
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-implantation_d_un_verger_d_abricot_econome_en_intrants.html
 Extracting page: Implantation d'un verger d'abricot économe en intrants
 exempleMiseEnOeuvre Implantation d'un verger d'abricot économe en intrants
+internal link not found : http://geco.ecophytopic.fr/concept/-/concept/voir/http%253A%252F%252Fwww%252Egeco%252Eecophytopic%252Efr%252Fgeco%252FConcept%252FAmenager_Des_Habitats_Pour_Favoriser_Les_Auxiliaires_En_Verger 
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-verger_d_abricotiers_econome_en_pesticides.html
 Extracting page: Verger d'abricotiers ECOnome en pesticides
 exempleMiseEnOeuvre Verger d'abricotiers ECOnome en pesticides
+internal link not found : http://geco.ecophytopic.fr/concept/-/concept/voir/http%253A%252F%252Fwww%252Egeco%252Eecophytopic%252Efr%252Fgeco%252FConcept%252FAmenager_Des_Habitats_Pour_Favoriser_Les_Auxiliaires_En_Verger 
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-implantation_d_un_verger_de_peches_economes_en_pesticides.html
 Extracting page: Implantation d'un verger de pêches économes en pesticides
 exempleMiseEnOeuvre Implantation d'un verger de pêches économes en pesticides
+internal link not found : http://geco.ecophytopic.fr/concept/-/concept/voir/http%253A%252F%252Fwww%252Egeco%252Eecophytopic%252Efr%252Fgeco%252FConcept%252FUtiliser_Des_Paillages_Ou_Mulchs_Sur_Le_Rang_En_Verger 
+internal link not found : http://geco.ecophytopic.fr/concept/-/concept/voir/http%253A%252F%252Fwww%252Egeco%252Eecophytopic%252Efr%252Fgeco%252FConcept%252FGerer_L%25E2%2580%2599irrigation_En_Verger 
+internal link not found : http://geco.ecophytopic.fr/concept/-/concept/voir/http%253A%252F%252Fwww%252Egeco%252Eecophytopic%252Efr%252Fgeco%252FConcept%252FAmenager_Des_Habitats_Pour_Favoriser_Les_Auxiliaires_En_Verger 
+internal link not found : http://geco.ecophytopic.fr/concept/-/concept/voir/http%253A%252F%252Fwww%252Egeco%252Eecophytopic%252Efr%252Fgeco%252FConcept%252FUtiliser_La_Confusion_Sexuelle 
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-verger_d_abricotiers_greffes_haut-2C_conduits_en_palmette_sous_protection_anti-pluie.html
 Extracting page: Verger d'abricotiers greffés haut, conduits en palmette sous protection anti-pluie
 exempleMiseEnOeuvre Verger d'abricotiers greffés haut, conduits en palmette sous protection anti-pluie
+internal link not found : http://geco.ecophytopic.fr/concept/-/concept/voir/http%253A%252F%252Fwww%252Egeco%252Eecophytopic%252Efr%252Fgeco%252FConcept%252FGerer_L%25E2%2580%2599irrigation_En_Verger 
+internal link not found : http://geco.ecophytopic.fr/concept/-/concept/voir/http%253A%252F%252Fwww%252Egeco%252Eecophytopic%252Efr%252Fgeco%252FConcept%252FAmenager_Des_Habitats_Pour_Favoriser_Les_Auxiliaires_En_Verger 
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-production_maraichere_ab_integree_et_diversifiee_concue_pour_la_vente_directe.html
 Extracting page: Production maraîchère AB diversifiée conçue pour la vente directe
 exempleMiseEnOeuvre Production maraîchère AB diversifiée conçue pour la vente directe
+internal link not found : http://geco.ecophytopic.fr/web/guest/concept?p_auth=49ApPVDG&p_p_id=concept_WAR_gecofrontportlet&p_p_lifecycle=1&p_p_state=normal&p_p_mode=edit&p_p_col_id=column-1&p_p_col_pos=2&p_p_col_count=6&_concept_WAR_gecofrontportlet_javax.portlet.action=enregistrerStructure 
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-production_maraichere_ab_integree_et_diversifie_concue_pour_un_debouche_circuit_long.html
 Extracting page: PRODUCTION MARAÎCHÈRE AB INTÉGRÉE ET DIVERSIFIÉE, CONÇUE POUR UN DÉBOUCHÉ CIRCUIT LONG
 exempleMiseEnOeuvre PRODUCTION MARAÎCHÈRE AB INTÉGRÉE ET DIVERSIFIÉE, CONÇUE POUR UN DÉBOUCHÉ CIRCUIT LONG
+internal link not found : http://geco.ecophytopic.fr/web/guest/concept?p_auth=49ApPVDG&p_p_id=concept_WAR_gecofrontportlet&p_p_lifecycle=1&p_p_state=normal&p_p_mode=edit&p_p_col_id=column-1&p_p_col_pos=2&p_p_col_count=6&_concept_WAR_gecofrontportlet_javax.portlet.action=enregistrerStructure 
+internal link not found : http://geco.ecophytopic.fr/web/guest/concept?p_auth=49ApPVDG&p_p_id=concept_WAR_gecofrontportlet&p_p_lifecycle=1&p_p_state=normal&p_p_mode=edit&p_p_col_id=column-1&p_p_col_pos=2&p_p_col_count=6&_concept_WAR_gecofrontportlet_javax.portlet.action=enregistrerStructure 
+internal link not found : http://geco.ecophytopic.fr/web/guest/concept?p_auth=go0TszBI&p_p_id=concept_WAR_gecofrontportlet&p_p_lifecycle=1&p_p_state=normal&p_p_mode=edit&p_p_col_id=column-1&p_p_col_pos=2&p_p_col_count=6&_concept_WAR_gecofrontportlet_javax.portlet.action=enregistrerStructure 
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-strategie_biocontrole_sur_gariguette_hors_sol_en_serre_verre_chauffee.html
 Extracting page: Stratégie biocontrôle sur gariguette hors sol sous abri chauffé en Bretagne
 exempleMiseEnOeuvre Stratégie biocontrôle sur gariguette hors sol sous abri chauffé en Bretagne
+internal link not found : http://geco.ecophytopic.fr/web/guest/concept?p_auth=49ApPVDG&p_p_id=concept_WAR_gecofrontportlet&p_p_lifecycle=1&p_p_state=normal&p_p_mode=edit&p_p_col_id=column-1&p_p_col_pos=2&p_p_col_count=6&_concept_WAR_gecofrontportlet_javax.portlet.action=enregistrerStructure 
+Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-thrips..html
+Extracting page: Thrips
+bioagresseur Thrips
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-culture_de_poinsettia_avec_utilisation_de_plantes-pieges.html
 Extracting page: Culture de Poinsettia avec utilisation de plantes-pièges
 exempleMiseEnOeuvre Culture de Poinsettia avec utilisation de plantes-pièges
@@ -179,6 +254,8 @@ exempleMiseEnOeuvre Gestion des bioagresseurs telluriques dans un systéme centr
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-gestion_des_bioagresseurs_telluriques_en_diversifiant_la_succession_culturale_radis_-_tomate_-_salade.html
 Extracting page: Gestion des bioagresseurs telluriques en diversifiant la succession culturale Radis - Tomate - Salade
 exempleMiseEnOeuvre Gestion des bioagresseurs telluriques en diversifiant la succession culturale Radis - Tomate - Salade
+internal link not found : http://geco.ecophytopic.fr/web/guest/concept?p_auth=o6lZbZzm&p_p_id=concept_WAR_gecofrontportlet&p_p_lifecycle=1&p_p_state=normal&p_p_mode=edit&p_p_col_id=column-1&p_p_col_pos=2&p_p_col_count=6&_concept_WAR_gecofrontportlet_javax.portlet.action=enregistrerStructure 
+internal link not found : http://geco.ecophytopic.fr/web/guest/concept?p_auth=o6lZbZzm&p_p_id=concept_WAR_gecofrontportlet&p_p_lifecycle=1&p_p_state=normal&p_p_mode=edit&p_p_col_id=column-1&p_p_col_pos=2&p_p_col_count=6&_concept_WAR_gecofrontportlet_javax.portlet.action=enregistrerStructure 
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-mildiou_de_la_pomme_de_terre.html
 Extracting page: mildiou de la pomme de terre
 bioagresseur mildiou de la pomme de terre
@@ -186,6 +263,11 @@ Adding redirect: Mildiou de la pomme de terre <-- Phytophtora infestans
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-systeme_tm12_apport_de_mo_-_ctifl_balandran_-_gedubat.html
 Extracting page: Apport massif de matière organique sous forme de fumier pour la gestion alternative des bioagresseurs telluriques en cultures légumières
 exempleMiseEnOeuvre Apport massif de matière organique sous forme de fumier pour la gestion alternative des bioagresseurs telluriques en cultures légumières
+internal link not found : http://geco.ecophytopic.fr/web/guest/concept?p_auth=o6lZbZzm&p_p_id=concept_WAR_gecofrontportlet&p_p_lifecycle=1&p_p_state=normal&p_p_mode=edit&p_p_col_id=column-1&p_p_col_pos=2&p_p_col_count=6&_concept_WAR_gecofrontportlet_javax.portlet.action=enregistrerStructure 
+internal link not found : http://geco.ecophytopic.fr/web/guest/concept?p_auth=o6lZbZzm&p_p_id=concept_WAR_gecofrontportlet&p_p_lifecycle=1&p_p_state=normal&p_p_mode=edit&p_p_col_id=column-1&p_p_col_pos=2&p_p_col_count=6&_concept_WAR_gecofrontportlet_javax.portlet.action=enregistrerStructure 
+Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-piegeage.html
+Extracting page: Piégeage
+outilDAide Piégeage
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-bassinage_des_plantes.html
 Extracting page: Bassinage des plantes
 technique Bassinage des plantes
@@ -198,9 +280,14 @@ technique Utiliser la thermothérapie sur fruit ou légume
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-cultiver_sous_abri_des_especes_de_legumes_peu_sensibles_aux_nematodes_en_periode_a_risque.html
 Extracting page: Cultiver sous abri des espèces de légumes peu sensibles aux nématodes en période à risque
 exempleMiseEnOeuvre Cultiver sous abri des espèces de légumes peu sensibles aux nématodes en période à risque
+internal link not found : http://geco.ecophytopic.fr/web/guest/concept?p_auth=o6lZbZzm&p_p_id=concept_WAR_gecofrontportlet&p_p_lifecycle=1&p_p_state=normal&p_p_mode=edit&p_p_col_id=column-1&p_p_col_pos=2&p_p_col_count=6&_concept_WAR_gecofrontportlet_javax.portlet.action=enregistrerStructure 
+internal link not found : http://geco.ecophytopic.fr/web/guest/concept?p_auth=go0TszBI&p_p_id=concept_WAR_gecofrontportlet&p_p_lifecycle=1&p_p_state=normal&p_p_mode=edit&p_p_col_id=column-1&p_p_col_pos=2&p_p_col_count=6&_concept_WAR_gecofrontportlet_javax.portlet.action=enregistrerStructure 
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-gestion_des_bioagresseurs_telluriques_dans_un_systeme_centre_sur_la_salade_ayant_recours_aux_produits_de_biocontrole_et_a_la_solarisation.html
 Extracting page: Gestion des bioagresseurs telluriques dans un système centré sur la salade ayant recours au biocontrôle et à la solarisation
 exempleMiseEnOeuvre Gestion des bioagresseurs telluriques dans un système centré sur la salade ayant recours au biocontrôle et à la solarisation
+internal link not found : http://geco.ecophytopic.fr/web/guest/concept?p_auth=go0TszBI&p_p_id=concept_WAR_gecofrontportlet&p_p_lifecycle=1&p_p_state=normal&p_p_mode=edit&p_p_col_id=column-1&p_p_col_pos=2&p_p_col_count=6&_concept_WAR_gecofrontportlet_javax.portlet.action=enregistrerStructure 
+internal link not found : http://geco.ecophytopic.fr/web/guest/concept?p_auth=go0TszBI&p_p_id=concept_WAR_gecofrontportlet&p_p_lifecycle=1&p_p_state=normal&p_p_mode=edit&p_p_col_id=column-1&p_p_col_pos=2&p_p_col_count=6&_concept_WAR_gecofrontportlet_javax.portlet.action=enregistrerStructure 
+internal link not found : http://geco.ecophytopic.fr/web/guest/concept?p_auth=49ApPVDG&p_p_id=concept_WAR_gecofrontportlet&p_p_lifecycle=1&p_p_state=normal&p_p_mode=edit&p_p_col_id=column-1&p_p_col_pos=2&p_p_col_count=6&_concept_WAR_gecofrontportlet_javax.portlet.action=enregistrerStructure 
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-gestion_des_bioagresseurs_tellurique_dans_un_systeme_legumier_tres_diversifie.html
 Extracting page: Gestion des bioagresseurs telluriques dans un système légumier très diversifié
 exempleMiseEnOeuvre Gestion des bioagresseurs telluriques dans un système légumier très diversifié
@@ -219,6 +306,7 @@ technique Réaliser des apports de matière organique en cultures légumières
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-implantation_d_un_verger_eco-innovant_econome_en_intrants_2.html
 Extracting page: Implantation d'un verger ECO-innovant économe en intrants_2
 exempleMiseEnOeuvre Implantation d'un verger ECO-innovant économe en intrants_2
+Replaced page title special characters : Implantation d'un verger ECO-innovant économe en intrants_2 --> Implantation d'un verger ECO-innovant économe en intrants 2
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-alternance_artichaut-scarole_et_introduction_de_solarisation_et_d_engrais_verts_afin_de_reduire_l_ift.html
 Extracting page: Alternance artichaut-scarole pour introduction d'une solarisation et d'engrais verts dans les rotations, irrigation localisée et paillage biodegradable afin de réduire l'IFT
 exempleMiseEnOeuvre Alternance artichaut-scarole pour introduction d'une solarisation et d'engrais verts dans les rotations, irrigation localisée et paillage biodegradable afin de réduire l'IFT
@@ -231,6 +319,7 @@ exempleMiseEnOeuvre EPIDÉMIOSURVEILLANCE EN CULTURE HORS-SOL DE GERBERA FLEUR C
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-epidemiosurveillance_en_culture_hors-sol_de_gerbera_fleur_coupee_conduite_en_pbi.html
 Extracting page: Epidémiosurveillance en culture hors-sol de Gerbera fleur coupée conduite en PBI, en climat méditerranéen
 exempleMiseEnOeuvre Epidémiosurveillance en culture hors-sol de Gerbera fleur coupée conduite en PBI, en climat méditerranéen
+internal link not found : http://geco.ecophytopic.fr/web/guest/concept?p_auth=49ApPVDG&p_p_id=concept_WAR_gecofrontportlet&p_p_lifecycle=1&p_p_state=normal&p_p_mode=edit&p_p_col_id=column-1&p_p_col_pos=2&p_p_col_count=6&_concept_WAR_gecofrontportlet_javax.portlet.action=enregistrerStructure 
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/.html
 Extracting page: Mise en place d'une stratégie PBI en culture d’Elæagnus hors-sol
 exempleMiseEnOeuvre Mise en place d'une stratégie PBI en culture d’Elæagnus hors-sol
@@ -252,15 +341,18 @@ exempleMiseEnOeuvre Rotation de fleurs annuelles en pleine terre sous abri écon
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-systeme_hibiscus_innovant_-_cdhr_-_hortipot.html
 Extracting page: Culture d'Hibiscus en Protection Biologique Intégrée sous abris chauffé
 exempleMiseEnOeuvre Culture d'Hibiscus en Protection Biologique Intégrée sous abris chauffé
+internal link not found : http://geco.ecophytopic.fr/web/guest/concept?p_auth=49ApPVDG&p_p_id=concept_WAR_gecofrontportlet&p_p_lifecycle=1&p_p_state=normal&p_p_mode=edit&p_p_col_id=column-1&p_p_col_pos=2&p_p_col_count=6&_concept_WAR_gecofrontportlet_javax.portlet.action=enregistrerStructure 
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-culture_de_poinsettia_en_lutte_biologique.html
 Extracting page: Culture de Poinsettia en lutte biologique
 exempleMiseEnOeuvre Culture de Poinsettia en lutte biologique
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-culture_de_geranium_en_protection_biologique_integree.html
 Extracting page: Culture de Géranium en Protection Biologique Intégrée
 exempleMiseEnOeuvre Culture de Géranium en Protection Biologique Intégrée
+internal link not found : http://geco.ecophytopic.fr/web/guest/concept?p_auth=49ApPVDG&p_p_id=concept_WAR_gecofrontportlet&p_p_lifecycle=1&p_p_state=normal&p_p_mode=edit&p_p_col_id=column-1&p_p_col_pos=2&p_p_col_count=6&_concept_WAR_gecofrontportlet_javax.portlet.action=enregistrerStructure 
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-culture_de_chrysantheme_en_pots_sous_abris_en_protection_biologique_integree_et_autres_methodes_alternatives_aux_pesticides.html
 Extracting page: Culture de Chrysanthème en pots sous abris en Protection Biologique Intégrée et autres méthodes alternatives aux pesticides
 exempleMiseEnOeuvre Culture de Chrysanthème en pots sous abris en Protection Biologique Intégrée et autres méthodes alternatives aux pesticides
+internal link not found : http://geco.ecophytopic.fr/web/guest/concept?p_auth=49ApPVDG&p_p_id=concept_WAR_gecofrontportlet&p_p_lifecycle=1&p_p_state=normal&p_p_mode=edit&p_p_col_id=column-1&p_p_col_pos=2&p_p_col_count=6&_concept_WAR_gecofrontportlet_javax.portlet.action=enregistrerStructure 
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-rotation_de_cultures_fleurs_coupees_hors_sol_et_sous_abris.html
 Extracting page: Rotation de cultures fleurs coupées hors sol et sous abris
 exempleMiseEnOeuvre Rotation de cultures fleurs coupées hors sol et sous abris
@@ -312,10 +404,18 @@ exempleMiseEnOeuvre Pomme Limousin DEPHY
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-utilisation_infradose_de_sucre_pour_la_gestion_des_bioagresseurs.html
 Extracting page: Utilisation infradose de sucre pour la gestion des bioagresseurs
 technique Utilisation infradose de sucre pour la gestion des bioagresseurs
+internal link not found : http://geco.ecophytopic.fr/documents/20182/21720/upload_00000202_pdf.pdf 
+internal link not found : http://geco.ecophytopic.fr/documents/20182/21720/upload_00000211_pdf.pdf 
+internal link not found : http://geco.ecophytopic.fr/documents/20182/21720/upload_00000489_pdf.pdf 
+internal link not found : http://geco.ecophytopic.fr/documents/20182/21720/upload_00000498_pdf.pdf 
 Adding redirect: Utilisation infradose de sucre pour la gestion des bioagresseurs <-- Infradose de sucres
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-exporter_les_menu-pailles.html
 Extracting page: Récupérer la menue paille lors de la récolte
 technique Récupérer la menue paille lors de la récolte
+internal link not found : http://geco.ecophytopic.fr/concept/-/concept/voir/http%253A%252F%252Fwww%252Egeco%252Eecophytopic%252Efr%252Fgeco%252FConcept%252FNettoyer_Les_Outils_De_Travail_Du_Sol_Ou_De_Recolte 
+internal link not found : http://geco.ecophytopic.fr/documents/20182/21720/upload_00011162_pdf.pdf 
+internal link not found : http://geco.ecophytopic.fr/documents/20182/21720/upload_00011171_pdf.pdf 
+internal link not found : http://geco.ecophytopic.fr/documents/20182/21720/upload_00011189_pdf.pdf 
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-pratiquer_le_biocontrole_a_l_aide_de_substances_naturelles.html
 Extracting page: Pratiquer le biocontrôle à l'aide de substances naturelles
 technique Pratiquer le biocontrôle à l'aide de substances naturelles
@@ -376,6 +476,7 @@ exempleMiseEnOeuvre Réduire l'IFT en utilisant des cépages résistants
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-optimisation_des_doses_de_cuivre_en_viticulture_biologique.html
 Extracting page: Optimisation des doses de cuivre en viticulture biologique
 exempleMiseEnOeuvre Optimisation des doses de cuivre en viticulture biologique
+internal link not found : http://geco.ecophytopic.fr/concept/-/concept/voir/http%253A%252F%252Fwww%252Egeco%252Eecophytopic%252Efr%252Fgeco%252FConcept%252FOptidose 
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-amenager_des_habitats_pour_favoriser_les_auxiliaires_en_verger.html
 Extracting page: Aménager des habitats pour favoriser les auxiliaires dans un verger et en vigne
 technique Aménager des habitats pour favoriser les auxiliaires dans un verger et en vigne
@@ -394,6 +495,7 @@ exempleMiseEnOeuvre Le GIE des 4 Epis: une réflexion sur l'assolement en commun
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-l_assolement_en_commun-2C_un_moyen_d_actionner_des_leviers_pour_reduire_l_utilisation_de_produits_phytosanitaires.html
 Extracting page: L'assolement en commun, un moyen d'actionner des leviers pour réduire l'utilisation de produits phytosanitaires
 technique L'assolement en commun, un moyen d'actionner des leviers pour réduire l'utilisation de produits phytosanitaires
+internal link not found : http://geco.ecophytopic.fr/documents/20182/21720/upload_00000258_pdf.pdf 
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-produire_mieux_ensemble_au_travers_de_l_agriculture_de_conservation_des_sols.html
 Extracting page: Produire mieux ensemble au travers de l'agriculture de conservation des sols
 exempleMiseEnOeuvre Produire mieux ensemble au travers de l'agriculture de conservation des sols
@@ -415,6 +517,7 @@ technique Pratiquer le désherbage mécanique en plein - Herse étrille
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-implanter_des_cultures_pieges_a_bio-agresseurs.html
 Extracting page: Implanter des cultures pièges à bio-agresseurs
 technique Implanter des cultures pièges à bio-agresseurs
+internal link not found : http://geco.ecophytopic.fr/documents/20182/21720/Upload_2019-7-26_23-15-13-629.pdf/906ed369-9f72-4c36-86cb-a513ca8a3ce6 
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-implanter_des_haies.html
 Extracting page: Implanter des haies
 technique Implanter des haies
@@ -448,6 +551,7 @@ materiel herse étrille
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-rouler_les_couverts_d_intercultures_fragiles.html
 Extracting page: Rouler les couverts végétaux pendant la période d'interculture
 technique Rouler les couverts végétaux pendant la période d'interculture
+internal link not found : http://geco.ecophytopic.fr/documents/20182/21720/upload_00000571_pdf.pdf 
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-filet_monoparcelle_-_alt_carpo.html
 Extracting page: Installer des Filets Monoparcelle - Alt'Carpo en verger
 technique Installer des Filets Monoparcelle - Alt'Carpo en verger
@@ -2245,33 +2349,51 @@ facteurEnvironnemental Taux de calcaire
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-sol_tres_calcaire_-28tx___50_-25_-29.html
 Extracting page: Sol très calcaire (Tx > 50 % )
 facteurEnvironnemental Sol très calcaire (Tx > 50 % )
+Replaced page title special characters : Category:Sol très calcaire (Tx > 50 % ) --> Category:Sol très calcaire (Tx supérieur à 50 % )
 Adding redirect: Sol très calcaire (Tx > 50 % ) <-- Sol très calcaire
+Replaced page title special characters : Tx > 50 % --> Tx supérieur à 50 %
 Adding redirect: Sol très calcaire (Tx > 50 % ) <-- Tx > 50 % 
+Replaced page title special characters : Sol très calcaire (Tx > 50 % ) --> Sol très calcaire (Tx supérieur à 50 % )
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-sol_moyennement_calcaire_-281___tx___50_-25-29.html
 Extracting page: Sol moyennement calcaire (1 < Tx < 50 %)
 facteurEnvironnemental Sol moyennement calcaire (1 < Tx < 50 %)
+Replaced page title special characters : Category:Sol moyennement calcaire (1 < Tx < 50 %) --> Category:Sol moyennement calcaire (1 inférieur à Tx inférieur à 50 %)
 Adding redirect: Sol moyennement calcaire (1 < Tx < 50 %) <-- Sol moyennement calcaire
+Replaced page title special characters : 1 < Tx < 50 % --> 1 inférieur à Tx inférieur à 50 %
 Adding redirect: Sol moyennement calcaire (1 < Tx < 50 %) <-- 1 < Tx < 50 %
+Replaced page title special characters : Sol moyennement calcaire (1 < Tx < 50 %) --> Sol moyennement calcaire (1 inférieur à Tx inférieur à 50 %)
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-sol_non_calcaire_-28tx___1_-25-29.html
 Extracting page: Sol non calcaire (Tx < 1 %)
 facteurEnvironnemental Sol non calcaire (Tx < 1 %)
+Replaced page title special characters : Category:Sol non calcaire (Tx < 1 %) --> Category:Sol non calcaire (Tx inférieur à 1 %)
 Adding redirect: Sol non calcaire (Tx < 1 %) <-- Sol non calcaire
+Replaced page title special characters : Tx < 1 % --> Tx inférieur à 1 %
 Adding redirect: Sol non calcaire (Tx < 1 %) <-- Tx < 1 %
+Replaced page title special characters : Sol non calcaire (Tx < 1 %) --> Sol non calcaire (Tx inférieur à 1 %)
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-sol_profond_-28ru___130_mm-29.html
 Extracting page: Sol profond (RU > 130 mm)
 facteurEnvironnemental Sol profond (RU > 130 mm)
+Replaced page title special characters : Category:Sol profond (RU > 130 mm) --> Category:Sol profond (RU supérieur à 130 mm)
 Adding redirect: Sol profond (RU > 130 mm) <-- Sol profond
+Replaced page title special characters : RU > 130 mm --> RU supérieur à 130 mm
 Adding redirect: Sol profond (RU > 130 mm) <-- RU > 130 mm
+Replaced page title special characters : Sol profond (RU > 130 mm) --> Sol profond (RU supérieur à 130 mm)
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-sol_moyennement_profond_-2860___ru___130_mm-29.html
 Extracting page: Sol moyennement profond (60 < RU < 130 mm)
 facteurEnvironnemental Sol moyennement profond (60 < RU < 130 mm)
+Replaced page title special characters : Category:Sol moyennement profond (60 < RU < 130 mm) --> Category:Sol moyennement profond (60 inférieur à RU inférieur à 130 mm)
 Adding redirect: Sol moyennement profond (60 < RU < 130 mm) <-- Sol moyennement profond
+Replaced page title special characters : 60 < RU < 130 mm --> 60 inférieur à RU inférieur à 130 mm
 Adding redirect: Sol moyennement profond (60 < RU < 130 mm) <-- 60 < RU < 130 mm
+Replaced page title special characters : Sol moyennement profond (60 < RU < 130 mm) --> Sol moyennement profond (60 inférieur à RU inférieur à 130 mm)
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-sol_superficiel_-28ru___60_mm-29.html
 Extracting page: Sol superficiel (RU < 60 mm)
 facteurEnvironnemental Sol superficiel (RU < 60 mm)
+Replaced page title special characters : Category:Sol superficiel (RU < 60 mm) --> Category:Sol superficiel (RU inférieur à 60 mm)
 Adding redirect: Sol superficiel (RU < 60 mm) <-- Sol superficiel
+Replaced page title special characters : RU < 60 mm --> RU inférieur à 60 mm
 Adding redirect: Sol superficiel (RU < 60 mm) <-- RU < 60 mm
+Replaced page title special characters : Sol superficiel (RU < 60 mm) --> Sol superficiel (RU inférieur à 60 mm)
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-alea_annuel_fort_d_erosion_des_sols.html
 Extracting page: Aléa annuel fort d'érosion des sols
 facteurEnvironnemental Aléa annuel fort d'érosion des sols
@@ -2287,23 +2409,35 @@ facteurEnvironnemental Aléas annuels d'érosion des sols
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-basique_-28ph___7-2C5-29.html
 Extracting page: Basique (pH > 7,5)
 facteurEnvironnemental Basique (pH > 7,5)
+Replaced page title special characters : Category:Basique (pH > 7,5) --> Category:Basique (pH supérieur à 7,5)
 Adding redirect: Basique (pH > 7,5) <-- Basique
+Replaced page title special characters : PH > 7,5 --> PH supérieur à 7,5
 Adding redirect: Basique (pH > 7,5) <-- pH > 7,5
+Replaced page title special characters : Basique (pH > 7,5) --> Basique (pH supérieur à 7,5)
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-neutre_-286-2C5___ph___7-2C5-29.html
 Extracting page: Neutre (6,5 < pH < 7,5)
 facteurEnvironnemental Neutre (6,5 < pH < 7,5)
+Replaced page title special characters : Category:Neutre (6,5 < pH < 7,5) --> Category:Neutre (6,5 inférieur à pH inférieur à 7,5)
 Adding redirect: Neutre (6,5 < pH < 7,5) <-- Neutre
+Replaced page title special characters : 6,5 < pH < 7,5 --> 6,5 inférieur à pH inférieur à 7,5
 Adding redirect: Neutre (6,5 < pH < 7,5) <-- 6,5 < pH < 7,5
+Replaced page title special characters : Neutre (6,5 < pH < 7,5) --> Neutre (6,5 inférieur à pH inférieur à 7,5)
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-peu_acide_-285-2C5___ph___6-2C5-29.html
 Extracting page: Peu acide (5,5 < pH < 6,5)
 facteurEnvironnemental Peu acide (5,5 < pH < 6,5)
+Replaced page title special characters : Category:Peu acide (5,5 < pH < 6,5) --> Category:Peu acide (5,5 inférieur à pH inférieur à 6,5)
 Adding redirect: Peu acide (5,5 < pH < 6,5) <-- Peu acide
+Replaced page title special characters : 5,5 < pH < 6,5 --> 5,5 inférieur à pH inférieur à 6,5
 Adding redirect: Peu acide (5,5 < pH < 6,5) <-- 5,5 < pH < 6,5
+Replaced page title special characters : Peu acide (5,5 < pH < 6,5) --> Peu acide (5,5 inférieur à pH inférieur à 6,5)
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-acide_-28ph___5-29.html
 Extracting page: Acide (pH < 5)
 facteurEnvironnemental Acide (pH < 5)
+Replaced page title special characters : Category:Acide (pH < 5) --> Category:Acide (pH inférieur à 5)
 Adding redirect: Acide (pH < 5) <-- Acide
+Replaced page title special characters : PH < 5 --> PH inférieur à 5
 Adding redirect: Acide (pH < 5) <-- pH < 5
+Replaced page title special characters : Acide (pH < 5) --> Acide (pH inférieur à 5)
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-ph_du_sol.html
 Extracting page: pH du sol
 facteurEnvironnemental pH du sol
@@ -5392,7 +5526,15 @@ Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.f
 Extracting page: Gestion de la ressource mellifère - INTERAPI
 outilDAide Gestion de la ressource mellifère - INTERAPI
 
-Warning: finfo::file(C:\Neayi\wiki_builder\import_geco/geco_index_files/image_Gestion_de_la_ressource_mellif_re___INTERAPI.png): failed to open stream: No such file or directory in C:\Neayi\wiki_builder\import_geco\importGecoToWiki.php on line 644
+Warning: finfo::file(C:\Neayi\wiki_builder\import_geco/geco_index_files/image_Gestion_de_la_ressource_mellif_re___INTERAPI.png): failed to open stream: No such file or directory in C:\Neayi\wiki_builder\import_geco\importGecoToWiki.php on line 642
+
+Call Stack:
+    0.4063     550800   1. {main}() C:\Neayi\wiki_builder\import_geco\importGecoToWiki.php:0
+    3.1772    1131968   2. importGecoToWiki() C:\Neayi\wiki_builder\import_geco\importGecoToWiki.php:42
+  915.4333   22474272   3. addPage() C:\Neayi\wiki_builder\import_geco\importGecoToWiki.php:123
+  915.5102   22493072   4. resizeImage() C:\Neayi\wiki_builder\import_geco\importGecoToWiki.php:215
+  915.5104   22494928   5. finfo->file() C:\Neayi\wiki_builder\import_geco\importGecoToWiki.php:642
+
 Loading page: C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-choix_des_couverts.html
 Extracting page: Choix des couverts
 outilDAide Choix des couverts

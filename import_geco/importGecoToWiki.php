@@ -84,8 +84,8 @@ function importGecoToWiki()
 		echo "Loading page: $filename\n";
 
 		//Debuging
-		// if ($filename != 'C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-realiser_des_faux-semis_pendant_l_interculture.html')
-		// 	continue;
+		if ($filename != 'C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-allongement_et_diversification_du_systeme_colza-ble-orge_lorrain.html')
+			continue;
 
 		$conceptType = '';
 		$xpath = new DOMXpath($doc);
@@ -205,6 +205,7 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl)
 		}
 		break;
 	}
+	//echo $wikiTextParsoidBrut . "\n"; 
 	$wikiTextParsoidClean = cleanWikiTextParsoid($wikiTextParsoidBrut);
 	if (isset($wikiTextParsoidClean['imageCaption']))
 		$imageCaption = $wikiTextParsoidClean['imageCaption'];
@@ -212,7 +213,7 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl)
 		$wikiText = $wikiTextParsoidClean['wikiText'];
 	if (!empty($imageName))
 		resizeImage($imageName);
-
+	// echo $wikiText;
 	// Add a model for redirect to the originial Geco webpage.
 	$page->addContent("{{ThanksGeco|url=$trueUrl}}" . "</br>");
 
@@ -270,7 +271,7 @@ function addCategoriesForPage($page, $xpath,$pageName)
 	{
 		$rel = trim($div->textContent);
 		$revrel = '';
-
+		
 		if (isset($GLOBALS['rel_labels'][$rel]))
 			$rel = $GLOBALS['rel_labels'][$rel];
 		else if (isset($GLOBALS['reverse_labels'][$rel]))
@@ -422,19 +423,19 @@ function addCategoriesForPage($page, $xpath,$pageName)
 function initRelations()
 {
 	$GLOBALS['relations'] = array();
-	$GLOBALS['relations']['defavorise'] = array('rel' => 'defavorise', 'label' => 'défavorise', 'reverse' => 'estDefavorisePar', 'reverse_label' => 'est défavorisé par','reverse_paragraphSentence'=>"\n=== La prolifération de l'organisme est défavorisée par les pratiques suivantes : ===\n");
-	$GLOBALS['relations']['estAppliqueA'] = array('rel' => 'estAppliqueA', 'label' => 'est appliqué à', 'reverse' => 'estMobiliseDans', 'reverse_label' => 'est mobilisé dans', 'reverse_paragraphSentence'=>"\n=== Ce type de culture permet l'utilisation des techniques suivantes : ===\n");
-	$GLOBALS['relations']['estComplementaire'] = array('rel' => 'estComplementaire', 'label' => 'est complémentaire', 'reverse' => 'estComplementaire', 'reverse_label' => '');
-	$GLOBALS['relations']['estIncompatible'] = array('rel' => 'estIncompatible', 'label' => 'est incompatible', 'reverse' => 'estIncompatible', 'reverse_label' => '');
-	$GLOBALS['relations']['favorise'] = array('rel' => 'favorise', 'label' => 'favorise', 'reverse' => 'estFavorisePar', 'reverse_label' => 'est favorisé par', 'reverse_paragraphSentence'=>"\n=== La prolifération de l'organisme est favorisé par les pratiques suivantes : ===\n",);
-	$GLOBALS['relations']['informeSur'] = array('rel' => 'informeSur', 'label' => 'informe sur', 'reverse' => 'estRenseignePar', 'reverse_label' => 'est renseigné par', 'reverse_paragraphSentence'=>"\n=== Ce sujet est renseigné dans les guides suivants : ===\n");
-	$GLOBALS['relations']['regule'] = array('rel' => 'regule', 'label' => 'régule', 'reverse' => 'estRegulePar', 'reverse_label' => 'est régulé par', 'reverse_paragraphSentence'=>"\n=== La prolifération de ce bioagresseur est régulé par les auxilaires suivants : ===\n");
-	$GLOBALS['relations']['sAttaque'] = array('rel' => 'sAttaque', 'label' => "s'attaque à", 'reverse' => 'estAttaquePar', 'reverse_label' => 'est attaqué par', 'reverse_paragraphSentence'=>"\n=== Ce type de culture est attaqué par : ===\n");
-	$GLOBALS['relations']['utilise'] = array('rel' => 'utilise', 'label' => 'utilise', 'reverse' => 'estUtilisePour', 'reverse_label' => 'est utilisé pour', 'reverse_paragraphSentence'=>"\n=== Ce matériel est utilisé dans les techniques suivantes  ===\n");
 	$GLOBALS['relations']['aPourFils'] = array('rel' => 'aPourFils', 'label' => 'a pour fils', 'reverse' => 'aPourParent', 'reverse_label' => 'a pour parent');
+	$GLOBALS['relations']['estAppliqueA'] = array('rel' => 'estAppliqueA', 'label' => 'est appliqué à', 'reverse' => 'estMobiliseDans', 'reverse_label' => 'est mobilisé dans', 'reverse_paragraphSentence'=>"\n=== Ce type de culture permet l'utilisation des techniques suivantes : ===\n");
+	$GLOBALS['relations']['defavorise'] = array('rel' => 'defavorise', 'label' => 'défavorise', 'reverse' => 'estDefavorisePar', 'reverse_label' => 'est défavorisé par','reverse_paragraphSentence'=>"\n=== La prolifération de l'organisme est défavorisée par les pratiques suivantes : ===\n");
+	$GLOBALS['relations']['favorise'] = array('rel' => 'favorise', 'label' => 'favorise', 'reverse' => 'estFavorisePar', 'reverse_label' => 'est favorisé par', 'reverse_paragraphSentence'=>"\n=== La prolifération de l'organisme est favorisé par les pratiques suivantes : ===\n",);
+	$GLOBALS['relations']['estComplementaire'] = array('rel' => 'estComplementaire', 'label' => '', 'reverse' => 'estComplementaire', 'reverse_label' => 'est complémentaire', 'reverse_paragraphSentence' => "\n=== Ces techniques sont complémentaires de la technique présentées dans cette article ===\n");
+	$GLOBALS['relations']['estIncompatible'] = array('rel' => 'estComplementaire', 'label' => '', 'reverse' => 'estIncompatible', 'reverse_label' => 'est incompatible', 'reverse_paragraphSentence' => "\n=== Ces techniques sont incompatibles de la technique présentées dans cette article ===\n");
 	$GLOBALS['relations']['caracterise'] = array('rel' => 'caracterise', 'label' => 'caractérise', 'reverse' => 'sAppliqueA', 'reverse_label' => "s'applique à", 'reverse_paragraphSentence'=>"\n=== Contexte pédo-climatique et géographique du retour d'expérience : ===\n");
 	$GLOBALS['relations']['contribueA'] = array('rel' => 'contribueA', 'label' => 'contribue à', 'reverse' => 'estAssurePar', 'reverse_label' => 'est assuré par', 'reverse_paragraphSentence'=>"\n=== Cette objectif est assuré par les techniques suivantes : ===\n");
 	$GLOBALS['relations']['evoque'] = array('rel' => 'evoque', 'label' => 'évoque', 'reverse' => 'estEvoqueDans', 'reverse_label' => 'est évoqué dans', 'reverse_paragraphSentence'=>"\n=== Ce sujet est évoqué dans les exemples de mise en oeuvre suivant : ===\n",);
+	$GLOBALS['relations']['regule'] = array('rel' => 'regule', 'label' => 'régule', 'reverse' => 'estRegulePar', 'reverse_label' => 'est régulé par', 'reverse_paragraphSentence'=>"\n=== La prolifération de ce bioagresseur est régulé par les auxilaires suivants : ===\n");
+	$GLOBALS['relations']['informeSur'] = array('rel' => 'informeSur', 'label' => 'informe sur', 'reverse' => 'estRenseignePar', 'reverse_label' => 'est renseigné par', 'reverse_paragraphSentence'=>"\n=== Ce sujet est renseigné dans les guides suivants : ===\n");
+	$GLOBALS['relations']['sAttaque'] = array('rel' => 'sAttaque', 'label' => "s'attaque à", 'reverse' => 'estAttquePar', 'reverse_label' => 'est attaqué par', 'reverse_paragraphSentence'=>"\n=== Ce type de culture est attaqué par : ===\n");
+	$GLOBALS['relations']['utilise'] = array('rel' => 'utilise', 'label' => 'utilise', 'reverse' => 'estUtilisePour', 'reverse_label' => 'est utilisé pour', 'reverse_paragraphSentence'=>"\n=== Ce matériel est utilisé dans les techniques suivantes  ===\n");
 	$GLOBALS['relations']['sAppuieSur'] = array('rel' => 'sAppuieSur', 'label' => "s'appuie sur", 'reverse' => 'aideAAppliquer', 'reverse_label' => 'aide à appliquer', 'reverse_paragraphSentence'=>"\n=== Cette pages s'appuit sur : ===\n",);
 
 /*
@@ -460,7 +461,11 @@ utilise / est utilisé pour
 	{
 		$GLOBALS['reverse_labels'][$v['reverse_label']] = $k;
 		$GLOBALS['rel_labels'][$v['label']] = $k;
-	}	
+	}
+	//Debug relation array creation
+	// print_r($GLOBALS['rel_labels']);
+	// print_r($GLOBALS['reverse_labels']);
+	// exit();
 }
 
 /**
@@ -754,7 +759,7 @@ function getWikiTextParsoid($node)
 function cleanWikiTextParsoid($text)
 {
 	$text = preg_replace('@<span style="color:#1AA0E0;"><strong>@', "===", $text);
-	$text = preg_replace('@</strong></span>@', "===", $text);
+	$text = preg_replace('@</strong></span>@', "=== \n", $text);
 	$text = preg_replace('@<strong>@', "'''", $text);
 	$text = preg_replace('@</strong>@', "'''", $text);
 	$text = strip_tags($text, '<br>');
@@ -762,7 +767,7 @@ function cleanWikiTextParsoid($text)
 	$text = preg_replace('@function proposerEnrichissement.*;$@', '', $text);
 	$text = preg_replace('@[fF]iche en cours de rédaction[,\s\.]*@', '', $text);
 	$text = preg_replace('@pour plus d\'information@', "\n Pour plus d\'information", $text);
-	$text = preg_replace('@-*@', '', $text);
+	$text = preg_replace('@-{4}@', '', $text);
 	$text = preg_replace('@•@', '*', $text);
 	$text = preg_replace("@== ''''@", '==', $text);
 	$text = preg_replace('@[nN]ull@', '', $text);
@@ -784,15 +789,24 @@ function findCaption($lines)
 	{
 		//echo $line . "\n";
 		$matches = array();
+		// Test the differents cases for data source quotation in geco :
+		// search symbol © for copyright
 		if (preg_match('@.*:([^©]+©[^[]*)@', $line, $matches))
 			$results['imageCaption'] = ucfirst(trim($matches[1]));
+		// Search the word "photo"
 		else if (empty($imageCaption) && preg_match('@[^:]*[pP]hoto[^:]*:(.+)@', $line, $matches))
 			$results['imageCaption'] = ucfirst(trim($matches[1]));
-		else if (empty($imageCaption) && preg_match('@[iI]mage en en-?tête@',  $line))
+		// Search the sentence "image en entête"
+		else if (empty($imageCaption) && mb_ereg_match("[iI]mage en en\-?tête ;", trim($line,'()')))
 		{
-			preg_replace('@[iI]mage en en-?tête;@', '',  $line);
-			$results['imageCaption'] = ucfirst(trim($line,'()'));
+			$line = trim($line,'()');
+			$line = mb_ereg_replace('image en en\-?tête ;', '', $line);
+			$results['imageCaption'] = ucfirst(trim($line));
 		}
+		// Search the word "image"
+		else if (empty($imageCaption) && preg_match('@[iI]mage:(.*)@',  $line, $matches))
+			$results['imageCaption'] = ucfirst(trim($matches[1]));
+		// If any imageCaption is identified, add the line to the wiki content page
 		else if (trim($line) != 'A compléter...')
 		{
 			$line = trim($line, "\t\n\r\0\x0B\xC2\xA0");
@@ -828,25 +842,31 @@ function preprocessing($xpath, $contentDiv, $pageName)
 
 	// Remove tables tags
 	$tables = $contentDiv->getElementsByTagName('table');
-	$nb = $tables->length;
-	for ($i = $nb - 1; $i >= 0; $i--)
-	{
-		$table = $tables->item($i);
-		removeTable($table);
-	}
+	removeTables($tables);
+
 
 	// Change the image url which are integrated as string in the wikitext.
 	$imagesIntegrated = $xpath->query("//img[starts-with(@src, 'data')]", $contentDiv);
 	imageIntext($imagesIntegrated, $pageName);
+
+	// Change geco url in the page content into Internal link.
+	$urlNodeInText = $xpath->query("///a[starts-with(@href, 'https://geco')]", $contentDiv);
+	gecoUrlInText($urlNodeInText);
 }
 
 /**
  * Remove tables from the xml document
  */
-function removeTable($table)
+function removeTables($tables)
 {
-	$parent = $table->parentNode;
-	$parent->removeChild($table);
+	$nb = $tables->length;
+	for ($i = $nb - 1; $i >= 0; $i--)
+	{
+		$table = $tables->item($i);
+		$parent = $table->parentNode;
+		$parent->removeChild($table);
+	}
+
 }
 
 /**
@@ -904,7 +924,9 @@ function imageInText($imagesIntegrated, $pageName)
 		// Get the base64 code
 		$image_string = $image->getAttribute('src');
 		// Clean the begining
-		$image_string = str_replace("data:image/png;base64,", '', $image_string);
+		// Obviously, they're is two type of possible pictures extension.
+		$image_string = str_ireplace("data:image/png;base64,", '', $image_string);
+		$image_string = str_ireplace("data:image/jpeg;base64,", '', $image_string);
 		$image_string = base64_decode($image_string);
 		$img = imagecreatefromstring($image_string);
 
@@ -928,4 +950,31 @@ function imageInText($imagesIntegrated, $pageName)
 	}
 }
 
-?>
+/**
+ * Change Geco interanl link into internal wiki link
+ */
+function gecoUrlInText($nodeList)
+{
+	foreach($nodeList as $link)
+	{
+		$relurl = str_replace('https:', 'http:', $link->getAttribute('href'));
+		echo $relurl . "\n";
+		if (isset($GLOBALS['links'][$relurl]))
+		{
+			$nodeValue = $link->nodeValue;
+			$link->nodeValue = '[[' . $GLOBALS['links'][$relurl] . "|" . $nodeValue . "]]";
+			$link->removeAttribute('href');
+		}
+		else if ($relurl !== 'http://geco.ecophytopic.fr/mentions-legales')
+		{
+			echo "internal link not found : $relurl \n";
+		}
+	}
+}
+
+
+
+
+
+
+
