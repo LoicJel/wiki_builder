@@ -1,0 +1,15 @@
+Modèle:aPourFils
+Modèle:estAppliqueA
+Modèle:impact
+Modèle:caracterise
+Modèle:contribueA
+Modèle:evoque
+Modèle:regule
+Modèle:informeSur
+Modèle:sAttaque
+Modèle:utilise
+Modèle:sAppuieSur
+Modèle:ListingAnnexes
+Modèle:ConceptEvoque
+Modèle:ThanksGeco
+Modèle:Bioagresseur

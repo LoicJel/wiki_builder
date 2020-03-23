@@ -1,0 +1,358 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.10/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.10/ http://www.mediawiki.org/xml/export-0.10.xsd" version="0.10" xml:lang="fr">
+  <siteinfo>
+    <sitename>Pratiques Agro-écologiques</sitename>
+    <dbname>wiki</dbname>
+    <base>https://pratiques.dev.tripleperformance.fr/wiki/Accueil</base>
+    <generator>MediaWiki 1.34.0</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Média</namespace>
+      <namespace key="-1" case="first-letter">Spécial</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Discussion</namespace>
+      <namespace key="2" case="first-letter">Utilisateur</namespace>
+      <namespace key="3" case="first-letter">Discussion utilisateur</namespace>
+      <namespace key="4" case="first-letter">Pratiques Agro-écologiques</namespace>
+      <namespace key="5" case="first-letter">Discussion Pratiques Agro-écologiques</namespace>
+      <namespace key="6" case="first-letter">Fichier</namespace>
+      <namespace key="7" case="first-letter">Discussion fichier</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">Discussion MediaWiki</namespace>
+      <namespace key="10" case="first-letter">Modèle</namespace>
+      <namespace key="11" case="first-letter">Discussion modèle</namespace>
+      <namespace key="12" case="first-letter">Aide</namespace>
+      <namespace key="13" case="first-letter">Discussion aide</namespace>
+      <namespace key="14" case="first-letter">Catégorie</namespace>
+      <namespace key="15" case="first-letter">Discussion catégorie</namespace>
+      <namespace key="828" case="first-letter">Module</namespace>
+      <namespace key="829" case="first-letter">Discussion module</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Modèle:APourFils</title>
+    <ns>10</ns>
+    <id>8004</id>
+    <revision>
+      <id>36045</id>
+      <parentid>36017</parentid>
+      <timestamp>2020-03-10T15:03:48Z</timestamp>
+      <contributor>
+        <username>Loic</username>
+        <id>4</id>
+      </contributor>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve" bytes="634">&lt;noinclude&gt; Ce template utilise DPL pour établir des liens entre les pages de qui apportent des informations plus précise sur un même sujet &lt;/noinclude&gt;
+{{#ifexpr:{{#dpl:|category={{PAGENAME}}|mode=userformat |resultsheader=%PAGES%| noresultsheader=0}} &gt; 10 
+|=== Pour plus de précision consultez les pages suivantes : ===
+{{#dpl:|category={{PAGENAME}}|format= &lt;div style='column-count:3;-moz-column-count:3;-webkit-column-count:3'&gt;, \n* [[%PAGE%]],,&lt;/div&gt;| noresultsheader=&amp;nbsp;}}
+|{{#dpl:|category={{PAGENAME}} |format= === Pour plus de précision consultez les pages suivantes : ===, \n* [[%PAGE%]]| noresultsheader=&amp;nbsp;}}}}</text>
+      <sha1>k9c3t5n299pu57uywkf1bf22ebohsg7</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Modèle:EstAppliqueA</title>
+    <ns>10</ns>
+    <id>8005</id>
+    <revision>
+      <id>36046</id>
+      <parentid>36018</parentid>
+      <timestamp>2020-03-10T15:04:25Z</timestamp>
+      <contributor>
+        <username>Loic</username>
+        <id>4</id>
+      </contributor>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve" bytes="674">&lt;noinclude&gt; Ce template utilise DPL pour établir des liens entre les pages de technique et les cultures qu'ils qui permettent leur utilisation &lt;/noinclude&gt;
+{{#ifexpr:{{#dpl:|category=Culture |linksto={{PAGENAME}} |mode=userformat |resultsheader=%PAGES%| noresultsheader=0}} &gt; 10 
+|=== Ce bioagresseur attaque les cultures suivantes : ===
+{{#dpl:|category=Culture |linksto={{PAGENAME}} |format= &lt;div style='column-count:3;-moz-column-count:3;-webkit-column-count:3'&gt;, \n* [[%PAGE%]],,&lt;/div&gt;| noresultsheader=&amp;nbsp;}}
+|{{#dpl:|category=Culture |linksto={{PAGENAME}} |format= === Ce bioagresseur attaque les cultures suivantes : ===, \n* [[%PAGE%]]| noresultsheader=&amp;nbsp;}}}}</text>
+      <sha1>kfbyl6ahvm6iibwde9wh5iw0qj8o4n7</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Modèle:Impact</title>
+    <ns>10</ns>
+    <id>8006</id>
+    <revision>
+      <id>36047</id>
+      <parentid>36022</parentid>
+      <timestamp>2020-03-10T15:05:02Z</timestamp>
+      <contributor>
+        <username>Loic</username>
+        <id>4</id>
+      </contributor>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve" bytes="732">&lt;noinclude&gt; Ce template utilise DPL pour établir des liens entre les pages de bioagresseurs et ravageur impacté par l'utilisation de technique &lt;/noinclude&gt;
+{{#ifexpr:{{#dpl:|category=Bioagresseur{{!}}Auxiliaire|linksto={{PAGENAME}} |mode=userformat |resultsheader=%PAGES%| noresultsheader=0}} &gt; 10 
+|=== Ces organismes sont impactés par la technique : ===
+{{#dpl:|category=Bioagresseur{{!}}Auxiliaire|linksto={{PAGENAME}} |format= &lt;div style='column-count:3;-moz-column-count:3;-webkit-column-count:3'&gt;, \n* [[%PAGE%]],,&lt;/div&gt;| noresultsheader=&amp;nbsp;}}
+|{{#dpl:|category=Bioagresseur{{!}}Auxiliaire|linksto={{PAGENAME}} |format= === Ces organismes sont impactés par la technique : ===, \n* [[%PAGE%]]| noresultsheader=&amp;nbsp;}}}}</text>
+      <sha1>ex5p508q8njl1jof68fcpv2jotr7sqw</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Modèle:Caracterise</title>
+    <ns>10</ns>
+    <id>8009</id>
+    <revision>
+      <id>36051</id>
+      <parentid>36025</parentid>
+      <timestamp>2020-03-10T15:10:11Z</timestamp>
+      <contributor>
+        <username>Loic</username>
+        <id>4</id>
+      </contributor>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve" bytes="788">&lt;noinclude&gt; Ce template utilise DPL pour établir des liens entre les pages de d'exemple de mise en oeuvre et les les conditions pédo-climatique qui les caractérise &lt;/noinclude&gt;
+{{#ifexpr:{{#dpl:|category=ExempleMiseEnOeuvre|linksto={{PAGENAME}} |mode=userformat |resultsheader=%PAGES%| noresultsheader=0}} &gt; 10 
+|=== Exemple de mise en œuvre caractérisé par cette conditions pédo-climatique ===
+{{#dpl:|category=ExempleMiseEnOeuvre|linksto={{PAGENAME}} |format= &lt;div style='column-count:3;-moz-column-count:3;-webkit-column-count:3'&gt;, \n* [[%PAGE%]],,&lt;/div&gt;| noresultsheader=&amp;nbsp;}}
+|{{#dpl:|category=ExempleMiseEnOeuvre|linksto={{PAGENAME}} |format= === Exemple de mise en œuvre caractérisé par cette conditions pédo-climatique ===, \n* [[%PAGE%]]| noresultsheader=&amp;nbsp;}}}}</text>
+      <sha1>agil3l9eotzilnf0syudszbnmyaqb3z</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Modèle:ContribueA</title>
+    <ns>10</ns>
+    <id>8010</id>
+    <revision>
+      <id>36052</id>
+      <parentid>36026</parentid>
+      <timestamp>2020-03-10T15:10:39Z</timestamp>
+      <contributor>
+        <username>Loic</username>
+        <id>4</id>
+      </contributor>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve" bytes="718">&lt;noinclude&gt; Ce template utilise DPL pour établir des liens entre les pages de techniques et les objectifs qu'elles visent &lt;/noinclude&gt;
+{{#ifexpr:{{#dpl:|category=Technique|linksto={{PAGENAME}} |mode=userformat |resultsheader=%PAGES%| noresultsheader=0}} &gt; 10 
+|=== Cette technique permet de participer à la réalisation des objectifs suivant : ===
+{{#dpl:|category=Technique|linksto={{PAGENAME}} |format= &lt;div style='column-count:3;-moz-column-count:3;-webkit-column-count:3'&gt;, \n* [[%PAGE%]],,&lt;/div&gt;| noresultsheader=&amp;nbsp;}}
+|{{#dpl:|category=Technique|linksto={{PAGENAME}} |format= === Cette technique permet de participer à la réalisation des objectifs suivant : ===, \n* [[%PAGE%]]| noresultsheader=&amp;nbsp;}}}}</text>
+      <sha1>q7mrvb3w2wtlbj5q3nfr83d43s689kt</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Modèle:Evoque</title>
+    <ns>10</ns>
+    <id>8011</id>
+    <revision>
+      <id>36066</id>
+      <parentid>36053</parentid>
+      <timestamp>2020-03-11T08:56:46Z</timestamp>
+      <contributor>
+        <username>Loic</username>
+        <id>4</id>
+      </contributor>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve" bytes="757">&lt;noinclude&gt; Ce template utilise DPL pour établir des liens entre les pages de technique et les exemple de mise en oeuvre qui les utilisent &lt;/noinclude&gt;
+{{#ifexpr:{{#dpl:|category=ExempleMiseEnOeuvre|linksto={{PAGENAME}} |mode=userformat |resultsheader=%PAGES%| noresultsheader=0}} &gt; 10 
+|=== Cette technique évoque les exemples de mise en œuvre suivants : ===
+{{#dpl:|category=ExempleMiseEnOeuvre|linksto={{PAGENAME}} |format= &lt;div style='column-count:3;-moz-column-count:3;-webkit-column-count:3'&gt;, \n* [[%PAGE%]],,&lt;/div&gt;| count=20| noresultsheader=&amp;nbsp;}}
+|{{#dpl:|category=ExempleMiseEnOeuvre|linksto={{PAGENAME}} |format= === Cette technique évoque les exemples de mise en œuvre suivants : ===, \n* [[%PAGE%]]| count=20| noresultsheader=&amp;nbsp;}}}}</text>
+      <sha1>6y9fii0aptdvb887ifs91505xthww6r</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Modèle:Regule</title>
+    <ns>10</ns>
+    <id>8012</id>
+    <revision>
+      <id>36054</id>
+      <parentid>36028</parentid>
+      <timestamp>2020-03-10T15:11:28Z</timestamp>
+      <contributor>
+        <username>Loic</username>
+        <id>4</id>
+      </contributor>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve" bytes="682">&lt;noinclude&gt; Ce template utilise DPL pour établir des liens entre les pages des auxiliaires et les bioagresseurs qu'ils régulent &lt;/noinclude&gt;
+{{#ifexpr:{{#dpl:|category=Bioagresseur|linksto={{PAGENAME}} |mode=userformat |resultsheader=%PAGES%| noresultsheader=0}} &gt; 10 
+|=== Cette auxiliaire régule les bioagresseurs suivants : ===
+{{#dpl:|category=Bioagresseur|linksto={{PAGENAME}} |format= &lt;div style='column-count:3;-moz-column-count:3;-webkit-column-count:3'&gt;, \n* [[%PAGE%]],,&lt;/div&gt;| noresultsheader=&amp;nbsp;}}
+|{{#dpl:|category=Bioagresseur|linksto={{PAGENAME}} |format= === Cette auxiliaire régule les bioagresseurs suivants : ===, \n* [[%PAGE%]]| noresultsheader=&amp;nbsp;}}}}</text>
+      <sha1>jbygypxsekx9hzd4nbwszvzjkywuuci</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Modèle:InformeSur</title>
+    <ns>10</ns>
+    <id>8013</id>
+    <revision>
+      <id>36055</id>
+      <parentid>36030</parentid>
+      <timestamp>2020-03-10T15:12:02Z</timestamp>
+      <contributor>
+        <username>Loic</username>
+        <id>4</id>
+      </contributor>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve" bytes="586">&lt;noinclude&gt; Ce template utilise DPL pour établir des liens entre les pages de guide et les sujets qu'ils renseignent &lt;/noinclude&gt;
+{{#ifexpr:{{#dpl:|linksto={{PAGENAME}} |mode=userformat |resultsheader=%PAGES%| noresultsheader=0}} &gt; 10 
+|=== Ce guide renseigne sur les sujets suivants : ===
+{{#dpl:|linksto={{PAGENAME}} |format= &lt;div style='column-count:3;-moz-column-count:3;-webkit-column-count:3'&gt;, \n* [[%PAGE%]],,&lt;/div&gt;| noresultsheader=&amp;nbsp;}}
+|{{#dpl:|linksto={{PAGENAME}} |format= === Ce guide renseigne sur les sujets suivants : ===, \n* [[%PAGE%]]| noresultsheader=&amp;nbsp;}}}}</text>
+      <sha1>8f18oawtu58ndrl189jnngfmbpielcy</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Modèle:SAttaque</title>
+    <ns>10</ns>
+    <id>8003</id>
+    <revision>
+      <id>36056</id>
+      <parentid>36015</parentid>
+      <timestamp>2020-03-10T15:12:46Z</timestamp>
+      <contributor>
+        <username>Loic</username>
+        <id>4</id>
+      </contributor>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve" bytes="657">&lt;noinclude&gt; Ce template utilise DPL pour établir des liens entre les pages de bioagresseurs est les cultures qu'ils attaquent &lt;/noinclude&gt;
+{{#ifexpr:{{#dpl:|category=Culture |linksto={{PAGENAME}} |mode=userformat |resultsheader=%PAGES%| noresultsheader=0}} &gt; 10 
+|=== Ce bioagresseur attaque les cultures suivantes : ===
+{{#dpl:|category=Culture |linksto={{PAGENAME}} |format= &lt;div style='column-count:3;-moz-column-count:3;-webkit-column-count:3'&gt;, \n* [[%PAGE%]],,&lt;/div&gt;| noresultsheader=&amp;nbsp;}}
+|{{#dpl:|category=Culture |linksto={{PAGENAME}} |format= === Ce bioagresseur attaque les cultures suivantes : ===, \n* [[%PAGE%]]| noresultsheader=&amp;nbsp;}}}}</text>
+      <sha1>e6dm93jp1rpyayvyti5ezaufsgzngd2</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Modèle:Utilise</title>
+    <ns>10</ns>
+    <id>8014</id>
+    <revision>
+      <id>36057</id>
+      <parentid>36031</parentid>
+      <timestamp>2020-03-10T15:13:21Z</timestamp>
+      <contributor>
+        <username>Loic</username>
+        <id>4</id>
+      </contributor>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve" bytes="650">&lt;noinclude&gt; Ce template utilise DPL pour établir des liens entre les pages de technique et le matériel qu'elles utilisent &lt;/noinclude&gt;
+{{#ifexpr:{{#dpl:|category=Materiel|linksto={{PAGENAME}} |mode=userformat |resultsheader=%PAGES%| noresultsheader=0}} &gt; 10 
+|=== Cette technique utilise le matériel suivant : ===
+{{#dpl:|category=Materiel|linksto={{PAGENAME}} |format= &lt;div style='column-count:3;-moz-column-count:3;-webkit-column-count:3'&gt;, \n* [[%PAGE%]],,&lt;/div&gt;| noresultsheader=&amp;nbsp;}}
+|{{#dpl:|category=Materiel|linksto={{PAGENAME}} |format= === Cette technique utilise le matériel suivant : ===, \n* [[%PAGE%]]| noresultsheader=&amp;nbsp;}}}}</text>
+      <sha1>hj0vx1waea9r8mmmp4bh0h2qirc83rl</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Modèle:SAppuieSur</title>
+    <ns>10</ns>
+    <id>8015</id>
+    <revision>
+      <id>36044</id>
+      <parentid>36043</parentid>
+      <timestamp>2020-03-10T15:03:02Z</timestamp>
+      <contributor>
+        <username>Loic</username>
+        <id>4</id>
+      </contributor>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve" bytes="717">&lt;noinclude&gt; Ce template utilise DPL pour établir des liens entre les pages de outil d'aide et les techniques qu'ils aident à appliquer &lt;/noinclude&gt;
+{{#ifexpr:{{#dpl:|category=Technique|linksto={{PAGENAME}} |mode=userformat |resultsheader=%PAGES%| noresultsheader=0}} &gt; 10 
+|=== Cette outil d'aide permet de mettre en place les techniques suivantes :  ===
+{{#dpl:|category=Technique|linksto={{PAGENAME}} |format= &lt;div style='column-count:3;-moz-column-count:3;-webkit-column-count:3'&gt;, \n* [[%PAGE%]],,&lt;/div&gt;| noresultsheader=&amp;nbsp;}}
+|{{#dpl:|category=Technique|linksto={{PAGENAME}} |format= === Cette outil d'aide permet de mettre en place les techniques suivantes : ===, \n* [[%PAGE%]]| noresultsheader=&amp;nbsp;}}}}</text>
+      <sha1>08fk6jwelciulznq84srs9cqmo1myvv</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Modèle:ListingAnnexes</title>
+    <ns>10</ns>
+    <id>8002</id>
+    <revision>
+      <id>41447</id>
+      <parentid>36071</parentid>
+      <timestamp>2020-03-11T14:48:00Z</timestamp>
+      <contributor>
+        <username>Loic</username>
+        <id>4</id>
+      </contributor>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve" bytes="1029">&lt;noinclude&gt;
+Ce template permet d'imbriquer tous les templates liées au relations entre les différents articles importé de Geco. 
+Pour plus de precision sur chacun des template, allez directement sur la page du modèle :
+ 
+- [[Modèle:aPourFils]] &lt;br/&gt;
+- [[Modèle:estAppliqueA]] &lt;br/&gt;
+- [[Modèle:impact]] &lt;br/&gt;
+- [[Modèle:caracterise]] &lt;br/&gt;
+- [[Modèle:contribueA]] &lt;br/&gt;
+- [[Modèle:evoque]] &lt;br/&gt;
+- [[Modèle:regule]] &lt;br/&gt;
+- [[Modèle:informeSur]] &lt;br/&gt;
+- [[Modèle:sAttaque]] &lt;br/&gt;
+- [[Modèle:utilise]] &lt;br/&gt;
+- [[Modèle:sAppuieSur]] &lt;br/&gt;
+&lt;/noinclude&gt;
+{{#if:{{{aPourFils|}}}|&lt;br/&gt;{{aPourFils}}}}{{#if:{{{estAppliqueA|}}}|&lt;br/&gt;{{estAppliqueA}}}}{{#if:{{{impact|}}}|&lt;br/&gt;{{impact}}}}{{#if:{{{caracterise|}}}|&lt;br/&gt;{{caracterise}}}}{{#if:{{{contribueA|}}}|&lt;br/&gt;{{contribueA}}}}{{#if:{{{evoque|}}}|&lt;br/&gt;{{evoque}}}}{{#if:{{{regule|}}}|&lt;br/&gt;{{regule}}}}{{#if:{{{informeSur|}}}|&lt;br/&gt;{{informeSur}}}}{{#if:{{{sAttaque|}}}|&lt;br/&gt;{{sAttaque}}}}{{#if:{{{utilise|}}}|&lt;br/&gt;{{utilise}}}}{{#if:{{{sAppuieSur|}}}|&lt;br/&gt;{{sAppuieSur}}}}</text>
+      <sha1>a88jdx8wqj8yryzb3dg77t41bgxn14h</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Modèle:ThanksGeco</title>
+    <ns>10</ns>
+    <id>8001</id>
+    <revision>
+      <id>35986</id>
+      <timestamp>2020-03-10T10:59:09Z</timestamp>
+      <contributor>
+        <username>Loic</username>
+        <id>4</id>
+      </contributor>
+      <comment>Page créée avec « Ces informations sont extraite du site Geco. Cliquez sur le logo pour voir la page d'origine : [[File:Geco logo.png|alt=Logo Geco|link={{{url}}}]] »</comment>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve" bytes="146">Ces informations sont extraite du site Geco. Cliquez sur le logo pour voir la page d'origine : [[File:Geco logo.png|alt=Logo Geco|link={{{url}}}]]</text>
+      <sha1>h2a27l7zwy78u0ohguh3hgsqkd6r2nh</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Modèle:Bioagresseur</title>
+    <ns>10</ns>
+    <id>5056</id>
+    <revision>
+      <id>30459</id>
+      <parentid>20183</parentid>
+      <timestamp>2019-11-04T13:02:53Z</timestamp>
+      <contributor>
+        <username>Bertrand</username>
+        <id>1</id>
+      </contributor>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve" bytes="404">&lt;noinclude&gt;
+Ceci est la template pour les bioagresseurs.
+
+{{#cargo_declare:_table=Bioagresseurs|Cultures=List (,) of Page|Latin=String}}
+&lt;/noinclude&gt;
+&lt;includeonly&gt;
+{{#cargo_store:_table=Bioagresseurs|Cultures={{{Cultures|}}}|Latin={{{Latin|}}} }}
+{{#if:{{{Image|}}}|[[File:{{{Image|}}}|thumb|{{{ImageCaption|}}}]]|}}
+{|
+! Nom latin : 
+| {{{Latin|}}}
+|-
+! Culture(s) : 
+| {{{Cultures|}}}
+|}
+&lt;/includeonly&gt;</text>
+      <sha1>myh9b9x7qawom6ba1ng5gopvftp8sdg</sha1>
+    </revision>
+  </page>
+</mediawiki>
