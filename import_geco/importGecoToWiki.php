@@ -51,7 +51,6 @@ if (!empty($GLOBALS['unmanaged_tags']))
 function importGecoToWiki()
 {
 	$nbMaxTechniques = 50;
-
 	foreach ($GLOBALS['links'] as $url => $conceptName)
 	{
 		// Stock the url with https protocol for redirection to Geco
@@ -84,8 +83,9 @@ function importGecoToWiki()
 		echo "Loading page: $filename\n";
 
 		//Debuging
-		if ($filename != 'C:\Neayi\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-allongement_et_diversification_du_systeme_colza-ble-orge_lorrain.html')
-			continue;
+		// if ($filename != 'C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-hanneton.html')
+		// 	continue;
+		
 
 		$conceptType = '';
 		$xpath = new DOMXpath($doc);
@@ -98,6 +98,7 @@ function importGecoToWiki()
 			break;
 		}
 
+		$emptyPage = emptyPage($doc);
 		if (empty($conceptType))
 			continue;
 
@@ -120,15 +121,15 @@ function importGecoToWiki()
 			$conceptType == 'exempleMiseEnOeuvre' ||
 			$conceptType == 'outilDAide' ||
 			$conceptType == 'materiel')
-			addPage($conceptName, $xpath, $conceptType, false, $trueUrl);
+			addPage($conceptName, $xpath, $conceptType, false, $trueUrl, $emptyPage);
 		else
-			addPage($conceptName, $xpath, $conceptType, true, $trueUrl);
+			addPage($conceptName, $xpath, $conceptType, true, $trueUrl, $emptyPage);
 
 		// echo  $conceptType . "\t" . $conceptName . "\t" . $date . "\t" . $url  . "\n";
 	}
 }
 
-function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl)
+function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl, $emptyPage)
 {
 	echo "Extracting page: $pageName\n";
 
@@ -213,7 +214,12 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl)
 		$wikiText = $wikiTextParsoidClean['wikiText'];
 	if (!empty($imageName))
 		resizeImage($imageName);
-	// echo $wikiText;
+
+		if($emptyPage)
+	{
+		$intro = importTextFromWiki($pageName);
+		$wikiText = "$intro \n $wikiText";
+	}
 	// Add a model for redirect to the originial Geco webpage.
 	$page->addContent("{{ThanksGeco|url=$trueUrl}}" . "</br>");
 
@@ -537,6 +543,104 @@ function getDateLastUpdate($xpath)
 	return $date;
 }
 
+#### Url processing functions ####
+/**
+ * This function do several test in order to determine if the page have content or not
+ */
+function emptyPage($xml_loaded)
+{
+	$xpath = new DOMXpath($xml_loaded);	
+	// More common case is the tag <div[@class='contenu-concept-non-structure-content>
+	$elements = $xpath->query("//div[@class='contenu-concept-non-structure-content']");
+	//This means the tag is absent, so search the other tag case.
+	if(count($elements)==0)
+		$elements = $xpath->query("//div[@class='contenu-concept-structure']");
+	else 
+	{
+		// This means the page's content is empty or has only one image or on little sentence saying the page isn't complete.
+        if (count($elements[0]->childNodes)<3)
+        {
+			return true;
+        }
+	}
+	// In the case where there is more than 3 childNodes or the other tag is choosen, we search in the textContent if there is the sentence "fiche en cours de rédaction" or "A compléter".
+ 	$pageContent = $elements[0]->textContent;
+	if(stristr($pageContent,"fiche en cours de rédaction") or stristr($pageContent,"A compléter"))
+		return true;
+	else 
+		return false;
+}
+
+/**
+ * This function import content from wikipedia for pages that doesn't have content in geco
+ */
+function importTextFromWiki($pageName)
+{
+	$source = 'https://fr.wikipedia.org/wiki/';
+	$endPoint = "https://fr.wikipedia.org/w/api.php";
+	$params = [
+		"action" => "query",
+		"format" => "json",
+		"titles" => "$pageName",
+		"prop" => "extracts",
+		"explaintext" => true,
+		"exintro" => true,
+		"exsectionformat" => "wiki",
+		"redirects" => true
+	];
+
+	$url = $endPoint . "?" . http_build_query( $params );
+	$ch = curl_init( $url );
+	curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+	$output = curl_exec( $ch );
+	if($output)
+	{
+		$result = json_decode( $output, true );
+		if (!isset($result['query']['pages']['-1']['missing']))
+		{
+			foreach($result['query']['pages'] as $page=>$id)
+			$text = "";
+			$text .= $id['extract'];
+			$text .= " [[wikipedia:$pageName (CC-BY-SA)]]";
+			return $text;
+		}
+		else 
+			echo "The page $pageName doesn't exist in wikipedia \n";
+	}
+	curl_close( $ch );
+}
+
+/**
+ * This function import images from wikipedia for pages that doesn't have content in geco
+ */
+function importImageFromWiki($pageName)
+{
+	$source = 'https://fr.wikipedia.org/wiki/';
+	$endPoint = "https://fr.wikipedia.org/w/api.php";
+	$params = [
+		"action" => "query",
+		"format" => "json",
+		"titles" => "$pageName",
+		"prop" => "extracts"
+	];
+
+	$url = $endPoint . "?" . http_build_query( $params );
+	$ch = curl_init( $url );
+	curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+	$output = curl_exec( $ch );
+	if($output)
+	{
+		$result = json_decode( $output, true );
+		if (!isset($result['query']['pages']['-1']['missing']))
+		{
+			foreach($result['query']['pages'] as $page=>$image)
+			echo $image['pageimage'];
+		}
+		else 
+			echo "The page $pageName doesn't exist in wikipedia \n";
+	}
+	curl_close( $ch );
+}
 
 #### Url processing functions ####
 function getFullUrl($url)
@@ -626,7 +730,6 @@ function getImages($node)
 function resizeImage(&$imageName)
 {
 	$srcImageFilePath = __DIR__ . '/geco_index_files/'. $imageName;
-
 	$path_parts = pathinfo($srcImageFilePath);
 	$srcExt = $path_parts['extension'];
  
@@ -930,13 +1033,13 @@ function imageInText($imagesIntegrated, $pageName)
 		$image_string = base64_decode($image_string);
 		$img = imagecreatefromstring($image_string);
 
-		if ($img !== false)
+		if ($img)
 		{
 			$pageName = str_replace(' ', '_', $pageName);
 			//Create an unique name for save the image
 			$md5Name = md5("$pageName-$i").".png";
 			// Save the image
-			imagepng($img, "C:\Neayi\wiki_builder\import_geco\geco_index_files\\$md5Name");
+			imagepng($img, "C:\Neayi\\tripleperformance_docker\workspace\wiki_builder\import_geco\geco_index_files\\$md5Name");
 			// Release image memory 
 			imagedestroy($img);
 			// Resize the image
@@ -958,7 +1061,6 @@ function gecoUrlInText($nodeList)
 	foreach($nodeList as $link)
 	{
 		$relurl = str_replace('https:', 'http:', $link->getAttribute('href'));
-		echo $relurl . "\n";
 		if (isset($GLOBALS['links'][$relurl]))
 		{
 			$nodeValue = $link->nodeValue;
