@@ -884,6 +884,9 @@ function cleanWikiTextParsoid($text)
 	$text = preg_replace("@== ''''@", '==', $text);
 	$text = preg_replace('@[nN]ull@', '', $text);
 	$text = preg_replace('@[dD]ate.*:.*[0-9]@', '', $text);
+	$text = preg_replace('@\[\[smiley@', '[[image:smiley', $text);
+	$text = preg_replace('@\.png\|lien@', '.png|link', $text);
+	echo $text . "\n";
 	$text = trim($text);
 	$lines = explode("\n",$text);
 	return findCaption($lines);
@@ -1021,7 +1024,7 @@ function replaceSmiley($smiley)
 	{
 		// Replace the <i> node by and <img> node
 		$newNode = new DOMElement('img');
-		$parent->replaceChild($newNode,$smiley);
+		$parent->replaceChild($newNode, $smiley);
 		$newNode->setAttribute('src', $smileyImage);
 	}
 }
