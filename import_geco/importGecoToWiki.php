@@ -376,7 +376,7 @@ function addCategoriesForPage($page, $xpath,$pageName)
 		}
 		$model = trim($model,"|");
 		$model .= "}}";
-		$page->addContent($model);
+		$page->addContent($model . "\n");
 	}
 	if(isset($annexes['revrel']))
 	{
