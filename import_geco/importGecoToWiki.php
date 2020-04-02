@@ -85,7 +85,7 @@ function importGecoToWiki()
 		echo "Loading page: $filename\n";
 
 		//Debuging
-		// if ($filename != 'C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-cultiver_des_especes_aux_periodes_d_implantation_variees.html')
+		// if ($filename != 'C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-hanneton.html')
 		// 	continue;
 		
 
@@ -234,7 +234,7 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl, $e
 	if(isset($intro))
 		$page->addContent($intro . "\n");
 
-	$page->addContent("__TOC__ \n");
+	$page->addContent("\n __TOC__ \n");
 
 	$page->addContent($wikiText);
 
