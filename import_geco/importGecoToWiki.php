@@ -643,7 +643,7 @@ function importImageFromWiki($pageName)
 		if (!isset($result['query']['pages']['-1']['missing']))
 		{
 			foreach($result['query']['pages'] as $page=>$image)
-			return '[[file:' . $image['pageimage'] . '|thumb|A picture from Wikimedia Commons embedded in this Wiki]]';
+			return '[[file:' . $image['pageimage'] . '|thumb|' . $image['title'] . ']]';
 		}
 		else 
 			echo "The page $pageName doesn't exist in wikipedia \n";
