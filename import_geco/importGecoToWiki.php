@@ -85,7 +85,7 @@ function importGecoToWiki()
 		echo "Loading page: $filename\n";
 
 		//Debuging
-		// if ($filename != 'C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-hanneton.html')
+		// if ($filename != 'C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-implanter_des_haies.html')
 		// 	continue;
 		
 
@@ -884,7 +884,6 @@ function cleanWikiTextParsoid($text)
 	$text = preg_replace("@== ''''@", '==', $text);
 	$text = preg_replace('@[nN]ull@', '', $text);
 	$text = preg_replace('@[dD]ate.*:.*[0-9]@', '', $text);
-	$text = str_replace('Contributeurs initiaux :', '', $text);
 	$text = trim($text);
 	$lines = explode("\n",$text);
 	return findCaption($lines);
@@ -899,7 +898,6 @@ function findCaption($lines)
 	$results = array();
 	foreach ($lines as $line)
 	{
-		//echo $line . "\n";
 		$matches = array();
 		// Test the differents cases for data source quotation in geco :
 		// search symbol © for copyright
@@ -930,6 +928,11 @@ function findCaption($lines)
 			if (preg_match("@^=+ ''''@",$line))
 			{
 				$line = preg_replace("@^=+ ''''@", '==', $line);
+			}
+			if(preg_match("@[cC]ontributeurs initiaux@", $line))
+			{
+				$line = preg_replace("@Contributeurs initiaux@", '', $line);
+				$line = str_replace(":", "", $line);
 			}
 			$wikiText .= trim($line, "\t\n\r\0\x0B\xC2\xA0") . "\n";
 		}
