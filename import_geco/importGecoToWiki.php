@@ -608,7 +608,7 @@ function importTextFromWiki($pageName)
 			foreach($result['query']['pages'] as $page=>$id)
 			$text = "";
 			$text .= $id['extract'];
-			$text .= " [[wikipedia:$pageName | (CC-BY-SA)]]";
+			$text .= "{{extractedFromWikipedia|page=$pageName}}";
 			return $text;
 		}
 		else 
