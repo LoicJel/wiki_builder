@@ -243,7 +243,6 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl, $e
 	// Add the categories
 	$page->addCategory($conceptType,$date);
 	addCategoriesForPage($page, $xpath,$pageName);
-	$page->addContentAtEnd("[[Category:Article importé de GECO]]");
 	$page->close();
 
 	// Add some redirects:
