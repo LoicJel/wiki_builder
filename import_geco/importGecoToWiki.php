@@ -85,7 +85,7 @@ function importGecoToWiki()
 		echo "Loading page: $filename\n";
 
 		//Debuging
-		// if ($filename != 'C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-implanter_des_haies.html')
+		// if ($filename != 'C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-pratiquer_les_techniques_culturales_sans_labour_-28tcsl-29.html')
 		// 	continue;
 		
 
@@ -874,6 +874,8 @@ function cleanWikiTextParsoid($text)
 	$text = preg_replace('@</strong></span>@', "=== \n", $text);
 	$text = preg_replace('@<strong>@', "'''", $text);
 	$text = preg_replace('@</strong>@', "'''", $text);
+	$text = str_ireplace("<div class=\"titre-reference\"> ", "*", $text);
+	$text = str_ireplace("<div class=\"sous-titre-reference\"> ", "*:-", $text);
 	$text = strip_tags($text, '<br>');
 	$text = preg_replace('@^.*@', '', $text);
 	$text = preg_replace('@function proposerEnrichissement.*;$@', '', $text);
@@ -886,7 +888,6 @@ function cleanWikiTextParsoid($text)
 	$text = preg_replace('@[dD]ate.*:.*[0-9]@', '', $text);
 	$text = preg_replace('@\[\[smiley@', '[[image:smiley', $text);
 	$text = preg_replace('@\.png\|lien@', '.png|link', $text);
-	echo $text . "\n";
 	$text = trim($text);
 	$lines = explode("\n",$text);
 	return findCaption($lines);
@@ -1088,10 +1089,3 @@ function gecoUrlInText($nodeList)
 		}
 	}
 }
-
-
-
-
-
-
-
