@@ -238,7 +238,7 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl, $e
 
 	$page->addContent($wikiText);
 
-	$page->addContent("\n= Annexes =\n");
+	$page->addContent("\n== Annexes ==\n");
 
 	// Add the categories
 	$page->addCategory($conceptType,$date);
