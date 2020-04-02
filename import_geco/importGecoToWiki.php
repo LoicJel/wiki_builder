@@ -3,6 +3,8 @@
 ########################### Main ###########################
 $GLOBALS['debug'] = false;
 
+//ini_set('memory_limit','500M');
+
 include_once(__DIR__ . '/../includes/wikibuilder.php');
 
 set_time_limit(0);
@@ -83,7 +85,7 @@ function importGecoToWiki()
 		echo "Loading page: $filename\n";
 
 		//Debuging
-		// if ($filename != 'C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-hanneton.html')
+		// if ($filename != 'C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-cultiver_des_especes_aux_periodes_d_implantation_variees.html')
 		// 	continue;
 		
 
@@ -215,17 +217,23 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl, $e
 	if (!empty($imageName))
 		resizeImage($imageName);
 
-		if($emptyPage)
-	{
-		$intro = importTextFromWiki($pageName);
-		$wikiText = "$intro \n $wikiText";
-	}
+	if($emptyPage)
+		{
+			$wikiImage = importImageFromWiki($pageName);
+			$intro = importTextFromWiki($pageName);
+		}
 	// Add a model for redirect to the originial Geco webpage.
 	$page->addContent("{{ThanksGeco|url=$trueUrl}}" . "</br>");
 
 	$page->addContent(getTemplate($conceptType, array('Nom' => $name, 'Latin' => $latinName, 'Image' => $imageName, 'ImageCaption' => $imageCaption)). "\n");
 
 	// Add the table of content at a specific place
+
+	if(isset($wikiImage))
+		$page->addContent($wikiImage . "\n");
+	if(isset($intro))
+		$page->addContent($intro . "\n");
+
 	$page->addContent("__TOC__ \n");
 
 	$page->addContent($wikiText);
@@ -601,7 +609,7 @@ function importTextFromWiki($pageName)
 			foreach($result['query']['pages'] as $page=>$id)
 			$text = "";
 			$text .= $id['extract'];
-			$text .= " [[wikipedia:$pageName (CC-BY-SA)]]";
+			$text .= " [[wikipedia:$pageName | (CC-BY-SA)]]";
 			return $text;
 		}
 		else 
@@ -620,8 +628,10 @@ function importImageFromWiki($pageName)
 	$params = [
 		"action" => "query",
 		"format" => "json",
+		"prop" => "pageimages",
 		"titles" => "$pageName",
-		"prop" => "extracts"
+		"piprop" => "name",
+		"redirects" => true
 	];
 
 	$url = $endPoint . "?" . http_build_query( $params );
@@ -634,7 +644,7 @@ function importImageFromWiki($pageName)
 		if (!isset($result['query']['pages']['-1']['missing']))
 		{
 			foreach($result['query']['pages'] as $page=>$image)
-			echo $image['pageimage'];
+			return '[[file:' . $image['pageimage'] . '|thumb|A picture from Wikimedia Commons embedded in this Wiki]]';
 		}
 		else 
 			echo "The page $pageName doesn't exist in wikipedia \n";
