@@ -85,7 +85,7 @@ function importGecoToWiki()
 		echo "Loading page: $filename\n";
 
 		//Debuging
-		// if ($filename != 'C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-pratiquer_les_techniques_culturales_sans_labour_-28tcsl-29.html')
+		// if ($filename != 'C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-pratiquer_la_lutte_biologique_a_l_aide_de_microorganismes.html')
 		// 	continue;
 		
 
@@ -901,6 +901,7 @@ function findCaption($lines)
 	$results = array();
 	foreach ($lines as $line)
 	{
+
 		$matches = array();
 		// Test the differents cases for data source quotation in geco :
 		// search symbol © for copyright
@@ -909,16 +910,17 @@ function findCaption($lines)
 		// Search the word "photo"
 		else if (empty($imageCaption) && preg_match('@[^:]*[pP]hoto[^:]*:(.+)@', $line, $matches))
 			$results['imageCaption'] = ucfirst(trim($matches[1]));
-		// Search the sentence "image en entête"
-		else if (empty($imageCaption) && mb_ereg_match("[iI]mage en en\-?tête ;", trim($line,'()')))
-		{
-			$line = trim($line,'()');
-			$line = mb_ereg_replace('image en en\-?tête ;', '', $line);
-			$results['imageCaption'] = ucfirst(trim($line));
-		}
 		// Search the word "image"
-		else if (empty($imageCaption) && preg_match('@[iI]mage:(.*)@',  $line, $matches))
-			$results['imageCaption'] = ucfirst(trim($matches[1]));
+		else if (empty($imageCaption) && preg_match('@[iI]mage@',  $line))
+		{
+			if(preg_match('@smiley@',$line)==0)
+				{
+				$line = mb_ereg_replace('^[iI]mage.{1,13}:', '', $line);
+				$results['imageCaption'] = ucfirst(trim($line));
+				}
+			else
+				$wikiText .= trim($line, "\t\n\r\0\x0B\xC2\xA0") . "\n";
+		}
 		// If any imageCaption is identified, add the line to the wiki content page
 		else if (trim($line) != 'A compléter...')
 		{
