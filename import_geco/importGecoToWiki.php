@@ -223,7 +223,7 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl, $e
 			$intro = importTextFromWiki($pageName);
 		}
 	// Add a model for redirect to the originial Geco webpage.
-	$page->addContent("{{ThanksGeco|url=$trueUrl}}" . "</br>");
+	$page->addContent("{{Article issu de Geco|url=$trueUrl}}");
 
 	$page->addContent(getTemplate($conceptType, array('Nom' => $name, 'Latin' => $latinName, 'Image' => $imageName, 'ImageCaption' => $imageCaption)). "\n");
 
@@ -234,14 +234,13 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl, $e
 	if(isset($intro))
 		$page->addContent($intro . "\n");
 
-	$page->addContent("\n __TOC__ \n");
+	$page->addContent("\n\n __TOC__ \n");
 
 	$page->addContent($wikiText);
 
 	$page->addContent("\n== Annexes ==\n");
 
 	// Add the categories
-	$page->addCategory($conceptType,$date);
 	addCategoriesForPage($page, $xpath,$pageName);
 	$page->close();
 
@@ -369,7 +368,7 @@ function addCategoriesForPage($page, $xpath,$pageName)
 	// Once the $annexes array filled, write it on the wiki page
 	if(isset($annexes['rel']))
 	{
-		$model=("{{ListingAnnexes|");
+		$model=("{{Liste des annexes|");
 		foreach(array_keys($annexes['rel']) as $relation)
 		{
 			$model .= $relation . "=1|";
@@ -398,7 +397,7 @@ function addCategoriesForPage($page, $xpath,$pageName)
 	//And write the "evoque" template at the page's end.
 	if (isset($annexes['evoque_model']))
 	{
-		$modele = "{{ConceptsEvoqués|";
+		$modele = "{{Concepts évoqués|";
 		foreach($annexes['evoque_model'] as $type => $links)
 		{
 			switch ($type)
@@ -608,7 +607,7 @@ function importTextFromWiki($pageName)
 			foreach($result['query']['pages'] as $page=>$id)
 			$text = "";
 			$text .= $id['extract'];
-			$text .= "{{extractedFromWikipedia|page=$pageName}}";
+			$text .= "{{Mark as extracted from Wikipedia|page=$pageName}}";
 			return $text;
 		}
 		else 
