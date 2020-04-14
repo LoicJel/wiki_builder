@@ -23,6 +23,7 @@ $GLOBALS['wikiBuilder'] = new wikiImportFile($filename);
 $GLOBALS['links'] = array();
 
 initRelations();
+initConceptTypes();
 
 $indexURL = __DIR__ . '/geco_index.html';
 
@@ -47,7 +48,7 @@ $GLOBALS['wikiBuilder']->close();
 
 if (!empty($GLOBALS['unmanaged_tags']))
 	print_r($GLOBALS['unmanaged_tags']);
-
+echo "It's done !";
 
 ########################### Functions ###########################
 function importGecoToWiki()
@@ -85,7 +86,7 @@ function importGecoToWiki()
 		echo "Loading page: $filename\n";
 
 		//Debuging
-		// if ($filename != 'C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-pratiquer_la_lutte_biologique_a_l_aide_de_microorganismes.html')
+		// if ($filename != 'C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-aphidius_ervi.html')
 		// 	continue;
 		
 
@@ -103,18 +104,6 @@ function importGecoToWiki()
 		$emptyPage = emptyPage($doc);
 		if (empty($conceptType))
 			continue;
-
-		/* $conceptType :
-		auxiliaire
-		bioagresseur
-		culture
-		exempleMiseEnOeuvre
-		facteurEnvironnemental
-		fonctionStrategieService
-		materiel
-		outilDAide
-		technique
-		*/
 
 //		if ($nbMaxTechniques-- < 0)
 //			continue;
@@ -208,7 +197,6 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl, $e
 		}
 		break;
 	}
-	//echo $wikiTextParsoidBrut . "\n"; 
 	$wikiTextParsoidClean = cleanWikiTextParsoid($wikiTextParsoidBrut);
 	if (isset($wikiTextParsoidClean['imageCaption']))
 		$imageCaption = $wikiTextParsoidClean['imageCaption'];
@@ -225,7 +213,7 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl, $e
 	// Add a model for redirect to the originial Geco webpage.
 	$page->addContent("{{Article issu de Geco|url=$trueUrl}}");
 
-	$page->addContent(getTemplate($conceptType, array('Nom' => $name, 'Latin' => $latinName, 'Image' => $imageName, 'ImageCaption' => $imageCaption)). "\n");
+	$page->addContent(getTemplate($GLOBALS['conceptTypes'][$conceptType], array('Nom' => $name, 'Latin' => $latinName, 'Image' => $imageName, 'ImageCaption' => $imageCaption)). "\n");
 
 	// Add the table of content at a specific place
 
@@ -233,8 +221,6 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl, $e
 		$page->addContent($wikiImage . "\n");
 	if(isset($intro))
 		$page->addContent($intro . "\n");
-
-	$page->addContent("\n\n __TOC__ \n");
 
 	$page->addContent($wikiText);
 
@@ -427,6 +413,32 @@ function addCategoriesForPage($page, $xpath,$pageName)
 		$modele .= "}}";
 		$page->addContent("\n" . $modele);
 	}
+}
+
+function initConceptTypes()
+{
+			/* $conceptType :
+		auxiliaire
+		bioagresseur
+		culture
+		exempleMiseEnOeuvre
+		facteurEnvironnemental
+		fonctionStrategieService
+		materiel
+		outilDAide
+		technique
+		*/
+	$GLOBALS['conceptTypes'] = array();
+	$GLOBALS['conceptTypes']['auxiliaire'] = 'Auxiliaire';
+	$GLOBALS['conceptTypes']['bioagresseur'] = 'Bioagresseur';
+	$GLOBALS['conceptTypes']['culture'] = 'Culture'; 
+	$GLOBALS['conceptTypes']['exempleMiseEnOeuvre'] = 'Exemple de mise en oeuvre';
+	$GLOBALS['conceptTypes']['facteurEnvironnemental'] = 'Facteur environnemental';
+	$GLOBALS['conceptTypes']['fonctionStrategieService'] = 'Fonction service stratégie';
+	$GLOBALS['conceptTypes']['materiel'] = "Matériel";
+	$GLOBALS['conceptTypes']['outilDAide'] = "Outil d'aide";
+	$GLOBALS['conceptTypes']['technique'] = 'Technique';
+
 }
 
 /**
@@ -869,6 +881,9 @@ function getWikiTextParsoid($node)
  */
 function cleanWikiTextParsoid($text)
 {
+	if(preg_match('@</em>.{1,5}[A-Z]@', $text))
+		$text = preg_replace('@</em>@', "</em> \n", $text);
+	// echo $text . "\n";
 	$text = preg_replace('@<span style="color:#1AA0E0;"><strong>@', "===", $text);
 	$text = preg_replace('@</strong></span>@', "=== \n", $text);
 	$text = preg_replace('@<strong>@', "'''", $text);
@@ -888,6 +903,7 @@ function cleanWikiTextParsoid($text)
 	$text = preg_replace('@\[\[smiley@', '[[image:smiley', $text);
 	$text = preg_replace('@\.png\|lien@', '.png|link', $text);
 	$text = trim($text);
+	// echo $text . "\n";
 	$lines = explode("\n",$text);
 	return findCaption($lines);
 }
@@ -901,7 +917,7 @@ function findCaption($lines)
 	$results = array();
 	foreach ($lines as $line)
 	{
-
+		//echo $line . "\n";
 		$matches = array();
 		// Test the differents cases for data source quotation in geco :
 		// search symbol © for copyright
@@ -911,11 +927,14 @@ function findCaption($lines)
 		else if (empty($imageCaption) && preg_match('@[^:]*[pP]hoto[^:]*:(.+)@', $line, $matches))
 			$results['imageCaption'] = ucfirst(trim($matches[1]));
 		// Search the word "image"
+		else if (empty($imageCaption) && mb_strstr($line, 'Crédit photo'))
+			$results['imageCaption'] = trim($line);			
 		else if (empty($imageCaption) && preg_match('@[iI]mage@',  $line))
 		{
+			$line = trim($line, '()');
 			if(preg_match('@smiley@',$line)==0)
 				{
-				$line = mb_ereg_replace('^[iI]mage.{1,13}:', '', $line);
+				$line = mb_ereg_replace('^[iI]mage.{1,13}[:;]', '', $line);
 				$results['imageCaption'] = ucfirst(trim($line));
 				}
 			else
@@ -925,6 +944,15 @@ function findCaption($lines)
 		else if (trim($line) != 'A compléter...')
 		{
 			$line = trim($line, "\t\n\r\0\x0B\xC2\xA0");
+			$i = 0;
+			while(preg_match("@^ @", $line))
+			{
+				$line = trim($line);
+			}	
+			if (preg_match("@^'{3,3}.*\={3,3}@", $line))
+			{
+				$line = preg_replace("@^'{3,3}@", '===', $line);
+			}
 			if (preg_match("@^'''@",$line) && preg_match("@'''$@", $line))
 			{
 				$line = preg_replace("@^'+@", '====', $line);
