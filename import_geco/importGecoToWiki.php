@@ -86,7 +86,7 @@ function importGecoToWiki()
 		echo "Loading page: $filename\n";
 
 		//Debuging
-		// if ($filename != 'C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-aphidius_ervi.html')
+		// if ($filename != 'C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-implanter_des_haies.html')
 		// 	continue;
 		
 
@@ -900,8 +900,9 @@ function cleanWikiTextParsoid($text)
 	$text = preg_replace("@== ''''@", '==', $text);
 	$text = preg_replace('@[nN]ull@', '', $text);
 	$text = preg_replace('@[dD]ate.*:.*[0-9]@', '', $text);
-	$text = preg_replace('@\[\[smiley@', '[[image:smiley', $text);
-	$text = preg_replace('@\.png\|lien@', '.png|link', $text);
+	$text = str_replace('[[smiley_neutralface.png|lien=]]', '{{smiley|neutral}}', $text);
+	$text = str_replace('[[smiley_upface.png|lien=]]', '{{smiley|positive}}', $text);
+	$text = str_replace('[[smiley_downface.png|lien=]]', '{{smiley|negative}}', $text);
 	$text = trim($text);
 	// echo $text . "\n";
 	$lines = explode("\n",$text);
@@ -917,7 +918,7 @@ function findCaption($lines)
 	$results = array();
 	foreach ($lines as $line)
 	{
-		//echo $line . "\n";
+		// echo $line . "\n";
 		$matches = array();
 		// Test the differents cases for data source quotation in geco :
 		// search symbol © for copyright
@@ -948,7 +949,7 @@ function findCaption($lines)
 			while(preg_match("@^ @", $line))
 			{
 				$line = trim($line);
-			}	
+			}
 			if (preg_match("@^'{3,3}.*\={3,3}@", $line))
 			{
 				$line = preg_replace("@^'{3,3}@", '===', $line);
