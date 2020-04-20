@@ -53,6 +53,7 @@ echo "It's done !";
 ########################### Functions ###########################
 function importGecoToWiki()
 {
+	
 	$nbMaxTechniques = 50;
 	foreach ($GLOBALS['links'] as $url => $conceptName)
 	{
@@ -86,10 +87,9 @@ function importGecoToWiki()
 		echo "Loading page: $filename\n";
 
 		//Debuging
-		// if ($filename != 'C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-implanter_des_haies.html')
+		// if ($filename != 'C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-crosne.html')
 		// 	continue;
-		
-
+			
 		$conceptType = '';
 		$xpath = new DOMXpath($doc);
 		$elements = $xpath->query("//div[@class='type-concept-title']/i");
@@ -207,8 +207,9 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl, $e
 
 	if($emptyPage)
 		{
-			$wikiImage = importImageFromWiki($pageName);
-			$intro = importTextFromWiki($pageName);
+			$homonymie = testHomonymie($pageName);
+			$wikiImage = importImageFromWiki($pageName, $homonymie);
+			$intro = importTextFromWiki($pageName, $homonymie);
 		}
 	// Add a model for redirect to the originial Geco webpage.
 	$page->addContent("{{Article issu de Geco|url=$trueUrl}}");
@@ -589,10 +590,9 @@ function emptyPage($xml_loaded)
 		return false;
 }
 
-/**
- * This function import content from wikipedia for pages that doesn't have content in geco
- */
-function importTextFromWiki($pageName)
+
+
+function testHomonymie($pageName)
 {
 	$source = 'https://fr.wikipedia.org/wiki/';
 	$endPoint = "https://fr.wikipedia.org/w/api.php";
@@ -600,66 +600,115 @@ function importTextFromWiki($pageName)
 		"action" => "query",
 		"format" => "json",
 		"titles" => "$pageName",
-		"prop" => "extracts",
-		"explaintext" => true,
-		"exintro" => true,
-		"exsectionformat" => "wiki",
-		"redirects" => true
+		"prop" => "categories",
+		"clcategories" => "Category:Homonymie"
 	];
 
 	$url = $endPoint . "?" . http_build_query( $params );
 	$ch = curl_init( $url );
 	curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
 	$output = curl_exec( $ch );
+
 	if($output)
 	{
 		$result = json_decode( $output, true );
+		print_r($result);
 		if (!isset($result['query']['pages']['-1']['missing']))
 		{
 			foreach($result['query']['pages'] as $page=>$id)
-			$text = "";
-			$text .= $id['extract'];
-			$text .= "{{Mark as extracted from Wikipedia|page=$pageName}}";
-			return $text;
+			{
+				if(isset($id["categories"][0]['title']))
+					return true;
+				else 
+					return false; 
+			}
 		}
-		else 
-			echo "The page $pageName doesn't exist in wikipedia \n";
 	}
-	curl_close( $ch );
+}
+
+/**
+ * This function import content from wikipedia for pages that doesn't have content in geco
+ */
+function importTextFromWiki($pageName,$testHomonymie)
+{
+	if($testHomonymie == false)
+	{
+		$source = 'https://fr.wikipedia.org/wiki/';
+		$endPoint = "https://fr.wikipedia.org/w/api.php";
+		$params = [
+			"action" => "query",
+			"format" => "json",
+			"titles" => "$pageName",
+			"prop" => "extracts",
+			"explaintext" => true,
+			"exintro" => true,
+			"exsectionformat" => "wiki",
+			"redirects" => true
+		];
+
+		$url = $endPoint . "?" . http_build_query( $params );
+		$ch = curl_init( $url );
+		curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+		$output = curl_exec( $ch );
+		if($output)
+		{
+			$result = json_decode( $output, true );
+			print_r($result);
+			if (!isset($result['query']['pages']['-1']['missing']))
+			{
+				foreach($result['query']['pages'] as $page=>$id)
+				$text = "";
+				$text .= $id['extract'];
+				$text .= "{{Mark as extracted from Wikipedia|page=$pageName}}";
+				return $text;
+			}
+			else 
+				echo "The page $pageName doesn't exist in wikipedia \n";
+		}
+		curl_close( $ch );
+	}
 }
 
 /**
  * This function import images from wikipedia for pages that doesn't have content in geco
  */
-function importImageFromWiki($pageName)
+function importImageFromWiki($pageName,$testHomonymie)
 {
-	$source = 'https://fr.wikipedia.org/wiki/';
-	$endPoint = "https://fr.wikipedia.org/w/api.php";
-	$params = [
-		"action" => "query",
-		"format" => "json",
-		"prop" => "pageimages",
-		"titles" => "$pageName",
-		"piprop" => "name",
-		"redirects" => true
-	];
-
-	$url = $endPoint . "?" . http_build_query( $params );
-	$ch = curl_init( $url );
-	curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
-	$output = curl_exec( $ch );
-	if($output)
+	if($testHomonymie == false)
 	{
-		$result = json_decode( $output, true );
-		if (!isset($result['query']['pages']['-1']['missing']))
+		$source = 'https://fr.wikipedia.org/wiki/';
+		$endPoint = "https://fr.wikipedia.org/w/api.php";
+		$params = [
+			"action" => "query",
+			"format" => "json",
+			"prop" => "pageimages",
+			"titles" => "$pageName",
+			"piprop" => "name",
+			"redirects" => true
+		];
+
+		$url = $endPoint . "?" . http_build_query( $params );
+		$ch = curl_init( $url );
+		curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+		$output = curl_exec( $ch );
+		if($output)
 		{
-			foreach($result['query']['pages'] as $page=>$image)
-			return '[[file:' . $image['pageimage'] . '|thumb|' . $image['title'] . ']]';
+			$result = json_decode( $output, true );
+			if (!isset($result['query']['pages']['-1']['missing']))
+			{
+				foreach($result['query']['pages'] as $page=>$image)
+				{
+					if(isset($image['pageimage']))
+						return '[[file:' . $image['pageimage'] . '|thumb|' . $image['title'] . ']]';
+					else 
+						echo "No image for the page $pageName in wikipedia \n";
+				}
+			}
+			else 
+				echo "The page $pageName doesn't exist in wikipedia \n";
 		}
-		else 
-			echo "The page $pageName doesn't exist in wikipedia \n";
+		curl_close( $ch );
 	}
-	curl_close( $ch );
 }
 
 #### Url processing functions ####
