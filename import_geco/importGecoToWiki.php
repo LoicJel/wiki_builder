@@ -24,6 +24,7 @@ $GLOBALS['links'] = array();
 
 initRelations();
 initConceptTypes();
+initContext();
 
 $indexURL = __DIR__ . '/geco_index.html';
 
@@ -49,7 +50,7 @@ $GLOBALS['wikiBuilder']->close();
 if (!empty($GLOBALS['unmanaged_tags']))
 	print_r($GLOBALS['unmanaged_tags']);
 echo "It's done !";
-
+exit();
 ########################### Functions ###########################
 function importGecoToWiki()
 {
@@ -87,7 +88,7 @@ function importGecoToWiki()
 		echo "Loading page: $filename\n";
 
 		//Debuging
-		// if ($filename != 'C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-crosne.html')
+		// if ($filename != 'C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-augmenter_lrefficience_de_la_strategie_de_protection_en_verger_de_pomme.html')
 		// 	continue;
 			
 		$conceptType = '';
@@ -211,6 +212,15 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl, $e
 			$wikiImage = importImageFromWiki($pageName, $homonymie);
 			$intro = importTextFromWiki($pageName, $homonymie);
 		}
+
+	// Add the categories
+	$annexes = addCategoriesForPage($page, $xpath,$pageName);
+
+	//Add a template for "exemple de mise en oeuvre" at the begining
+	if(isset($annexes['context']))
+		$page->addContent($annexes['context'] . "\n");
+	
+		
 	// Add a model for redirect to the originial Geco webpage.
 	$page->addContent("{{Article issu de Geco|url=$trueUrl}}");
 
@@ -227,8 +237,15 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl, $e
 
 	$page->addContent("\n== Annexes ==\n");
 
-	// Add the categories
-	addCategoriesForPage($page, $xpath,$pageName);
+	if(isset($annexes['dpl']))
+		$page->addContent($annexes['dpl'] . "\n");
+	
+	if(isset($annexes['list']))
+		$page->addContent($annexes['list'] . "\n");
+
+	if(isset($annexes['evoque']))
+		$page->addContent($annexes['evoque'] . "\n");
+
 	$page->close();
 
 	// Add some redirects:
@@ -295,6 +312,7 @@ function addCategoriesForPage($page, $xpath,$pageName)
 			foreach ($relationLinks as $l)
 			{
 				$relurl = getFullUrl($l->getAttribute('href'));
+				echo $relurl . "\n";
 				if (isset($GLOBALS['links'][$relurl]))
 				{
 					// Replca < and > chars in links
@@ -338,9 +356,12 @@ function addCategoriesForPage($page, $xpath,$pageName)
 						switch($revrel)
 						{
 							case 'aPourFils' :
-							//Corresponds to the parent page, so add a categorie.
-							$page->addCategory($GLOBALS['links'][$relurl]);
-							break;
+								//Corresponds to the parent page, so add a categorie.
+								$page->addCategory($GLOBALS['links'][$relurl]);
+								break;
+							case 'caracterise':
+								$annexes['contexte'][] = $GLOBALS['links'][$relurl];
+								break;
 							default : 
 								$annexes['revrel'][$revrel][] = "*". "[[" . $GLOBALS['links'][$relurl] . "]] \n" ;
 								break;
@@ -352,70 +373,174 @@ function addCategoriesForPage($page, $xpath,$pageName)
 			}
 		}
 	}
+	$res = array();
 	// Once the $annexes array filled, write it on the wiki page
 	if(isset($annexes['rel']))
 	{
-		$model=("{{Liste des annexes|");
-		foreach(array_keys($annexes['rel']) as $relation)
+		$dpl = annexesDplTemplate($annexes['rel'], $page);
+		$res['dpl'] = $dpl;
+	}
+	if(isset($annexes['revrel']))
+	{
+		$list = annexesListLink($annexes['revrel'], $page);
+		$res['list'] = $list;
+	}
+	if (isset($annexes['evoque_model']))
+	{
+		$evoque = annexesConceptEvoqueTemplate($annexes['evoque_model'], $page);
+		$res['evoque'] = $evoque;
+	}
+	if (isset($annexes['contexte']))
+	{
+		$context = contextTemplate($annexes['contexte'], $page);
+		$res['context'] = $context;
+	}
+	return $res;
+}
+
+
+### Template's functions ###
+/**
+ * Writte annexes based on the "liste des annexes" template
+ */
+function annexesDplTemplate($links, $page)
+{
+	$model=("{{Liste des annexes|");
+		foreach(array_keys($links) as $relation)
 		{
 			$model .= $relation . "=1|";
 		}
 		$model = trim($model,"|");
 		$model .= "}}";
-		$page->addContent($model . "\n");
-	}
-	if(isset($annexes['revrel']))
+		return $model;
+}
+
+/**
+ * Writte annexes based on their category in the $GLOBALS['relation'] array
+ */
+function annexesListLink($links, $page)
+{
+	$list = "";
+	foreach($links as $relation => $linkList)
 	{
-		foreach($annexes['revrel'] as $relation => $linkList)
-		{
-			$page->addContent($GLOBALS['relations'][$relation]['reverse_paragraphSentence']);
-			if(count($linkList)>15)
-				$page->addContent("<div style='column-count:3;-moz-column-count:3;-webkit-column-count:3'> \n");
-			//Write links in paragraph on the page
-			foreach($linkList as $redirect)
-				{
-					$page->addContent($redirect);	
-				}
-			if(count($linkList)>15)
-				$page->addContent("</div>\n\n");
-		}
+		$list .= $GLOBALS['relations'][$relation]['reverse_paragraphSentence'] . "\n";
+		if(count($linkList)>15)
+			$list .= "<div style='column-count:3;-moz-column-count:3;-webkit-column-count:3'> \n";
+		//Write links in paragraph on the page
+		foreach($linkList as $redirect)
+			{
+				$list .= $redirect;	
+			}
+		if(count($linkList)>15)
+			$list .= "</div>\n\n";
 	}
-	
-	//And write the "evoque" template at the page's end.
-	if (isset($annexes['evoque_model']))
-	{
-		$modele = "{{Concepts évoqués|";
-		foreach($annexes['evoque_model'] as $type => $links)
+	return $list;
+}
+
+/**
+ * Writte annexes based on the "concept evoques" template
+ */
+function annexesConceptEvoqueTemplate($listLinks, $page)
+{
+	$model = "{{Concepts évoqués|";
+		foreach($listLinks as $type => $links)
 		{
 			switch ($type)
 			{
 				case "Culture":
-					$modele .= "culture=" . $type . "|"; 
+					$model .= "culture=" . $type . "|"; 
 					break;
 
 				case "Bioagresseur":
-					$modele .= "bioagresseur=" . $type . "|"; 
+					$model .= "bioagresseur=" . $type . "|"; 
 					break;
 
 				case "Auxiliaire" :
-					$modele .= "auxiliaire=" . $type . "|"; 
+					$model .= "auxiliaire=" . $type . "|"; 
 					break;
 
 				case "Matériel":
-					$modele .= "materiel=" . $type . "|"; 
+					$model .= "materiel=" . $type . "|"; 
 					break;
 
 				case "Outil d'aide":
-					$modele .= "outilAide=" . $type . "|"; 
+					$model .= "outilAide=" . $type . "|"; 
 					break;	
 			}
 		}
-		$modele = trim($modele,"|");
-		$modele .= "}}";
-		$page->addContent("\n" . $modele);
-	}
+		$model = trim($model,"|");
+		$model .= "}}";
+		return $model;
 }
 
+/**
+ * Writte a summary for a specific article category
+ */
+function contextTemplate($listLink, $page)
+{
+	//print_r($listLink);
+	$model = "{{context";
+	foreach($listLink as $link)
+	{
+		if(preg_match('@^.*\([0-9]{2,3}\)@', $link))
+		{ 
+			$infos = explode(' ', $link);
+			$depart = trim($infos[1], '()');
+			$model .= "|département=$depart|nom du département= [[$link]]";
+		}
+		elseif(in_array($link, $GLOBALS['context']['region']))
+			$model .= "|région=[[$link]]";
+
+		elseif(in_array($link, $GLOBALS['context']['climatique']))
+			$model .= "|climat=[[$link]]";
+
+		elseif(in_array($link, $GLOBALS['context']['sol']['texture']))
+			$model .= "|texture=[[$link]]";
+
+		elseif(in_array($link, $GLOBALS['context']['sol']['ph']))
+			$model .= "|ph=[[$link]]";
+
+		elseif(in_array($link, $GLOBALS['context']['sol']['aleas']))
+			$model .= "|alea=$link";
+
+		elseif(in_array($link, $GLOBALS['context']['sol']['profondeur']))
+			$model .= "|profondeur=$link";
+
+		elseif(in_array($link, $GLOBALS['context']['sol']['calcaire']))
+			$model .= "|calcaire=$link";
+
+	}
+	$model .= "}}";
+	return $model;
+}
+
+
+### Global array initialisation ### 
+/**
+ * 
+ */
+function initContext()
+{
+	$GLOBALS['context'] = array();
+	$GLOBALS['context']['climatique'] = array('continental', 'oceanique', 'alpin', 'mediterraneen', 'tropical');
+	$GLOBALS['context']['region'] = array('Auvergne-Rhône-Alpes', 'Bourgogne-Franche-Comté', 'Bretagne', 'Centre-Val de Loire', 'Corse', 'Grand Est','Hauts-de-France',
+	'Île-de-France', 'Normandie', 'Nouvelle-Aquitaine', 'Occitanie', 'Pays de la Loire', "Provence - Alpes - Côte d'Azur", 'Guadeloupe (971)', 'Guyane (973)', 'La Réunion (974)',
+	'Martinique (972)', 'Mayotte (976)');
+	$GLOBALS['context']['sol']['texture'] = array('Sableux', 'Sablo-limoneux', 'Sablo-argileux', 'Limono-argileuse à argilo-sableux', 'Sableux à limono-sableux',
+	'Limoneux', 'Limono-argileux', 'Argileux lourd', 'Argilo-sableux', 'Argileux', 'Argilo-limoneux');
+	$GLOBALS['context']['sol']['ph'] = array('Acide pH inférieur à 5', 'Peu acide 5,5 inférieur à pH inférieur à 6,5', 'Neutre 6,5 inférieur à pH inférieur à 7,5', 'Basique pH supérieur à 7,5');
+	$GLOBALS['context']['sol']['aleas'] = array("Aléa annuel faible d'érosion des sols", "Aléa annuel moyen d'érosion des sols", "Aléa annuel fort d'érosion des sols");
+	$GLOBALS['context']['sol']['profondeur'] = array('Sol superficiel (RU inférieur à 60 mm)', 'Sol moyennement profond (60 inférieur à RU inférieur à 130 mm)', 
+	'Sol profond (RU supérieur à 130 mm)');
+	$GLOBALS['context']['sol']['calcaire'] = array('Sol non calcaire (Tx inférieur à 1 %)', 'Sol moyennement calcaire (1 inférieur à Tx inférieur à 50 %)',
+	'Sol très calcaire (Tx supérieur à 50 % )');
+}
+
+
+
+/**
+ * Init the conceptType global array
+ */
 function initConceptTypes()
 {
 			/* $conceptType :
@@ -441,6 +566,7 @@ function initConceptTypes()
 	$GLOBALS['conceptTypes']['technique'] = 'Technique';
 
 }
+
 
 /**
  * Set all the relations found in Geco
@@ -493,6 +619,8 @@ utilise / est utilisé pour
 	// exit();
 }
 
+
+### General functions ###
 /**
  * Creates a category page that just redirects to the main page
  */
