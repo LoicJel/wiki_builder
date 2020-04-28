@@ -50,7 +50,9 @@ $GLOBALS['wikiBuilder']->close();
 if (!empty($GLOBALS['unmanaged_tags']))
 	print_r($GLOBALS['unmanaged_tags']);
 echo "It's done !";
-exit();
+
+
+
 ########################### Functions ###########################
 function importGecoToWiki()
 {
@@ -63,7 +65,7 @@ function importGecoToWiki()
 		$trueUrl = preg_replace('@^http:@', 'https:', $url);
 		$trueUrl = getCanonicalURL($trueUrl);
 
-		$filename = __DIR__ . '/../temp/' . sanitizeFilename(str_replace('http://www.geco.ecophytopic.fr/geco/Concept/', '', getCanonicalURL($url))) . '.html';
+		$filename = __DIR__ . '/../temp/articles/' . sanitizeFilename(str_replace('http://www.geco.ecophytopic.fr/geco/Concept/', '', getCanonicalURL($url))) . '.html';
 
 		// Download each link in the temp directory as cache
 		if (!file_exists($filename))
@@ -88,7 +90,7 @@ function importGecoToWiki()
 		echo "Loading page: $filename\n";
 
 		//Debuging
-		// if ($filename != 'C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/https-geco.ecophytopic.fr-geco-concept-augmenter_lrefficience_de_la_strategie_de_protection_en_verger_de_pomme.html')
+		// if ($filename != 'C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/article/https-geco.ecophytopic.fr-geco-concept-thrips..html')
 		// 	continue;
 			
 		$conceptType = '';
@@ -208,9 +210,9 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl, $e
 
 	if($emptyPage)
 		{
-			$homonymie = testHomonymie($pageName);
-			$wikiImage = importImageFromWiki($pageName, $homonymie);
-			$intro = importTextFromWiki($pageName, $homonymie);
+			$homonymie = request_api('homo', $pageName);
+			$intro = request_api('text', $pageName, $homonymie);
+			$wikiImage = request_api('image', $pageName, $homonymie);
 		}
 
 	// Add the categories
@@ -261,6 +263,7 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl, $e
 				addRedirect(trim($altName), $pageName);
 		}
 	}
+	echo  memory_get_usage () . "\n";
 }
 
 /**
@@ -312,7 +315,6 @@ function addCategoriesForPage($page, $xpath,$pageName)
 			foreach ($relationLinks as $l)
 			{
 				$relurl = getFullUrl($l->getAttribute('href'));
-				echo $relurl . "\n";
 				if (isset($GLOBALS['links'][$relurl]))
 				{
 					// Replca < and > chars in links
@@ -516,6 +518,7 @@ function contextTemplate($listLink, $page)
 
 
 ### Global array initialisation ### 
+
 /**
  * 
  */
@@ -718,124 +721,75 @@ function emptyPage($xml_loaded)
 		return false;
 }
 
-
-
-function testHomonymie($pageName)
+function request_api($request_type, $pageName, $homonymie=null)
 {
-	$source = 'https://fr.wikipedia.org/wiki/';
-	$endPoint = "https://fr.wikipedia.org/w/api.php";
-	$params = [
-		"action" => "query",
-		"format" => "json",
-		"titles" => "$pageName",
-		"prop" => "categories",
-		"clcategories" => "Category:Homonymie"
-	];
+	$api_para = array();
+	$api_para['homo'] = ["action" => "query", "format" => "json",	"titles" => "$pageName",  "prop" => "extracts", "explaintext" => true, "exintro" => true, "exsectionformat" => "wiki", "redirects" => true];
+	$api_para['text'] = ["action" => "query", "format" => "json", "titles" => "$pageName", "prop" => "extracts", "explaintext" => true, "exintro" => true, "exsectionformat" => "wiki","redirects" => true];
+	$api_para['image'] = ["action" => "query", "format" => "json", "prop" => "pageimages", "titles" => "$pageName", "piprop" => "name", "redirects" => true];
+	$parameters = $api_para[$request_type];
 
-	$url = $endPoint . "?" . http_build_query( $params );
-	$ch = curl_init( $url );
-	curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
-	$output = curl_exec( $ch );
+	$fileName = md5($pageName) . '-' . preg_replace('@[^a-zA-Z0-9]@', '_', $pageName);
+	if (file_exists("C:\Neayi\\tripleperformance_docker\workspace\wiki_builder\\temp/apiWiki/$fileName-$request_type.apiWiki"))
+		$output = file_get_contents("C:\Neayi\\tripleperformance_docker\workspace\wiki_builder\\temp/apiWiki/$fileName-$request_type.apiWiki");
+	else
+	{
+		$source = 'https://fr.wikipedia.org/wiki/';
+		$endPoint = "https://fr.wikipedia.org/w/api.php";
+		$url = $endPoint . "?" . http_build_query($parameters);
+		$ch = curl_init( $url );
+		curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+		curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+		$output = curl_exec( $ch );
+		file_put_contents("C:\Neayi\\tripleperformance_docker\workspace\wiki_builder\\temp\apiWiki/$fileName-$request_type.apiWiki", $output);
+		curl_close( $ch );
+	}
 
 	if($output)
 	{
 		$result = json_decode( $output, true );
-		print_r($result);
-		if (!isset($result['query']['pages']['-1']['missing']))
+		if (!isset($result['query']['pages']['-1']))
 		{
-			foreach($result['query']['pages'] as $page=>$id)
+			switch($request_type)
 			{
-				if(isset($id["categories"][0]['title']))
-					return true;
-				else 
-					return false; 
-			}
-		}
-	}
-}
-
-/**
- * This function import content from wikipedia for pages that doesn't have content in geco
- */
-function importTextFromWiki($pageName,$testHomonymie)
-{
-	if($testHomonymie == false)
-	{
-		$source = 'https://fr.wikipedia.org/wiki/';
-		$endPoint = "https://fr.wikipedia.org/w/api.php";
-		$params = [
-			"action" => "query",
-			"format" => "json",
-			"titles" => "$pageName",
-			"prop" => "extracts",
-			"explaintext" => true,
-			"exintro" => true,
-			"exsectionformat" => "wiki",
-			"redirects" => true
-		];
-
-		$url = $endPoint . "?" . http_build_query( $params );
-		$ch = curl_init( $url );
-		curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
-		$output = curl_exec( $ch );
-		if($output)
-		{
-			$result = json_decode( $output, true );
-			print_r($result);
-			if (!isset($result['query']['pages']['-1']['missing']))
-			{
-				foreach($result['query']['pages'] as $page=>$id)
-				$text = "";
-				$text .= $id['extract'];
-				$text .= "{{Mark as extracted from Wikipedia|page=$pageName}}";
-				return $text;
-			}
-			else 
-				echo "The page $pageName doesn't exist in wikipedia \n";
-		}
-		curl_close( $ch );
-	}
-}
-
-/**
- * This function import images from wikipedia for pages that doesn't have content in geco
- */
-function importImageFromWiki($pageName,$testHomonymie)
-{
-	if($testHomonymie == false)
-	{
-		$source = 'https://fr.wikipedia.org/wiki/';
-		$endPoint = "https://fr.wikipedia.org/w/api.php";
-		$params = [
-			"action" => "query",
-			"format" => "json",
-			"prop" => "pageimages",
-			"titles" => "$pageName",
-			"piprop" => "name",
-			"redirects" => true
-		];
-
-		$url = $endPoint . "?" . http_build_query( $params );
-		$ch = curl_init( $url );
-		curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
-		$output = curl_exec( $ch );
-		if($output)
-		{
-			$result = json_decode( $output, true );
-			if (!isset($result['query']['pages']['-1']['missing']))
-			{
-				foreach($result['query']['pages'] as $page=>$image)
+				case 'homo':
+					foreach($result['query']['pages'] as $page=>$id)
+					{
+						if(isset($id["categories"][0]['title']))
+							return true;
+						else 
+							return false; 
+					}
+					break;
+				case 'texte':
+					if($homonymie==false)
+					{
+						foreach($result['query']['pages'] as $page=>$id)
+						{
+							$text = "";
+							$text .= $id['extract'];
+							$text .= "{{Mark as extracted from Wikipedia|page=$pageName}}";
+							return $text;
+						}
+					}
+					break;
+				case 'image';
+				if($homonymie==false)
 				{
-					if(isset($image['pageimage']))
-						return '[[file:' . $image['pageimage'] . '|thumb|' . $image['title'] . ']]';
-					else 
-						echo "No image for the page $pageName in wikipedia \n";
+					foreach($result['query']['pages'] as $page=>$image)
+					{
+						if(isset($image['pageimage']))
+							return '[[file:' . $image['pageimage'] . '|thumb|' . $image['title'] . ']]';
+						else 
+							echo "No image for the page $pageName in wikipedia \n";
+					}
 				}
+					break;
 			}
-			else 
-				echo "The page $pageName doesn't exist in wikipedia \n";
 		}
-		curl_close( $ch );
+		else 
+			echo "The page $pageName doesn't exist in wikipedia \n";
+
 	}
 }
 
@@ -1038,18 +992,33 @@ function resizeImage(&$imageName)
 function getWikiTextParsoid($node)
 {
 	$data = array("html" => '<html><body>' . $node->C14N() . '</body></html>');
-	$data_string = json_encode($data);                                                                                   
-																														 
-	$ch = curl_init('http://localhost:8080/localhost/v3/transform/html/to/wikitext/');                                                                      
-	
-	curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
-	curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);                                                                  
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                                                                      
-	curl_setopt($ch, CURLOPT_HTTPHEADER, array(                                                                          
-		'Content-Type: application/json',                                                                                
-		'Content-Length: ' . strlen($data_string))                                                                       
-	);                                                                                                                   																										 
-	$result = curl_exec($ch);
+	$data_string = json_encode($data);   
+
+	$md5 = md5($data_string);
+	if (file_exists("C:\Neayi\\tripleperformance_docker\workspace\wiki_builder\\temp/apiWiki/$md5.parsoid"))
+		$result = file_get_contents("C:\Neayi\\tripleperformance_docker\workspace\wiki_builder\\temp/apiWiki/$md5.parsoid");                                                                
+	else
+	{																													 
+		$ch = curl_init('http://localhost:8080/localhost/v3/transform/html/to/wikitext/');                                                                      
+		
+		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);                                                                  
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array(                                                                          
+			'Content-Type: application/json',                                                                                
+			'Content-Length: ' . strlen($data_string))                                                                       
+		);    
+		echo("parsoid");
+		curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+		$result = curl_exec($ch);
+		if (curl_errno($ch)) {
+            print "Error: " . curl_error($ch);
+        } else {
+            // Show me the result
+			file_put_contents("C:\Neayi\\tripleperformance_docker\workspace\wiki_builder\\temp/apiWiki/$md5.parsoid", $result);
+        }
+		curl_close($ch);
+	}
 	return $result;
 }
 
