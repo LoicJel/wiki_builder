@@ -22,6 +22,7 @@ $GLOBALS['wikiBuilder'] = new wikiImportFile($filename);
 
 $GLOBALS['links'] = array();
 
+initArticlesList();
 initRelations();
 initConceptTypes();
 initContext();
@@ -56,7 +57,7 @@ echo "It's done !";
 ########################### Functions ###########################
 function importGecoToWiki()
 {
-	
+	$createCache = false;
 	$nbMaxTechniques = 50;
 	foreach ($GLOBALS['links'] as $url => $conceptName)
 	{
@@ -71,13 +72,23 @@ function importGecoToWiki()
 		if (!file_exists($filename))
 			copy($url, $filename);
 
-		if ($GLOBALS['debug'])
-		{
-			if (strpos($filename, "Combiner_un_maximum_de_leviers") === false) {
-				continue;
-			}
-		}
+		echo "Loading page: $filename\n";
+		//Used to create cache files
+		// if ($filename != 'C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-verse.html')
+		// 	$createCache = true;
+		// if($createCache == false)
+		// 	continue
 		
+		//Debuging
+		// if ($filename != 'C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-hanneton.html')
+		// 	continue;
+
+		$pageName = mb_ucfirst($conceptName);
+		if (key_exists($pageName, $GLOBALS['listPageName']))
+		{
+			echo "Article not in the list \n";
+			continue;
+		}
 		// Now detect the list of concepts, etc...
 		// <div class="type-concept-title"> <i class="typeConcept-culture-20"></i> CULTURE </div>
 		$doc = new DOMDocument();
@@ -87,12 +98,6 @@ function importGecoToWiki()
 		$html = str_replace('<head>', '<head><meta charset="UTF-8">', $html);
 		$doc->loadHTML($html);
 
-		echo "Loading page: $filename\n";
-
-		//Debuging
-		// if ($filename != 'C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/article/https-geco.ecophytopic.fr-geco-concept-thrips..html')
-		// 	continue;
-			
 		$conceptType = '';
 		$xpath = new DOMXpath($doc);
 		$elements = $xpath->query("//div[@class='type-concept-title']/i");
@@ -128,8 +133,6 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl, $e
 	echo "Extracting page: $pageName\n";
 
 	echo "$conceptType $pageName\n";
-
-	$pageName = mb_ucfirst($pageName);
 
 	if ($bIsCategoryPage)
 		addCategoryPage($pageName);
@@ -221,7 +224,6 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl, $e
 	//Add a template for "exemple de mise en oeuvre" at the begining
 	if(isset($annexes['context']))
 		$page->addContent($annexes['context'] . "\n");
-	
 		
 	// Add a model for redirect to the originial Geco webpage.
 	$page->addContent("{{Article issu de Geco|url=$trueUrl}}");
@@ -520,6 +522,21 @@ function contextTemplate($listLink, $page)
 ### Global array initialisation ### 
 
 /**
+ * Initialize an array which contains the articles' list to process
+ */
+function initArticlesList()
+{
+	$listPageNameFile = __DIR__ . "\hpwiki_page.csv";
+	$listPageName = file($listPageNameFile);
+	foreach($listPageName as $key => $value)
+	{
+		$listPageName[$key] = mb_ucfirst(str_replace('_', ' ', $value));
+	}
+	$GLOBALS["listPageName"] = array_flip($listPageName);
+}
+
+
+/**
  * 
  */
 function initContext()
@@ -542,7 +559,7 @@ function initContext()
 
 
 /**
- * Init the conceptType global array
+ * Initialize the conceptType global array
  */
 function initConceptTypes()
 {
@@ -567,12 +584,14 @@ function initConceptTypes()
 	$GLOBALS['conceptTypes']['materiel'] = "Matériel";
 	$GLOBALS['conceptTypes']['outilDAide'] = "Outil d'aide";
 	$GLOBALS['conceptTypes']['technique'] = 'Technique';
+	$GLOBALS['conceptTypes']['accidentClimatique'] = 'Accident climatique ';
+
 
 }
 
 
 /**
- * Set all the relations found in Geco
+ * Initialize all the relations found in Geco
  */
 function initRelations()
 {
@@ -723,6 +742,9 @@ function emptyPage($xml_loaded)
 
 function request_api($request_type, $pageName, $homonymie=null)
 {
+	$log = "logApi.txt";
+	file_put_contents($log, "$request_type", FILE_APPEND);	
+	$start = microtime(true);
 	$api_para = array();
 	$api_para['homo'] = ["action" => "query", "format" => "json",	"titles" => "$pageName",  "prop" => "extracts", "explaintext" => true, "exintro" => true, "exsectionformat" => "wiki", "redirects" => true];
 	$api_para['text'] = ["action" => "query", "format" => "json", "titles" => "$pageName", "prop" => "extracts", "explaintext" => true, "exintro" => true, "exsectionformat" => "wiki","redirects" => true];
@@ -731,9 +753,13 @@ function request_api($request_type, $pageName, $homonymie=null)
 
 	$fileName = md5($pageName) . '-' . preg_replace('@[^a-zA-Z0-9]@', '_', $pageName);
 	if (file_exists("C:\Neayi\\tripleperformance_docker\workspace\wiki_builder\\temp/apiWiki/$fileName-$request_type.apiWiki"))
+	{
+		file_put_contents($log, " NOT curl request ", FILE_APPEND);	
 		$output = file_get_contents("C:\Neayi\\tripleperformance_docker\workspace\wiki_builder\\temp/apiWiki/$fileName-$request_type.apiWiki");
+	}
 	else
 	{
+		file_put_contents($log, " Requete curl ",FILE_APPEND);
 		$source = 'https://fr.wikipedia.org/wiki/';
 		$endPoint = "https://fr.wikipedia.org/w/api.php";
 		$url = $endPoint . "?" . http_build_query($parameters);
@@ -744,24 +770,27 @@ function request_api($request_type, $pageName, $homonymie=null)
 		file_put_contents("C:\Neayi\\tripleperformance_docker\workspace\wiki_builder\\temp\apiWiki/$fileName-$request_type.apiWiki", $output);
 		curl_close( $ch );
 	}
-
+	$end = microtime(true);
+	$delai = $end - $start;
+	file_put_contents($log, "Temps d'execution : $delai millisecondes \n", FILE_APPEND);
 	if($output)
 	{
 		$result = json_decode( $output, true );
 		if (!isset($result['query']['pages']['-1']))
 		{
+			$res = "";
 			switch($request_type)
 			{
 				case 'homo':
 					foreach($result['query']['pages'] as $page=>$id)
 					{
 						if(isset($id["categories"][0]['title']))
-							return true;
+							$res = true;
 						else 
-							return false; 
+							$res = false; 
 					}
 					break;
-				case 'texte':
+				case 'text':
 					if($homonymie==false)
 					{
 						foreach($result['query']['pages'] as $page=>$id)
@@ -769,7 +798,7 @@ function request_api($request_type, $pageName, $homonymie=null)
 							$text = "";
 							$text .= $id['extract'];
 							$text .= "{{Mark as extracted from Wikipedia|page=$pageName}}";
-							return $text;
+							$res = $text;
 						}
 					}
 					break;
@@ -779,13 +808,14 @@ function request_api($request_type, $pageName, $homonymie=null)
 					foreach($result['query']['pages'] as $page=>$image)
 					{
 						if(isset($image['pageimage']))
-							return '[[file:' . $image['pageimage'] . '|thumb|' . $image['title'] . ']]';
+							$res = '[[file:' . $image['pageimage'] . '|thumb|' . $image['title'] . ']]';
 						else 
 							echo "No image for the page $pageName in wikipedia \n";
 					}
 				}
 					break;
 			}
+			return $res;
 		}
 		else 
 			echo "The page $pageName doesn't exist in wikipedia \n";
@@ -991,14 +1021,20 @@ function resizeImage(&$imageName)
  */
 function getWikiTextParsoid($node)
 {
+	$log = "logApi.txt";
 	$data = array("html" => '<html><body>' . $node->C14N() . '</body></html>');
 	$data_string = json_encode($data);   
-
 	$md5 = md5($data_string);
+	$start = microtime(true);
+
 	if (file_exists("C:\Neayi\\tripleperformance_docker\workspace\wiki_builder\\temp/apiWiki/$md5.parsoid"))
+	{
+		file_put_contents($log, "Parsoid cache ", FILE_APPEND);
 		$result = file_get_contents("C:\Neayi\\tripleperformance_docker\workspace\wiki_builder\\temp/apiWiki/$md5.parsoid");                                                                
+	}
 	else
-	{																													 
+	{		
+		file_put_contents($log, "Parsoid request ",FILE_APPEND);																											 
 		$ch = curl_init('http://localhost:8080/localhost/v3/transform/html/to/wikitext/');                                                                      
 		
 		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
@@ -1008,7 +1044,6 @@ function getWikiTextParsoid($node)
 			'Content-Type: application/json',                                                                                
 			'Content-Length: ' . strlen($data_string))                                                                       
 		);    
-		echo("parsoid");
 		curl_setopt($ch, CURLOPT_TIMEOUT, 5);
 		$result = curl_exec($ch);
 		if (curl_errno($ch)) {
@@ -1018,7 +1053,11 @@ function getWikiTextParsoid($node)
 			file_put_contents("C:\Neayi\\tripleperformance_docker\workspace\wiki_builder\\temp/apiWiki/$md5.parsoid", $result);
         }
 		curl_close($ch);
+
 	}
+	$end = microtime(true);
+	$delai = $end - $start;
+	file_put_contents($log, "Temps d'execution : $delai millisecondes \n", FILE_APPEND);
 	return $result;
 }
 
@@ -1029,7 +1068,7 @@ function cleanWikiTextParsoid($text)
 {
 	if(preg_match('@</em>.{1,5}[A-Z]@', $text))
 		$text = preg_replace('@</em>@', "</em> \n", $text);
-	// echo $text . "\n";
+	//echo $text . "\n";
 	$text = preg_replace('@<span style="color:#1AA0E0;"><strong>@', "===", $text);
 	$text = preg_replace('@</strong></span>@', "=== \n", $text);
 	$text = preg_replace('@<strong>@', "'''", $text);
@@ -1237,7 +1276,7 @@ function imageInText($imagesIntegrated, $pageName)
 			// Resize the image
 			resizeImage($md5Name);
 			// Set the new img attribute
-			$image->setAttribute('src', "$md5Name");
+			$image->setAttribute('src', "image:$md5Name");
 		}
 		else 
 			echo 'An error occured \n';
