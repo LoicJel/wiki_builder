@@ -80,8 +80,8 @@ function importGecoToWiki()
 		// 	continue
 		
 		//Debuging
-		// if ($filename != 'C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-hanneton.html')
-		// 	continue;
+		if ($filename != 'C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-basique_-28ph___7-2C5-29.html')
+			continue;
 
 		$pageName = mb_ucfirst($conceptName);
 		if (key_exists($pageName, $GLOBALS['listPageName']))
@@ -134,6 +134,10 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl, $e
 
 	echo "$conceptType $pageName\n";
 
+	$date = getDateLastUpdate($xpath);
+	$page = $GLOBALS['wikiBuilder']->addPage($pageName,$date);
+	$pageName = $page -> replaceForbidenPagenameCharacters($pageName);
+
 	if ($bIsCategoryPage)
 		addCategoryPage($pageName);
 
@@ -152,9 +156,6 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl, $e
 			addRedirect($latinName, $pageName);
 		}
 	}
-
-	$date = getDateLastUpdate($xpath);
-	$page = $GLOBALS['wikiBuilder']->addPage($pageName,$date);
 
 	// Add the content
 	$elements = $xpath->query("//div[starts-with(@class, 'contenu-concept')]");

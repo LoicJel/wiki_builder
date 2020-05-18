@@ -130,7 +130,6 @@ class wikiPage
 
         $this->content = $this->cleanUpContent();
         $this->wikiPageName = trim($this->wikiPageName);
-        $this->wikiPageName = $this->replaceForbidenPagenameCharacters($this->wikiPageName);
 
         if (empty($this->wikiPageName) || empty($this->content))
             return; // if the page is empty, don't bother adding it.
