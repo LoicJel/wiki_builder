@@ -80,8 +80,8 @@ function importGecoToWiki()
 		// 	continue
 		
 		//Debuging
-		if ($filename != 'C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-basique_-28ph___7-2C5-29.html')
-			continue;
+		// if ($filename != 'C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-botrytis_cinerea.html')
+		// 	continue;
 
 		$pageName = mb_ucfirst($conceptName);
 		if (key_exists($pageName, $GLOBALS['listPageName']))
@@ -137,6 +137,7 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl, $e
 	$date = getDateLastUpdate($xpath);
 	$page = $GLOBALS['wikiBuilder']->addPage($pageName,$date);
 	$pageName = $page -> replaceForbidenPagenameCharacters($pageName);
+	$pageName = mb_ucfirst($pageName);
 
 	if ($bIsCategoryPage)
 		addCategoryPage($pageName);
@@ -263,10 +264,13 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl, $e
 		{
 			$altNames = explode(',', $matches[1]);
 			foreach ($altNames as $altName)
-				addRedirect(trim($altName), $pageName);
+			{
+				$altName = mb_ucfirst($altName);
+				if (trim($altName) != $pageName)
+					addRedirect(trim($altName), $pageName);
+			}
 		}
 	}
-	echo  memory_get_usage () . "\n";
 }
 
 /**
@@ -1104,31 +1108,43 @@ function findCaption($lines)
 	$results = array();
 	foreach ($lines as $line)
 	{
-		// echo $line . "\n";
-		$matches = array();
-		// Test the differents cases for data source quotation in geco :
-		// search symbol © for copyright
-		if (preg_match('@.*:([^©]+©[^[]*)@', $line, $matches))
-			$results['imageCaption'] = ucfirst(trim($matches[1]));
-		// Search the word "photo"
-		else if (empty($imageCaption) && preg_match('@[^:]*[pP]hoto[^:]*:(.+)@', $line, $matches))
-			$results['imageCaption'] = ucfirst(trim($matches[1]));
-		// Search the word "image"
-		else if (empty($imageCaption) && mb_strstr($line, 'Crédit photo'))
-			$results['imageCaption'] = trim($line);			
-		else if (empty($imageCaption) && preg_match('@[iI]mage@',  $line))
+		echo $line . "\n";
+		if (mb_strlen($line) < 150) //Looking for image caption, we ignore longer lines
 		{
-			$line = trim($line, '()');
-			if(preg_match('@smiley@',$line)==0)
+			$matches = array();
+			// Test the differents cases for data source quotation in geco :
+			// search symbol © for copyright
+			if (preg_match('@.*:([^©]+©[^[]*)@', $line, $matches))
+			{
+				$results['imageCaption'] = ucfirst(trim($matches[1]));
+				continue;
+			}
+			// Search the word "photo"
+			if (empty($imageCaption) && preg_match('@[^:]*[pP]hoto[^:]*:(.+)@', $line, $matches))
+			{
+				$results['imageCaption'] = ucfirst(trim($matches[1]));
+				continue;
+			}
+			//Search the word "image"
+			if (empty($imageCaption) && mb_strstr($line, 'Crédit photo'))
+			{
+				$results['imageCaption'] = trim($line);			
+				continue;
+			}
+			if (empty($imageCaption) && preg_match('@^[iI]mage@',  $line))
+			{
+				$line = trim($line, '()');
+				if(preg_match('@smiley@',$line)==0)
 				{
-				$line = mb_ereg_replace('^[iI]mage.{1,13}[:;]', '', $line);
-				$results['imageCaption'] = ucfirst(trim($line));
+					$line = mb_ereg_replace('^[iI]mage.{1,13}[:;]', '', $line);
+					$results['imageCaption'] = ucfirst(trim($line));
+					continue;
 				}
-			else
-				$wikiText .= trim($line, "\t\n\r\0\x0B\xC2\xA0") . "\n";
+					
+			}
 		}
 		// If any imageCaption is identified, add the line to the wiki content page
-		else if (trim($line) != 'A compléter...')
+		if (trim($line) != 'A compléter...')
 		{
 			$line = trim($line, "\t\n\r\0\x0B\xC2\xA0");
 			$i = 0;
@@ -1136,6 +1152,8 @@ function findCaption($lines)
 			{
 				$line = trim($line);
 			}
+			//replace the image size
+			$line = preg_replace('@\|[0-9]+x[0-9]+px@', '', $line);
 			if (preg_match("@^'{3,3}.*\={3,3}@", $line))
 			{
 				$line = preg_replace("@^'{3,3}@", '===', $line);
