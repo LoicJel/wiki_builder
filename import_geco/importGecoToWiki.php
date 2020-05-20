@@ -80,7 +80,7 @@ function importGecoToWiki()
 		// 	continue
 		
 		//Debuging
-		// if ($filename != 'C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-botrytis_cinerea.html')
+		// if ($filename != 'C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-exporter_les_menu-pailles.html')
 		// 	continue;
 
 		$pageName = mb_ucfirst($conceptName);
@@ -833,6 +833,8 @@ function getFullUrl($url)
 {
 	$url = str_replace('http://geco.ecophytopic.fr/web/guest', '', $url);
 	$url = str_replace('http://geco.ecophytopic.fr', '', $url);
+	$url = str_replace('https://geco.ecophytopic.fr/web/guest', '', $url);
+	$url = str_replace('https://geco.ecophytopic.fr', '', $url);
 
 	if (strpos($url, '/concept/-/concept') === 0)
 		return 'http://geco.ecophytopic.fr/web/guest' . $url;
@@ -1203,7 +1205,7 @@ function preprocessing($xpath, $contentDiv, $pageName)
 	imageIntext($imagesIntegrated, $pageName);
 
 	// Change geco url in the page content into Internal link.
-	$urlNodeInText = $xpath->query("///a[starts-with(@href, 'https://geco')]", $contentDiv);
+	$urlNodeInText = $xpath->query(".//a", $contentDiv);
 	gecoUrlInText($urlNodeInText);
 }
 
@@ -1310,16 +1312,19 @@ function gecoUrlInText($nodeList)
 {
 	foreach($nodeList as $link)
 	{
-		$relurl = str_replace('https:', 'http:', $link->getAttribute('href'));
-		if (isset($GLOBALS['links'][$relurl]))
+		$href = $link->getAttribute('href');
+		if (strpos($href, "#") === 0 or $href == "")
+			continue;
+
+		$relUrl = getFullUrl($link->getAttribute('href'));
+		if (strpos($href, "/document") === 0)
+			$link->setAttribute('href', $relUrl);
+		
+		else if (isset($GLOBALS['links'][$relUrl]))
 		{
 			$nodeValue = $link->nodeValue;
-			$link->nodeValue = '[[' . $GLOBALS['links'][$relurl] . "|" . $nodeValue . "]]";
+			$link->nodeValue = '[[' . $GLOBALS['links'][$relUrl] . "|" . $nodeValue . "]]";
 			$link->removeAttribute('href');
-		}
-		else if ($relurl !== 'http://geco.ecophytopic.fr/mentions-legales')
-		{
-			echo "internal link not found : $relurl \n";
 		}
 	}
 }
