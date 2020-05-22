@@ -80,8 +80,8 @@ function importGecoToWiki()
 		// 	continue
 		
 		//Debuging
-		// if ($filename != 'C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-exporter_les_menu-pailles.html')
-		// 	continue;
+		if ($filename != 'C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-piloter_l_enherbement_des_vignes_sans_travailler_le_sol.html')
+			continue;
 
 		$pageName = mb_ucfirst($conceptName);
 		if (key_exists($pageName, $GLOBALS['listPageName']))
@@ -339,13 +339,8 @@ function addCategoriesForPage($page, $xpath,$pageName)
 								$catName = $xpath->query("div[contains(@class, 'span4')]",$categ);
 								$name = $catName[0]->textContent;
 								$name = trim($name);
-
-								if($name =='Technique')
-									$annexes['rel'][$rel]=1;
-								//add the link to evoque tag, under the right page's type.
-								else
-									$annexes['evoque_model'][$name][] ="[[" . $GLOBALS['links'][$relurl] . "]]";
-							break;
+								$annexes['evoque_model'][$name][] =$GLOBALS['links'][$relurl];
+								break;
 
 							case 'aPourFils':
 								addCategoryPage($pageName);
@@ -371,6 +366,9 @@ function addCategoriesForPage($page, $xpath,$pageName)
 							case 'caracterise':
 								$annexes['contexte'][] = $GLOBALS['links'][$relurl];
 								break;
+							case 'evoque':
+								$annexes['rel']['evoque']=1;
+								break;
 							default : 
 								$annexes['revrel'][$revrel][] = "*". "[[" . $GLOBALS['links'][$relurl] . "]] \n" ;
 								break;
@@ -382,26 +380,27 @@ function addCategoriesForPage($page, $xpath,$pageName)
 			}
 		}
 	}
+
 	$res = array();
 	// Once the $annexes array filled, write it on the wiki page
 	if(isset($annexes['rel']))
 	{
-		$dpl = annexesDplTemplate($annexes['rel'], $page);
+		$dpl = annexesDplTemplate($annexes['rel']);
 		$res['dpl'] = $dpl;
 	}
 	if(isset($annexes['revrel']))
 	{
-		$list = annexesListLink($annexes['revrel'], $page);
+		$list = annexesListLink($annexes['revrel']);
 		$res['list'] = $list;
 	}
 	if (isset($annexes['evoque_model']))
 	{
-		$evoque = annexesConceptEvoqueTemplate($annexes['evoque_model'], $page);
+		$evoque = annexesConceptEvoquesTemplates($annexes['evoque_model']);
 		$res['evoque'] = $evoque;
 	}
 	if (isset($annexes['contexte']))
 	{
-		$context = contextTemplate($annexes['contexte'], $page);
+		$context = contextTemplate($annexes['contexte']);
 		$res['context'] = $context;
 	}
 	return $res;
@@ -412,7 +411,7 @@ function addCategoriesForPage($page, $xpath,$pageName)
 /**
  * Writte annexes based on the "liste des annexes" template
  */
-function annexesDplTemplate($links, $page)
+function annexesDplTemplate($links)
 {
 	$model=("{{Liste des annexes|");
 		foreach(array_keys($links) as $relation)
@@ -427,7 +426,7 @@ function annexesDplTemplate($links, $page)
 /**
  * Writte annexes based on their category in the $GLOBALS['relation'] array
  */
-function annexesListLink($links, $page)
+function annexesListLink($links)
 {
 	$list = "";
 	foreach($links as $relation => $linkList)
@@ -449,43 +448,43 @@ function annexesListLink($links, $page)
 /**
  * Writte annexes based on the "concept evoques" template
  */
-function annexesConceptEvoqueTemplate($listLinks, $page)
+function annexesConceptEvoquesTemplates($listLinks)
 {
-	$model = "{{Concepts évoqués|";
-		foreach($listLinks as $type => $links)
+	$model = '';
+	foreach ($listLinks as $conceptType => $links)
+	{
+		switch ($conceptType)
 		{
-			switch ($type)
-			{
-				case "Culture":
-					$model .= "culture=" . $type . "|"; 
-					break;
+			case 'Technique':
+				$model .= "{{Techniques évoquées";
+				break;
+			
+			case 'Culture':
+				$model .= "{{Cultures concernées";
+				break;
 
-				case "Bioagresseur":
-					$model .= "bioagresseur=" . $type . "|"; 
-					break;
-
-				case "Auxiliaire" :
-					$model .= "auxiliaire=" . $type . "|"; 
-					break;
-
-				case "Matériel":
-					$model .= "materiel=" . $type . "|"; 
-					break;
-
-				case "Outil d'aide":
-					$model .= "outilAide=" . $type . "|"; 
-					break;	
-			}
+			case 'Materiel':
+				$model .= "{{Matériel concerné";
+				break;
+			
+			default:
+				$model .= '{{' . $conceptType . 's concernés';
+				break;
 		}
-		$model = trim($model,"|");
-		$model .= "}}";
-		return $model;
+		foreach ($links as $link)
+		{
+			$model .= "|$link";
+		}
+		$model .= "}}\n";
+		echo $model;
+	}
+	return $model;
 }
 
 /**
  * Writte a summary for a specific article category
  */
-function contextTemplate($listLink, $page)
+function contextTemplate($listLink)
 {
 	//print_r($listLink);
 	$model = "{{context";
@@ -1086,7 +1085,7 @@ function cleanWikiTextParsoid($text)
 	$text = preg_replace('@^.*@', '', $text);
 	$text = preg_replace('@function proposerEnrichissement.*;$@', '', $text);
 	$text = preg_replace('@[fF]iche en cours de rédaction[,\s\.]*@', '', $text);
-	$text = preg_replace('@pour plus d\'information@', "\n Pour plus d\'information", $text);
+	$text = preg_replace('@pour plus d\'information@', "\n Pour plus d'information", $text);
 	$text = preg_replace('@-{4}@', '', $text);
 	$text = preg_replace('@•@', '*', $text);
 	$text = preg_replace("@== ''''@", '==', $text);
@@ -1110,7 +1109,7 @@ function findCaption($lines)
 	$results = array();
 	foreach ($lines as $line)
 	{
-		echo $line . "\n";
+		//echo $line . "\n";
 		if (mb_strlen($line) < 150) //Looking for image caption, we ignore longer lines
 		{
 			$matches = array();
