@@ -80,11 +80,12 @@ function importGecoToWiki()
 		// 	continue
 		
 		//Debuging
-		if ($filename != 'C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-piloter_l_enherbement_des_vignes_sans_travailler_le_sol.html')
+		if ($filename != 'C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-cochylis_-28eupoecilia_ambiguella-29.html')
 			continue;
 
+		// Test if the page is in the exclude page list
 		$pageName = mb_ucfirst($conceptName);
-		if (key_exists($pageName, $GLOBALS['listPageName']))
+		if (key_exists($pageName, $GLOBALS['pages_to_exclude']))
 		{
 			echo "Article not in the list \n";
 			continue;
@@ -219,7 +220,10 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl, $e
 			$intro = request_api('text', $pageName, $homonymie);
 			$wikiImage = request_api('image', $pageName, $homonymie);
 		}
-
+	
+	if(isset($wikiImage))
+		$imageName = $wikiImage;
+		
 	// Add the categories
 	$annexes = addCategoriesForPage($page, $xpath,$pageName);
 
@@ -234,14 +238,16 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl, $e
 
 	// Add the table of content at a specific place
 
-	if(isset($wikiImage))
-		$page->addContent($wikiImage . "\n");
+
 	if(isset($intro))
 		$page->addContent($intro . "\n");
 
 	$page->addContent($wikiText);
 
 	$page->addContent("\n== Annexes ==\n");
+
+	if(isset($annexes['estEvoque']))
+		$page->addContent($annexes['estEvoque']) . "\n";
 
 	if(isset($annexes['dpl']))
 		$page->addContent($annexes['dpl'] . "\n");
@@ -290,7 +296,6 @@ function addCategoriesForPage($page, $xpath,$pageName)
 		return;
 
 	$elements = $xpath->query("//div[@class='span2 liens-cell']");
-
 	// Create an array to contain several redirection link to pages linked. 
 	$annexes=array();
 	foreach ($elements as $div)
@@ -367,7 +372,6 @@ function addCategoriesForPage($page, $xpath,$pageName)
 								$annexes['contexte'][] = $GLOBALS['links'][$relurl];
 								break;
 							case 'evoque':
-								$annexes['rel']['evoque']=1;
 								break;
 							default : 
 								$annexes['revrel'][$revrel][] = "*". "[[" . $GLOBALS['links'][$relurl] . "]] \n" ;
@@ -382,7 +386,10 @@ function addCategoriesForPage($page, $xpath,$pageName)
 	}
 
 	$res = array();
-	// Once the $annexes array filled, write it on the wiki page
+
+	if($conceptType != 'exempleMiseEnOeuvre')
+		$res['estEvoque'] = '{{' . $GLOBALS['conceptTypes'][$conceptType] . " temoignages}}";
+
 	if(isset($annexes['rel']))
 	{
 		$dpl = annexesDplTemplate($annexes['rel']);
@@ -408,6 +415,7 @@ function addCategoriesForPage($page, $xpath,$pageName)
 
 
 ### Template's functions ###
+
 /**
  * Writte annexes based on the "liste des annexes" template
  */
@@ -476,7 +484,6 @@ function annexesConceptEvoquesTemplates($listLinks)
 			$model .= "|$link";
 		}
 		$model .= "}}\n";
-		echo $model;
 	}
 	return $model;
 }
@@ -526,17 +533,18 @@ function contextTemplate($listLink)
 ### Global array initialisation ### 
 
 /**
- * Initialize an array which contains the articles' list to process
+ * Initialize an array which contains the articles' list to exclude
  */
 function initArticlesList()
 {
-	$listPageNameFile = __DIR__ . "\hpwiki_page.csv";
-	$listPageName = file($listPageNameFile);
-	foreach($listPageName as $key => $value)
+	include(__DIR__ . '/../temp/hpwiki_page.php');
+	$pages_to_exclude = array();
+	foreach ($hpwiki_page as $a)
 	{
-		$listPageName[$key] = mb_ucfirst(str_replace('_', ' ', $value));
+		$page = mb_ucfirst(str_replace('_', ' ', reset($a)));
+		$GLOBALS['pages_to_exclude'][$page] = $page;
 	}
-	$GLOBALS["listPageName"] = array_flip($listPageName);
+	$GLOBALS['pages_to_exclude'];
 }
 
 
