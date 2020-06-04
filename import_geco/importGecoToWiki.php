@@ -80,8 +80,8 @@ function importGecoToWiki()
 		// 	continue
 		
 		//Debuging
-		// if ($filename != 'C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-cochylis_-28eupoecilia_ambiguella-29.html')
-		// 	continue;
+		if ($filename != 'C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-tournesol.html')
+			continue;
 
 		// Test if the page is in the exclude page list
 		$pageName = mb_ucfirst($conceptName);
@@ -226,8 +226,8 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl, $e
 		$imageCaption = $wikiImage[1];
 
 	if(isset($intro))
-		$wikitext = $intro;
-
+		$wikiText = $intro;
+	
 	// Add the categories
 	$annexes = addCategoriesForPage($page, $xpath,$pageName);
 
@@ -813,8 +813,15 @@ function request_api($request_type, $pageName, $homonymie=null)
 						{
 							$text = "";
 							$text .= $id['extract'];
-							$text .= "{{Mark as extracted from Wikipedia|page=$pageName}}";
-							$res = $text;
+							$text = explode("\n", $text);
+							$intro = "";
+							foreach($text as $paragraph)
+							{
+								$intro .= $paragraph . "\n\n";
+							}
+							$intro = trim($intro);
+							$intro .= "{{Mark as extracted from Wikipedia|page=$pageName}}";
+							$res = $intro;
 						}
 					}
 					break;
