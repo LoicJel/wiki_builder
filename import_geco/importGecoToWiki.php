@@ -222,8 +222,10 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl, $e
 		}
 	
 	if(isset($wikiImage))
+	{
 		$imageName = $wikiImage[0];
 		$imageCaption = $wikiImage[1];
+	}
 
 	if(isset($intro))
 		$wikiText = $intro;
@@ -234,12 +236,18 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl, $e
 	//Add a template for "exemple de mise en oeuvre" at the begining
 	if(isset($annexes['context']))
 		$page->addContent($annexes['context'] . "\n");
+	
+	$subcategory = "";
+	if(isset($annexes['subcategory']))
+	{
+		$subcategory = $annexes['subcategory'];
+	}
 		
 	// Add a model for redirect to the originial Geco webpage.
 	if (!isset($intro))
 		$page->addContent("{{Article issu de Geco|url=$trueUrl}}");
 
-	$page->addContent(getTemplate($GLOBALS['conceptTypes'][$conceptType], array('Nom' => $name, 'Latin' => $latinName, 'Image' => $imageName, 'ImageCaption' => $imageCaption)). "\n");
+	$page->addContent(getTemplate($GLOBALS['conceptTypes'][$conceptType], array('Nom' => $name, 'Latin' => $latinName, 'Sous-categorie' => $subcategory, 'Image' => $imageName, 'ImageCaption' => $imageCaption)). "\n");
 
 	$page->addContent($wikiText);
 
@@ -366,7 +374,10 @@ function addCategoriesForPage($page, $xpath,$pageName)
 						{
 							case 'aPourFils' :
 								//Corresponds to the parent page, so add a categorie.
-								$page->addCategory($GLOBALS['links'][$relurl]);
+								if($conceptType == 'bioagresseur') //add the subcategory directly into the introduction template for pests pages
+									$annexes['subcategory'] = $GLOBALS['links'][$relurl];
+								else
+									$page->addCategory($GLOBALS['links'][$relurl]);
 								break;
 							case 'caracterise':
 								$annexes['contexte'][] = $GLOBALS['links'][$relurl];
@@ -410,6 +421,9 @@ function addCategoriesForPage($page, $xpath,$pageName)
 		$context = contextTemplate($annexes['contexte']);
 		$res['context'] = $context;
 	}
+	if(isset($annexes['subcategory']))
+		$res['subcategory'] = $annexes['subcategory'];
+	
 	return $res;
 }
 
@@ -692,14 +706,14 @@ function getTemplate($conceptType, $fields)
 	{{bioagresseur
 	|Nom=Carpocapse des pommes et des poires
 	|Latin=Cydia pomonella
+	|Sous-category= 
 	|Image=image_carpocapse_des_pommes_et_des_poires__Cydia_pomonella_.jpg
 	|ImageCaption=Adulte du carpocapse des pommes et des poires - © INRA}}
 	*/
 	$lines = array();
 	foreach ($fields as $k => $v)
 	{
-		if (!empty($v))
-			$lines[] = "|$k=$v";
+		$lines[] = "|$k=$v";
 	}
 
 	return '{{' . $conceptType . "\n" . implode("\n", $lines) . '}}';
@@ -825,6 +839,7 @@ function request_api($request_type, $pageName, $homonymie=null)
 					{
 						if(isset($image['pageimage']))
 						{
+							$res = array();
 							$res[0] = $image['pageimage'];
 							$res[1] = $image['title'];
 						}
