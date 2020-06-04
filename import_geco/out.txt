@@ -61,12 +61,12 @@ The page Psylle de l'eleagnus doesn't exist in wikipedia
 Adding redirect: Psylle de l'eleagnus <-- Cacopsylla fulguralis
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-elaeagnus.html
 
-Notice: Trying to get property 'textContent' of non-object in C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php on line 746
+Notice: Trying to get property 'textContent' of non-object in C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php on line 748
 
 Call Stack:
-    0.4038     615016   1. {main}() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:0
-    1.7330    1210832   2. importGecoToWiki() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:47
-    2.4910    1468088   3. emptyPage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:113
+    0.4045     615216   1. {main}() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:0
+    1.7651    1219968   2. importGecoToWiki() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:47
+    4.0089    1477224   3. emptyPage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:113
 
 
 Variables in local scope (#3):
@@ -112,11 +112,7 @@ Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_ge
 Extracting page: Thigmomorphogenèse
 technique Thigmomorphogenèse
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-ecimage.html
-Extracting page: Ecimage
-technique Ecimage
-The page Ecimage doesn't exist in wikipedia 
-The page Ecimage doesn't exist in wikipedia 
-The page Ecimage doesn't exist in wikipedia 
+Article not in the list 
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-desherbage_mecanique_de_lrinter-rang_en_culture_de_canne_a_sucre.html
 Extracting page: Désherbage mécanique de l’inter-rang en culture de canne à sucre
 exempleMiseEnOeuvre Désherbage mécanique de l’inter-rang en culture de canne à sucre
@@ -826,9 +822,7 @@ The page Cultivateur rotatif animé doesn't exist in wikipedia
 The page Cultivateur rotatif animé doesn't exist in wikipedia 
 The page Cultivateur rotatif animé doesn't exist in wikipedia 
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-vibroculteur.html
-Extracting page: vibroculteur
-materiel vibroculteur
-No image for the page Vibroculteur in wikipedia 
+Article not in the list 
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-labourer_-28et_repartir_les_labours_dans_la_rotation-29.html
 Extracting page: Répartir les labours dans la rotation
 technique Répartir les labours dans la rotation
@@ -1355,9 +1349,7 @@ culture Pêche
 No image for the page Pêche in wikipedia 
 Adding redirect: Pêche <-- Pêcher
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-poire.html
-Extracting page: Poire
-culture Poire
-Adding redirect: Poire <-- Poirier
+Article not in the list 
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-pomme.html
 Extracting page: Pomme
 culture Pomme
@@ -1596,9 +1588,7 @@ bioagresseur mouche des semis
 Adding redirect: Mouche des semis <-- Delia platura
 Adding redirect: Mouche des semis <-- mouche des semis lupin
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-hanneton.html
-Extracting page: hanneton
-bioagresseur hanneton
-Adding redirect: Hanneton <-- Melolontha melolontha
+Article not in the list 
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-ergot.html
 Extracting page: ergot
 bioagresseur ergot
@@ -1865,8 +1855,7 @@ Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_ge
 Extracting page: Cameline
 culture Cameline
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-betterave_sucriere.html
-Extracting page: Betterave sucrière
-culture Betterave sucrière
+Article not in the list 
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-cultiver_des_especes_pluriannuelles.html
 Extracting page: Cultiver des espèces pluriannuelles
 technique Cultiver des espèces pluriannuelles
@@ -2217,8 +2206,7 @@ Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_ge
 Extracting page: Brocoli
 culture Brocoli
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-betterave.html
-Extracting page: Betterave rouge
-culture Betterave rouge
+Article not in the list 
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-bette.html
 Extracting page: Bette
 culture Bette
@@ -3259,8 +3247,7 @@ The page Fiches Système DEPHY EXPE - Multi-filières doesn't exist in wikipedia
 The page Fiches Système DEPHY EXPE - Multi-filières doesn't exist in wikipedia 
 The page Fiches Système DEPHY EXPE - Multi-filières doesn't exist in wikipedia 
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-abricot_-_privilegier_les_observations_et_le_biocontrole_pour_baisser_les_ift.html
-Extracting page: Abricot : privilégier les observations et le biocontrôle pour baisser les IFT
-exempleMiseEnOeuvre Abricot : privilégier les observations et le biocontrôle pour baisser les IFT
+Article not in the list 
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-pomme_-_combiner_differents_leviers_pour_baisser_les_ift.html
 Extracting page: Pomme : combiner différents leviers pour baisser les IFT
 exempleMiseEnOeuvre Pomme : combiner différents leviers pour baisser les IFT
@@ -3478,8 +3465,7 @@ Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_ge
 Extracting page: Aphidius colemani
 auxiliaire Aphidius colemani
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-aphelinus_mali.html
-Extracting page: Aphelinus mali
-auxiliaire Aphelinus mali
+Article not in the list 
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-aphelinus_abdominalis.html
 Extracting page: Aphelinus abdominalis
 auxiliaire Aphelinus abdominalis
@@ -7298,14 +7284,14 @@ Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_ge
 Extracting page: Gestion de la ressource mellifère - INTERAPI
 outilDAide Gestion de la ressource mellifère - INTERAPI
 
-Warning: finfo::file(C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/geco_index_files/image_Gestion_de_la_ressource_mellif_re___INTERAPI.png): failed to open stream: No such file or directory in C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php on line 938
+Warning: finfo::file(C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/geco_index_files/image_Gestion_de_la_ressource_mellif_re___INTERAPI.png): failed to open stream: No such file or directory in C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php on line 940
 
 Call Stack:
-    0.4038     615016   1. {main}() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:0
-    1.7330    1210832   2. importGecoToWiki() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:47
-  657.1717   21545312   3. addPage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:124
-  657.2147   21564112   4. resizeImage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:215
-  657.2148   21566096   5. finfo->file() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:938
+    0.4045     615216   1. {main}() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:0
+    1.7651    1219968   2. importGecoToWiki() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:47
+  592.2598   21457504   3. addPage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:124
+  592.2884   21476304   4. resizeImage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:215
+  592.2885   21478288   5. finfo->file() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:940
 
 
 Variables in local scope (#4):
@@ -7535,11 +7521,7 @@ The page Effeuilleuse viticole doesn't exist in wikipedia
 The page Effeuilleuse viticole doesn't exist in wikipedia 
 The page Effeuilleuse viticole doesn't exist in wikipedia 
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-ecimeuse.html
-Extracting page: écimeuse
-materiel écimeuse
-The page Écimeuse doesn't exist in wikipedia 
-The page Écimeuse doesn't exist in wikipedia 
-The page Écimeuse doesn't exist in wikipedia 
+Article not in the list 
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-distributeur_drengrais_viticole.html
 Extracting page: distributeur d’engrais viticole
 materiel distributeur d’engrais viticole

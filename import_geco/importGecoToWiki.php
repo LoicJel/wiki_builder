@@ -80,8 +80,8 @@ function importGecoToWiki()
 		// 	continue
 		
 		//Debuging
-		if ($filename != 'C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-cochylis_-28eupoecilia_ambiguella-29.html')
-			continue;
+		// if ($filename != 'C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-cochylis_-28eupoecilia_ambiguella-29.html')
+		// 	continue;
 
 		// Test if the page is in the exclude page list
 		$pageName = mb_ucfirst($conceptName);
@@ -223,7 +223,10 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl, $e
 	
 	if(isset($wikiImage))
 		$imageName = $wikiImage;
-		
+
+	if(isset($intro))
+		$wikitext = $intro;
+
 	// Add the categories
 	$annexes = addCategoriesForPage($page, $xpath,$pageName);
 
@@ -232,15 +235,15 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl, $e
 		$page->addContent($annexes['context'] . "\n");
 		
 	// Add a model for redirect to the originial Geco webpage.
-	$page->addContent("{{Article issu de Geco|url=$trueUrl}}");
+	if (!isset($intro))
+		$page->addContent("{{Article issu de Geco|url=$trueUrl}}");
 
 	$page->addContent(getTemplate($GLOBALS['conceptTypes'][$conceptType], array('Nom' => $name, 'Latin' => $latinName, 'Image' => $imageName, 'ImageCaption' => $imageCaption)). "\n");
 
 	// Add the table of content at a specific place
 
 
-	if(isset($intro))
-		$page->addContent($intro . "\n");
+
 
 	$page->addContent($wikiText);
 
