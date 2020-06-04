@@ -222,7 +222,8 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl, $e
 		}
 	
 	if(isset($wikiImage))
-		$imageName = $wikiImage;
+		$imageName = $wikiImage[0];
+		$imageCaption = $wikiImage[1];
 
 	if(isset($intro))
 		$wikitext = $intro;
@@ -823,7 +824,10 @@ function request_api($request_type, $pageName, $homonymie=null)
 					foreach($result['query']['pages'] as $page=>$image)
 					{
 						if(isset($image['pageimage']))
-							$res = '[[file:' . $image['pageimage'] . '|thumb|' . $image['title'] . ']]';
+						{
+							$res[0] = $image['pageimage'];
+							$res[1] = $image['title'];
+						}
 						else 
 							echo "No image for the page $pageName in wikipedia \n";
 					}
