@@ -80,7 +80,7 @@ function importGecoToWiki()
 		// 	continue
 		
 		//Debuging
-		if ($filename != 'C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-tournesol.html')
+		if ($filename != 'C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-gestion_des_auxiliaires_pollinisateurs.html')
 			continue;
 
 		// Test if the page is in the exclude page list
@@ -626,11 +626,11 @@ function initRelations()
 	$GLOBALS['relations']['estComplementaire'] = array('rel' => 'estComplementaire', 'label' => '', 'reverse' => 'estComplementaire', 'reverse_label' => 'est complémentaire', 'template_name' => "Pratiques complémentaires");
 	$GLOBALS['relations']['estIncompatible'] = array('rel' => 'estComplementaire', 'label' => '', 'reverse' => 'estIncompatible', 'reverse_label' => 'est incompatible', 'template_name' => "Pratiques incompatibles");
 	$GLOBALS['relations']['caracterise'] = array('rel' => 'caracterise', 'label' => 'caractérise', 'reverse' => 'sAppliqueA', 'reverse_label' => "s'applique à");
-	$GLOBALS['relations']['contribueA'] = array('rel' => 'contribueA', 'label' => 'contribue à', 'reverse' => 'estAssurePar', 'reverse_label' => 'est assuré par', 'template_name'=>"Pratiques assurant l'objectif");
+	$GLOBALS['relations']['contribueA'] = array('rel' => 'estAssurePar', 'label' => 'est assuré par', 'reverse' => 'contribueA', 'reverse_label' => 'contribue à', 'template_name'=>"Objectifs assurés par la pratiques");
 	$GLOBALS['relations']['evoque'] = array('rel' => 'evoque', 'label' => 'évoque', 'reverse' => 'estEvoqueDans', 'reverse_label' => 'est évoqué dans');
 	$GLOBALS['relations']['regule'] = array('rel' => 'regule', 'label' => 'régule', 'reverse' => 'estRegulePar', 'reverse_label' => 'est régulé par', 'template_name'=>"Auxiliaires régulant ce bioagresseur");
 	$GLOBALS['relations']['informeSur'] = array('rel' => 'informeSur', 'label' => 'informe sur', 'reverse' => 'estRenseignePar', 'reverse_label' => 'est renseigné par', 'template_name'=>"Guides renseignant ce sujet");
-	$GLOBALS['relations']['sAttaque'] = array('rel' => 'estAttquePar', 'label' => "s'attaque à", 'reverse' => 'sAttaque', 'reverse_label' => 'est attaqué par', 'template_name'=>"Bioagresseur s'attaquant à la culture");
+	$GLOBALS['relations']['sAttaque'] = array('rel' => 'estAttquePar', 'label' => "est attaqué par", 'reverse' => 'sAttaque', 'reverse_label' => 's\'attaque à', 'template_name'=>"Bioagresseur s'attaquant à la culture");
 	$GLOBALS['relations']['utilise'] = array('rel' => 'utilise', 'label' => 'utilise', 'reverse' => 'estUtilisePour', 'reverse_label' => 'est utilisé pour', 'template_name'=>"Pratiques utilisant ce matériel");
 	$GLOBALS['relations']['sAppuieSur'] = array('rel' => 'sAppuieSur', 'label' => "s'appuie sur", 'reverse' => 'aideAAppliquer', 'reverse_label' => 'aide à appliquer', 'template_name'=>"Pratiques renseignées par cet outil d'aide");
 
