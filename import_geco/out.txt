@@ -1,9 +1,1149 @@
-Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-res0pest_breteniere_-_combiner_un_maximum_de_leviers_pour_un_systeme_de_grande_culture_sans_pesticides.html
-Extracting page: Rés0Pest Bretenière : Combiner un maximum de leviers pour un système de grande culture sans pesticides
-exempleMiseEnOeuvre Rés0Pest Bretenière : Combiner un maximum de leviers pour un système de grande culture sans pesticides
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-pratiquer_le_desherbage_chimique_localise_sur_le_rang.html
+Extracting page: Désherbage chimique localisé sur le rang, pouvant être combiné au semis ou à une bineuse
+technique Désherbage chimique localisé sur le rang, pouvant être combiné au semis ou à une bineuse
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-reduire_l_ift_en_vignoble_deja_implante_en_combinant_les_leviers-2C_dont_d_enherbement_total.html
+Extracting page: Réduire l'IFT en vignoble déjà implanté en combinant les leviers, dont l'enherbement total des parcelles
+exempleMiseEnOeuvre Réduire l'IFT en vignoble déjà implanté en combinant les leviers, dont l'enherbement total des parcelles
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-gestion_des_adventices_sous_l_interceps.html
+Extracting page: Gestion des adventices sous l'interceps
+exempleMiseEnOeuvre Gestion des adventices sous l'interceps
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-gestion_des_adventices_par_combinaison_de_leviers_agronomiques_et_de_substitution.html
+Extracting page: Gestion des adventices par combinaison de leviers agronomiques et de désherbage mécanique
+exempleMiseEnOeuvre Gestion des adventices par combinaison de leviers agronomiques et de désherbage mécanique
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-des_arbres_fruitiers_et_des_cultures_associes_en_systemes_agroforestiers.html
+Extracting page: Des arbres fruitiers et des cultures associés en systèmes agroforestiers
+exempleMiseEnOeuvre Des arbres fruitiers et des cultures associés en systèmes agroforestiers
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-combiner_allongement_de_la_rotation_et_travail_mecanique_pour_une_gestion_efficace_et_durable_des_adventices_dans_le_gers.html
+Extracting page: Combiner allongement de la rotation et travail mécanique pour une gestion efficace et durable des adventices dans le Gers
+exempleMiseEnOeuvre Combiner allongement de la rotation et travail mécanique pour une gestion efficace et durable des adventices dans le Gers
+
+Warning: finfo::file(C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/geco_index_files/image_Combiner_allongement_de_la_rotation_et_travail_m_canique_pour_une_gestion_efficace_et_durable_des_adventices_dans_le_Gers.jpg): failed to open stream: No such file or directory in C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php on line 962
+
+Call Stack:
+    0.4038     613752   1. {main}() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:0
+    1.3714    1233952   2. importGecoToWiki() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:47
+    2.9840    1450016   3. addPage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:124
+    3.0071    1459400   4. resizeImage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:215
+    3.0072    1461752   5. finfo->file() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:962
+
+
+Variables in local scope (#4):
+  $destImage = *uninitialized*
+  $destImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/../out/images/image_Combiner_allongement_de_la_rotation_et_travail_m_canique_pour_une_gestion_efficace_et_durable_des_adventices_dans_le_Gers.jpg'
+  $finfo = class finfo {  }
+  $height = *uninitialized*
+  $imageName = 'image_Combiner_allongement_de_la_rotation_et_travail_m_canique_pour_une_gestion_efficace_et_durable_des_adventices_dans_le_Gers.jpg'
+  $max_height = *uninitialized*
+  $max_width = *uninitialized*
+  $orig_height = *uninitialized*
+  $orig_width = *uninitialized*
+  $path_parts = array ('dirname' => 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files', 'basename' => 'image_Combiner_allongement_de_la_rotation_et_travail_m_canique_pour_une_gestion_efficace_et_durable_des_adventices_dans_le_Gers.jpg', 'extension' => 'jpg', 'filename' => 'image_Combiner_allongement_de_la_rotation_et_travail_m_canique_pour_une_gestion_efficace_et_durable_des_adventices_dans_le_Gers')
+  $realSrcExt = *uninitialized*
+  $srcExt = 'jpg'
+  $srcImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files/image_Combiner_allongement_de_la_rotation_et_travail_m_canique_pour_une_gestion_efficace_et_durable_des_adventices_dans_le_Gers.jpg'
+  $srcimage = *uninitialized*
+  $th = *uninitialized*
+  $width = *uninitialized*
+
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-augmenter_la_resilience_du_vignoble_de_cognac_par_le_mode_de_conduite_scott_henry.html
+Extracting page: Augmenter la résilience du vignoble de Cognac grâce au mode de conduite Scott Henry
+exempleMiseEnOeuvre Augmenter la résilience du vignoble de Cognac grâce au mode de conduite Scott Henry
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-pratiquer_le_desherbage_mecanique_-_bineuse_kress.html
+Extracting page: Pratiquer le désherbage mécanique sur le rang - Bineuse à doigts ou moulinets
+technique Pratiquer le désherbage mécanique sur le rang - Bineuse à doigts ou moulinets
+Adding redirect: Pratiquer le désherbage mécanique sur le rang - Bineuse à doigts ou moulinets <-- Bineuse Kress
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-pratiquer_le_desherbage_mecanique_-_houe_rotative.html
+Extracting page: Pratiquer le désherbage mécanique en plein - Houe rotative
+technique Pratiquer le désherbage mécanique en plein - Houe rotative
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-realiser_des_apports_de_compost.html
+Extracting page: Réaliser des apports de compost
+technique Réaliser des apports de compost
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-filet_monoparcelle_-_alt_carpo.html
+Extracting page: Installer des Filets Monoparcelle - Alt'Carpo en verger
+technique Installer des Filets Monoparcelle - Alt'Carpo en verger
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-la_solarisation.html
+Extracting page: Désinfection du sol par la solarisation en cultures légumières
+technique Désinfection du sol par la solarisation en cultures légumières
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-mettre_en_place_de_paillages_ou_de_mulchs_en_cultures_legumieres.html
+Extracting page: Mettre en place des paillages ou des mulchs en cultures légumières
+technique Mettre en place des paillages ou des mulchs en cultures légumières
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-pratiquer_le_desherbage_mecanique_-_herse_etrille.html
+Extracting page: Pratiquer le désherbage mécanique en plein - Herse étrille
+technique Pratiquer le désherbage mécanique en plein - Herse étrille
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-pratiquer_le_desherbage_mecanique_-_binage.html
+Extracting page: Pratiquer le désherbage mécanique sur l'inter-rang - Binage
+technique Pratiquer le désherbage mécanique sur l'inter-rang - Binage
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-introduire_un_couvert_vegetal_d_interculture.html
+Extracting page: Introduire un couvert végétal d'interculture en production légumière
+technique Introduire un couvert végétal d'interculture en production légumière
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-pratiquer_le_desherbage_thermique.html
+Extracting page: Pratiquer le désherbage thermique
+technique Pratiquer le désherbage thermique
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-realiser_des_faux-semis_pendant_l_interculture.html
+Extracting page: Réaliser des faux-semis pendant l'interculture
+technique Réaliser des faux-semis pendant l'interculture
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-labourer_-28et_repartir_les_labours_dans_la_rotation-29.html
+Extracting page: Répartir les labours dans la rotation
+technique Répartir les labours dans la rotation
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-utilisation_d_oad_pour_optimiser_la_protection_phytosanitaire_des_vignobles.html
+Extracting page: Utilisation d'OAD pour optimiser la protection phytosanitaire des vignobles
+exempleMiseEnOeuvre Utilisation d'OAD pour optimiser la protection phytosanitaire des vignobles
+
+Warning: finfo::file(C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/geco_index_files/image_Utilisation_d_OAD_pour_optimiser_la_protection_phytosanitaire_des_vignobles.png): failed to open stream: No such file or directory in C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php on line 962
+
+Call Stack:
+    0.4038     613752   1. {main}() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:0
+    1.3714    1233952   2. importGecoToWiki() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:47
+   21.3547    1919320   3. addPage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:124
+   21.3778    1929152   4. resizeImage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:215
+   21.3779    1931296   5. finfo->file() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:962
+
+
+Variables in local scope (#4):
+  $destImage = *uninitialized*
+  $destImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/../out/images/image_Utilisation_d_OAD_pour_optimiser_la_protection_phytosanitaire_des_vignobles.jpg'
+  $finfo = class finfo {  }
+  $height = *uninitialized*
+  $imageName = 'image_Utilisation_d_OAD_pour_optimiser_la_protection_phytosanitaire_des_vignobles.jpg'
+  $max_height = *uninitialized*
+  $max_width = *uninitialized*
+  $orig_height = *uninitialized*
+  $orig_width = *uninitialized*
+  $path_parts = array ('dirname' => 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files', 'basename' => 'image_Utilisation_d_OAD_pour_optimiser_la_protection_phytosanitaire_des_vignobles.png', 'extension' => 'png', 'filename' => 'image_Utilisation_d_OAD_pour_optimiser_la_protection_phytosanitaire_des_vignobles')
+  $realSrcExt = *uninitialized*
+  $srcExt = 'png'
+  $srcImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files/image_Utilisation_d_OAD_pour_optimiser_la_protection_phytosanitaire_des_vignobles.png'
+  $srcimage = *uninitialized*
+  $th = *uninitialized*
+  $width = *uninitialized*
+
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-utilisation_de_varietes_resistantes_pour_diminuer_l_ift_en_vigne.html
+Extracting page: Utilisation de variétés résistantes pour diminuer l'IFT en vigne
+exempleMiseEnOeuvre Utilisation de variétés résistantes pour diminuer l'IFT en vigne
+
+Warning: finfo::file(C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/geco_index_files/image_Utilisation_de_vari_t_s_r_sistantes_pour_diminuer_l_IFT_en_vigne.png): failed to open stream: No such file or directory in C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php on line 962
+
+Call Stack:
+    0.4038     613752   1. {main}() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:0
+    1.3714    1233952   2. importGecoToWiki() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:47
+   21.4585    1932840   3. addPage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:124
+   21.4820    1942624   4. resizeImage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:215
+   21.4821    1944688   5. finfo->file() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:962
+
+
+Variables in local scope (#4):
+  $destImage = *uninitialized*
+  $destImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/../out/images/image_Utilisation_de_vari_t_s_r_sistantes_pour_diminuer_l_IFT_en_vigne.jpg'
+  $finfo = class finfo {  }
+  $height = *uninitialized*
+  $imageName = 'image_Utilisation_de_vari_t_s_r_sistantes_pour_diminuer_l_IFT_en_vigne.jpg'
+  $max_height = *uninitialized*
+  $max_width = *uninitialized*
+  $orig_height = *uninitialized*
+  $orig_width = *uninitialized*
+  $path_parts = array ('dirname' => 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files', 'basename' => 'image_Utilisation_de_vari_t_s_r_sistantes_pour_diminuer_l_IFT_en_vigne.png', 'extension' => 'png', 'filename' => 'image_Utilisation_de_vari_t_s_r_sistantes_pour_diminuer_l_IFT_en_vigne')
+  $realSrcExt = *uninitialized*
+  $srcExt = 'png'
+  $srcImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files/image_Utilisation_de_vari_t_s_r_sistantes_pour_diminuer_l_IFT_en_vigne.png'
+  $srcimage = *uninitialized*
+  $th = *uninitialized*
+  $width = *uninitialized*
+
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-cr2_m1-_conception_d_un_vignoble_resilient.html
+Extracting page: CR2 M1: Conception d'un vignoble résilient
+exempleMiseEnOeuvre CR2 M1: Conception d'un vignoble résilient
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-cr2_m2_-_reconception_du_vignoble_et_mode_de_conduite_smart_dyson.html
+Extracting page: CR2 M2 : Reconception du vignoble et mode de conduite Smart Dyson
+exempleMiseEnOeuvre CR2 M2 : Reconception du vignoble et mode de conduite Smart Dyson
+
+Warning: finfo::file(C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/geco_index_files/image_CR2_M2___Reconception_du_vignoble_et_mode_de_conduite_Smart_Dyson.png): failed to open stream: No such file or directory in C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php on line 962
+
+Call Stack:
+    0.4038     613752   1. {main}() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:0
+    1.3714    1233952   2. importGecoToWiki() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:47
+   21.6045    1959016   3. addPage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:124
+   21.6281    1968848   4. resizeImage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:215
+   21.6282    1970912   5. finfo->file() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:962
+
+
+Variables in local scope (#4):
+  $destImage = *uninitialized*
+  $destImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/../out/images/image_CR2_M2___Reconception_du_vignoble_et_mode_de_conduite_Smart_Dyson.jpg'
+  $finfo = class finfo {  }
+  $height = *uninitialized*
+  $imageName = 'image_CR2_M2___Reconception_du_vignoble_et_mode_de_conduite_Smart_Dyson.jpg'
+  $max_height = *uninitialized*
+  $max_width = *uninitialized*
+  $orig_height = *uninitialized*
+  $orig_width = *uninitialized*
+  $path_parts = array ('dirname' => 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files', 'basename' => 'image_CR2_M2___Reconception_du_vignoble_et_mode_de_conduite_Smart_Dyson.png', 'extension' => 'png', 'filename' => 'image_CR2_M2___Reconception_du_vignoble_et_mode_de_conduite_Smart_Dyson')
+  $realSrcExt = *uninitialized*
+  $srcExt = 'png'
+  $srcImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files/image_CR2_M2___Reconception_du_vignoble_et_mode_de_conduite_Smart_Dyson.png'
+  $srcimage = *uninitialized*
+  $th = *uninitialized*
+  $width = *uninitialized*
+
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-systeme_viticole_biologique_aop_alliant_rupture_drift_et_qualite_de_production.html
+Extracting page: Système viticole biologique AOP alliant rupture d’IFT et qualité de production
+exempleMiseEnOeuvre Système viticole biologique AOP alliant rupture d’IFT et qualité de production
+
+Warning: finfo::file(C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/geco_index_files/image_Syst_me_viticole__biologique_AOP_alliant_rupture_d_IFT_et_qualit__de_production.jpg): failed to open stream: No such file or directory in C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php on line 962
+
+Call Stack:
+    0.4038     613752   1. {main}() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:0
+    1.3714    1233952   2. importGecoToWiki() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:47
+   21.7103    1977592   3. addPage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:124
+   21.7338    1987392   4. resizeImage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:215
+   21.7339    1989568   5. finfo->file() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:962
+
+
+Variables in local scope (#4):
+  $destImage = *uninitialized*
+  $destImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/../out/images/image_Syst_me_viticole__biologique_AOP_alliant_rupture_d_IFT_et_qualit__de_production.jpg'
+  $finfo = class finfo {  }
+  $height = *uninitialized*
+  $imageName = 'image_Syst_me_viticole__biologique_AOP_alliant_rupture_d_IFT_et_qualit__de_production.jpg'
+  $max_height = *uninitialized*
+  $max_width = *uninitialized*
+  $orig_height = *uninitialized*
+  $orig_width = *uninitialized*
+  $path_parts = array ('dirname' => 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files', 'basename' => 'image_Syst_me_viticole__biologique_AOP_alliant_rupture_d_IFT_et_qualit__de_production.jpg', 'extension' => 'jpg', 'filename' => 'image_Syst_me_viticole__biologique_AOP_alliant_rupture_d_IFT_et_qualit__de_production')
+  $realSrcExt = *uninitialized*
+  $srcExt = 'jpg'
+  $srcImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files/image_Syst_me_viticole__biologique_AOP_alliant_rupture_d_IFT_et_qualit__de_production.jpg'
+  $srcimage = *uninitialized*
+  $th = *uninitialized*
+  $width = *uninitialized*
+
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-systeme_en_production_igp_comte_tolosan_base_sur_une_approche_technico-economique_de_rentabilite.html
+Extracting page: Système en production IGP Comté Tolosan basé sur une approche technico-économique de rentabilité
+exempleMiseEnOeuvre Système en production IGP Comté Tolosan basé sur une approche technico-économique de rentabilité
+
+Warning: finfo::file(C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/geco_index_files/image_Syst_me_en_production_IGP_Comt__Tolosan_bas__sur_une_approche_technico__conomique_de_rentabilit_.jpg): failed to open stream: No such file or directory in C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php on line 962
+
+Call Stack:
+    0.4038     613752   1. {main}() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:0
+    1.3714    1233952   2. importGecoToWiki() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:47
+   21.8173    1992104   3. addPage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:124
+   21.8408    2001952   4. resizeImage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:215
+   21.8409    2004208   5. finfo->file() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:962
+
+
+Variables in local scope (#4):
+  $destImage = *uninitialized*
+  $destImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/../out/images/image_Syst_me_en_production_IGP_Comt__Tolosan_bas__sur_une_approche_technico__conomique_de_rentabilit_.jpg'
+  $finfo = class finfo {  }
+  $height = *uninitialized*
+  $imageName = 'image_Syst_me_en_production_IGP_Comt__Tolosan_bas__sur_une_approche_technico__conomique_de_rentabilit_.jpg'
+  $max_height = *uninitialized*
+  $max_width = *uninitialized*
+  $orig_height = *uninitialized*
+  $orig_width = *uninitialized*
+  $path_parts = array ('dirname' => 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files', 'basename' => 'image_Syst_me_en_production_IGP_Comt__Tolosan_bas__sur_une_approche_technico__conomique_de_rentabilit_.jpg', 'extension' => 'jpg', 'filename' => 'image_Syst_me_en_production_IGP_Comt__Tolosan_bas__sur_une_approche_technico__conomique_de_rentabilit_')
+  $realSrcExt = *uninitialized*
+  $srcExt = 'jpg'
+  $srcImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files/image_Syst_me_en_production_IGP_Comt__Tolosan_bas__sur_une_approche_technico__conomique_de_rentabilit_.jpg'
+  $srcimage = *uninitialized*
+  $th = *uninitialized*
+  $width = *uninitialized*
+
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-systeme_igp_cotes_de_gascogne_base_sur_une_forte_mecanisation_du_vignoble.html
+Extracting page: Système IGP Côtes de Gascogne basé sur une forte mécanisation du vignoble
+exempleMiseEnOeuvre Système IGP Côtes de Gascogne basé sur une forte mécanisation du vignoble
+
+Warning: finfo::file(C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/geco_index_files/image_Syst_me_IGP_C_tes_de_Gascogne_bas__sur_une_forte_m_canisation_du_vignoble.jpg): failed to open stream: No such file or directory in C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php on line 962
+
+Call Stack:
+    0.4038     613752   1. {main}() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:0
+    1.3714    1233952   2. importGecoToWiki() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:47
+   21.9214    2006584   3. addPage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:124
+   21.9447    2021488   4. resizeImage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:215
+   21.9448    2023600   5. finfo->file() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:962
+
+
+Variables in local scope (#4):
+  $destImage = *uninitialized*
+  $destImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/../out/images/image_Syst_me_IGP_C_tes_de_Gascogne_bas__sur_une_forte_m_canisation_du_vignoble.jpg'
+  $finfo = class finfo {  }
+  $height = *uninitialized*
+  $imageName = 'image_Syst_me_IGP_C_tes_de_Gascogne_bas__sur_une_forte_m_canisation_du_vignoble.jpg'
+  $max_height = *uninitialized*
+  $max_width = *uninitialized*
+  $orig_height = *uninitialized*
+  $orig_width = *uninitialized*
+  $path_parts = array ('dirname' => 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files', 'basename' => 'image_Syst_me_IGP_C_tes_de_Gascogne_bas__sur_une_forte_m_canisation_du_vignoble.jpg', 'extension' => 'jpg', 'filename' => 'image_Syst_me_IGP_C_tes_de_Gascogne_bas__sur_une_forte_m_canisation_du_vignoble')
+  $realSrcExt = *uninitialized*
+  $srcExt = 'jpg'
+  $srcImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files/image_Syst_me_IGP_C_tes_de_Gascogne_bas__sur_une_forte_m_canisation_du_vignoble.jpg'
+  $srcimage = *uninitialized*
+  $th = *uninitialized*
+  $width = *uninitialized*
+
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-reseau_dephy-abeille_-_concilier_sauvegarde_des_abeilles_et_enjeux_ecophyto.html
+Extracting page: Réseau DEPHY-Abeille : Concilier sauvegarde des abeilles et enjeux ECOPHYTO
+exempleMiseEnOeuvre Réseau DEPHY-Abeille : Concilier sauvegarde des abeilles et enjeux ECOPHYTO
+
+Warning: finfo::file(C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/geco_index_files/image_R_seau_DEPHY_Abeille___Concilier_sauvegarde_des_abeilles_et_enjeux_ECOPHYTO.jpg): failed to open stream: No such file or directory in C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php on line 962
+
+Call Stack:
+    0.4038     613752   1. {main}() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:0
+    1.3714    1233952   2. importGecoToWiki() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:47
+   22.0263    2016056   3. addPage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:124
+   22.0498    2035056   4. resizeImage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:215
+   22.0499    2037200   5. finfo->file() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:962
+
+
+Variables in local scope (#4):
+  $destImage = *uninitialized*
+  $destImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/../out/images/image_R_seau_DEPHY_Abeille___Concilier_sauvegarde_des_abeilles_et_enjeux_ECOPHYTO.jpg'
+  $finfo = class finfo {  }
+  $height = *uninitialized*
+  $imageName = 'image_R_seau_DEPHY_Abeille___Concilier_sauvegarde_des_abeilles_et_enjeux_ECOPHYTO.jpg'
+  $max_height = *uninitialized*
+  $max_width = *uninitialized*
+  $orig_height = *uninitialized*
+  $orig_width = *uninitialized*
+  $path_parts = array ('dirname' => 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files', 'basename' => 'image_R_seau_DEPHY_Abeille___Concilier_sauvegarde_des_abeilles_et_enjeux_ECOPHYTO.jpg', 'extension' => 'jpg', 'filename' => 'image_R_seau_DEPHY_Abeille___Concilier_sauvegarde_des_abeilles_et_enjeux_ECOPHYTO')
+  $realSrcExt = *uninitialized*
+  $srcExt = 'jpg'
+  $srcImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files/image_R_seau_DEPHY_Abeille___Concilier_sauvegarde_des_abeilles_et_enjeux_ECOPHYTO.jpg'
+  $srcimage = *uninitialized*
+  $th = *uninitialized*
+  $width = *uninitialized*
+
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-un_systeme_econome_pour_des_vignobles_deja_implantes_-_ipm_du_domaine_de_piolenc.html
+Extracting page: Un système économe pour des vignobles déjà implantés - IPM du Domaine de Piolenc
+exempleMiseEnOeuvre Un système économe pour des vignobles déjà implantés - IPM du Domaine de Piolenc
+
+Warning: finfo::file(C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/geco_index_files/image_Un_syst_me__conome_pour_des_vignobles_d_j__implant_s____IPM_du_Domaine_de_Piolenc.png): failed to open stream: No such file or directory in C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php on line 962
+
+Call Stack:
+    0.4038     613752   1. {main}() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:0
+    1.3714    1233952   2. importGecoToWiki() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:47
+   22.1324    2034856   3. addPage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:124
+   22.1557    2044208   4. resizeImage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:215
+   22.1558    2046384   5. finfo->file() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:962
+
+
+Variables in local scope (#4):
+  $destImage = *uninitialized*
+  $destImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/../out/images/image_Un_syst_me__conome_pour_des_vignobles_d_j__implant_s____IPM_du_Domaine_de_Piolenc.jpg'
+  $finfo = class finfo {  }
+  $height = *uninitialized*
+  $imageName = 'image_Un_syst_me__conome_pour_des_vignobles_d_j__implant_s____IPM_du_Domaine_de_Piolenc.jpg'
+  $max_height = *uninitialized*
+  $max_width = *uninitialized*
+  $orig_height = *uninitialized*
+  $orig_width = *uninitialized*
+  $path_parts = array ('dirname' => 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files', 'basename' => 'image_Un_syst_me__conome_pour_des_vignobles_d_j__implant_s____IPM_du_Domaine_de_Piolenc.png', 'extension' => 'png', 'filename' => 'image_Un_syst_me__conome_pour_des_vignobles_d_j__implant_s____IPM_du_Domaine_de_Piolenc')
+  $realSrcExt = *uninitialized*
+  $srcExt = 'png'
+  $srcImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files/image_Un_syst_me__conome_pour_des_vignobles_d_j__implant_s____IPM_du_Domaine_de_Piolenc.png'
+  $srcimage = *uninitialized*
+  $th = *uninitialized*
+  $width = *uninitialized*
+
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-combinaison_de_leviers_pour_reduire_les_intrants_en_systeme_grandes_cultures_breton.html
+Extracting page: Combinaison de leviers pour réduire les intrants en système Grandes Cultures Breton
+exempleMiseEnOeuvre Combinaison de leviers pour réduire les intrants en système Grandes Cultures Breton
+
+Warning: finfo::file(C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/geco_index_files/image_Combinaison_de_leviers_pour_r_duire_les_intrants_en_syst_me_Grandes_Cultures_Breton.jpg): failed to open stream: No such file or directory in C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php on line 962
+
+Call Stack:
+    0.4038     613752   1. {main}() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:0
+    1.3714    1233952   2. importGecoToWiki() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:47
+   22.2423    2057544   3. addPage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:124
+   22.2627    2067296   4. resizeImage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:215
+   22.2628    2069488   5. finfo->file() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:962
+
+
+Variables in local scope (#4):
+  $destImage = *uninitialized*
+  $destImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/../out/images/image_Combinaison_de_leviers_pour_r_duire_les_intrants_en_syst_me_Grandes_Cultures_Breton.jpg'
+  $finfo = class finfo {  }
+  $height = *uninitialized*
+  $imageName = 'image_Combinaison_de_leviers_pour_r_duire_les_intrants_en_syst_me_Grandes_Cultures_Breton.jpg'
+  $max_height = *uninitialized*
+  $max_width = *uninitialized*
+  $orig_height = *uninitialized*
+  $orig_width = *uninitialized*
+  $path_parts = array ('dirname' => 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files', 'basename' => 'image_Combinaison_de_leviers_pour_r_duire_les_intrants_en_syst_me_Grandes_Cultures_Breton.jpg', 'extension' => 'jpg', 'filename' => 'image_Combinaison_de_leviers_pour_r_duire_les_intrants_en_syst_me_Grandes_Cultures_Breton')
+  $realSrcExt = *uninitialized*
+  $srcExt = 'jpg'
+  $srcImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files/image_Combinaison_de_leviers_pour_r_duire_les_intrants_en_syst_me_Grandes_Cultures_Breton.jpg'
+  $srcimage = *uninitialized*
+  $th = *uninitialized*
+  $width = *uninitialized*
+
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-allongement_de_la_rotation_et_reduction_du_travail_du_sol_en_systeme_grandes_cultures_breton.html
+Extracting page: Allongement de la rotation et réduction du travail du sol en système Grandes Cultures Breton
+exempleMiseEnOeuvre Allongement de la rotation et réduction du travail du sol en système Grandes Cultures Breton
+
+Warning: finfo::file(C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/geco_index_files/image_Allongement_de_la_rotation_et_r_duction_du_travail_du_sol_en_syst_me_Grandes_Cultures_Breton.png): failed to open stream: No such file or directory in C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php on line 962
+
+Call Stack:
+    0.4038     613752   1. {main}() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:0
+    1.3714    1233952   2. importGecoToWiki() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:47
+   22.3478    2075736   3. addPage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:124
+   22.3714    2090664   4. resizeImage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:215
+   22.3715    2092856   5. finfo->file() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:962
+
+
+Variables in local scope (#4):
+  $destImage = *uninitialized*
+  $destImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/../out/images/image_Allongement_de_la_rotation_et_r_duction_du_travail_du_sol_en_syst_me_Grandes_Cultures_Breton.jpg'
+  $finfo = class finfo {  }
+  $height = *uninitialized*
+  $imageName = 'image_Allongement_de_la_rotation_et_r_duction_du_travail_du_sol_en_syst_me_Grandes_Cultures_Breton.jpg'
+  $max_height = *uninitialized*
+  $max_width = *uninitialized*
+  $orig_height = *uninitialized*
+  $orig_width = *uninitialized*
+  $path_parts = array ('dirname' => 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files', 'basename' => 'image_Allongement_de_la_rotation_et_r_duction_du_travail_du_sol_en_syst_me_Grandes_Cultures_Breton.png', 'extension' => 'png', 'filename' => 'image_Allongement_de_la_rotation_et_r_duction_du_travail_du_sol_en_syst_me_Grandes_Cultures_Breton')
+  $realSrcExt = *uninitialized*
+  $srcExt = 'png'
+  $srcImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files/image_Allongement_de_la_rotation_et_r_duction_du_travail_du_sol_en_syst_me_Grandes_Cultures_Breton.png'
+  $srcimage = *uninitialized*
+  $th = *uninitialized*
+  $width = *uninitialized*
+
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-combinaison_de_leviers_pour_economiser_les_intrants_sur_un_systeme_grandes_cultures_breton_en_ab.html
+Extracting page: Combinaison de leviers pour économiser les intrants sur un système Grandes Cultures Breton en AB
+exempleMiseEnOeuvre Combinaison de leviers pour économiser les intrants sur un système Grandes Cultures Breton en AB
+
+Warning: finfo::file(C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/geco_index_files/image_Combinaison_de_leviers_pour__conomiser_les_intrants_sur_un_syst_me_Grandes_Cultures_Breton_en_AB.jpg): failed to open stream: No such file or directory in C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php on line 962
+
+Call Stack:
+    0.4038     613752   1. {main}() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:0
+    1.3714    1233952   2. importGecoToWiki() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:47
+   22.4577    2093944   3. addPage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:124
+   22.4817    2108904   4. resizeImage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:215
+   22.4818    2111160   5. finfo->file() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:962
+
+
+Variables in local scope (#4):
+  $destImage = *uninitialized*
+  $destImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/../out/images/image_Combinaison_de_leviers_pour__conomiser_les_intrants_sur_un_syst_me_Grandes_Cultures_Breton_en_AB.jpg'
+  $finfo = class finfo {  }
+  $height = *uninitialized*
+  $imageName = 'image_Combinaison_de_leviers_pour__conomiser_les_intrants_sur_un_syst_me_Grandes_Cultures_Breton_en_AB.jpg'
+  $max_height = *uninitialized*
+  $max_width = *uninitialized*
+  $orig_height = *uninitialized*
+  $orig_width = *uninitialized*
+  $path_parts = array ('dirname' => 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files', 'basename' => 'image_Combinaison_de_leviers_pour__conomiser_les_intrants_sur_un_syst_me_Grandes_Cultures_Breton_en_AB.jpg', 'extension' => 'jpg', 'filename' => 'image_Combinaison_de_leviers_pour__conomiser_les_intrants_sur_un_syst_me_Grandes_Cultures_Breton_en_AB')
+  $realSrcExt = *uninitialized*
+  $srcExt = 'jpg'
+  $srcImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files/image_Combinaison_de_leviers_pour__conomiser_les_intrants_sur_un_syst_me_Grandes_Cultures_Breton_en_AB.jpg'
+  $srcimage = *uninitialized*
+  $th = *uninitialized*
+  $width = *uninitialized*
+
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-un_systeme_econome_pour_des_vignobles_deja_implantes_-_ipm_de_saint_gilles_de_mas_d_asport.html
+Extracting page: Un système économe pour des vignobles déjà implantés - IPM de Saint Gilles de Mas d'Asport
+exempleMiseEnOeuvre Un système économe pour des vignobles déjà implantés - IPM de Saint Gilles de Mas d'Asport
+
+Warning: finfo::file(C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/geco_index_files/image_Un_syst_me__conome_pour_des_vignobles_d_j__implant_s____IPM_de_Saint_Gilles_de_Mas_d_Asport.png): failed to open stream: No such file or directory in C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php on line 962
+
+Call Stack:
+    0.4038     613752   1. {main}() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:0
+    1.3714    1233952   2. importGecoToWiki() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:47
+   22.5651    2103000   3. addPage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:124
+   22.5884    2112832   4. resizeImage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:215
+   22.5885    2115024   5. finfo->file() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:962
+
+
+Variables in local scope (#4):
+  $destImage = *uninitialized*
+  $destImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/../out/images/image_Un_syst_me__conome_pour_des_vignobles_d_j__implant_s____IPM_de_Saint_Gilles_de_Mas_d_Asport.jpg'
+  $finfo = class finfo {  }
+  $height = *uninitialized*
+  $imageName = 'image_Un_syst_me__conome_pour_des_vignobles_d_j__implant_s____IPM_de_Saint_Gilles_de_Mas_d_Asport.jpg'
+  $max_height = *uninitialized*
+  $max_width = *uninitialized*
+  $orig_height = *uninitialized*
+  $orig_width = *uninitialized*
+  $path_parts = array ('dirname' => 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files', 'basename' => 'image_Un_syst_me__conome_pour_des_vignobles_d_j__implant_s____IPM_de_Saint_Gilles_de_Mas_d_Asport.png', 'extension' => 'png', 'filename' => 'image_Un_syst_me__conome_pour_des_vignobles_d_j__implant_s____IPM_de_Saint_Gilles_de_Mas_d_Asport')
+  $realSrcExt = *uninitialized*
+  $srcExt = 'png'
+  $srcImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files/image_Un_syst_me__conome_pour_des_vignobles_d_j__implant_s____IPM_de_Saint_Gilles_de_Mas_d_Asport.png'
+  $srcimage = *uninitialized*
+  $th = *uninitialized*
+  $width = *uninitialized*
+
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-un_systeme_econome_pour_des_vignobles_deja_implantes_-_innobio.html
+Extracting page: Un système économe pour des vignobles déjà implantés - Innobio de Rivesaltes
+exempleMiseEnOeuvre Un système économe pour des vignobles déjà implantés - Innobio de Rivesaltes
+
+Warning: finfo::file(C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/geco_index_files/image_Un_syst_me__conome_pour_des_vignobles_d_j__implant_s___Innobio_de_Rivesaltes.png): failed to open stream: No such file or directory in C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php on line 962
+
+Call Stack:
+    0.4038     613752   1. {main}() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:0
+    1.3714    1233952   2. importGecoToWiki() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:47
+   22.6714    2116072   3. addPage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:124
+   22.6945    2125904   4. resizeImage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:215
+   22.6946    2128048   5. finfo->file() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:962
+
+
+Variables in local scope (#4):
+  $destImage = *uninitialized*
+  $destImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/../out/images/image_Un_syst_me__conome_pour_des_vignobles_d_j__implant_s___Innobio_de_Rivesaltes.jpg'
+  $finfo = class finfo {  }
+  $height = *uninitialized*
+  $imageName = 'image_Un_syst_me__conome_pour_des_vignobles_d_j__implant_s___Innobio_de_Rivesaltes.jpg'
+  $max_height = *uninitialized*
+  $max_width = *uninitialized*
+  $orig_height = *uninitialized*
+  $orig_width = *uninitialized*
+  $path_parts = array ('dirname' => 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files', 'basename' => 'image_Un_syst_me__conome_pour_des_vignobles_d_j__implant_s___Innobio_de_Rivesaltes.png', 'extension' => 'png', 'filename' => 'image_Un_syst_me__conome_pour_des_vignobles_d_j__implant_s___Innobio_de_Rivesaltes')
+  $realSrcExt = *uninitialized*
+  $srcExt = 'png'
+  $srcImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files/image_Un_syst_me__conome_pour_des_vignobles_d_j__implant_s___Innobio_de_Rivesaltes.png'
+  $srcimage = *uninitialized*
+  $th = *uninitialized*
+  $width = *uninitialized*
+
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-un_systeme_econome_pour_des_vignobles_deja_implantes_-_innobio_tresserre.html
+Extracting page: Un système économe pour des vignobles déjà implantés - Innobio Tresserre
+exempleMiseEnOeuvre Un système économe pour des vignobles déjà implantés - Innobio Tresserre
+
+Warning: finfo::file(C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/geco_index_files/image_Un_syst_me__conome_pour_des_vignobles_d_j__implant_s___Innobio_Tresserre.png): failed to open stream: No such file or directory in C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php on line 962
+
+Call Stack:
+    0.4038     613752   1. {main}() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:0
+    1.3714    1233952   2. importGecoToWiki() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:47
+   22.7781    2129256   3. addPage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:124
+   22.8019    2138576   4. resizeImage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:215
+   22.8020    2140688   5. finfo->file() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:962
+
+
+Variables in local scope (#4):
+  $destImage = *uninitialized*
+  $destImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/../out/images/image_Un_syst_me__conome_pour_des_vignobles_d_j__implant_s___Innobio_Tresserre.jpg'
+  $finfo = class finfo {  }
+  $height = *uninitialized*
+  $imageName = 'image_Un_syst_me__conome_pour_des_vignobles_d_j__implant_s___Innobio_Tresserre.jpg'
+  $max_height = *uninitialized*
+  $max_width = *uninitialized*
+  $orig_height = *uninitialized*
+  $orig_width = *uninitialized*
+  $path_parts = array ('dirname' => 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files', 'basename' => 'image_Un_syst_me__conome_pour_des_vignobles_d_j__implant_s___Innobio_Tresserre.png', 'extension' => 'png', 'filename' => 'image_Un_syst_me__conome_pour_des_vignobles_d_j__implant_s___Innobio_Tresserre')
+  $realSrcExt = *uninitialized*
+  $srcExt = 'png'
+  $srcImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files/image_Un_syst_me__conome_pour_des_vignobles_d_j__implant_s___Innobio_Tresserre.png'
+  $srcimage = *uninitialized*
+  $th = *uninitialized*
+  $width = *uninitialized*
+
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-un_systeme_econome_pour_des_vignobles_deja_implantes_-282-29.html
+Extracting page: Un système économe pour des vignobles déjà implantés - Innobio du Chapitre
+exempleMiseEnOeuvre Un système économe pour des vignobles déjà implantés - Innobio du Chapitre
+
+Warning: finfo::file(C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/geco_index_files/image_Un_syst_me__conome_pour_des_vignobles_d_j__implant_s___Innobio.png): failed to open stream: No such file or directory in C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php on line 962
+
+Call Stack:
+    0.4038     613752   1. {main}() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:0
+    1.3714    1233952   2. importGecoToWiki() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:47
+   22.8850    2142312   3. addPage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:124
+   22.9084    2152208   4. resizeImage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:215
+   22.9085    2154272   5. finfo->file() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:962
+
+
+Variables in local scope (#4):
+  $destImage = *uninitialized*
+  $destImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/../out/images/image_Un_syst_me__conome_pour_des_vignobles_d_j__implant_s___Innobio.jpg'
+  $finfo = class finfo {  }
+  $height = *uninitialized*
+  $imageName = 'image_Un_syst_me__conome_pour_des_vignobles_d_j__implant_s___Innobio.jpg'
+  $max_height = *uninitialized*
+  $max_width = *uninitialized*
+  $orig_height = *uninitialized*
+  $orig_width = *uninitialized*
+  $path_parts = array ('dirname' => 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files', 'basename' => 'image_Un_syst_me__conome_pour_des_vignobles_d_j__implant_s___Innobio.png', 'extension' => 'png', 'filename' => 'image_Un_syst_me__conome_pour_des_vignobles_d_j__implant_s___Innobio')
+  $realSrcExt = *uninitialized*
+  $srcExt = 'png'
+  $srcImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files/image_Un_syst_me__conome_pour_des_vignobles_d_j__implant_s___Innobio.png'
+  $srcimage = *uninitialized*
+  $th = *uninitialized*
+  $width = *uninitialized*
+
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-un_systeme_econome_pour_des_vignobles_deja_implantes.html
+Extracting page: Un système économe pour des vignobles déjà implantés
+exempleMiseEnOeuvre Un système économe pour des vignobles déjà implantés
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-systeme_grandes_culture_integre_avec_leviets_agronomiques_efficaces_sur_gramines.html
+Extracting page: Système Grandes Cultures intégré avec leviers agronomiques efficaces sur graminées
+exempleMiseEnOeuvre Système Grandes Cultures intégré avec leviers agronomiques efficaces sur graminées
+
+Warning: finfo::file(C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/geco_index_files/image_Syst_me_Grandes_Culture_int_gr__avec_leviets_agronomiques_efficaces_sur_gramin_s.jpg): failed to open stream: No such file or directory in C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php on line 962
+
+Call Stack:
+    0.4038     613752   1. {main}() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:0
+    1.3714    1233952   2. importGecoToWiki() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:47
+   23.0327    2173688   3. addPage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:124
+   23.0563    2188600   4. resizeImage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:215
+   23.0564    2190776   5. finfo->file() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:962
+
+
+Variables in local scope (#4):
+  $destImage = *uninitialized*
+  $destImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/../out/images/image_Syst_me_Grandes_Culture_int_gr__avec_leviets_agronomiques_efficaces_sur_gramin_s.jpg'
+  $finfo = class finfo {  }
+  $height = *uninitialized*
+  $imageName = 'image_Syst_me_Grandes_Culture_int_gr__avec_leviets_agronomiques_efficaces_sur_gramin_s.jpg'
+  $max_height = *uninitialized*
+  $max_width = *uninitialized*
+  $orig_height = *uninitialized*
+  $orig_width = *uninitialized*
+  $path_parts = array ('dirname' => 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files', 'basename' => 'image_Syst_me_Grandes_Culture_int_gr__avec_leviets_agronomiques_efficaces_sur_gramin_s.jpg', 'extension' => 'jpg', 'filename' => 'image_Syst_me_Grandes_Culture_int_gr__avec_leviets_agronomiques_efficaces_sur_gramin_s')
+  $realSrcExt = *uninitialized*
+  $srcExt = 'jpg'
+  $srcImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files/image_Syst_me_Grandes_Culture_int_gr__avec_leviets_agronomiques_efficaces_sur_gramin_s.jpg'
+  $srcimage = *uninitialized*
+  $th = *uninitialized*
+  $width = *uninitialized*
+
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-allongement_de_la_rotation_et_techniques_alternatives_en_systeme_cerealier_conduit_en_sec.html
+Extracting page: Allongement de la rotation et techniques alternatives en système céréalier conduit en sec
+exempleMiseEnOeuvre Allongement de la rotation et techniques alternatives en système céréalier conduit en sec
+
+Warning: finfo::file(C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/geco_index_files/image_Allongement_de_la_rotation_et_techniques_alternatives_en_syst_me_c_r_alier_conduit_en_sec.jpg): failed to open stream: No such file or directory in C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php on line 962
+
+Call Stack:
+    0.4038     613752   1. {main}() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:0
+    1.3714    1233952   2. importGecoToWiki() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:47
+   23.1433    2196184   3. addPage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:124
+   23.1671    2211112   4. resizeImage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:215
+   23.1672    2213304   5. finfo->file() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:962
+
+
+Variables in local scope (#4):
+  $destImage = *uninitialized*
+  $destImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/../out/images/image_Allongement_de_la_rotation_et_techniques_alternatives_en_syst_me_c_r_alier_conduit_en_sec.jpg'
+  $finfo = class finfo {  }
+  $height = *uninitialized*
+  $imageName = 'image_Allongement_de_la_rotation_et_techniques_alternatives_en_syst_me_c_r_alier_conduit_en_sec.jpg'
+  $max_height = *uninitialized*
+  $max_width = *uninitialized*
+  $orig_height = *uninitialized*
+  $orig_width = *uninitialized*
+  $path_parts = array ('dirname' => 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files', 'basename' => 'image_Allongement_de_la_rotation_et_techniques_alternatives_en_syst_me_c_r_alier_conduit_en_sec.jpg', 'extension' => 'jpg', 'filename' => 'image_Allongement_de_la_rotation_et_techniques_alternatives_en_syst_me_c_r_alier_conduit_en_sec')
+  $realSrcExt = *uninitialized*
+  $srcExt = 'jpg'
+  $srcImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files/image_Allongement_de_la_rotation_et_techniques_alternatives_en_syst_me_c_r_alier_conduit_en_sec.jpg'
+  $srcimage = *uninitialized*
+  $th = *uninitialized*
+  $width = *uninitialized*
+
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-systeme_ble_-_mais_-_colza_peu_dependant_aux_produits_phytosanitaires.html
+Extracting page: Système blé - maïs - colza peu dépendant aux produits phytosanitaires
+exempleMiseEnOeuvre Système blé - maïs - colza peu dépendant aux produits phytosanitaires
+
+Warning: finfo::file(C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/geco_index_files/image_Syst_me_bl____ma_s___colza_peu_d_pendant_aux_produits_phytosanitaires.png): failed to open stream: No such file or directory in C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php on line 962
+
+Call Stack:
+    0.4038     613752   1. {main}() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:0
+    1.3714    1233952   2. importGecoToWiki() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:47
+   23.2530    2209320   3. addPage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:124
+   23.2732    2219096   4. resizeImage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:215
+   23.2733    2221176   5. finfo->file() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:962
+
+
+Variables in local scope (#4):
+  $destImage = *uninitialized*
+  $destImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/../out/images/image_Syst_me_bl____ma_s___colza_peu_d_pendant_aux_produits_phytosanitaires.jpg'
+  $finfo = class finfo {  }
+  $height = *uninitialized*
+  $imageName = 'image_Syst_me_bl____ma_s___colza_peu_d_pendant_aux_produits_phytosanitaires.jpg'
+  $max_height = *uninitialized*
+  $max_width = *uninitialized*
+  $orig_height = *uninitialized*
+  $orig_width = *uninitialized*
+  $path_parts = array ('dirname' => 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files', 'basename' => 'image_Syst_me_bl____ma_s___colza_peu_d_pendant_aux_produits_phytosanitaires.png', 'extension' => 'png', 'filename' => 'image_Syst_me_bl____ma_s___colza_peu_d_pendant_aux_produits_phytosanitaires')
+  $realSrcExt = *uninitialized*
+  $srcExt = 'png'
+  $srcImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files/image_Syst_me_bl____ma_s___colza_peu_d_pendant_aux_produits_phytosanitaires.png'
+  $srcimage = *uninitialized*
+  $th = *uninitialized*
+  $width = *uninitialized*
+
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-systeme_grandes_cultures_en_rotation_longue_avec_luzerne.html
+Extracting page: Système Grandes Cultures en rotation longue avec luzerne
+exempleMiseEnOeuvre Système Grandes Cultures en rotation longue avec luzerne
+
+Warning: finfo::file(C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/geco_index_files/image_Syst_me_Grandes_Cultures_en_rotation_longue_avec_luzerne.png): failed to open stream: No such file or directory in C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php on line 962
+
+Call Stack:
+    0.4038     613752   1. {main}() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:0
+    1.3714    1233952   2. importGecoToWiki() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:47
+   23.3566    2222832   3. addPage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:124
+   23.3800    2232064   4. resizeImage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:215
+   23.3801    2234096   5. finfo->file() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:962
+
+
+Variables in local scope (#4):
+  $destImage = *uninitialized*
+  $destImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/../out/images/image_Syst_me_Grandes_Cultures_en_rotation_longue_avec_luzerne.jpg'
+  $finfo = class finfo {  }
+  $height = *uninitialized*
+  $imageName = 'image_Syst_me_Grandes_Cultures_en_rotation_longue_avec_luzerne.jpg'
+  $max_height = *uninitialized*
+  $max_width = *uninitialized*
+  $orig_height = *uninitialized*
+  $orig_width = *uninitialized*
+  $path_parts = array ('dirname' => 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files', 'basename' => 'image_Syst_me_Grandes_Cultures_en_rotation_longue_avec_luzerne.png', 'extension' => 'png', 'filename' => 'image_Syst_me_Grandes_Cultures_en_rotation_longue_avec_luzerne')
+  $realSrcExt = *uninitialized*
+  $srcExt = 'png'
+  $srcImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files/image_Syst_me_Grandes_Cultures_en_rotation_longue_avec_luzerne.png'
+  $srcimage = *uninitialized*
+  $th = *uninitialized*
+  $width = *uninitialized*
+
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-optimisation_de_l_usage_des_fongicides_et_des_pratiques_culturales.html
+Extracting page: Optimisation de l'usage des fongicides et des pratiques culturales
+exempleMiseEnOeuvre Optimisation de l'usage des fongicides et des pratiques culturales
+
+Warning: finfo::file(C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/geco_index_files/image_Optimisation_de_l_usage_des_fongicides_et_des_pratiques_culturales.png): failed to open stream: No such file or directory in C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php on line 962
+
+Call Stack:
+    0.4038     613752   1. {main}() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:0
+    1.3714    1233952   2. importGecoToWiki() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:47
+   23.4617    2232336   3. addPage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:124
+   23.4851    2241672   4. resizeImage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:215
+   23.4852    2243752   5. finfo->file() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:962
+
+
+Variables in local scope (#4):
+  $destImage = *uninitialized*
+  $destImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/../out/images/image_Optimisation_de_l_usage_des_fongicides_et_des_pratiques_culturales.jpg'
+  $finfo = class finfo {  }
+  $height = *uninitialized*
+  $imageName = 'image_Optimisation_de_l_usage_des_fongicides_et_des_pratiques_culturales.jpg'
+  $max_height = *uninitialized*
+  $max_width = *uninitialized*
+  $orig_height = *uninitialized*
+  $orig_width = *uninitialized*
+  $path_parts = array ('dirname' => 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files', 'basename' => 'image_Optimisation_de_l_usage_des_fongicides_et_des_pratiques_culturales.png', 'extension' => 'png', 'filename' => 'image_Optimisation_de_l_usage_des_fongicides_et_des_pratiques_culturales')
+  $realSrcExt = *uninitialized*
+  $srcExt = 'png'
+  $srcImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files/image_Optimisation_de_l_usage_des_fongicides_et_des_pratiques_culturales.png'
+  $srcimage = *uninitialized*
+  $th = *uninitialized*
+  $width = *uninitialized*
+
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-reduction_de_fongicides_en_viticulture_avec_decitrait.html
+Extracting page: Réduction de fongicides en Viticulture avec Décitrait
+exempleMiseEnOeuvre Réduction de fongicides en Viticulture avec Décitrait
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-rotation_a_base_de_cereales_et_mais_sur_une_exploitation_mixte_du_val_de_saone.html
+Extracting page: Système à base de céréales et maïs économe en phyto sur une exploitation mixte du Val de Saône
+exempleMiseEnOeuvre Système à base de céréales et maïs économe en phyto sur une exploitation mixte du Val de Saône
+
+Warning: finfo::file(C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/geco_index_files/image_Rotation___base_de_c_r_ales_et_ma_s_sur_une_exploitation_mixte_du_Val_de_Sa_ne.png): failed to open stream: No such file or directory in C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php on line 962
+
+Call Stack:
+    0.4038     613752   1. {main}() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:0
+    1.3714    1233952   2. importGecoToWiki() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:47
+   23.6113    2267664   3. addPage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:124
+   23.6350    2282592   4. resizeImage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:215
+   23.6351    2284768   5. finfo->file() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:962
+
+
+Variables in local scope (#4):
+  $destImage = *uninitialized*
+  $destImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/../out/images/image_Rotation___base_de_c_r_ales_et_ma_s_sur_une_exploitation_mixte_du_Val_de_Sa_ne.jpg'
+  $finfo = class finfo {  }
+  $height = *uninitialized*
+  $imageName = 'image_Rotation___base_de_c_r_ales_et_ma_s_sur_une_exploitation_mixte_du_Val_de_Sa_ne.jpg'
+  $max_height = *uninitialized*
+  $max_width = *uninitialized*
+  $orig_height = *uninitialized*
+  $orig_width = *uninitialized*
+  $path_parts = array ('dirname' => 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files', 'basename' => 'image_Rotation___base_de_c_r_ales_et_ma_s_sur_une_exploitation_mixte_du_Val_de_Sa_ne.png', 'extension' => 'png', 'filename' => 'image_Rotation___base_de_c_r_ales_et_ma_s_sur_une_exploitation_mixte_du_Val_de_Sa_ne')
+  $realSrcExt = *uninitialized*
+  $srcExt = 'png'
+  $srcImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files/image_Rotation___base_de_c_r_ales_et_ma_s_sur_une_exploitation_mixte_du_Val_de_Sa_ne.png'
+  $srcimage = *uninitialized*
+  $th = *uninitialized*
+  $width = *uninitialized*
+
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-combiner_allongement_de_la_rotation_et_travail_mecanique_pour_une_gestion_efficace_et_durable_des_adventices_en_haute-garonne.html
+Extracting page: Combiner allongement de la rotation et travail mécanique pour une gestion efficace et durable des adventices en Tarn-et-Garonne
+exempleMiseEnOeuvre Combiner allongement de la rotation et travail mécanique pour une gestion efficace et durable des adventices en Tarn-et-Garonne
+
+Warning: finfo::file(C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/geco_index_files/image_Combiner_allongement_de_la_rotation_et_travail_m_canique_pour_une_gestion_efficace_et_durable_des_adventices_en_Tarn_et_Garonne.png): failed to open stream: No such file or directory in C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php on line 962
+
+Call Stack:
+    0.4038     613752   1. {main}() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:0
+    1.3714    1233952   2. importGecoToWiki() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:47
+   23.7242    2277360   3. addPage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:124
+   23.7478    2284448   4. resizeImage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:215
+   23.7479    2286864   5. finfo->file() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:962
+
+
+Variables in local scope (#4):
+  $destImage = *uninitialized*
+  $destImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/../out/images/image_Combiner_allongement_de_la_rotation_et_travail_m_canique_pour_une_gestion_efficace_et_durable_des_adventices_en_Tarn_et_Garonne.jpg'
+  $finfo = class finfo {  }
+  $height = *uninitialized*
+  $imageName = 'image_Combiner_allongement_de_la_rotation_et_travail_m_canique_pour_une_gestion_efficace_et_durable_des_adventices_en_Tarn_et_Garonne.jpg'
+  $max_height = *uninitialized*
+  $max_width = *uninitialized*
+  $orig_height = *uninitialized*
+  $orig_width = *uninitialized*
+  $path_parts = array ('dirname' => 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files', 'basename' => 'image_Combiner_allongement_de_la_rotation_et_travail_m_canique_pour_une_gestion_efficace_et_durable_des_adventices_en_Tarn_et_Garonne.png', 'extension' => 'png', 'filename' => 'image_Combiner_allongement_de_la_rotation_et_travail_m_canique_pour_une_gestion_efficace_et_durable_des_adventices_en_Tarn_et_Garonne')
+  $realSrcExt = *uninitialized*
+  $srcExt = 'png'
+  $srcImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files/image_Combiner_allongement_de_la_rotation_et_travail_m_canique_pour_une_gestion_efficace_et_durable_des_adventices_en_Tarn_et_Garonne.png'
+  $srcimage = *uninitialized*
+  $th = *uninitialized*
+  $width = *uninitialized*
+
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-rib-ab_-_un_systeme_ab_limitant_l_utilisation_du_cuivre_et_le_travail_du_sol.html
+Extracting page: RIB-AB : Un système AB limitant l'utilisation du cuivre et le travail du sol
+exempleMiseEnOeuvre RIB-AB : Un système AB limitant l'utilisation du cuivre et le travail du sol
+
+Warning: finfo::file(C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/geco_index_files/image_RIB_AB___Un_syst_me_AB_limitant_l_utilisation_du_cuivre_et_le_travail_du_sol.png): failed to open stream: No such file or directory in C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php on line 962
+
+Call Stack:
+    0.4038     613752   1. {main}() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:0
+    1.3714    1233952   2. importGecoToWiki() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:47
+   23.8340    2290456   3. addPage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:124
+   23.8573    2300352   4. resizeImage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:215
+   23.8574    2302496   5. finfo->file() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:962
+
+
+Variables in local scope (#4):
+  $destImage = *uninitialized*
+  $destImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/../out/images/image_RIB_AB___Un_syst_me_AB_limitant_l_utilisation_du_cuivre_et_le_travail_du_sol.jpg'
+  $finfo = class finfo {  }
+  $height = *uninitialized*
+  $imageName = 'image_RIB_AB___Un_syst_me_AB_limitant_l_utilisation_du_cuivre_et_le_travail_du_sol.jpg'
+  $max_height = *uninitialized*
+  $max_width = *uninitialized*
+  $orig_height = *uninitialized*
+  $orig_width = *uninitialized*
+  $path_parts = array ('dirname' => 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files', 'basename' => 'image_RIB_AB___Un_syst_me_AB_limitant_l_utilisation_du_cuivre_et_le_travail_du_sol.png', 'extension' => 'png', 'filename' => 'image_RIB_AB___Un_syst_me_AB_limitant_l_utilisation_du_cuivre_et_le_travail_du_sol')
+  $realSrcExt = *uninitialized*
+  $srcExt = 'png'
+  $srcImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files/image_RIB_AB___Un_syst_me_AB_limitant_l_utilisation_du_cuivre_et_le_travail_du_sol.png'
+  $srcimage = *uninitialized*
+  $th = *uninitialized*
+  $width = *uninitialized*
+
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-combinaison_de_leviers_pour_reduire_lrutilisation_drherbicides_en_systeme_grandes_cultures_a_rotation_courte_en_tarn-et-garonne.html
+Extracting page: Combinaison de leviers pour réduire l’utilisation d’herbicides en système Grandes Cultures à rotation courte en Tarn-et-Garonne
+exempleMiseEnOeuvre Combinaison de leviers pour réduire l’utilisation d’herbicides en système Grandes Cultures à rotation courte en Tarn-et-Garonne
+The page Combinaison de leviers pour réduire l’utilisation d’herbicides en système Grandes Cultures à rotation courte en Tarn-et-Garonne doesn't exist in wikipedia 
+The page Combinaison de leviers pour réduire l’utilisation d’herbicides en système Grandes Cultures à rotation courte en Tarn-et-Garonne doesn't exist in wikipedia 
+The page Combinaison de leviers pour réduire l’utilisation d’herbicides en système Grandes Cultures à rotation courte en Tarn-et-Garonne doesn't exist in wikipedia 
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-ok.html
+Extracting page: Combinaison de leviers pour réduire l’utilisation d’herbicides en système Grandes Cultures à rotation courte en Haute-Garonne
+exempleMiseEnOeuvre Combinaison de leviers pour réduire l’utilisation d’herbicides en système Grandes Cultures à rotation courte en Haute-Garonne
+
+Warning: finfo::file(C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/geco_index_files/image_Combinaison_de_leviers_pour_r_duire_l_utilisation_d_herbicides_en_syst_me_Grandes_Cultures___rotation_courte.png): failed to open stream: No such file or directory in C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php on line 962
+
+Call Stack:
+    0.4038     613752   1. {main}() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:0
+    1.3714    1233952   2. importGecoToWiki() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:47
+   24.0169    2307312   3. addPage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:124
+   24.0403    2317144   4. resizeImage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:215
+   24.0404    2319496   5. finfo->file() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:962
+
+
+Variables in local scope (#4):
+  $destImage = *uninitialized*
+  $destImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/../out/images/image_Combinaison_de_leviers_pour_r_duire_l_utilisation_d_herbicides_en_syst_me_Grandes_Cultures___rotation_courte.jpg'
+  $finfo = class finfo {  }
+  $height = *uninitialized*
+  $imageName = 'image_Combinaison_de_leviers_pour_r_duire_l_utilisation_d_herbicides_en_syst_me_Grandes_Cultures___rotation_courte.jpg'
+  $max_height = *uninitialized*
+  $max_width = *uninitialized*
+  $orig_height = *uninitialized*
+  $orig_width = *uninitialized*
+  $path_parts = array ('dirname' => 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files', 'basename' => 'image_Combinaison_de_leviers_pour_r_duire_l_utilisation_d_herbicides_en_syst_me_Grandes_Cultures___rotation_courte.png', 'extension' => 'png', 'filename' => 'image_Combinaison_de_leviers_pour_r_duire_l_utilisation_d_herbicides_en_syst_me_Grandes_Cultures___rotation_courte')
+  $realSrcExt = *uninitialized*
+  $srcExt = 'png'
+  $srcImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files/image_Combinaison_de_leviers_pour_r_duire_l_utilisation_d_herbicides_en_syst_me_Grandes_Cultures___rotation_courte.png'
+  $srcimage = *uninitialized*
+  $th = *uninitialized*
+  $width = *uninitialized*
+
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-combiner_allongement_de_la_rotation_et_travail_mecanique_pour_une_gestion_efficace_et_durable_des_adventices_dans_le_lauragais.html
+Extracting page: Combiner allongement de la rotation et travail mécanique pour une gestion efficace et durable des adventices dans le Lauragais
+exempleMiseEnOeuvre Combiner allongement de la rotation et travail mécanique pour une gestion efficace et durable des adventices dans le Lauragais
+
+Warning: finfo::file(C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/geco_index_files/image_Combiner_allongement_de_la_rotation_et_travail_m_canique_pour_une_gestion_efficace_et_durable_des_adventices_dans_le_Lauragais.jpg): failed to open stream: No such file or directory in C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php on line 962
+
+Call Stack:
+    0.4038     613752   1. {main}() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:0
+    1.3714    1233952   2. importGecoToWiki() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:47
+   24.1361    2325856   3. addPage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:124
+   24.1563    2335760   4. resizeImage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:215
+   24.1564    2338176   5. finfo->file() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:962
+
+
+Variables in local scope (#4):
+  $destImage = *uninitialized*
+  $destImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/../out/images/image_Combiner_allongement_de_la_rotation_et_travail_m_canique_pour_une_gestion_efficace_et_durable_des_adventices_dans_le_Lauragais.jpg'
+  $finfo = class finfo {  }
+  $height = *uninitialized*
+  $imageName = 'image_Combiner_allongement_de_la_rotation_et_travail_m_canique_pour_une_gestion_efficace_et_durable_des_adventices_dans_le_Lauragais.jpg'
+  $max_height = *uninitialized*
+  $max_width = *uninitialized*
+  $orig_height = *uninitialized*
+  $orig_width = *uninitialized*
+  $path_parts = array ('dirname' => 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files', 'basename' => 'image_Combiner_allongement_de_la_rotation_et_travail_m_canique_pour_une_gestion_efficace_et_durable_des_adventices_dans_le_Lauragais.jpg', 'extension' => 'jpg', 'filename' => 'image_Combiner_allongement_de_la_rotation_et_travail_m_canique_pour_une_gestion_efficace_et_durable_des_adventices_dans_le_Lauragais')
+  $realSrcExt = *uninitialized*
+  $srcExt = 'jpg'
+  $srcImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files/image_Combiner_allongement_de_la_rotation_et_travail_m_canique_pour_une_gestion_efficace_et_durable_des_adventices_dans_le_Lauragais.jpg'
+  $srcimage = *uninitialized*
+  $th = *uninitialized*
+  $width = *uninitialized*
+
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-win-ab-_un_systeme_ab_limitant_l_utilisation_du_cuivre_et_optimisant_le_travail_du_sol.html
+Extracting page: WIN-AB- Un système AB limitant l'utilisation du cuivre et optimisant le travail du sol
+exempleMiseEnOeuvre WIN-AB- Un système AB limitant l'utilisation du cuivre et optimisant le travail du sol
+
+Warning: finfo::file(C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/geco_index_files/image_WIN_AB__Un_syst_me_AB_limitant_l_utilisation_du_cuivre_et_optimisant_le_travail_du_sol.png): failed to open stream: No such file or directory in C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php on line 962
+
+Call Stack:
+    0.4038     613752   1. {main}() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:0
+    1.3714    1233952   2. importGecoToWiki() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:47
+   24.2440    2335344   3. addPage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:124
+   24.2676    2344680   4. resizeImage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:215
+   24.2677    2346872   5. finfo->file() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:962
+
+
+Variables in local scope (#4):
+  $destImage = *uninitialized*
+  $destImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/../out/images/image_WIN_AB__Un_syst_me_AB_limitant_l_utilisation_du_cuivre_et_optimisant_le_travail_du_sol.jpg'
+  $finfo = class finfo {  }
+  $height = *uninitialized*
+  $imageName = 'image_WIN_AB__Un_syst_me_AB_limitant_l_utilisation_du_cuivre_et_optimisant_le_travail_du_sol.jpg'
+  $max_height = *uninitialized*
+  $max_width = *uninitialized*
+  $orig_height = *uninitialized*
+  $orig_width = *uninitialized*
+  $path_parts = array ('dirname' => 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files', 'basename' => 'image_WIN_AB__Un_syst_me_AB_limitant_l_utilisation_du_cuivre_et_optimisant_le_travail_du_sol.png', 'extension' => 'png', 'filename' => 'image_WIN_AB__Un_syst_me_AB_limitant_l_utilisation_du_cuivre_et_optimisant_le_travail_du_sol')
+  $realSrcExt = *uninitialized*
+  $srcExt = 'png'
+  $srcImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files/image_WIN_AB__Un_syst_me_AB_limitant_l_utilisation_du_cuivre_et_optimisant_le_travail_du_sol.png'
+  $srcimage = *uninitialized*
+  $th = *uninitialized*
+  $width = *uninitialized*
+
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-reduction_de_dose_-_optidose.html
+Extracting page: Réduction de dose - Optidose
+exempleMiseEnOeuvre Réduction de dose - Optidose
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-reintroduction_du_labour_pour_reduire_le_recours_aux_herbicides_en_rotation_courte.html
+Extracting page: Réintroduction du labour pour réduire le recours aux herbicides en rotation courte
+exempleMiseEnOeuvre Réintroduction du labour pour réduire le recours aux herbicides en rotation courte
+
+Warning: finfo::file(C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/geco_index_files/image_R_introduction_du_labour_pour_r_duire_le_recours_aux_herbicides_en_rotation_courte.png): failed to open stream: No such file or directory in C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php on line 962
+
+Call Stack:
+    0.4038     613752   1. {main}() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:0
+    1.3714    1233952   2. importGecoToWiki() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:47
+   24.3981    2367192   3. addPage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:124
+   24.4210    2377000   4. resizeImage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:215
+   24.4211    2379192   5. finfo->file() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:962
+
+
+Variables in local scope (#4):
+  $destImage = *uninitialized*
+  $destImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/../out/images/image_R_introduction_du_labour_pour_r_duire_le_recours_aux_herbicides_en_rotation_courte.jpg'
+  $finfo = class finfo {  }
+  $height = *uninitialized*
+  $imageName = 'image_R_introduction_du_labour_pour_r_duire_le_recours_aux_herbicides_en_rotation_courte.jpg'
+  $max_height = *uninitialized*
+  $max_width = *uninitialized*
+  $orig_height = *uninitialized*
+  $orig_width = *uninitialized*
+  $path_parts = array ('dirname' => 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files', 'basename' => 'image_R_introduction_du_labour_pour_r_duire_le_recours_aux_herbicides_en_rotation_courte.png', 'extension' => 'png', 'filename' => 'image_R_introduction_du_labour_pour_r_duire_le_recours_aux_herbicides_en_rotation_courte')
+  $realSrcExt = *uninitialized*
+  $srcExt = 'png'
+  $srcImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files/image_R_introduction_du_labour_pour_r_duire_le_recours_aux_herbicides_en_rotation_courte.png'
+  $srcimage = *uninitialized*
+  $th = *uninitialized*
+  $width = *uninitialized*
+
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-augmenter_lrefficience_de_la_strategie_de_protection_en_verger_de_pomme.html
+Extracting page: Augmenter l’efficience de la stratégie de protection en verger de pomme
+exempleMiseEnOeuvre Augmenter l’efficience de la stratégie de protection en verger de pomme
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-sca0pest_-_zero_pesticide_en_agroforesterie.html
+Extracting page: SCA0PEST : Zéro pesticide en agroforesterie
+exempleMiseEnOeuvre SCA0PEST : Zéro pesticide en agroforesterie
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-res0pest_le_rheu_-_combiner_un_maximum_de_leviers_pour_un_systeme_de_grande_culture_sans_pesticides.html
+Extracting page: Rés0Pest Le Rheu : combiner un maximum de leviers pour un système de grande culture sans pesticides
+exempleMiseEnOeuvre Rés0Pest Le Rheu : combiner un maximum de leviers pour un système de grande culture sans pesticides
+
+Warning: finfo::file(C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/geco_index_files/image_R_s0Pest_Le_Rheu___combiner_un_maximum_de_leviers_pour_un_syst_me_de_grande_culture_sans_pesticides.jpg): failed to open stream: No such file or directory in C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php on line 962
+
+Call Stack:
+    0.4038     613752   1. {main}() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:0
+    1.3714    1233952   2. importGecoToWiki() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:47
+   24.5986    2423848   3. addPage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:124
+   24.6220    2433688   4. resizeImage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:215
+   24.6221    2435976   5. finfo->file() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:962
+
+
+Variables in local scope (#4):
+  $destImage = *uninitialized*
+  $destImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/../out/images/image_R_s0Pest_Le_Rheu___combiner_un_maximum_de_leviers_pour_un_syst_me_de_grande_culture_sans_pesticides.jpg'
+  $finfo = class finfo {  }
+  $height = *uninitialized*
+  $imageName = 'image_R_s0Pest_Le_Rheu___combiner_un_maximum_de_leviers_pour_un_syst_me_de_grande_culture_sans_pesticides.jpg'
+  $max_height = *uninitialized*
+  $max_width = *uninitialized*
+  $orig_height = *uninitialized*
+  $orig_width = *uninitialized*
+  $path_parts = array ('dirname' => 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files', 'basename' => 'image_R_s0Pest_Le_Rheu___combiner_un_maximum_de_leviers_pour_un_syst_me_de_grande_culture_sans_pesticides.jpg', 'extension' => 'jpg', 'filename' => 'image_R_s0Pest_Le_Rheu___combiner_un_maximum_de_leviers_pour_un_syst_me_de_grande_culture_sans_pesticides')
+  $realSrcExt = *uninitialized*
+  $srcExt = 'jpg'
+  $srcImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files/image_R_s0Pest_Le_Rheu___combiner_un_maximum_de_leviers_pour_un_syst_me_de_grande_culture_sans_pesticides.jpg'
+  $srcimage = *uninitialized*
+  $th = *uninitialized*
+  $width = *uninitialized*
+
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-res0pest_estrees-mons_-_combiner_un_maximum_de_leviers_pour_un_systeme_de_grande_culture_sans_pesticides.html
+Extracting page: Rés0Pest Estrées-Mons : combiner un maximum de leviers pour un système de grande culture sans pesticides
+exempleMiseEnOeuvre Rés0Pest Estrées-Mons : combiner un maximum de leviers pour un système de grande culture sans pesticides
+
+Warning: finfo::file(C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/geco_index_files/image_R_s0Pest_Estr_es_Mons___combiner_un_maximum_de_leviers_pour_un_syst_me_de_grande_culture_sans_pesticides.jpg): failed to open stream: No such file or directory in C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php on line 962
+
+Call Stack:
+    0.4038     613752   1. {main}() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:0
+    1.3714    1233952   2. importGecoToWiki() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:47
+   24.7163    2446696   3. addPage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:124
+   24.7400    2461688   4. resizeImage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:215
+   24.7401    2464008   5. finfo->file() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:962
+
+
+Variables in local scope (#4):
+  $destImage = *uninitialized*
+  $destImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/../out/images/image_R_s0Pest_Estr_es_Mons___combiner_un_maximum_de_leviers_pour_un_syst_me_de_grande_culture_sans_pesticides.jpg'
+  $finfo = class finfo {  }
+  $height = *uninitialized*
+  $imageName = 'image_R_s0Pest_Estr_es_Mons___combiner_un_maximum_de_leviers_pour_un_syst_me_de_grande_culture_sans_pesticides.jpg'
+  $max_height = *uninitialized*
+  $max_width = *uninitialized*
+  $orig_height = *uninitialized*
+  $orig_width = *uninitialized*
+  $path_parts = array ('dirname' => 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files', 'basename' => 'image_R_s0Pest_Estr_es_Mons___combiner_un_maximum_de_leviers_pour_un_syst_me_de_grande_culture_sans_pesticides.jpg', 'extension' => 'jpg', 'filename' => 'image_R_s0Pest_Estr_es_Mons___combiner_un_maximum_de_leviers_pour_un_syst_me_de_grande_culture_sans_pesticides')
+  $realSrcExt = *uninitialized*
+  $srcExt = 'jpg'
+  $srcImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files/image_R_s0Pest_Estr_es_Mons___combiner_un_maximum_de_leviers_pour_un_syst_me_de_grande_culture_sans_pesticides.jpg'
+  $srcimage = *uninitialized*
+  $th = *uninitialized*
+  $width = *uninitialized*
+
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-res0pest_mauguio_-_combiner_un_maximum_de_leviers_pour_un_systeme_de_grande_culture_sans_pesticides.html
+Extracting page: Rés0Pest Mauguio : combiner un maximum de leviers pour un système de grande culture sans pesticides
+exempleMiseEnOeuvre Rés0Pest Mauguio : combiner un maximum de leviers pour un système de grande culture sans pesticides
+
+Warning: finfo::file(C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/geco_index_files/image_R_s0Pest_Mauguio___combiner_un_maximum_de_leviers_pour_un_syst_me_de_grande_culture_sans_pesticides.png): failed to open stream: No such file or directory in C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php on line 962
+
+Call Stack:
+    0.4038     613752   1. {main}() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:0
+    1.3714    1233952   2. importGecoToWiki() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:47
+   24.8258    2460792   3. addPage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:124
+   24.8496    2474736   4. resizeImage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:215
+   24.8497    2477024   5. finfo->file() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:962
+
+
+Variables in local scope (#4):
+  $destImage = *uninitialized*
+  $destImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/../out/images/image_R_s0Pest_Mauguio___combiner_un_maximum_de_leviers_pour_un_syst_me_de_grande_culture_sans_pesticides.jpg'
+  $finfo = class finfo {  }
+  $height = *uninitialized*
+  $imageName = 'image_R_s0Pest_Mauguio___combiner_un_maximum_de_leviers_pour_un_syst_me_de_grande_culture_sans_pesticides.jpg'
+  $max_height = *uninitialized*
+  $max_width = *uninitialized*
+  $orig_height = *uninitialized*
+  $orig_width = *uninitialized*
+  $path_parts = array ('dirname' => 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files', 'basename' => 'image_R_s0Pest_Mauguio___combiner_un_maximum_de_leviers_pour_un_syst_me_de_grande_culture_sans_pesticides.png', 'extension' => 'png', 'filename' => 'image_R_s0Pest_Mauguio___combiner_un_maximum_de_leviers_pour_un_syst_me_de_grande_culture_sans_pesticides')
+  $realSrcExt = *uninitialized*
+  $srcExt = 'png'
+  $srcImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files/image_R_s0Pest_Mauguio___combiner_un_maximum_de_leviers_pour_un_syst_me_de_grande_culture_sans_pesticides.png'
+  $srcimage = *uninitialized*
+  $th = *uninitialized*
+  $width = *uninitialized*
+
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-phytonome.html
+Extracting page: Phytonome de la luzerne
+bioagresseur Phytonome de la luzerne
+Adding redirect: Phytonome de la luzerne <-- Charançon de la luzerne
+Adding redirect: Phytonome de la luzerne <-- Hypera postica
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-res0pest_lusignan_-_combiner_un_maximum_de_leviers_pour_un_systeme_de_grande_culture_sans_pesticides.html
+Extracting page: Rés0Pest Lusignan : combiner un maximum de leviers pour un système de grande culture sans pesticides
+exempleMiseEnOeuvre Rés0Pest Lusignan : combiner un maximum de leviers pour un système de grande culture sans pesticides
+
+Warning: finfo::file(C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/geco_index_files/image_R_s0Pest_Lusignan___combiner_un_maximum_de_leviers_pour_un_syst_me_de_grande_culture_sans_pesticides.jpg): failed to open stream: No such file or directory in C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php on line 962
+
+Call Stack:
+    0.4038     613752   1. {main}() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:0
+    1.3714    1233952   2. importGecoToWiki() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:47
+   25.0762    2493072   3. addPage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:124
+   25.0996    2508040   4. resizeImage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:215
+   25.0997    2510328   5. finfo->file() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:962
+
+
+Variables in local scope (#4):
+  $destImage = *uninitialized*
+  $destImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/../out/images/image_R_s0Pest_Lusignan___combiner_un_maximum_de_leviers_pour_un_syst_me_de_grande_culture_sans_pesticides.jpg'
+  $finfo = class finfo {  }
+  $height = *uninitialized*
+  $imageName = 'image_R_s0Pest_Lusignan___combiner_un_maximum_de_leviers_pour_un_syst_me_de_grande_culture_sans_pesticides.jpg'
+  $max_height = *uninitialized*
+  $max_width = *uninitialized*
+  $orig_height = *uninitialized*
+  $orig_width = *uninitialized*
+  $path_parts = array ('dirname' => 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files', 'basename' => 'image_R_s0Pest_Lusignan___combiner_un_maximum_de_leviers_pour_un_syst_me_de_grande_culture_sans_pesticides.jpg', 'extension' => 'jpg', 'filename' => 'image_R_s0Pest_Lusignan___combiner_un_maximum_de_leviers_pour_un_syst_me_de_grande_culture_sans_pesticides')
+  $realSrcExt = *uninitialized*
+  $srcExt = 'jpg'
+  $srcImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files/image_R_s0Pest_Lusignan___combiner_un_maximum_de_leviers_pour_un_syst_me_de_grande_culture_sans_pesticides.jpg'
+  $srcimage = *uninitialized*
+  $th = *uninitialized*
+  $width = *uninitialized*
+
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-res0pest_grignon_-_combiner_un_maximum_de_leviers_pour_un_systeme_de_grande_culture_sans_pesticides.html
+Extracting page: Rés0Pest Grignon : combiner un maximum de leviers pour un système de grande culture sans pesticides
+exempleMiseEnOeuvre Rés0Pest Grignon : combiner un maximum de leviers pour un système de grande culture sans pesticides
+
+Warning: finfo::file(C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/geco_index_files/image_R_s0Pest_Grignon___combiner_un_maximum_de_leviers_pour_un_syst_me_de_grande_culture_sans_pesticides.jpg): failed to open stream: No such file or directory in C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php on line 962
+
+Call Stack:
+    0.4038     613752   1. {main}() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:0
+    1.3714    1233952   2. importGecoToWiki() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:47
+   25.1904    2511280   3. addPage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:124
+   25.2141    2526240   4. resizeImage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:215
+   25.2142    2528528   5. finfo->file() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:962
+
+
+Variables in local scope (#4):
+  $destImage = *uninitialized*
+  $destImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/../out/images/image_R_s0Pest_Grignon___combiner_un_maximum_de_leviers_pour_un_syst_me_de_grande_culture_sans_pesticides.jpg'
+  $finfo = class finfo {  }
+  $height = *uninitialized*
+  $imageName = 'image_R_s0Pest_Grignon___combiner_un_maximum_de_leviers_pour_un_syst_me_de_grande_culture_sans_pesticides.jpg'
+  $max_height = *uninitialized*
+  $max_width = *uninitialized*
+  $orig_height = *uninitialized*
+  $orig_width = *uninitialized*
+  $path_parts = array ('dirname' => 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files', 'basename' => 'image_R_s0Pest_Grignon___combiner_un_maximum_de_leviers_pour_un_syst_me_de_grande_culture_sans_pesticides.jpg', 'extension' => 'jpg', 'filename' => 'image_R_s0Pest_Grignon___combiner_un_maximum_de_leviers_pour_un_syst_me_de_grande_culture_sans_pesticides')
+  $realSrcExt = *uninitialized*
+  $srcExt = 'jpg'
+  $srcImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files/image_R_s0Pest_Grignon___combiner_un_maximum_de_leviers_pour_un_syst_me_de_grande_culture_sans_pesticides.jpg'
+  $srcimage = *uninitialized*
+  $th = *uninitialized*
+  $width = *uninitialized*
+
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-res0pest_nouzilly_-_combiner_un_maximum_de_leviers_pour_un_systeme_de_grande_culture_sans_pesticides.html
 Extracting page: Rés0PesT Nouzilly : combiner un maximum de leviers pour un système de grande culture sans pesticides
 exempleMiseEnOeuvre Rés0PesT Nouzilly : combiner un maximum de leviers pour un système de grande culture sans pesticides
+Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-res0pest_breteniere_-_combiner_un_maximum_de_leviers_pour_un_systeme_de_grande_culture_sans_pesticides.html
+Extracting page: Rés0Pest Bretenière : Combiner un maximum de leviers pour un système de grande culture sans pesticides
+exempleMiseEnOeuvre Rés0Pest Bretenière : Combiner un maximum de leviers pour un système de grande culture sans pesticides
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-allongement_et_diversification_du_systeme_colza-ble-orge_lorrain.html
 Extracting page: Allongement et diversification du système colza-blé-orge Lorrain
 exempleMiseEnOeuvre Allongement et diversification du système colza-blé-orge Lorrain
@@ -60,21 +1200,10 @@ The page Psylle de l'eleagnus doesn't exist in wikipedia
 The page Psylle de l'eleagnus doesn't exist in wikipedia 
 Adding redirect: Psylle de l'eleagnus <-- Cacopsylla fulguralis
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-elaeagnus.html
-
-Notice: Trying to get property 'textContent' of non-object in C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php on line 748
-
-Call Stack:
-    0.4045     615216   1. {main}() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:0
-    1.7651    1219968   2. importGecoToWiki() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:47
-    4.0089    1477224   3. emptyPage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:113
-
-
-Variables in local scope (#3):
-  $elements = class DOMNodeList { public $length = 0 }
-  $pageContent = *uninitialized*
-  $xml_loaded = class DOMDocument { public $doctype = '(object value omitted)'; public $implementation = '(object value omitted)'; public $documentElement = '(object value omitted)'; public $actualEncoding = 'UTF-8'; public $encoding = 'UTF-8'; public $xmlEncoding = 'UTF-8'; public $standalone = TRUE; public $xmlStandalone = TRUE; public $version = NULL; public $xmlVersion = NULL; public $strictErrorChecking = TRUE; public $documentURI = NULL; public $config = NULL; public $formatOutput = FALSE; public $validateOnParse = FALSE; public $resolveExternals = FALSE; public $preserveWhiteSpace = TRUE; public $recover = FALSE; public $substituteEntities = FALSE; public $nodeName = '#document'; public $nodeValue = NULL; public $nodeType = 13; public $parentNode = NULL; public $childNodes = '(object value omitted)'; public $firstChild = '(object value omitted)'; public $lastChild = '(object value omitted)'; public $previousSibling = NULL; public $nextSibling = NULL; public $attributes = NULL; public $ownerDocument = NULL; public $namespaceURI = NULL; public $prefix = ''; public $localName = NULL; public $baseURI = NULL; public $textContent = '  Elaeagnus - GECO         var Liferay={Browser:{acceptsGzip:function(){return false},getMajorVersion:function(){return 0},getRevision:function(){return""},getVersion:function(){return""},isAir:function(){return false},isChrome:function(){return false},isFirefox:function(){return false},isGecko:function(){return false},isIe:function(){return false},isIphone:function(){return false},isLinux:function(){return false},isMac:function(){return false},isMobile:function(){return false},isMozilla:function(){return f...' }
-  $xpath = class DOMXPath { public $document = '(object value omitted)' }
-
+Extracting page: Elaeagnus
+culture Elaeagnus
+Adding redirect: Elaeagnus <-- Chalef
+Adding redirect: Elaeagnus <-- Eleagnus
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-laurier_tin.html
 Extracting page: Laurier tin
 culture Laurier tin
@@ -138,8 +1267,12 @@ Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_ge
 Extracting page: Succession de légumes d’hiver (carotte, poireau, chou) et de céréales avec couverture maximale du sol
 exempleMiseEnOeuvre Succession de légumes d’hiver (carotte, poireau, chou) et de céréales avec couverture maximale du sol
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-succession_typique_de_legumes_drhiver_en_plein_champ_-28carotte_et_poireau-29_avec_introduction_de_cultures_cerealieres_et_assainissantes.html
-Extracting page: Succession typique de légumes d’hiver en plein champ (carotte et poireau) avec introduction de cultures céréalières et assainissantes
-exempleMiseEnOeuvre Succession typique de légumes d’hiver en plein champ (carotte et poireau) avec introduction de cultures céréalières et assainissantes
+Extracting page: Succession
+ typique de légumes d’hiver en plein champ (carotte et poireau) avec 
+introduction de cultures céréalières et assainissantes
+exempleMiseEnOeuvre Succession
+ typique de légumes d’hiver en plein champ (carotte et poireau) avec 
+introduction de cultures céréalières et assainissantes
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-systeme_concombre_hors_sol_substituant_la_lutte_chimique_par_du_biocontrole.html
 Extracting page: Système concombre hors sol substituant la lutte chimique par du biocontrôle
 exempleMiseEnOeuvre Système concombre hors sol substituant la lutte chimique par du biocontrôle
@@ -170,9 +1303,6 @@ exempleMiseEnOeuvre Production de gariguette en hors sol chauffé conduit en Pro
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-implantation_d_un_verger_eco-innovant_econome_en_intrants.html
 Extracting page: Implantation d'un verger ECO-innovant économe en intrants
 exempleMiseEnOeuvre Implantation d'un verger ECO-innovant économe en intrants
-Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-des_arbres_fruitiers_et_des_cultures_associes_en_systemes_agroforestiers.html
-Extracting page: Des arbres fruitiers et des cultures associés en systèmes agroforestiers
-exempleMiseEnOeuvre Des arbres fruitiers et des cultures associés en systèmes agroforestiers
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-conduite_d_un_verger_existant_de_mirabelliers_pour_baisser_les_intrants.html
 Extracting page: Conduite d'un verger existant de mirabelliers pour baisser les intrants
 exempleMiseEnOeuvre Conduite d'un verger existant de mirabelliers pour baisser les intrants
@@ -237,8 +1367,12 @@ Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_ge
 Extracting page: Succession aubergine et cultures de rupture en hiver pour la gestion alternative des bioagresseurs telluriques
 exempleMiseEnOeuvre Succession aubergine et cultures de rupture en hiver pour la gestion alternative des bioagresseurs telluriques
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-gestion_des_bioagresseurs_telluriques_dans_un_systeme_centre_sur_la_salade_avec_recours_a_la_protection_raisonnee_et_a_la_solarisation.html
-Extracting page: Gestion des bioagresseurs telluriques dans un systéme centré sur la salade avec recours à la protection raisonnée et à la solarisation
-exempleMiseEnOeuvre Gestion des bioagresseurs telluriques dans un systéme centré sur la salade avec recours à la protection raisonnée et à la solarisation
+Extracting page: Gestion
+ des bioagresseurs telluriques dans un systéme centré sur la salade avec
+ recours à la protection raisonnée et à la solarisation
+exempleMiseEnOeuvre Gestion
+ des bioagresseurs telluriques dans un systéme centré sur la salade avec
+ recours à la protection raisonnée et à la solarisation
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-gestion_des_bioagresseurs_telluriques_en_diversifiant_la_succession_culturale_radis_-_tomate_-_salade.html
 Extracting page: Gestion des bioagresseurs telluriques en diversifiant la succession culturale Radis - Tomate - Salade
 exempleMiseEnOeuvre Gestion des bioagresseurs telluriques en diversifiant la succession culturale Radis - Tomate - Salade
@@ -247,8 +1381,12 @@ Extracting page: mildiou de la pomme de terre
 bioagresseur mildiou de la pomme de terre
 Adding redirect: Mildiou de la pomme de terre <-- Phytophtora infestans
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-systeme_tm12_apport_de_mo_-_ctifl_balandran_-_gedubat.html
-Extracting page: Apport massif de matière organique sous forme de fumier pour la gestion alternative des bioagresseurs telluriques en cultures légumières
-exempleMiseEnOeuvre Apport massif de matière organique sous forme de fumier pour la gestion alternative des bioagresseurs telluriques en cultures légumières
+Extracting page: Apport
+ massif de matière organique sous forme de fumier pour la gestion 
+alternative des bioagresseurs telluriques en cultures légumières
+exempleMiseEnOeuvre Apport
+ massif de matière organique sous forme de fumier pour la gestion 
+alternative des bioagresseurs telluriques en cultures légumières
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-piegeage.html
 Extracting page: Piégeage
 outilDAide Piégeage
@@ -299,8 +1437,14 @@ Extracting page: Implantation d'un verger ECO-innovant économe en intrants_2
 exempleMiseEnOeuvre Implantation d'un verger ECO-innovant économe en intrants_2
 Replaced page title special characters : Implantation d'un verger ECO-innovant économe en intrants_2 --> Implantation d'un verger ECO-innovant économe en intrants 2
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-alternance_artichaut-scarole_et_introduction_de_solarisation_et_d_engrais_verts_afin_de_reduire_l_ift.html
-Extracting page: Alternance artichaut-scarole pour introduction d'une solarisation et d'engrais verts dans les rotations, irrigation localisée et paillage biodegradable afin de réduire l'IFT
-exempleMiseEnOeuvre Alternance artichaut-scarole pour introduction d'une solarisation et d'engrais verts dans les rotations, irrigation localisée et paillage biodegradable afin de réduire l'IFT
+Extracting page: Alternance
+ artichaut-scarole pour introduction d'une solarisation et d'engrais 
+verts dans les rotations, irrigation localisée et paillage biodegradable
+ afin de réduire l'IFT
+exempleMiseEnOeuvre Alternance
+ artichaut-scarole pour introduction d'une solarisation et d'engrais 
+verts dans les rotations, irrigation localisée et paillage biodegradable
+ afin de réduire l'IFT
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-implantation_d_un_verger_econome_en_intrants.html
 Extracting page: Implantation d'un verger économe en intrants
 exempleMiseEnOeuvre Implantation d'un verger économe en intrants
@@ -359,8 +1503,12 @@ Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_ge
 Extracting page: Maintenir les performances économiques de la monoculture de maïs tout en réduisant les impacts négatifs sur la qualité de l’eau
 exempleMiseEnOeuvre Maintenir les performances économiques de la monoculture de maïs tout en réduisant les impacts négatifs sur la qualité de l’eau
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-diversifier_la_rotation_et_combiner_les_leviers_agronomique_pour_reduire_l_ift_en_systeme_betteravier_du_nord_du_bassin_parisien.html
-Extracting page: Diversifier la rotation et combiner les leviers agronomiques afin de réduire l'IFT en système betteravier du Nord du Bassin Parisien
-exempleMiseEnOeuvre Diversifier la rotation et combiner les leviers agronomiques afin de réduire l'IFT en système betteravier du Nord du Bassin Parisien
+Extracting page: Diversifier
+ la rotation et combiner les leviers agronomiques afin de réduire l'IFT 
+en système betteravier du Nord du Bassin Parisien
+exempleMiseEnOeuvre Diversifier
+ la rotation et combiner les leviers agronomiques afin de réduire l'IFT 
+en système betteravier du Nord du Bassin Parisien
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-production_integree_a_tres_bas_d_intrants_avec_couverts_intermediaires_en_systeme_ble_dur_-_tournesol_du_lauragais.html
 Extracting page: Production intégrée à Très Bas niveau d'Intrants avec couverts intermédiaires en système blé dur-tournesol du Lauragais
 exempleMiseEnOeuvre Production intégrée à Très Bas niveau d'Intrants avec couverts intermédiaires en système blé dur-tournesol du Lauragais
@@ -437,9 +1585,6 @@ technique Application d'argile (Kaolinite calcinée) en verger
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-utiliser_la_confusion_sexuelle.html
 Extracting page: Utiliser la confusion sexuelle en verger et en vigne
 technique Utiliser la confusion sexuelle en verger et en vigne
-Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-augmenter_lrefficience_de_la_strategie_de_protection_en_verger_de_pomme.html
-Extracting page: Augmenter l’efficience de la stratégie de protection en verger de pomme
-exempleMiseEnOeuvre Augmenter l’efficience de la stratégie de protection en verger de pomme
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-implantation_d_un_verger_de_pechers_econome_en_intrants.html
 Extracting page: Implantation d'un verger de pêchers économe en intrants
 exempleMiseEnOeuvre Implantation d'un verger de pêchers économe en intrants
@@ -476,21 +1621,9 @@ technique L'assolement en commun, un moyen d'actionner des leviers pour réduire
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-produire_mieux_ensemble_au_travers_de_l_agriculture_de_conservation_des_sols.html
 Extracting page: Produire mieux ensemble au travers de l'agriculture de conservation des sols
 exempleMiseEnOeuvre Produire mieux ensemble au travers de l'agriculture de conservation des sols
-Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-realiser_des_faux-semis_pendant_l_interculture.html
-Extracting page: Réaliser des faux-semis pendant l'interculture
-technique Réaliser des faux-semis pendant l'interculture
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-reduction_des_intrants_phytosanitaires_en_vignoble_aop_bordeaux.html
 Extracting page: Réduction des intrants phytosanitaires en vignoble AOP Bordeaux
 exempleMiseEnOeuvre Réduction des intrants phytosanitaires en vignoble AOP Bordeaux
-Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-pratiquer_le_desherbage_mecanique_-_houe_rotative.html
-Extracting page: Pratiquer le désherbage mécanique en plein - Houe rotative
-technique Pratiquer le désherbage mécanique en plein - Houe rotative
-Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-pratiquer_le_desherbage_mecanique_-_binage.html
-Extracting page: Pratiquer le désherbage mécanique sur l'inter-rang - Binage
-technique Pratiquer le désherbage mécanique sur l'inter-rang - Binage
-Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-pratiquer_le_desherbage_mecanique_-_herse_etrille.html
-Extracting page: Pratiquer le désherbage mécanique en plein - Herse étrille
-technique Pratiquer le désherbage mécanique en plein - Herse étrille
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-implanter_des_cultures_pieges_a_bio-agresseurs.html
 Extracting page: Implanter des cultures pièges à bio-agresseurs
 technique Implanter des cultures pièges à bio-agresseurs
@@ -530,15 +1663,16 @@ materiel herse étrille
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-rouler_les_couverts_d_intercultures_fragiles.html
 Extracting page: Rouler les couverts végétaux pendant la période d'interculture
 technique Rouler les couverts végétaux pendant la période d'interculture
-Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-filet_monoparcelle_-_alt_carpo.html
-Extracting page: Installer des Filets Monoparcelle - Alt'Carpo en verger
-technique Installer des Filets Monoparcelle - Alt'Carpo en verger
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-pratiquer_le_desherbage_electrique.html
 Extracting page: Pratiquer le désherbage électrique
 technique Pratiquer le désherbage électrique
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-bio_ariane-_verger_de_pommiers_ab_resistant_a_la_tavelure.html
-Extracting page: Des vergers de pommiers conduits en AB avec différents niveaux de résistance aux maladies et économes en produits phytosanitaires
-exempleMiseEnOeuvre Des vergers de pommiers conduits en AB avec différents niveaux de résistance aux maladies et économes en produits phytosanitaires
+Extracting page: Des
+ vergers de pommiers conduits en AB avec différents niveaux de 
+résistance aux maladies et économes en produits phytosanitaires
+exempleMiseEnOeuvre Des
+ vergers de pommiers conduits en AB avec différents niveaux de 
+résistance aux maladies et économes en produits phytosanitaires
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-reduction_des_intrants_phytosanitaires_avec_utilisation_d_un_profil_eco-toxicologique_favorable_en_vigne.html
 Extracting page: Réduction des intrants phytosanitaires avec utilisation d'un profil éco-toxicologique favorable en vigne
 exempleMiseEnOeuvre Réduction des intrants phytosanitaires avec utilisation d'un profil éco-toxicologique favorable en vigne
@@ -567,10 +1701,6 @@ Adding redirect: Lampourde à gros fruits <-- Xanthium strumarium susp. Italicum
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-filet_monorang_-_alt_carpo_-_alt_mouche.html
 Extracting page: Installer des Filets monorang : Alt'Carpo / Alt'Mouche en verger
 technique Installer des Filets monorang : Alt'Carpo / Alt'Mouche en verger
-Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-pratiquer_le_desherbage_mecanique_-_bineuse_kress.html
-Extracting page: Pratiquer le désherbage mécanique sur le rang - Bineuse à doigts ou moulinets
-technique Pratiquer le désherbage mécanique sur le rang - Bineuse à doigts ou moulinets
-Adding redirect: Pratiquer le désherbage mécanique sur le rang - Bineuse à doigts ou moulinets <-- Bineuse Kress
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-tarsoneme_des_serres.html
 Extracting page: tarsonème des serres
 bioagresseur tarsonème des serres
@@ -591,9 +1721,6 @@ Extracting page: Black rot
 bioagresseur Black rot
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-viticulture.html
 Article not in the list 
-Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-augmenter_la_resilience_du_vignoble_de_cognac_par_le_mode_de_conduite_scott_henry.html
-Extracting page: Augmenter la résilience du vignoble de Cognac grâce au mode de conduite Scott Henry
-exempleMiseEnOeuvre Augmenter la résilience du vignoble de Cognac grâce au mode de conduite Scott Henry
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-filet_alt_carpo.html
 Extracting page: Filet Alt'Carpo
 materiel Filet Alt'Carpo
@@ -743,21 +1870,9 @@ outilDAide Farmstar
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-milart.html
 Extracting page: Milart
 outilDAide Milart
-Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-introduire_un_couvert_vegetal_d_interculture.html
-Extracting page: Introduire un couvert végétal d'interculture en production légumière
-technique Introduire un couvert végétal d'interculture en production légumière
-Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-pratiquer_le_desherbage_thermique.html
-Extracting page: Pratiquer le désherbage thermique
-technique Pratiquer le désherbage thermique
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-desinfection_a_la_vapeur.html
 Extracting page: Désinfection du sol à la vapeur en cultures légumières
 technique Désinfection du sol à la vapeur en cultures légumières
-Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-la_solarisation.html
-Extracting page: Désinfection du sol par la solarisation en cultures légumières
-technique Désinfection du sol par la solarisation en cultures légumières
-Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-mettre_en_place_de_paillages_ou_de_mulchs_en_cultures_legumieres.html
-Extracting page: Mettre en place des paillages ou des mulchs en cultures légumières
-technique Mettre en place des paillages ou des mulchs en cultures légumières
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-gerer_les_populations_des_bioagresseurs_grace_aux_mesures_prophylactiques.html
 Extracting page: Gérer les populations des bioagresseurs grâce aux mesures prophylactiques
 technique Gérer les populations des bioagresseurs grâce aux mesures prophylactiques
@@ -776,15 +1891,9 @@ exempleMiseEnOeuvre Des couverts végétaux pour gérer l'enherbement sur le ran
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-entretien_d_un_enherbement_permanent_en_verger_adulte.html
 Extracting page: Entretien d'un enherbement permanent en verger adulte
 exempleMiseEnOeuvre Entretien d'un enherbement permanent en verger adulte
-Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-gestion_des_adventices_sous_l_interceps.html
-Extracting page: Gestion des adventices sous l'interceps
-exempleMiseEnOeuvre Gestion des adventices sous l'interceps
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-des_vignes_conduites_en_bio_et_totalement_enherbees.html
 Extracting page: Des vignes conduites en bio et totalement enherbées
 exempleMiseEnOeuvre Des vignes conduites en bio et totalement enherbées
-Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-gestion_des_adventices_par_combinaison_de_leviers_agronomiques_et_de_substitution.html
-Extracting page: Gestion des adventices par combinaison de leviers agronomiques et de désherbage mécanique
-exempleMiseEnOeuvre Gestion des adventices par combinaison de leviers agronomiques et de désherbage mécanique
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-ile-et-vilaine_-2835-29.html
 Extracting page: Ille-et-Vilaine (35)
 facteurEnvironnemental Ille-et-Vilaine (35)
@@ -823,9 +1932,6 @@ The page Cultivateur rotatif animé doesn't exist in wikipedia
 The page Cultivateur rotatif animé doesn't exist in wikipedia 
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-vibroculteur.html
 Article not in the list 
-Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-labourer_-28et_repartir_les_labours_dans_la_rotation-29.html
-Extracting page: Répartir les labours dans la rotation
-technique Répartir les labours dans la rotation
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-oidium_du_pommier.html
 Extracting page: Oïdium du pommier
 bioagresseur Oïdium du pommier
@@ -966,6 +2072,35 @@ Article not in the list
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-reduire_l_emploi_de_produits_phytopharmaceutiques_en_polyculture-elevage.html
 Extracting page: Réduire l'emploi de produits phytopharmaceutiques en polyculture-élevage
 exempleMiseEnOeuvre Réduire l'emploi de produits phytopharmaceutiques en polyculture-élevage
+
+Warning: finfo::file(C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/geco_index_files/image_R_duire_l_emploi_de_produits_phytopharmaceutiques_en_polyculture__levage.gif): failed to open stream: No such file or directory in C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php on line 962
+
+Call Stack:
+    0.4038     613752   1. {main}() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:0
+    1.3714    1233952   2. importGecoToWiki() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:47
+  106.3746    6399392   3. addPage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:124
+  106.3975    6407080   4. resizeImage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:215
+  106.3976    6409192   5. finfo->file() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:962
+
+
+Variables in local scope (#4):
+  $destImage = *uninitialized*
+  $destImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/../out/images/image_R_duire_l_emploi_de_produits_phytopharmaceutiques_en_polyculture__levage.jpg'
+  $finfo = class finfo {  }
+  $height = *uninitialized*
+  $imageName = 'image_R_duire_l_emploi_de_produits_phytopharmaceutiques_en_polyculture__levage.jpg'
+  $max_height = *uninitialized*
+  $max_width = *uninitialized*
+  $orig_height = *uninitialized*
+  $orig_width = *uninitialized*
+  $path_parts = array ('dirname' => 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files', 'basename' => 'image_R_duire_l_emploi_de_produits_phytopharmaceutiques_en_polyculture__levage.gif', 'extension' => 'gif', 'filename' => 'image_R_duire_l_emploi_de_produits_phytopharmaceutiques_en_polyculture__levage')
+  $realSrcExt = *uninitialized*
+  $srcExt = 'gif'
+  $srcImageFilePath = 'C:\\Neayi\\tripleperformance_docker\\workspace\\wiki_builder\\import_geco/geco_index_files/image_R_duire_l_emploi_de_produits_phytopharmaceutiques_en_polyculture__levage.gif'
+  $srcimage = *uninitialized*
+  $th = *uninitialized*
+  $width = *uninitialized*
+
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-mise_en_commun_des_moyens_de_production_humains-2C_materiels_et_fonciers_de_deux_exploitations_agricoles_du_jura.html
 Extracting page: Mise en commun des moyens de production humains, matériels et fonciers de deux exploitations agricoles du Jura
 exempleMiseEnOeuvre Mise en commun des moyens de production humains, matériels et fonciers de deux exploitations agricoles du Jura
@@ -1043,9 +2178,6 @@ technique Pratiquer la lutte biologique en verger - pulvérisation de micro-orga
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-optidose.html
 Extracting page: Optidose®
 outilDAide Optidose®
-Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-pratiquer_le_desherbage_chimique_localise_sur_le_rang.html
-Extracting page: Désherbage chimique localisé sur le rang, pouvant être combiné au semis ou à une bineuse
-technique Désherbage chimique localisé sur le rang, pouvant être combiné au semis ou à une bineuse
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-helminthosporiose_mouchetee.html
 Extracting page: Helminthosporiose mouchetée
 bioagresseur Helminthosporiose mouchetée
@@ -1195,9 +2327,6 @@ bioagresseur botrytis cinerea
 Adding redirect: Botrytis cinerea <-- Moisissure grise
 Adding redirect: Botrytis cinerea <-- Pourriture grise
 Adding redirect: Botrytis cinerea <-- Pourriture noble
-Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-reduire_l_ift_en_vignoble_deja_implante_en_combinant_les_leviers-2C_dont_d_enherbement_total.html
-Extracting page: Réduire l'IFT en vignoble déjà implanté en combinant les leviers, dont l'enherbement total des parcelles
-exempleMiseEnOeuvre Réduire l'IFT en vignoble déjà implanté en combinant les leviers, dont l'enherbement total des parcelles
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-oidium_de_la_vigne.html
 Extracting page: Oïdium de la vigne
 bioagresseur Oïdium de la vigne
@@ -2141,9 +3270,6 @@ technique Choisir des formes d'engrais azotés enrobés ou avec retardateur de n
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-cultiver_des_especes_peu_exigeantes_en_phosphore.html
 Extracting page: Cultiver des espèces peu exigeantes en phosphore
 technique Cultiver des espèces peu exigeantes en phosphore
-Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-realiser_des_apports_de_compost.html
-Extracting page: Réaliser des apports de compost
-technique Réaliser des apports de compost
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-implanter_des_cultures_intermediaires_a_effet_allelopathique_ou_biocide-2C_biofumigation.html
 Extracting page: Implanter des cultures intermédiaires à effet allélopathique ou biocide - biofumigation
 technique Implanter des cultures intermédiaires à effet allélopathique ou biocide - biofumigation
@@ -4277,6 +5403,7 @@ Adding redirect: Euphorbe exiguë <-- Euphorbia exigua
 Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-euphorbe_peplus.html
 Extracting page: euphorbe péplus
 bioagresseur euphorbe péplus
+The page Euphorbe péplus doesn't exist in wikipedia 
 The page Euphorbe péplus doesn't exist in wikipedia 
 The page Euphorbe péplus doesn't exist in wikipedia 
 Adding redirect: Euphorbe péplus <-- Euphorbia peplus
@@ -7284,14 +8411,14 @@ Loading page: C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_ge
 Extracting page: Gestion de la ressource mellifère - INTERAPI
 outilDAide Gestion de la ressource mellifère - INTERAPI
 
-Warning: finfo::file(C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/geco_index_files/image_Gestion_de_la_ressource_mellif_re___INTERAPI.png): failed to open stream: No such file or directory in C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php on line 940
+Warning: finfo::file(C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/geco_index_files/image_Gestion_de_la_ressource_mellif_re___INTERAPI.png): failed to open stream: No such file or directory in C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php on line 962
 
 Call Stack:
-    0.4045     615216   1. {main}() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:0
-    1.7651    1219968   2. importGecoToWiki() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:47
-  592.2598   21457504   3. addPage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:124
-  592.2884   21476304   4. resizeImage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:215
-  592.2885   21478288   5. finfo->file() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:940
+    0.4038     613752   1. {main}() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:0
+    1.3714    1233952   2. importGecoToWiki() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:47
+ 1144.7406   21564784   3. addPage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:124
+ 1144.7803   21583584   4. resizeImage() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:215
+ 1144.7804   21585568   5. finfo->file() C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco\importGecoToWiki.php:962
 
 
 Variables in local scope (#4):

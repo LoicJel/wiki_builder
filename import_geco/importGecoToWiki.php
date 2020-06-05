@@ -80,8 +80,8 @@ function importGecoToWiki()
 		// 	continue
 		
 		//Debuging
-		if ($filename != 'C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-gestion_des_auxiliaires_pollinisateurs.html')
-			continue;
+		// if ($filename != 'C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-orge_printemps.html')
+		// 	continue;
 
 		// Test if the page is in the exclude page list
 		$pageName = mb_ucfirst($conceptName);
@@ -221,13 +221,13 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl, $e
 			$wikiImage = request_api('image', $pageName, $homonymie);
 		}
 	
-	if(isset($wikiImage))
+	if(isset($wikiImage) and $wikiImage != "")
 	{
 		$imageName = $wikiImage[0];
 		$imageCaption = $wikiImage[1];
 	}
 
-	if(isset($intro))
+	if(isset($intro) and $intro != "")
 		$wikiText = $intro;
 	
 	// Add the categories
@@ -769,7 +769,7 @@ function request_api($request_type, $pageName, $homonymie=null)
 	file_put_contents($log, "$request_type", FILE_APPEND);	
 	$start = microtime(true);
 	$api_para = array();
-	$api_para['homo'] = ["action" => "query", "format" => "json",	"titles" => "$pageName",  "prop" => "extracts", "explaintext" => true, "exintro" => true, "exsectionformat" => "wiki", "redirects" => true];
+	$api_para['homo'] = ["action" => "query", "format" => "json",	"titles" => "$pageName",  "prop" => "categories", 'titles' => "$pageName", 'clcategories' => 'CategoryHomonymie'];
 	$api_para['text'] = ["action" => "query", "format" => "json", "titles" => "$pageName", "prop" => "extracts", "explaintext" => true, "exintro" => true, "exsectionformat" => "wiki","redirects" => true];
 	$api_para['image'] = ["action" => "query", "format" => "json", "prop" => "pageimages", "titles" => "$pageName", "piprop" => "name", "redirects" => true];
 	$parameters = $api_para[$request_type];
