@@ -80,8 +80,8 @@ function importGecoToWiki()
 		// 	continue
 		
 		//Debuging
-		// if ($filename != 'C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-orge_printemps.html')
-		// 	continue;
+		if ($filename != 'C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-alternatives_a_la_monoculture_de_mais-_diversification_de_la_rotation_et_technique_culturales_simplifiees.html')
+			continue;
 
 		// Test if the page is in the exclude page list
 		$pageName = mb_ucfirst($conceptName);
@@ -234,8 +234,6 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl, $e
 	$annexes = addCategoriesForPage($page, $xpath,$pageName);
 
 	//Add a template for "exemple de mise en oeuvre" at the begining
-	if(isset($annexes['context']))
-		$page->addContent($annexes['context'] . "\n");
 	
 	$subcategory = "";
 	if(isset($annexes['subcategory']))
@@ -245,11 +243,18 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl, $e
 		
 	// Add a model for redirect to the originial Geco webpage.
 	if (!isset($intro))
-		$page->addContent("{{Article issu de Geco|url=$trueUrl}}");
+		$page->addContent("{{Article issu de Geco|url=$trueUrl}}" . "\n");
 
-	$page->addContent(getTemplate($GLOBALS['conceptTypes'][$conceptType], array('Nom' => $name, 'Latin' => $latinName, 'Sous-categorie' => $subcategory, 'Image' => $imageName, 'ImageCaption' => $imageCaption)). "\n");
+	$conceptTemplate = getTemplate($GLOBALS['conceptTypes'][$conceptType], array('Nom' => $name, 'Latin' => $latinName, 'Sous-categorie' => $subcategory, 'Image' => $imageName, 'ImageCaption' => $imageCaption)). "\n";
 
-	$page->addContent($wikiText);
+	if(isset($annexes['context']))
+		$introTemplate = $conceptTemplate . $annexes['context'] . '}}' ;
+	else
+		$introTemplate = $conceptTemplate . "}}";
+
+	$page->addContent($introTemplate . "\n");
+
+	$page->addContent($wikiText . "\n");
 
 	$page->addContent("\n== Annexes ==\n");
 
@@ -505,39 +510,38 @@ function annexesConceptEvoquesTemplates($listLinks)
 function contextTemplate($listLink)
 {
 	//print_r($listLink);
-	$model = "{{context";
+	$model = array();
 	foreach($listLink as $link)
 	{
 		if(preg_match('@^.*\([0-9]{2,3}\)@', $link))
 		{ 
 			$infos = explode(' ', $link);
 			$depart = trim($infos[1], '()');
-			$model .= "|département=$depart|nom du département= [[$link]]";
+			$model[] = "|département=$depart|nom du département= [[$link]]";
 		}
 		elseif(in_array($link, $GLOBALS['context']['region']))
-			$model .= "|région=[[$link]]";
+			$model[] = "|région=[[$link]]";
 
 		elseif(in_array($link, $GLOBALS['context']['climatique']))
-			$model .= "|climat=[[$link]]";
+			$model[] = "|climat=[[$link]]";
 
 		elseif(in_array($link, $GLOBALS['context']['sol']['texture']))
-			$model .= "|texture=[[$link]]";
+			$model[] = "|texture=[[$link]]";
 
 		elseif(in_array($link, $GLOBALS['context']['sol']['ph']))
-			$model .= "|ph=[[$link]]";
+			$model[] = "|ph=[[$link]]";
 
 		elseif(in_array($link, $GLOBALS['context']['sol']['aleas']))
-			$model .= "|alea=$link";
+			$model[] = "|alea=$link";
 
 		elseif(in_array($link, $GLOBALS['context']['sol']['profondeur']))
-			$model .= "|profondeur=$link";
+			$model[] = "|profondeur=$link";
 
 		elseif(in_array($link, $GLOBALS['context']['sol']['calcaire']))
-			$model .= "|calcaire=$link";
+			$model[] = "|calcaire=$link";
 
 	}
-	$model .= "}}";
-	return $model;
+	return implode("\n", $model);
 }
 
 
@@ -716,7 +720,7 @@ function getTemplate($conceptType, $fields)
 		$lines[] = "|$k=$v";
 	}
 
-	return '{{' . $conceptType . "\n" . implode("\n", $lines) . '}}';
+	return '{{' . $conceptType . "\n" . implode("\n", $lines);
 }
 
 /**
