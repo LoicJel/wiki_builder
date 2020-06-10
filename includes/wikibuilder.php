@@ -130,6 +130,7 @@ class wikiPage
 
         $this->content = $this->cleanUpContent();
         $this->wikiPageName = trim($this->wikiPageName);
+        echo $this->wikiPageName . "\n";
 
         if (empty($this->wikiPageName) || empty($this->content))
             return; // if the page is empty, don't bother adding it.
@@ -278,9 +279,11 @@ EOT;
         if ($ucase == $origPageName)
             $pageName = mb_ucfirst($pageName);
 
+        $pageName = str_replace("\n", ' ', $pageName);
         if ($origPageName != $pageName)
             echo "Replaced page title special characters : $origPageName --> $pageName\n";
         
+        $this->wikiPageName = $pageName;
         return $pageName;
     }
     public function mb_ucfirst($str)

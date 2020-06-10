@@ -80,8 +80,8 @@ function importGecoToWiki()
 		// 	continue
 		
 		//Debuging
-		if ($filename != 'C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-alternatives_a_la_monoculture_de_mais-_diversification_de_la_rotation_et_technique_culturales_simplifiees.html')
-			continue;
+		// if ($filename != 'C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-sol_moyennement_profond_-2860___ru___130_mm-29.html')
+		// 	continue;
 
 		// Test if the page is in the exclude page list
 		$pageName = mb_ucfirst($conceptName);
