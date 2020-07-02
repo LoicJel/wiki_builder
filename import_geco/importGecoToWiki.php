@@ -13,6 +13,7 @@ libxml_use_internal_errors(true);
 if (!is_dir(__DIR__ . "/../out"))
     mkdir(__DIR__ . "/../out");
 
+//Out file name
 $filename = __DIR__ . "/../out/wiki_practices.xml";
 
 if (file_exists($filename))
@@ -22,10 +23,16 @@ $GLOBALS['wikiBuilder'] = new wikiImportFile($filename);
 
 $GLOBALS['links'] = array();
 
+//Initialize a list of articles that must be exclude
 initArticlesList();
+//Initialize an array with all geco's relations
 initRelations();
+//Initialize an array with the concept pages
 initConceptTypes();
+//Initialize an array with the different climatic context
 initContext();
+//Initialize an array with the agrifind csv file
+initAgrifindCSV();
 
 $indexURL = __DIR__ . '/geco_index.html';
 
@@ -129,20 +136,28 @@ function importGecoToWiki()
 	}
 }
 
+/**
+ * This function uses several actions and other functions to create the xml page to add. 
+ */
 function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl, $emptyPage)
 {
 	echo "Extracting page: $pageName\n";
 
 	echo "$conceptType $pageName\n";
 
+	// Get the last update date in Geco website
 	$date = getDateLastUpdate($xpath);
+	// Create an object addPage
 	$page = $GLOBALS['wikiBuilder']->addPage($pageName,$date);
+	// Use this function to delete and replace forbiden characters in the page title
 	$pageName = $page -> replaceForbidenPagenameCharacters($pageName);
+	// Uppercase on the first letter
 	$pageName = mb_ucfirst($pageName);
 
 	if ($bIsCategoryPage)
 		addCategoryPage($pageName);
 
+	// if a page could have multiple name, for exemple Hanneton (Melolonthinae), it will add a category wich will redirect from Melolonthinae to Hanneton
 	$matchs = array();
 	$name = $pageName;
 	$latinName = '';
@@ -160,6 +175,7 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl, $e
 	}
 
 	// Add the content
+	// The page content is in a node call 'contenu-concept'. So this script part extract all the context in this node
 	$elements = $xpath->query("//div[starts-with(@class, 'contenu-concept')]");
 	$wikiTextParsoidBrut = '';
 	$wikiText = '';
@@ -168,6 +184,7 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl, $e
 
 	foreach ($elements as $contentDiv)
 	{
+		// Before begining the extract, a preprocessing clean is done to the xml
 		preprocessing($xpath, $contentDiv,$pageName);
 		foreach ($contentDiv->childNodes as $node)
 		{
@@ -200,38 +217,46 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl, $e
 					break;
 				
 				default:
+				// By default, the content will be consider as text and will be convert from html to mediaWiki syntax by using a wikipedia API call parsoid. 
 					$wikiTextParsoidBrut .= getWikiTextParsoid($node) . "\n";
 					break;
 			}
 		}
 		break;
 	}
+	// Call a function to clean parsoid result
 	$wikiTextParsoidClean = cleanWikiTextParsoid($wikiTextParsoidBrut);
+	//set different variables with results
 	if (isset($wikiTextParsoidClean['imageCaption']))
 		$imageCaption = $wikiTextParsoidClean['imageCaption'];
 	if (isset($wikiTextParsoidClean['wikiText']))
 		$wikiText = $wikiTextParsoidClean['wikiText'];
+	//If an image is find, resize it to have the right image size
 	if (!empty($imageName))
 		resizeImage($imageName);
 
+	//If the page is considered as empty
 	if($emptyPage)
 		{
-			$homonymie = request_api('homo', $pageName);
-			$intro = request_api('text', $pageName, $homonymie);
-			$wikiImage = request_api('image', $pageName, $homonymie);
+			//Use the wikipedia API to check if the page exist in wikipedia
+			$homonymie = request_api('homo', $pageName); //check if it's an homonymie page
+			$intro = request_api('text', $pageName, $homonymie); //Take the introduction
+			$wikiImage = request_api('image', $pageName, $homonymie); //Take the image
 		}
 	
+	//If the page exist in wikipedia, set the image and image caption with wikipedia results
 	if(isset($wikiImage) and $wikiImage != "")
 	{
 		$imageName = $wikiImage[0];
 		$imageCaption = $wikiImage[1];
 	}
 
+	//If the page exist in wikipedia, set the page introduction with the results
 	if(isset($intro) and $intro != "")
 		$wikiText = $intro;
 	
-	// Add the categories
-	$annexes = addCategoriesForPage($page, $xpath,$pageName);
+	// Create template and add pages categories based on the Geco semantic relations
+	$annexes = addSementicRelations($page, $xpath,$pageName);
 
 	//Add a template for "exemple de mise en oeuvre" at the begining
 	
@@ -299,8 +324,9 @@ function addPage($pageName, $xpath, $conceptType, $bIsCategoryPage, $trueUrl, $e
 /**
  * This function create all the category and annexes for pages 
  */
-function addCategoriesForPage($page, $xpath,$pageName)
+function addSementicRelations($page, $xpath,$pageName)
 {
+	// Get the page concept type
 	$elements = $xpath->query("//div[@class='type-concept-title']/i");
 	foreach ($elements as $i)
 	{
@@ -312,13 +338,15 @@ function addCategoriesForPage($page, $xpath,$pageName)
 	if (empty($conceptType))
 		return;
 
+	//Select the node which contain the semantic part
 	$elements = $xpath->query("//div[@class='span2 liens-cell']");
-	// Create an array to contain several redirection link to pages linked. 
+	// Create an array to contain results
 	$annexes=array();
 	foreach ($elements as $div)
 	{
-		$rel = trim($div->textContent);
-		$revrel = '';
+		//Identify the relation
+		$rel = trim($div->textContent); //$rel = relation
+		$revrel = ''; //$revrel = reverse relation
 		
 		if (isset($GLOBALS['rel_labels'][$rel]))
 			$rel = $GLOBALS['rel_labels'][$rel];
@@ -343,10 +371,11 @@ function addCategoriesForPage($page, $xpath,$pageName)
 			// Each link will be associate with its relation in the $annexes array.
 			foreach ($relationLinks as $l)
 			{
+				//create the relatif url for redirections
 				$relurl = getFullUrl($l->getAttribute('href'));
 				if (isset($GLOBALS['links'][$relurl]))
 				{
-					// Replca < and > chars in links
+					// Replca < and > chars in url
 					if(preg_match('@.*(.*[<>].*)$@',$GLOBALS['links'][$relurl]))
 					{
 						$GLOBALS['links'][$relurl] = str_ireplace('<', 'inférieur à', $GLOBALS['links'][$relurl]);
@@ -401,8 +430,9 @@ function addCategoriesForPage($page, $xpath,$pageName)
 		}
 	}
 
+	//Create the array that will be returned with templates
 	$res = array();
-
+	//Each results in $annexes correspond to a specific template
 	if($conceptType != 'exempleMiseEnOeuvre')
 		$res['estEvoque'] = '{{' . $GLOBALS['conceptTypes'][$conceptType] . " temoignages}}";
 
@@ -564,7 +594,7 @@ function initArticlesList()
 
 
 /**
- * 
+ * Correspond to all the climatic details that can be used in a "exemple de mise en oeuvre"
  */
 function initContext()
 {
@@ -668,6 +698,22 @@ utilise / est utilisé pour
 	// exit();
 }
 
+/**
+ * Init an array with the content of agrifind csv
+ */
+function initAgrifindCSV()
+{
+	$file = __DIR__ . "/../temp/pages_agrifind.csv";
+	$f = fopen($file, 'r');
+	$GLOBALS['agrifind']['fields'] = fgetcsv($f);
+	while(($data = fgetcsv($f))!==FALSE)
+	{
+		$line = fgetcsv($f);
+		print_r($line);
+	}
+	print_r($GLOBALS['agrifind']);
+	fclose($f);
+}
 
 ### General functions ###
 /**
@@ -767,17 +813,22 @@ function emptyPage($xml_loaded)
 		return false;
 }
 
+/**
+ * This function request the wikipedia api to parse so information for pages that are empty in Geco
+ * */
 function request_api($request_type, $pageName, $homonymie=null)
 {
 	$log = "logApi.txt";
 	file_put_contents($log, "$request_type", FILE_APPEND);	
 	$start = microtime(true);
+	//Parameters that change according to the request type
 	$api_para = array();
 	$api_para['homo'] = ["action" => "query", "format" => "json",	"titles" => "$pageName",  "prop" => "categories", 'titles' => "$pageName", 'clcategories' => 'CategoryHomonymie'];
 	$api_para['text'] = ["action" => "query", "format" => "json", "titles" => "$pageName", "prop" => "extracts", "explaintext" => true, "exintro" => true, "exsectionformat" => "wiki","redirects" => true];
 	$api_para['image'] = ["action" => "query", "format" => "json", "prop" => "pageimages", "titles" => "$pageName", "piprop" => "name", "redirects" => true];
 	$parameters = $api_para[$request_type];
 
+	//Create a temp file with the result or replace it if it exists
 	$fileName = md5($pageName) . '-' . preg_replace('@[^a-zA-Z0-9]@', '_', $pageName);
 	if (file_exists("C:\Neayi\\tripleperformance_docker\workspace\wiki_builder\\temp/apiWiki/$fileName-$request_type.apiWiki"))
 	{
@@ -800,6 +851,7 @@ function request_api($request_type, $pageName, $homonymie=null)
 	$end = microtime(true);
 	$delai = $end - $start;
 	file_put_contents($log, "Temps d'execution : $delai millisecondes \n", FILE_APPEND);
+	//Analyse the result if no error
 	if($output)
 	{
 		$result = json_decode( $output, true );
@@ -808,7 +860,7 @@ function request_api($request_type, $pageName, $homonymie=null)
 			$res = "";
 			switch($request_type)
 			{
-				case 'homo':
+				case 'homo': //Homonymie case
 					foreach($result['query']['pages'] as $page=>$id)
 					{
 						if(isset($id["categories"][0]['title']))
@@ -817,7 +869,7 @@ function request_api($request_type, $pageName, $homonymie=null)
 							$res = false; 
 					}
 					break;
-				case 'text':
+				case 'text': //Text case if homo = false
 					if($homonymie==false)
 					{
 						foreach($result['query']['pages'] as $page=>$id)
@@ -831,12 +883,13 @@ function request_api($request_type, $pageName, $homonymie=null)
 								$intro .= $paragraph . "\n\n";
 							}
 							$intro = trim($intro);
+							//add a template that quote wikipedia as reference
 							$intro .= "{{Mark as extracted from Wikipedia|page=$pageName}}";
 							$res = $intro;
 						}
 					}
 					break;
-				case 'image';
+				case 'image'; //Image case if homo = false
 				if($homonymie==false)
 				{
 					foreach($result['query']['pages'] as $page=>$image)
@@ -844,8 +897,8 @@ function request_api($request_type, $pageName, $homonymie=null)
 						if(isset($image['pageimage']))
 						{
 							$res = array();
-							$res[0] = $image['pageimage'];
-							$res[1] = $image['title'];
+							$res[0] = $image['pageimage']; // = the image
+							$res[1] = $image['title']; // = the image caption
 						}
 						else 
 							echo "No image for the page $pageName in wikipedia \n";
@@ -1106,15 +1159,18 @@ function getWikiTextParsoid($node)
  */
 function cleanWikiTextParsoid($text)
 {
+	// Add a \n 
 	if(preg_match('@</em>.{1,5}[A-Z]@', $text))
 		$text = preg_replace('@</em>@', "</em> \n", $text);
-	//echo $text . "\n";
+	//Replace a specific color text by a title syntax
 	$text = preg_replace('@<span style="color:#1AA0E0;"><strong>@', "===", $text);
 	$text = preg_replace('@</strong></span>@', "=== \n", $text);
+	//Replace strong tags by the correct syntax in mediaWiki
 	$text = preg_replace('@<strong>@', "'''", $text);
 	$text = preg_replace('@</strong>@', "'''", $text);
 	$text = str_ireplace("<div class=\"titre-reference\"> ", "*", $text);
 	$text = str_ireplace("<div class=\"sous-titre-reference\"> ", "*:-", $text);
+	//Delete all the node tags
 	$text = strip_tags($text, '<br>');
 	$text = preg_replace('@^.*@', '', $text);
 	$text = preg_replace('@function proposerEnrichissement.*;$@', '', $text);
@@ -1125,11 +1181,12 @@ function cleanWikiTextParsoid($text)
 	$text = preg_replace("@== ''''@", '==', $text);
 	$text = preg_replace('@[nN]ull@', '', $text);
 	$text = preg_replace('@[dD]ate.*:.*[0-9]@', '', $text);
+	//Replace smiley images by a template call
 	$text = str_replace('[[smiley_neutralface.png|lien=]]', '{{smiley|neutral}}', $text);
 	$text = str_replace('[[smiley_upface.png|lien=]]', '{{smiley|positive}}', $text);
 	$text = str_replace('[[smiley_downface.png|lien=]]', '{{smiley|negative}}', $text);
 	$text = trim($text);
-	// echo $text . "\n";
+	//then explode the text and process to a second and more precise cleaning
 	$lines = explode("\n",$text);
 	return findCaption($lines);
 }
@@ -1181,8 +1238,8 @@ function findCaption($lines)
 		// If any imageCaption is identified, add the line to the wiki content page
 		if (trim($line) != 'A compléter...')
 		{
+			//delete specific characters at the begining and the end of line
 			$line = trim($line, "\t\n\r\0\x0B\xC2\xA0");
-			$i = 0;
 			while(preg_match("@^ @", $line))
 			{
 				$line = trim($line);
@@ -1193,6 +1250,7 @@ function findCaption($lines)
 			{
 				$line = preg_replace("@^'{3,3}@", '===', $line);
 			}
+			//If line begin by <strong> and finish by </strong>, it's a title (t4)
 			if (preg_match("@^'''@",$line) && preg_match("@'''$@", $line))
 			{
 				$line = preg_replace("@^'+@", '====', $line);
