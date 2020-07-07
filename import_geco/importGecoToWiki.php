@@ -31,8 +31,7 @@ initRelations();
 initConceptTypes();
 //Initialize an array with the different climatic context
 initContext();
-//Initialize an array with the agrifind csv file
-initAgrifindCSV();
+
 
 $indexURL = __DIR__ . '/geco_index.html';
 
@@ -73,7 +72,7 @@ function importGecoToWiki()
 		$trueUrl = preg_replace('@^http:@', 'https:', $url);
 		$trueUrl = getCanonicalURL($trueUrl);
 
-		$filename = __DIR__ . '/../temp/articles/' . sanitizeFilename(str_replace('http://www.geco.ecophytopic.fr/geco/Concept/', '', getCanonicalURL($url))) . '.html';
+		$filename = __DIR__ . '/../temp/articles/geco' . sanitizeFilename(str_replace('http://www.geco.ecophytopic.fr/geco/Concept/', '', getCanonicalURL($url))) . '.html';
 
 		// Download each link in the temp directory as cache
 		if (!file_exists($filename))
@@ -81,20 +80,20 @@ function importGecoToWiki()
 
 		echo "Loading page: $filename\n";
 		//Used to create cache files
-		// if ($filename != 'C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-verse.html')
+		// if ($filename != 'C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/geco/https-geco.ecophytopic.fr-geco-concept-verse.html')
 		// 	$createCache = true;
 		// if($createCache == false)
 		// 	continue
 		
 		//Debuging
-		// if ($filename != 'C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/https-geco.ecophytopic.fr-geco-concept-sol_moyennement_profond_-2860___ru___130_mm-29.html')
+		// if ($filename != 'C:\Neayi\tripleperformance_docker\workspace\wiki_builder\import_geco/../temp/articles/geco/https-geco.ecophytopic.fr-geco-concept-sol_moyennement_profond_-2860___ru___130_mm-29.html')
 		// 	continue;
 
 		// Test if the page is in the exclude page list
 		$pageName = mb_ucfirst($conceptName);
 		if (key_exists($pageName, $GLOBALS['pages_to_exclude']))
 		{
-			echo "Article not in the list \n";
+			echo "Article $pageName exclude by the list \n";
 			continue;
 		}
 		// Now detect the list of concepts, etc...
@@ -696,23 +695,6 @@ utilise / est utilisé pour
 	// print_r($GLOBALS['rel_labels']);
 	// print_r($GLOBALS['reverse_labels']);
 	// exit();
-}
-
-/**
- * Init an array with the content of agrifind csv
- */
-function initAgrifindCSV()
-{
-	$file = __DIR__ . "/../temp/pages_agrifind.csv";
-	$f = fopen($file, 'r');
-	$GLOBALS['agrifind']['fields'] = fgetcsv($f);
-	while(($data = fgetcsv($f))!==FALSE)
-	{
-		$line = fgetcsv($f);
-		print_r($line);
-	}
-	print_r($GLOBALS['agrifind']);
-	fclose($f);
 }
 
 ### General functions ###
