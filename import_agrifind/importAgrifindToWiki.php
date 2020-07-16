@@ -59,10 +59,14 @@ function importAgrifindToWiki()
         $doc -> loadHTML($html);
 
         $xpath = new DOMXpath($doc);
-        $elements = $xpath -> query("//article");
+        $articleContentNode = $xpath -> query("//article");
 
-        preprocessing($elements[0], $xpath);
-        
+        preprocessing($articleContentNode[0], $xpath);
+        echo "Preprocessing Done \n";
+
+        $articleContent = getWikiTextParsoid($articleContentNode[0]);
+        echo $articleContent;
+
     }
 }
 
@@ -139,20 +143,84 @@ function preprocessing($xmlContent, $xpath)
 {
     //Change <strong font-size 29> into title h2
     $titles = $xpath -> query(".//ul/li/strong", $xmlContent);
-    print_r($titles);
-    changeIntoTitle($titles);
-    $xmlContent = preg_replace("@,strong.*font-size: 29px @", $xmlContent, $matches);
-    print_r($matches);
+    changeNodeTag($titles, 'h1');
+
+    //Delete the table of content
+    $tableOfContent = $xpath -> query(".//p/a[starts-with(@href, '#')]", $xmlContent);
+    removeNodes($tableOfContent);
+
+    $tableOfContent = $xpath -> query(".//p/strong/a[starts-with(@href, '#')]", $xmlContent);
+    removeNodes($tableOfContent);
+
+    $source = $xpath -> query(".//ul/li/span[starts-with(@style, 'color: #0000ff;')]", $xmlContent);
+    $startDiv = $source[0]->parentNode->parentNode;
+    $startDiv->parentNode->removeChild($startDiv);
+
 }
 
 /**
  * Change several nodes as node title
  */
-function changeIntoTitle($nodes)
+function changeNodeTag($nodes, $nodeTag)
 {
-    foreach($nodes as $futurTitle)
+    foreach($nodes as $oldTitle)
     {
-        $test = $futurTitle->firstChild;
-        print_r($test);
+        $parent = $oldTitle->parentNode;
+        $title = $oldTitle->textContent;
+        $newNode = new DOMElement($nodeTag, $title);
+        $parent->replaceChild($newNode, $oldTitle);
     }
+}
+
+/**
+ * Remove first article's row witch are the table of content (mediaWiki will do it alone)
+ */
+function removeNodes($nodes)
+{
+    //The node list can't be remove in a simple foreach loop, each node must be queue in an array
+    $nodesToRemove = array();
+    foreach($nodes as $articlePart)
+        $nodesToRemove[] = $articlePart;
+
+    foreach( $nodesToRemove as $node)
+        $node->parentNode->removeChild($node);
+}
+
+#### Parsoid processing functions ####
+/**
+ * Pre-trasnform the page's content into wikitext. 
+ */
+function getWikiTextParsoid($node)
+{
+    //print_r($data);
+    $data = array("html" => '<html><body>' . $node->C14N() . '</body></html>');
+    $data_string = json_encode($data);
+	$md5 = md5($data_string);
+
+	if (file_exists(__DIR__ . "/../temp/apiWiki/agrifind/$md5-agrifind.parsoid"))
+	{
+		$result = file_get_contents(__DIR__ . "/../temp/apiWiki/agrifind/$md5-agrifind.parsoid");
+	}
+	else
+	{																									 
+		$ch = curl_init('http://localhost:8080/localhost/v3/transform/html/to/wikitext/');	
+		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);                                                                  
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array(                                                                          
+			'Content-Type: application/json',                                                                                
+			'Content-Length: ' . strlen($data_string))                                                                       
+		);    
+		curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+		$result = curl_exec($ch);
+		if (curl_errno($ch)) {
+            print "Error: " . curl_error($ch);
+        } else {
+            // Show me the result
+            echo $result;
+			//file_put_contents(__DIR__ . "/../temp/apiWiki/agrifind/$md5-agrifind.parsoid", $result);
+        }
+		curl_close($ch);
+	}
+	return $result;
 }
