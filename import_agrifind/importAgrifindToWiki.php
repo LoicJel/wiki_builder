@@ -36,6 +36,9 @@ function importAgrifindToWiki()
    //curlRequestAgrifind();
     foreach ($GLOBALS['agrifind'] as $page => $informations)
     {
+
+        $GLOBALS['images']= array();
+
         if ($page == 'fields')
             continue;
         
@@ -46,6 +49,10 @@ function importAgrifindToWiki()
             copy($url, $fileName);
 
         echo "Loading page: $fileName\n";
+        echo $page . "\n";
+
+        if ($page != "Bactériose sur pois d'hiver")
+            continue;
 
         $pageName = mb_ucfirst($page);
 		if (key_exists($pageName, $GLOBALS['pages_to_exclude']))
@@ -54,24 +61,24 @@ function importAgrifindToWiki()
 			continue;
         }
         
+        $page = $GLOBALS['wikiBuilder']->addPage($pageName);
         $doc = new DOMDocument();
         $html = file_get_contents($fileName);
         $doc -> loadHTML($html);
 
         $xpath = new DOMXpath($doc);
-        $articleContentNode = $xpath -> query("//article");
+        $articleContentNode = $xpath -> query("//article/div");
 
-        preprocessing($articleContentNode[0], $xpath);
+        preprocessing($articleContentNode[0], $xpath, $pageName);
         echo "Preprocessing Done \n";
 
-        $articleContent = getWikiTextParsoid($articleContentNode[0]);
-        echo $articleContent;
-
+        $articleContentParsoidBrut = getWikiTextParsoid($articleContentNode[0]);
+        $articleContentParsoidClean = cleanWikiTextParsoid($articleContentParsoidBrut);
+        
+        $page->addContent($articleContentParsoidClean);
+        $page->close();
     }
 }
-
-
-
 
 
 ### Global array initialisation ### 
@@ -139,23 +146,63 @@ function sanitizeFilename($str = '')
 /**
  * Do some changes inside the xml file to be more easy to use with parsoid
  */
-function preprocessing($xmlContent, $xpath)
+function preprocessing($xmlContent, $xpath, $pageName)
 {
     //Change <strong font-size 29> into title h2
     $titles = $xpath -> query(".//ul/li/strong", $xmlContent);
-    changeNodeTag($titles, 'h1');
+    if (count($titles)>0)
+    {
+        changeNodeTag($titles, 'h2');
+    }
 
     //Delete the table of content
     $tableOfContent = $xpath -> query(".//p/a[starts-with(@href, '#')]", $xmlContent);
-    removeNodes($tableOfContent);
+    if (count($tableOfContent)>0)
+    {
+        removeNodes($tableOfContent);
+    }
 
     $tableOfContent = $xpath -> query(".//p/strong/a[starts-with(@href, '#')]", $xmlContent);
-    removeNodes($tableOfContent);
+    if (count($tableOfContent)>0)
+    {
+        removeNodes($tableOfContent);
+    }
 
     $source = $xpath -> query(".//ul/li/span[starts-with(@style, 'color: #0000ff;')]", $xmlContent);
-    $startDiv = $source[0]->parentNode->parentNode;
-    $startDiv->parentNode->removeChild($startDiv);
+    if (count($source)>0)
+    {
+        $startDiv = $source[0]->parentNode->parentNode;
+        $startDiv->parentNode->removeChild($startDiv);
+    }
 
+    $breakNode = $xpath -> query(".//br", $xmlContent);
+    if (count($breakNode)>0)
+    {
+        doubleBreakTag($breakNode);
+    }
+    
+
+    $figures = $xpath -> query("./figure", $xmlContent);
+    if (count($figures)>0)
+    {
+        saveFigures($figures);
+    }
+    $figures = $xpath -> query(".//figure", $xmlContent);
+    if (count($figures)>0)
+    {
+        saveFigures($figures);
+    }
+
+    $images = $xpath -> query("./p/img", $xmlContent);
+    if (count($images)>0)
+    {
+        saveImage($images);
+    }
+    $images = $xpath -> query("./div/img", $xmlContent);
+    if (count($images)>0)
+    {
+        saveImage($images);
+    }
 }
 
 /**
@@ -165,10 +212,9 @@ function changeNodeTag($nodes, $nodeTag)
 {
     foreach($nodes as $oldTitle)
     {
-        $parent = $oldTitle->parentNode;
         $title = $oldTitle->textContent;
-        $newNode = new DOMElement($nodeTag, $title);
-        $parent->replaceChild($newNode, $oldTitle);
+        $newNode = new DOMElement($nodeTag, $title);  
+        $oldTitle->parentNode->replaceChild($newNode, $oldTitle);
     }
 }
 
@@ -183,9 +229,60 @@ function removeNodes($nodes)
         $nodesToRemove[] = $articlePart;
 
     foreach( $nodesToRemove as $node)
-        $node->parentNode->removeChild($node);
+    {
+        $pNode = $node->parentNode;
+        $pNode->parentNode->removeChild($pNode);
+    }
 }
 
+function doubleBreakTag($nodes)
+{
+    $newNode = new DOMElement('br');
+    foreach($nodes as $breakNode)
+    {
+        $newNode = new DOMElement('p');
+        $breakNode->parentNode->replaceChild($newNode, $breakNode);
+    }
+}
+
+function saveImage($nodes)
+{
+    $path = __DIR__ . '/agrifind_index_files';
+    foreach($nodes as $image)
+    {
+        $src = $image->getAttribute('src');
+        $caption = "";
+        $img = basename($src);
+        $url = urlencode($src);
+        file_put_contents("$path/$img", file_get_contents($url));
+        resizeImage($img);
+        $GLOBALS['images'][$src] = array('src' => $img, 'caption' => $caption);
+    }
+}
+
+
+function saveFigures($nodes)
+{
+    $path = __DIR__ . '/agrifind_index_files';
+    foreach($nodes as $figureTag)
+    {
+        $imageTag = $figureTag->getElementsByTagName('img');
+        $captionTag = $figureTag->getElementsByTagName('figcaption');
+        if(count($captionTag)>0)
+            $caption = $captionTag[0]->textContent;
+        else 
+            $caption = '';
+
+        foreach($imageTag as $image)
+        {
+            $src = $image->getAttribute('src');
+            $img = basename($src);
+            file_put_contents("$path/$img", file_get_contents($src));
+            resizeImage($img);
+            $GLOBALS['images'][$src] = array('src' => $img, 'caption' => $caption);
+        }
+    }
+}
 #### Parsoid processing functions ####
 /**
  * Pre-trasnform the page's content into wikitext. 
@@ -217,10 +314,146 @@ function getWikiTextParsoid($node)
             print "Error: " . curl_error($ch);
         } else {
             // Show me the result
-            echo $result;
-			//file_put_contents(__DIR__ . "/../temp/apiWiki/agrifind/$md5-agrifind.parsoid", $result);
+			file_put_contents(__DIR__ . "/../temp/apiWiki/agrifind/$md5-agrifind.parsoid", $result);
         }
 		curl_close($ch);
 	}
 	return $result;
+}
+
+
+
+function cleanWikiTextParsoid($articleContent)
+{
+    //echo $articleContent . "\n";
+    $matches = array();
+    $text = $articleContent;
+    $articleContent = preg_replace('@<strong>@', "'''", $articleContent);
+    $articleContent = preg_replace('@\</strong\>@', "'''", $articleContent);
+    $articleContent = preg_replace('@\*[ ]*==@', '==', $articleContent);
+    $articleContent = preg_replace('@==[ ]*==@', '', $articleContent);
+    $articleContent = str_replace('="">', '', $articleContent);
+    
+    $articleContent = strip_tags($articleContent);
+    
+    preg_match_all("@http.*jpg|http.*png@", $articleContent, $matches);
+    // print_r($GLOBALS['images']);
+    // print_r($matches);
+    if (!empty($matches))
+        {
+            foreach ($matches[0] as $urlImage)
+            {
+                $articleContent = str_replace($urlImage, "[[image:" . $GLOBALS['images'][$urlImage]['src'] . "|thumb|right|" . $GLOBALS['images'][$urlImage]['caption'] . "]]", $articleContent);
+            }
+        }
+    return $articleContent;
+}
+
+/**
+ * This function reseize the images from Geco and saves them into the "out" folder. We used the importImages script from mediawiki to add them on the website. 
+*/ 
+function resizeImage(&$imageName)
+{
+	$srcImageFilePath = __DIR__ . '/agrifind_index_files/'. $imageName;
+	$path_parts = pathinfo($srcImageFilePath);
+	$srcExt = $path_parts['extension'];
+ 
+
+	$imageName = str_replace('.' . $srcExt, '.jpg', $imageName);
+
+	$destImageFilePath = __DIR__ . '/../out/images/'. $imageName;
+
+	if (file_exists($destImageFilePath))
+		return;
+
+	$finfo = new finfo(FILEINFO_EXTENSION);
+	$realSrcExt = $finfo->file($srcImageFilePath);
+	
+	try
+	{
+		switch ($realSrcExt)
+		{
+			case 'bmp':
+				$srcimage = imagecreatefrombmp($srcImageFilePath);
+				break;
+
+			case 'gif':
+				$srcimage = imagecreatefromgif($srcImageFilePath);
+				break;
+
+			case 'jpeg/jpg/jpe/jfif':
+			case 'jpeg':
+			case 'jpg':
+				$srcimage = imagecreatefromjpeg($srcImageFilePath);
+				break;
+
+			case 'png':
+				$srcimage = imagecreatefrompng($srcImageFilePath);
+				break;
+
+			case 'wbmp':
+				$srcimage = imagecreatefromwbmp($srcImageFilePath);
+				break;
+
+			case 'webp':
+				$srcimage = imagecreatefromwebp($srcImageFilePath);
+				break;
+
+			case 'xbm':
+				$srcimage = imagecreatefromxbm($srcImageFilePath);
+				break;
+
+			case 'xpm':
+				$srcimage = imagecreatefromxpm($srcImageFilePath);
+				break;
+
+			default:
+				// Ignore this image!
+				$imageName = '';
+				return;
+		}
+
+		if (empty($srcimage))
+		{
+			$imageName = '';
+			return;
+		}
+
+		// Calcul des nouvelles dimensions
+		list($orig_width, $orig_height) = getimagesize($srcImageFilePath);
+
+		$width = $orig_width;
+		$height = $orig_height;
+
+		$max_height = $max_width = 800;
+
+		# taller
+		if ($height > $max_height) {
+			$width = ($max_height / $height) * $width;
+			$height = $max_height;
+		}
+
+		# wider
+		if ($width > $max_width) {
+			$height = ($max_width / $width) * $height;
+			$width = $max_width;
+		}
+
+		// Chargement
+		$destImage = imagecreatetruecolor($width, $height);
+
+		// Redimensionnement
+		imagecopyresized($destImage, $srcimage, 0, 0, 0, 0, $width, $height, $orig_width, $orig_height);
+		imagejpeg($destImage, $destImageFilePath);
+
+		// Libération de la mémoire
+		imagedestroy($destImage);
+		imagedestroy($srcimage);
+	}
+	catch (\Throwable $th)
+	{
+		echo "Failed to save image: $srcImageFilePath \n";
+		echo $th->getMessage() . "\n";
+		$imageName = '';
+	}
 }
