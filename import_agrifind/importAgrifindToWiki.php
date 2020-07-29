@@ -10,31 +10,29 @@ libxml_use_internal_errors(true);
 if (!is_dir(__DIR__ . "/../out"))
     mkdir(__DIR__ . "/../out");
 
-//Out file name
-$filename = __DIR__ . "/../out/wiki_agrifind.xml";
-
-if (file_exists($filename))
-    unlink($filename);
-
-$GLOBALS['wikiBuilder'] = new wikiImportFile($filename);
-
-$GLOBALS['pages'] = array();
-
 //Initialize an array with the agrifind csv file
 initAgrifindCSV();
 //Initialize a list of articles that must be exclude
 initArticlesList();
 
-$doc = new DOMDocument();
+foreach($GLOBALS['agrifind'] as $concept => $articles)
+{
+    //Out file name
+    $filename = __DIR__ . "/../out/wiki_agrifind_$concept.xml";
 
-importAgrifindToWiki();
+    if (file_exists($filename))
+        unlink($filename);
+
+    $GLOBALS['wikiBuilder'] = new wikiImportFile($filename);
+    importAgrifindToWiki($articles);
+}
 echo "It's done !";
 
 ########################### Functions ###########################
-function importAgrifindToWiki()
+function importAgrifindToWiki($articles)
 {
    //curlRequestAgrifind();
-    foreach ($GLOBALS['agrifind'] as $page => $informations)
+    foreach ($articles as $page => $informations)
     {
         // if ($page != "Auxiliaires de culture")
         //     continue;
@@ -42,11 +40,8 @@ function importAgrifindToWiki()
         $GLOBALS['images']= array();
 
         //print_r($informations);
-
-        if ($page == 'fields')
-            continue;
         
-        
+    
         $url = $informations[1];
         $fileName = __DIR__ . '/../temp/articles/agriFind/' . sanitizeFilename($url) . '.html';
 
@@ -112,23 +107,48 @@ function importAgrifindToWiki()
  */
 function initAgrifindCSV()
 {
+    $agrifind = array();
     $file = __DIR__ . "/../temp/pages_agrifind.csv";
     if (($f = fopen($file, 'r')) !== FALSE)
     {
-        $GLOBALS['agrifind']['fields'] = fgetcsv($f);
+        $agrifind['agrifind']['fields'] = fgetcsv($f);
         while(($line = fgetcsv($f, 1000, ",")) !== False)
 	    {
-            $GLOBALS['agrifind'][$line[2]] = $line;
-            unset($GLOBALS['agrifind'][$line[2]][2]);
+            $agrifind['agrifind'][$line[2]] = $line;
+            unset($agrifind['agrifind'][$line[2]][2]);
 	    }
 	    fclose($f);
     }
+    unset($agrifind['agrifind']['fields']);
+
     $GLOBALS["url-page"] = array();
-    foreach($GLOBALS['agrifind'] as $page => $informations)
+    $GLOBALS['agrifind']['bioagresseur'] = array();
+    $GLOBALS['agrifind']['culture'] = array();
+    $GLOBALS['agrifind']['pratique agricole'] = array();
+    $GLOBALS['agrifind']['auxiliaire'] = array();
+    foreach($agrifind['agrifind'] as $page => $informations)
     {
         $GLOBALS["url-page"][$informations[1]] = $page;
+        
+        if($informations[0] != "Bioagresseur")
+            $informations[0] = preg_replace("@[0-9] - @", '', $informations[0]);
+            
+        switch($informations[0])
+        {
+            case "Bioagresseur":
+                $GLOBALS['agrifind']['bioagresseur'][$page] = $informations;
+                break;
+            case "Cultures":
+                $GLOBALS['agrifind']['culture'][$page] = $informations;
+                break;
+            case "Pratiques agronomiques":
+                $GLOBALS['agrifind']['pratique agricole'][$page] = $informations;
+                break;
+            case "Auxiliaire":
+                $GLOBALS['agrifind']['auxiliaire'][$page] = $informations;
+                break;
+        }
     }
-    unset($GLOBALS['url-page']['URL AgriFind']);
 }
 
 ### Global array initialisation ### 
