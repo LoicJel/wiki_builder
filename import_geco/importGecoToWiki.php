@@ -800,6 +800,8 @@ function emptyPage($xml_loaded)
  * */
 function request_api($request_type, $pageName, $homonymie=null)
 {
+	$path = __DIR__ . "/../temp/apiWiki/geco";;
+	$fileName = md5($pageName) . '-' . preg_replace('@[^a-zA-Z0-9]@', '_', $pageName) . "-$request_type.apiWiki";
 	$log = "logApi.txt";
 	file_put_contents($log, "$request_type", FILE_APPEND);	
 	$start = microtime(true);
@@ -811,11 +813,11 @@ function request_api($request_type, $pageName, $homonymie=null)
 	$parameters = $api_para[$request_type];
 
 	//Create a temp file with the result or replace it if it exists
-	$fileName = md5($pageName) . '-' . preg_replace('@[^a-zA-Z0-9]@', '_', $pageName);
-	if (file_exists("C:\Neayi\\tripleperformance_docker\workspace\wiki_builder\\temp/apiWiki/$fileName-$request_type.apiWiki"))
+	
+	if (file_exists("$path/$fileName"))
 	{
 		file_put_contents($log, " NOT curl request ", FILE_APPEND);	
-		$output = file_get_contents("C:\Neayi\\tripleperformance_docker\workspace\wiki_builder\\temp/apiWiki/$fileName-$request_type.apiWiki");
+		$output = file_get_contents("$path/$fileName");
 	}
 	else
 	{
@@ -827,7 +829,7 @@ function request_api($request_type, $pageName, $homonymie=null)
 		curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
 		curl_setopt($ch, CURLOPT_TIMEOUT, 5);
 		$output = curl_exec( $ch );
-		file_put_contents("C:\Neayi\\tripleperformance_docker\workspace\wiki_builder\\temp\apiWiki/$fileName-$request_type.apiWiki", $output);
+		file_put_contents("$path/$fileName", $output);
 		curl_close( $ch );
 	}
 	$end = microtime(true);
@@ -1096,16 +1098,18 @@ function resizeImage(&$imageName)
  */
 function getWikiTextParsoid($node)
 {
+	$path = __DIR__ . "/../temp/apiWiki/geco";
+	 
 	$log = "logApi.txt";
 	$data = array("html" => '<html><body>' . $node->C14N() . '</body></html>');
 	$data_string = json_encode($data);
-	$md5 = md5($data_string);
+	$fileName = md5($data_string) . ".parsoid";
 	$start = microtime(true);
 
-	if (file_exists("C:\Neayi\\tripleperformance_docker\workspace\wiki_builder\\temp/apiWiki/$md5.parsoid"))
+	if (file_exists("$path/$fileName"))
 	{
 		file_put_contents($log, "Parsoid cache ", FILE_APPEND);
-		$result = file_get_contents("C:\Neayi\\tripleperformance_docker\workspace\wiki_builder\\temp/apiWiki/$md5.parsoid");                                                                
+		$result = file_get_contents("$path/$fileName");  
 	}
 	else
 	{		
@@ -1125,7 +1129,7 @@ function getWikiTextParsoid($node)
             print "Error: " . curl_error($ch);
         } else {
             // Show me the result
-			file_put_contents("C:\Neayi\\tripleperformance_docker\workspace\wiki_builder\\temp/apiWiki/$md5.parsoid", $result);
+			file_put_contents("$path/$fileName", $result);
         }
 		curl_close($ch);
 

@@ -34,8 +34,8 @@ function importAgrifindToWiki($articles)
    //curlRequestAgrifind();
     foreach ($articles as $page => $informations)
     {
-        // if ($page != "Auxiliaires de culture")
-        //     continue;
+        if ($page != "Orge")
+            continue;
 
         $GLOBALS['images']= array();
 
@@ -73,7 +73,7 @@ function importAgrifindToWiki($articles)
         preprocessing($articleContentNode[0], $xpath, $pageName);
         echo "Preprocessing Done \n";
 
-        $articleContentParsoidBrut = getWikiTextParsoid($articleContentNode[0]);
+        $articleContentParsoidBrut = getWikiTextParsoid($articleContentNode[0], $pageName);
         $articleContentParsoidClean = cleanWikiTextParsoid($articleContentParsoidBrut);
         
         $concept = $informations[0];
@@ -132,7 +132,7 @@ function initAgrifindCSV()
         
         if($informations[0] != "Bioagresseur")
             $informations[0] = preg_replace("@[0-9] - @", '', $informations[0]);
-            
+
         switch($informations[0])
         {
             case "Bioagresseur":
@@ -392,16 +392,18 @@ function saveFigures($nodes)
 /**
  * Pre-trasnform the page's content into wikitext. 
  */
-function getWikiTextParsoid($node)
+function getWikiTextParsoid($node, $pageName)
 {
     //print_r($data);
+    $path = __DIR__ . "/../temp/apiWiki/agrifind";
+    $fileName = "$pageName-agrifind.parsoid";
     $data = array("html" => '<html><body>' . $node->C14N() . '</body></html>');
     $data_string = json_encode($data);
-	$md5 = md5($data_string);
+	
 
-	if (file_exists(__DIR__ . "/../temp/apiWiki/agrifind/$md5-agrifind.parsoid"))
+	if (file_exists("$path/$fileName"))
 	{
-		$result = file_get_contents(__DIR__ . "/../temp/apiWiki/agrifind/$md5-agrifind.parsoid");
+		$result = file_get_contents("$path/$fileName");
 	}
 	else
 	{																									 
@@ -419,7 +421,7 @@ function getWikiTextParsoid($node)
             print "Error: " . curl_error($ch);
         } else {
             // Show me the result
-			file_put_contents(__DIR__ . "/../temp/apiWiki/agrifind/$md5-agrifind.parsoid", $result);
+			file_put_contents("$path/$fileName", $result);
         }
 		curl_close($ch);
 	}
