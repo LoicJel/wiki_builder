@@ -1098,7 +1098,7 @@ function getWikiTextParsoid($node)
 {
 	$log = "logApi.txt";
 	$data = array("html" => '<html><body>' . $node->C14N() . '</body></html>');
-	$data_string = json_encode($data);   
+	$data_string = json_encode($data);
 	$md5 = md5($data_string);
 	$start = microtime(true);
 
@@ -1275,7 +1275,7 @@ function preprocessing($xpath, $contentDiv, $pageName)
 
 	// Change the image url which are integrated as string in the wikitext.
 	$imagesIntegrated = $xpath->query("//img[starts-with(@src, 'data')]", $contentDiv);
-	imageIntext($imagesIntegrated, $pageName);
+	imageInText($imagesIntegrated, $pageName);
 
 	// Change geco url in the page content into Internal link.
 	$urlNodeInText = $xpath->query(".//a", $contentDiv);
