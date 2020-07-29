@@ -36,6 +36,9 @@ function importAgrifindToWiki()
    //curlRequestAgrifind();
     foreach ($GLOBALS['agrifind'] as $page => $informations)
     {
+        // if ($page != "Chanvre")
+        //     continue;
+        print_r($informations);
 
         $GLOBALS['images']= array();
 
@@ -51,8 +54,7 @@ function importAgrifindToWiki()
         echo "Loading page: $fileName\n";
         echo $page . "\n";
 
-        if ($page != "Bactériose sur pois d'hiver")
-            continue;
+
 
         $pageName = mb_ucfirst($page);
 		if (key_exists($pageName, $GLOBALS['pages_to_exclude']))
@@ -64,7 +66,9 @@ function importAgrifindToWiki()
         $page = $GLOBALS['wikiBuilder']->addPage($pageName);
         $doc = new DOMDocument();
         $html = file_get_contents($fileName);
+        $html = str_replace('<head>', '<head><meta charset="UTF-8">', $html);
         $doc -> loadHTML($html);
+        $url_agrifind = $informations[1];
 
         $xpath = new DOMXpath($doc);
         $articleContentNode = $xpath -> query("//article/div");
@@ -75,6 +79,8 @@ function importAgrifindToWiki()
         $articleContentParsoidBrut = getWikiTextParsoid($articleContentNode[0]);
         $articleContentParsoidClean = cleanWikiTextParsoid($articleContentParsoidBrut);
         
+
+        $page->addContent("{{Article issu d'agriFind|url=$url_agrifind}}");
         $page->addContent($articleContentParsoidClean);
         $page->close();
     }
@@ -198,7 +204,27 @@ function preprocessing($xmlContent, $xpath, $pageName)
     {
         saveImage($images);
     }
+    $images = $xpath -> query("./p/a/img", $xmlContent);
+    if (count($images)>0)
+    {
+        saveImage($images);
+    }
+    $images = $xpath -> query("./div/p/a/img", $xmlContent);
+    if (count($images)>0)
+    {
+        saveImage($images);
+    }
     $images = $xpath -> query("./div/img", $xmlContent);
+    if (count($images)>0)
+    {
+        saveImage($images);
+    }
+    $images = $xpath -> query("./div/div/img", $xmlContent);
+    if (count($images)>0)
+    {
+        saveImage($images);
+    }
+    $images = $xpath -> query("./p/strong/img", $xmlContent);
     if (count($images)>0)
     {
         saveImage($images);
@@ -253,10 +279,15 @@ function saveImage($nodes)
         $src = $image->getAttribute('src');
         $caption = "";
         $img = basename($src);
-        $url = urlencode($src);
-        file_put_contents("$path/$img", file_get_contents($url));
+        $img = preg_replace("@\.jpg.[0-9]*x[0-9]*\.png@", ".jpg", $img);
+        $src_parsoid = preg_replace("@\.jpg.{0,3}[0-9]*[x\-][0-9]*\.png@", ".jpg", $src);
+        // echo $src . "\n";
+        // echo $src_parsoid . "\n";
+        $GLOBALS['images'][$src_parsoid] = array('src' => $img, 'caption' => $caption);
+        $src = dirname($src) . '/' . urlencode($img);
+        file_put_contents("$path/$img", file_get_contents($src));
         resizeImage($img);
-        $GLOBALS['images'][$src] = array('src' => $img, 'caption' => $caption);
+        
     }
 }
 
@@ -277,9 +308,12 @@ function saveFigures($nodes)
         {
             $src = $image->getAttribute('src');
             $img = basename($src);
-            file_put_contents("$path/$img", file_get_contents($src));
-            resizeImage($img);
-            $GLOBALS['images'][$src] = array('src' => $img, 'caption' => $caption);
+            $img = preg_replace("@\.jpg.[0-9]*x[0-9]*\.png@", ".jpg", $img);
+            $src_parsoid = preg_replace("@\.jpg.[0-9]*x[0-9]*\.png@", ".jpg", $src);
+            $GLOBALS['images'][$src_parsoid] = array('src' => $img, 'caption' => $caption);
+            $src = dirname($src) . '/' . urlencode($img);
+            copy($src, "$path/$img");
+            resizeImage($img);        
         }
     }
 }
@@ -333,10 +367,12 @@ function cleanWikiTextParsoid($articleContent)
     $articleContent = preg_replace('@\*[ ]*==@', '==', $articleContent);
     $articleContent = preg_replace('@==[ ]*==@', '', $articleContent);
     $articleContent = str_replace('="">', '', $articleContent);
-    
+    $articleContent = str_replace('.jpg https', ".jpg\nhttps", $articleContent);
+    $articleContent = str_replace('.jpg', ".jpg \n", $articleContent);
     $articleContent = strip_tags($articleContent);
     
-    preg_match_all("@http.*jpg|http.*png@", $articleContent, $matches);
+    //echo $articleContent;
+    preg_match_all("@https://www.agrifind.fr/alertes/wp-content/uploads.*jpg|https://www.agrifind.fr/alertes/wp-content/uploads.*png@", $articleContent, $matches);
     // print_r($GLOBALS['images']);
     // print_r($matches);
     if (!empty($matches))
