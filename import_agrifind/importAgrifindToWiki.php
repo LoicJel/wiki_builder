@@ -36,12 +36,12 @@ function importAgrifindToWiki()
    //curlRequestAgrifind();
     foreach ($GLOBALS['agrifind'] as $page => $informations)
     {
-        // if ($page != "Orobanche sur colza")
+        // if ($page != "Auxiliaires de culture")
         //     continue;
 
         $GLOBALS['images']= array();
 
-        print_r($informations);
+        //print_r($informations);
 
         if ($page == 'fields')
             continue;
@@ -123,6 +123,12 @@ function initAgrifindCSV()
 	    }
 	    fclose($f);
     }
+    $GLOBALS["url-page"] = array();
+    foreach($GLOBALS['agrifind'] as $page => $informations)
+    {
+        $GLOBALS["url-page"][$informations[1]] = $page;
+    }
+    unset($GLOBALS['url-page']['URL AgriFind']);
 }
 
 ### Global array initialisation ### 
@@ -417,7 +423,7 @@ function cleanWikiTextParsoid($articleContent)
     $articleContent = str_replace('.jpg', ".jpg \n", $articleContent);
     $articleContent = strip_tags($articleContent);
     
-    //echo $articleContent;
+    
     preg_match_all("@https://www.agrifind.fr/alertes/wp-content/uploads.*jpg|https://www.agrifind.fr/alertes/wp-content/uploads.*png@", $articleContent, $matches);
     // print_r($GLOBALS['images']);
     // print_r($matches);
@@ -428,6 +434,21 @@ function cleanWikiTextParsoid($articleContent)
                 $articleContent = str_replace($urlImage, "[[image:" . $GLOBALS['images'][$urlImage]['src'] . "|thumb|right|" . $GLOBALS['images'][$urlImage]['caption'] . "]]", $articleContent);
             }
         }
+
+    $matches = array();
+    preg_match_all("@\[https://www.agrifind.fr/alertes/.*/ .*]@", $articleContent, $matches);
+    if(!empty($matches))
+    {
+        foreach ($matches[0] as $url)
+        {
+            $internalLink = trim($url, "[]");
+            $internalLink = preg_replace('@/ .*@', '', $internalLink);
+            $internalLink = '[[' . $GLOBALS['url-page'][$internalLink] . ']]';
+            $articleContent = str_replace($url, $internalLink, $articleContent);
+        }
+    }
+
+    //echo $articleContent;
     return $articleContent;
 }
 
