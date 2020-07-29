@@ -36,9 +36,8 @@ function importAgrifindToWiki()
    //curlRequestAgrifind();
     foreach ($GLOBALS['agrifind'] as $page => $informations)
     {
-        // if ($page != "Chanvre")
+        // if ($page != "Orobanche sur colza")
         //     continue;
-        print_r($informations);
 
         $GLOBALS['images']= array();
 
@@ -364,6 +363,7 @@ function cleanWikiTextParsoid($articleContent)
     $text = $articleContent;
     $articleContent = preg_replace('@<strong>@', "'''", $articleContent);
     $articleContent = preg_replace('@\</strong\>@', "'''", $articleContent);
+    $articleContent = preg_replace("@'''[ ]*==@", " ==", $articleContent);
     $articleContent = preg_replace('@\*[ ]*==@', '==', $articleContent);
     $articleContent = preg_replace('@==[ ]*==@', '', $articleContent);
     $articleContent = str_replace('="">', '', $articleContent);
