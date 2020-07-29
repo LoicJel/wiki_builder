@@ -41,8 +41,11 @@ function importAgrifindToWiki()
 
         $GLOBALS['images']= array();
 
+        print_r($informations);
+
         if ($page == 'fields')
             continue;
+        
         
         $url = $informations[1];
         $fileName = __DIR__ . '/../temp/articles/agriFind/' . sanitizeFilename($url) . '.html';
@@ -78,8 +81,25 @@ function importAgrifindToWiki()
         $articleContentParsoidBrut = getWikiTextParsoid($articleContentNode[0]);
         $articleContentParsoidClean = cleanWikiTextParsoid($articleContentParsoidBrut);
         
+        $concept = $informations[0];
+        $name = $informations[3];
+        if ($informations[4] != "")
+        {
+            $templateParameterValue = $informations[3];
+            $templateParameter = "Culture";
+        }
+        else
+        {
+            $templateParameterValue = "";
+            $templateParameter = "Latin";
+        }
+    
+        $subcategory = $informations[4];
 
-        $page->addContent("{{Article issu d'agriFind|url=$url_agrifind}}");
+        $page->addContent("{{Article issu d'agriFind|url=$url_agrifind}}" . "\n");
+        $conceptTemplate = getTemplate($informations[0], array("Nom" => $pageName, $templateParameter => $templateParameterValue, 'Sous-categorie' => $subcategory, 'Image' => "", 'ImageCaption' => "")) . "\n";
+        $page->addContent($conceptTemplate . "}}");
+
         $page->addContent($articleContentParsoidClean);
         $page->close();
     }
@@ -146,6 +166,32 @@ function sanitizeFilename($str = '')
     $str = str_replace('%', '-', $str);
     return $str;
 }
+
+
+/**
+ * Gets the wikitext for a template for the page
+ */
+function getTemplate($conceptType, $fields)
+{
+	/*
+	{{bioagresseur
+	|Nom=Carpocapse des pommes et des poires
+	|Latin=Cydia pomonella
+	|Sous-category= 
+	|Image=image_carpocapse_des_pommes_et_des_poires__Cydia_pomonella_.jpg
+	|ImageCaption=Adulte du carpocapse des pommes et des poires - © INRA}}
+	*/
+	$lines = array();
+	foreach ($fields as $k => $v)
+	{
+		$lines[] = "|$k=$v";
+	}
+
+	return '{{' . $conceptType . "\n" . implode("\n", $lines);
+}
+
+
+
 
 ### Preprocessing functions ### 
 /**
