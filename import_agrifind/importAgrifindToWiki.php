@@ -19,12 +19,14 @@ foreach($GLOBALS['agrifind'] as $concept => $articles)
 {
     //Out file name
     $filename = __DIR__ . "/../out/wiki_agrifind_$concept.xml";
+    echo $filename . "\n";
 
     if (file_exists($filename))
         unlink($filename);
 
     $GLOBALS['wikiBuilder'] = new wikiImportFile($filename);
     importAgrifindToWiki($articles);
+    $GLOBALS['wikiBuilder']->close();
 }
 echo "It's done !";
 
@@ -34,19 +36,21 @@ function importAgrifindToWiki($articles)
    //curlRequestAgrifind();
     foreach ($articles as $page => $informations)
     {
-        if ($page != "Orge")
-            continue;
+        // if ($page != "Orge")
+        //     continue;
 
+        //initialise an array whtich contains image name and url find
         $GLOBALS['images']= array();
 
-        //print_r($informations);
+          
+        //articles url
+        $url_agrifind = $informations[1];
         
-    
-        $url = $informations[1];
-        $fileName = __DIR__ . '/../temp/articles/agriFind/' . sanitizeFilename($url) . '.html';
+        //fileName destination for article record
+        $fileName = __DIR__ . '/../temp/articles/agriFind/' . sanitizeFilename($url_agrifind) . '.html';
 
         if (!file_exists($fileName))
-            copy($url, $fileName);
+            copy($url_agrifind, $fileName);
 
         echo "Loading page: $fileName\n";
         echo $page . "\n";
@@ -54,19 +58,23 @@ function importAgrifindToWiki($articles)
 
 
         $pageName = mb_ucfirst($page);
+        //skip the article if the page is in the blackList $GLOBALS['pages_to_exclude']
 		if (key_exists($pageName, $GLOBALS['pages_to_exclude']))
 		{
 			echo "Article $pageName exclude by the list \n";
 			continue;
         }
         
+        //initialize the writter object
         $page = $GLOBALS['wikiBuilder']->addPage($pageName);
         $doc = new DOMDocument();
         $html = file_get_contents($fileName);
         $html = str_replace('<head>', '<head><meta charset="UTF-8">', $html);
-        $doc -> loadHTML($html);
-        $url_agrifind = $informations[1];
 
+        //load the xml doc
+        $doc -> loadHTML($html);
+        
+        //initialize DOM xml parser
         $xpath = new DOMXpath($doc);
         $articleContentNode = $xpath -> query("//article/div");
 
@@ -239,11 +247,13 @@ function preprocessing($xmlContent, $xpath, $pageName)
         removeNodes($tableOfContent);
     }
 
+    //Delete tables
     $tableOfContent = $xpath -> query(".//p/strong/a[starts-with(@href, '#')]", $xmlContent);
     if (count($tableOfContent)>0)
     {
         removeNodes($tableOfContent);
     }
+
 
     $source = $xpath -> query(".//ul/li/span[starts-with(@style, 'color: #0000ff;')]", $xmlContent);
     if (count($source)>0)
@@ -252,13 +262,15 @@ function preprocessing($xmlContent, $xpath, $pageName)
         $startDiv->parentNode->removeChild($startDiv);
     }
 
+    //Double the /n for MediaWiki conversion
     $breakNode = $xpath -> query(".//br", $xmlContent);
     if (count($breakNode)>0)
     {
         doubleBreakTag($breakNode);
     }
     
-
+    
+    //Several call fo the same function to deal with images
     $figures = $xpath -> query("./figure", $xmlContent);
     if (count($figures)>0)
     {
@@ -332,6 +344,9 @@ function removeNodes($nodes)
     }
 }
 
+/**
+ * Double /n in the article
+*/
 function doubleBreakTag($nodes)
 {
     $newNode = new DOMElement('br');
@@ -342,6 +357,9 @@ function doubleBreakTag($nodes)
     }
 }
 
+/**
+ * Save images and save their informations to be able to replace url after parsoid treatment
+ */
 function saveImage($nodes)
 {
     $path = __DIR__ . '/agrifind_index_files';
@@ -362,7 +380,9 @@ function saveImage($nodes)
     }
 }
 
-
+/** 
+ * Same function but with a different node path
+*/ 
 function saveFigures($nodes)
 {
     $path = __DIR__ . '/agrifind_index_files';
@@ -394,13 +414,12 @@ function saveFigures($nodes)
  */
 function getWikiTextParsoid($node, $pageName)
 {
-    //print_r($data);
     $path = __DIR__ . "/../temp/apiWiki/agrifind";
-    $fileName = "$pageName-agrifind.parsoid";
+    //filename to save parsoid result
+    $fileName = str_replace(" ", "_", $pageName) . "-agrifind.parsoid";
     $data = array("html" => '<html><body>' . $node->C14N() . '</body></html>');
     $data_string = json_encode($data);
 	
-
 	if (file_exists("$path/$fileName"))
 	{
 		$result = file_get_contents("$path/$fileName");
@@ -445,7 +464,7 @@ function cleanWikiTextParsoid($articleContent)
     $articleContent = str_replace('.jpg', ".jpg \n", $articleContent);
     $articleContent = strip_tags($articleContent);
     
-    
+    //Replace url image by proper mediaWIki images link
     preg_match_all("@https://www.agrifind.fr/alertes/wp-content/uploads.*jpg|https://www.agrifind.fr/alertes/wp-content/uploads.*png@", $articleContent, $matches);
     // print_r($GLOBALS['images']);
     // print_r($matches);
@@ -458,6 +477,7 @@ function cleanWikiTextParsoid($articleContent)
         }
 
     $matches = array();
+    //replace agrifind internal Link by Wiki internal link
     preg_match_all("@\[https://www.agrifind.fr/alertes/.*/ .*]@", $articleContent, $matches);
     if(!empty($matches))
     {
